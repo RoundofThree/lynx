@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
   # validations
   validates :firstname, presence: true, length: {maximum: 127}
   validates :lastname, presence: true, length: {maximum: 127}
@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :accounts
   # before actions
   before_save :format_name
+
+  GENDER_TYPES = [ ["Male", false], [ "Female", true] ]
+  validates_inclusion_of :is_female, in: [true, false]
 
   private
 

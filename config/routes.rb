@@ -14,11 +14,13 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :styles, :users, :accounts, :transactions
   end
+  get 'admin', to: 'admin/dashboard#index'
+  get 'admin/dashboard', to: 'admin/dashboard#index'
 
   # Devise controllers
   devise_for :users, controllers: {
     sessions: 'users/sessions', # login, logout
     passwords: 'users/passwords', # change password
-    registrations: 'users/registrations' # sign up, delete user
+    registrations: 'users/registrations' # sign up, delete user, update details
   }
 end

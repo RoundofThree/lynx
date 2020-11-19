@@ -23,21 +23,21 @@ ActiveRecord::Schema.define(version: 2020_11_18_221722) do
     t.integer "expiry_month"
     t.integer "expiry_year"
     t.string "currency"
+    t.boolean "frozen", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.decimal "amount"
-    t.string "currency"
+    t.decimal "amount", null: false
+    t.string "currency", null: false
     t.bigint "payer_account_id", null: false
     t.string "payee_account_number", null: false
     t.string "payee_fullname", null: false
     t.string "reference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    # t.index ["payee_account_id"], name: "index_transactions_on_payee_account_id"
     t.index ["payer_account_id"], name: "index_transactions_on_payer_account_id"
   end
 
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 2020_11_18_221722) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -65,6 +69,5 @@ ActiveRecord::Schema.define(version: 2020_11_18_221722) do
   end
 
   add_foreign_key "accounts", "users"
-  # add_foreign_key "transactions", "accounts", column: "payee_account_id"
   add_foreign_key "transactions", "accounts", column: "payer_account_id"
 end

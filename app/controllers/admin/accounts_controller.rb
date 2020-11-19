@@ -25,8 +25,8 @@ class Admin::AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
-        format.json { render :show, status: :created, location: @account }
+        format.html { redirect_to admin_account_path(@account), notice: 'Account was successfully created.' }
+        format.json { render :show, status: :created, location: admin_account_path(@account) }
       else
         format.html { render :new }
         format.json { render json: @account.errors, status: :unprocessable_entity }

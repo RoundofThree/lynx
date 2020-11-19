@@ -1,4 +1,4 @@
-<%= form_with(model: account, local: true) do |form| %>
+<%= form_with(scope: :account, url: admin_account_path(@account), method: :patch, local: true) do |form| %>
 <!-- Errors -->
   <% if account.errors.any? %>
     <div class="message is-danger">

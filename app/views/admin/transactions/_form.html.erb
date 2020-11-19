@@ -1,4 +1,4 @@
-<%= form_with(model: transaction, local: true) do |form| %>
+<%= form_with(scope: :transaction, url: admin_transaction_path(@transaction), method: :patch, local: true) do |form| %>
 <!-- Errors -->
   <% if transaction.errors.any? %>
     <div class="message is-danger">

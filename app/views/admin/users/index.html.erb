@@ -1,5 +1,5 @@
 <% @users.each do |user| %>
-<%= link_to user do %>
+<%= link_to admin_user_path(user) do %>
 <div class="columns is-centered mt-6">
   <div class="column is-one-third">
 <div class="card">
@@ -18,7 +18,7 @@
     </p>
     <p class="card-footer-item">
       <span>
-        <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Delete', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
       </span>
     </p>
   </footer>
