@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 2020_11_18_221722) do
     t.decimal "amount"
     t.string "currency"
     t.bigint "payer_account_id", null: false
-    t.bigint "payee_account_id", null: false
+    t.string "payee_account_number", null: false
+    t.string "payee_fullname", null: false
     t.string "reference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["payee_account_id"], name: "index_transactions_on_payee_account_id"
+    # t.index ["payee_account_id"], name: "index_transactions_on_payee_account_id"
     t.index ["payer_account_id"], name: "index_transactions_on_payer_account_id"
   end
 
@@ -64,6 +65,6 @@ ActiveRecord::Schema.define(version: 2020_11_18_221722) do
   end
 
   add_foreign_key "accounts", "users"
-  add_foreign_key "transactions", "accounts", column: "payee_account_id"
+  # add_foreign_key "transactions", "accounts", column: "payee_account_id"
   add_foreign_key "transactions", "accounts", column: "payer_account_id"
 end

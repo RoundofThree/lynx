@@ -5,7 +5,8 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.string :currency, null: false
       t.references :payer_account, null: false
       t.string :payee_account_number, null: false
-      t.string :reference
+      t.string :payee_fullname, null: false
+      t.string :reference  # kinda why you are tranfering 
 
       t.timestamps
     end
