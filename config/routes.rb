@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # admin module, full resources privileges for admin
   namespace :admin do
-    resources :accounts, :transactions, :styles, :users
+    resources :styles, :users, :accounts, :transactions
   end
 
   # Devise controllers

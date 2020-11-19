@@ -1,0 +1,31 @@
+
+<% @accounts.each do |account| %>
+<%= link_to account do %>
+<div class="columns is-centered mt-6">
+  <div class="column is-one-third">
+<div class="card">
+
+  <div class="card-content">
+    <p class="title has-text-centered">
+      <%= account.account_number %>
+    </p>
+  </div>
+
+  <footer class="card-footer">
+    <p class="card-footer-item">
+      <span>
+        <%= link_to 'Edit', edit_admin_account_path(account) %>
+      </span>
+    </p>
+    <p class="card-footer-item">
+      <span>
+        <%= link_to 'Delete', account, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </span>
+    </p>
+  </footer>
+
+</div>
+</div>
+</div>
+<% end %>
+<% end %>

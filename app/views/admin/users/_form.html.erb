@@ -1,0 +1,27 @@
+<%= form_with(model: user, local: true) do |form| %>
+<!-- Error -->
+  <% if user.errors.any? %>
+    <div class="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</p>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :firstname, class: "label" %>
+    <%= form.text_field :firstname, class: "input" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "button is-success" %>
+  </div>
+
+<% end %>

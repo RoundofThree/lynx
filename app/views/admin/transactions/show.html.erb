@@ -1,0 +1,21 @@
+<div class="columns mt-6 is-centered">
+  <div class="column is-one-third">
+    <nav class="panel is-link">
+      <p class="panel-heading">
+        <%= @transaction.payer_account.firstname %> to
+        <%= @transaction.payee_fullname %>
+      </p>
+
+      <div class="panel-block">
+        Amount: <%= @transaction.amount %>
+      </div>
+    </nav>
+
+    <div class="columns is-mobile">
+      <div class="column">
+        <%= link_to 'Edit', edit_admin_transaction_path(@transaction), class: "button is-gray" %>
+        <%= link_to "Delete", admin_transaction_path(@transaction), method: :delete, data: { confirm: "Are you sure?" }, class: "button is-gray" %>
+      </div>
+    </div>
+  </div>
+</div>

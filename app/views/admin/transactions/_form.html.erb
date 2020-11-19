@@ -1,0 +1,27 @@
+<%= form_with(model: transaction, local: true) do |form| %>
+<!-- Errors -->
+  <% if transaction.errors.any? %>
+    <div class="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</p>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% transaction.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :amount, class: "label" %>
+    <%= form.number :amount, class: "input" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "button is-success" %>
+  </div>
+
+<% end %>

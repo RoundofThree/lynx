@@ -1,0 +1,20 @@
+<div class="columns mt-6 is-centered">
+  <div class="column is-one-third">
+    <nav class="panel is-link">
+      <p class="panel-heading">
+        <%= @user.firstname + @user.lastname %>
+      </p>
+
+      <div class="panel-block">
+        IP: <%= @user.last_sign_in_ip %> <!-- Hahahahaha -->
+      </div>
+    </nav>
+
+    <div class="columns is-mobile">
+      <div class="column">
+        <%= link_to 'Edit', edit_admin_user_path(@user), class: "button is-gray" %>
+        <%= link_to "Delete", admin_user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, class: "button is-gray" %>
+      </div>
+    </div>
+  </div>
+</div>

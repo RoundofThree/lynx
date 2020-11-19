@@ -1,0 +1,30 @@
+<% @transactions.each do |transaction| %>
+<%= link_to transaction do %>
+<div class="columns is-centered mt-6">
+  <div class="column is-one-third">
+<div class="card">
+
+  <div class="card-content">
+    <p class="title has-text-centered">
+      <%= transaction.amount + transaction.currency %>
+    </p>
+  </div>
+
+  <footer class="card-footer">
+    <p class="card-footer-item">
+      <span>
+        <%= link_to 'Edit', edit_admin_transaction_path(transaction) %>
+      </span>
+    </p>
+    <p class="card-footer-item">
+      <span>
+        <%= link_to 'Delete', transaction, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </span>
+    </p>
+  </footer>
+
+</div>
+</div>
+</div>
+<% end %>
+<% end %>

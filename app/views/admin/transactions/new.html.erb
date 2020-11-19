@@ -1,0 +1,8 @@
+<div class="columns is-centered mt-6">
+  <div class="column is-one-third">
+    <h1 class="is-size-2 has-text-weight-bold mb-3">New transaction</h1>
+    <%= render 'form', transaction: @transaction %>
+  </div>
+</div>
+
+<%= link_to 'Back to transaction list', admin_transactions_path, class: "button is-danger" %>
