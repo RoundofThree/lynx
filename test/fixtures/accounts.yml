@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  balance: 9.99
+  account_number: MyString
+  cvv: MyString
+  expiry_month: 1
+  expiry_year: 1
+  currency: MyString
+
+two:
+  user: two
+  balance: 9.99
+  account_number: MyString
+  cvv: MyString
+  expiry_month: 1
+  expiry_year: 1
+  currency: MyString
