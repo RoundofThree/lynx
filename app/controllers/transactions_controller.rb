@@ -10,10 +10,14 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
-    if @transaction.save
-      # should redirect to confirmation?
+    @account = @transaction.payer_account
+    begin 
+      Account.transaction(@account, @transaction) do
+        @account.substract_amount(@transaction.amount)
+        @transaction.save!
+      end
       redirect_to @transaction, notice: 'Payment successfully made.'
-    else
+    rescue ActiveRecord::RecordInvalid => invalid
       render 'new' # flash error?
     end
   end
