@@ -2,14 +2,16 @@
 
 one:
   amount: 9.99
-  currency: MyString
-  payer_account: one
-  payee_account: one
+  currency: $
+  payer_account_id: 1  # ?
+  payee_account_number: one
+  payee_fullname: Zhuo
   reference: MyString
 
 two:
   amount: 9.99
-  currency: MyString
-  payer_account: two
-  payee_account: two
+  currency: £
+  payer_account_id: 1
+  payee_account_number: one
+  payee_fullname: Zhuo
   reference: MyString
