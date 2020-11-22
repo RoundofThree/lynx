@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_11_18_221722) do
     t.string "payee_fullname", null: false
     t.string "reference"
     t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false  # no updates ?
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["payer_account_id"], name: "index_transactions_on_payer_account_id"
   end
 
