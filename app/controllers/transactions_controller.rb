@@ -11,8 +11,12 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
     @account = @transaction.payer_account
-    begin 
-      Account.transaction(@account, @transaction) do
+    if !@account
+      redirect_to new_transaction_path
+      return
+    end
+    begin
+      Account.transaction do
         @account.substract_amount(@transaction.amount)  # lock the account balance?
         @transaction.save!
       end
@@ -31,7 +35,7 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:amount, :payer_account_id, :payee_account_number, :payee_fullname,
+    params.permit(:amount, :payer_account_id, :payee_account_number, :payee_fullname,
                                         :currency, :reference, :created_at)
   end
 

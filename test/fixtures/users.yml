@@ -4,7 +4,7 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
+have_two_accounts:
   firstname: Zhuo Ying
   lastname: Jiang Li
   email: zhuoyingjiangli@gmail.com
@@ -12,10 +12,18 @@ one:
   phone: 123456789
   birth_date: <%= DateTime.new(1999) %>
 
-two:
+have_one_account:
   firstname: lol
   lastname: lol
-  email: lol@gmail.com
+  email: lol1@gmail.com
+  encrypted_password: <%= User.new.send(:password_digest, '1234567890') %>
+  phone: 123456789
+  birth_date: <%= DateTime.new(1999) %>
+
+have_no_accounts:
+  firstname: lol
+  lastname: lol
+  email: lol2@gmail.com
   encrypted_password: <%= User.new.send(:password_digest, '1234567890') %>
   phone: 123456789
   birth_date: <%= DateTime.new(1999) %>
