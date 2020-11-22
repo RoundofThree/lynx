@@ -2,16 +2,16 @@
 
 one:
   amount: 9.99
-  currency: $
-  payer_account_id: 1  # ?
-  payee_account_number: one
-  payee_fullname: Zhuo
-  reference: MyString
+  currency: £
+  payer_account: one 
+  payee_account_number: 1234567890
+  payee_fullname: Zhuo Ying
+  reference: Daunting
 
 two:
   amount: 9.99
   currency: £
-  payer_account_id: 1
-  payee_account_number: one
-  payee_fullname: Zhuo
-  reference: MyString
+  payer_account: two 
+  payee_account_number: 123456789
+  payee_fullname: Zhuo Ying 
+  reference: Hack your way in! 

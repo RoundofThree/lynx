@@ -13,7 +13,7 @@ class TransactionsController < ApplicationController
     @account = @transaction.payer_account
     begin 
       Account.transaction(@account, @transaction) do
-        @account.substract_amount(@transaction.amount)
+        @account.substract_amount(@transaction.amount)  # lock the account balance?
         @transaction.save!
       end
       redirect_to @transaction, notice: 'Payment successfully made.'

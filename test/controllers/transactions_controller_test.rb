@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class TransactionsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
+  setup 
+
   # show tests
   test "should get show" do
     get transactions_show_url
@@ -8,31 +12,30 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   # new tests
-  test "should get new" do
+  test "user with an account should get new" do
+    @request.env['devise.mapping'] = Devise.mappings[:user]
+    sign_in users(:one)
     get transactions_new_url
     assert_response :success
+    sign_out :user
   end
+
+  test "user without account should not get new" do
+    @request.env['devise.mapping'] = Devise.mappings[:user]
+    sign_in users(:two)
+    get transactions_new_url
+    assert_response :redirect 
+    sign_out :user
+  end 
 
   # create tests
-  test "should get create" do
-    get transactions_create_url
-    assert_response :success
-  end
 
-  test "transaction without account_id should fail" do
-
-  end
-
-  test "transaction with a negative amount should fail" do
-
-  end
-
-  test "transaction without payee account number should fail" do
-
-  end
-
-  test "transaction without payee fullname should fail" do
-    
+  test "create transaction without account_id should fail" do
+    transaction = transactions(:two)
+    transaction.payer_account = nil 
+    assert_no_difference 'Transaction.count' do
+      post transactions_path, params: transaction 
+    end 
   end
 
 end
