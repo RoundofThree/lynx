@@ -8,7 +8,6 @@ class CreateAccounts < ActiveRecord::Migration[6.0]
       t.integer :expiry_month
       t.integer :expiry_year
       t.string :currency
-      t.boolean :frozen, default: false 
 
       t.timestamps
     end
