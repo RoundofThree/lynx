@@ -3,17 +3,19 @@ require 'test_helper'
 class TransactionsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  # show tests
-  test "should get show" do
+  # show tests !!!! inaccurate
+  test "should get show if transaction is done by user" do
+    sign_in users(:one)
     transaction = transactions(:one)
     get transaction_url(transaction)
     assert_response :success
+    sign_out :user 
   end
 
   # new tests
   test "user with an account should get new" do
     # @request.env['devise.mapping'] = Devise.mappings[:user]
-    sign_in users(:one)  # does not work???
+    sign_in users(:one)
     get new_transaction_url
     assert_response :success
     sign_out :user
@@ -38,7 +40,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
 
   test "create transaction with insufficient balance account should fail" do
     transaction = transactions(:two)
-    
+
   end
 
 end
