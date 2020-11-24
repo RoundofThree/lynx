@@ -2,6 +2,7 @@ class TransactionsController < ApplicationController
   before_action :check_have_at_least_one_account
 
   def show
+    @transaction = Transaction.find(params[:id])
   end
 
   def new
@@ -31,12 +32,14 @@ class TransactionsController < ApplicationController
   def check_have_at_least_one_account
     if current_user.accounts.empty?
       redirect_to dashboard_path, notice: "You don't have any accounts yet!"
+    else 
+      @accounts = current_user.accounts
     end
   end
 
   def transaction_params
-    params.permit(:amount, :payer_account_id, :payee_account_number, :payee_fullname,
-                                        :currency, :reference, :created_at)
+    params.require(:transaction).permit(:amount, :payer_account_id, :payee_account_number, :payee_fullname,
+                                        :currency, :reference)
   end
 
 end
