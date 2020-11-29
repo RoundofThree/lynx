@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :check_have_at_least_one_account
+  before_action :require_permissions, only: :show
 
   def show
     @transaction = Transaction.find(params[:id])
@@ -11,23 +12,23 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
-    @account = @transaction.payer_account
-    if !@account
-      redirect_to new_transaction_path
-      return
-    end
-    begin
-      Account.transaction do
-        @account.substract_amount(@transaction.amount)  # lock the account balance?
-        @transaction.save!
-      end
-      redirect_to @transaction, notice: 'Payment successfully made.'
-    rescue ActiveRecord::RecordInvalid => invalid
-      render 'new' # flash error?
+    @account = @transaction.payer_account    
+    if @account.user == current_user && @transaction.save  
+      # substract the balance 
+      @account.substract_amount(@transaction.amount)
+      redirect_to dashboard_path
+    else 
+      redirect_to new_transaction_path, notice: "Failed to process transaction"
     end
   end
 
   private
+
+  def require_permissions
+    if current_user != Transaction.find(params[:id]).payer_account.user 
+      redirect_to dashboard_path, notice: "Invalid transaction id!"
+    end 
+  end 
 
   def check_have_at_least_one_account
     if current_user.accounts.empty?

@@ -13,7 +13,7 @@ class Transaction < ApplicationRecord
     if payer_account
       self.currency == payer_account.currency
     else
-      ""
+      false
     end
   end
 

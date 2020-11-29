@@ -14,10 +14,10 @@
           </div>
         </div>
       <% end %>
-    
+
       <div class="field">
         <%= form.label :amount, class: "label" %>
-        <%= form.number :amount, class: "input" %>
+        <%= form.number_field :amount, class: "input" %>
       </div>
 
       <div class="field">
@@ -34,9 +34,9 @@
         <%= form.label :reference, class: "label" %>
         <%= form.text_field :reference, class: "input" %>
       </div>
-    
+
       <div class="actions">
         <%= form.submit class: "button is-success" %>
       </div>
-    
+
 <% end %>
