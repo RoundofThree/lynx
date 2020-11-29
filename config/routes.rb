@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # bank account detail page route
+  get 'bank_account/index'
+
   # default page for not logged user
   root to: 'home#index'
   # dashboard of logged in user
@@ -16,6 +19,9 @@ Rails.application.routes.draw do
   end
   get 'admin', to: 'admin/dashboard#index'
   get 'admin/dashboard', to: 'admin/dashboard#index'
+  
+  # account detail page 
+  get 'accounts', to: 'accounts#show'
 
   # Devise controllers
   devise_for :users, controllers: {
