@@ -1,5 +1,8 @@
 class AccountsController < ApplicationController
   def show
+    account = Account.find(params[:id])
+    id = params[:id]
+    @balance = account.balance
   end
 
   def new

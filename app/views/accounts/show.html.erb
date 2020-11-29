@@ -1,10 +1,23 @@
-<h1>Accounts#show</h1>
-<p>Find me in app/views/accounts/show.html.erb</p>
+<!DOCTYPE html>
+<html>
+    <head></head>
 
-<p>(Optional) Here we should have a head tab bar to switch between pages.</p>
+    <body>
+        <h1>Accounts#show</h1>
+        <p>Find me in app/views/accounts/show.html.erb</p>
 
-<p>Here we should have the balance of a bank account.</p>
+        <p>(Optional) Here we should have a head tab bar to switch between pages.</p>
 
-<p>Here we should have the transaction history of a bank account.</p>
+        <p>
+            Here we should see the id of this account.
+            <!-- <%= @id %> -->
+        </p>
 
-<p>The transactions should bring the users to the page of the corresponding transaction.</p>
+        <p>Here we should have the balance of a bank account: <%= @balance %></p>
+
+        <p>Here we should have the transaction history of a bank account.</p>
+
+        <p>The transactions should bring the users to the page of the corresponding transaction.</p>
+    </body>
+
+</html>
