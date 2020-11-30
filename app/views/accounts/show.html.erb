@@ -16,11 +16,9 @@
     <div>
         <!-- TODO: Add if statements -->
         <% @transactions.each do |transaction| %>
-        <%= transaction.payee_fullname %></br>
-        <%= transaction.payee_account_number %></br>
-        <%= transaction.amount %>
-        <%= transaction.currency %> </br>
-        <%= transaction.reference %>
+        <%= transaction.payee_fullname %><br />
+        <%= transaction.payee_account_number %><br />
+        <%= number_to_currency(transaction.amount, :unit => transaction.currency, :format => "%u %n") %><br />
         <%= link_to "View details", transaction_path(transaction), class: "link" %><br />
         <% end %>
     </div>
