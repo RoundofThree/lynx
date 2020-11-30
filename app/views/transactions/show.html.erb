@@ -1,13 +1,19 @@
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">Transaction to <%= @transaction.payee_fullname %></h4>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Receiver Account no.: <%= @transaction.payee_account_number %></li>
-        <li class="list-group-item">Amount paid: <%= @transaction.amount %></li>
-        <li class="list-group-item">Reference: <%= @transaction.reference %></li>
-    </ul>
-    <div class="card-body">
-        <%= link_to "Back to account", accounts_path(@transaction.payer_account), class: "card-link" %>
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Transaction to <%= @transaction.payee_fullname %></h4>
+            </div>
+            <hr class="md-4" />
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Payer Account no.: <%= @transaction.payer_account.account_number %></li>
+                <li class="list-group-item">Receiver Account no.: <%= @transaction.payee_account_number %></li>
+                <li class="list-group-item">Amount paid: <%= number_to_currency(@transaction.amount, :unit => @transaction.currency, :format => "%u %n") %></li>
+                <li class="list-group-item">Reference: <%= @transaction.reference %></li>
+            </ul>
+            <div class="card-body">
+                <%= link_to "Back to account", account_path(@transaction.payer_account), class: "card-link" %>
+            </div>
+        </div>
     </div>
 </div>
