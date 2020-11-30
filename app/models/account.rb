@@ -7,7 +7,8 @@ class Account < ApplicationRecord
   before_validation :check_balance
 
   belongs_to :user
-
+  
+  has_many :transactions
   private
     def check_balance
       if self.new_record?
