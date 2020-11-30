@@ -2,7 +2,7 @@ class InsertTransactionsToTheFirstAccount < ActiveRecord::Migration[6.0]
   def change
     Transaction.create(
       [{
-        account_id: 1,
+        payer_account_id: 1,
         amount: 1000,
         currency: "GBP",
         payee_account_number: "31415926",
@@ -10,7 +10,7 @@ class InsertTransactionsToTheFirstAccount < ActiveRecord::Migration[6.0]
         reference: 'My first Transaction'
       },
       {
-        account_id: 1,
+        payer_account_id: 1,
         amount: 90.9,
         currency: "GBP",
         payee_account_number: "31415926",
@@ -18,7 +18,7 @@ class InsertTransactionsToTheFirstAccount < ActiveRecord::Migration[6.0]
         reference: 'My second Transaction'
       },
       {
-        account_id: 1,
+        payer_account_id: 1,
         amount: 1111.11,
         currency: "GBP",
         payee_account_number: "31415926",
