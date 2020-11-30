@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_221722) do
+ActiveRecord::Schema.define(version: 2020_11_30_083345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2020_11_18_221722) do
     t.integer "expiry_month"
     t.integer "expiry_year"
     t.string "currency"
-    t.boolean "frozen", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
@@ -67,7 +66,3 @@ ActiveRecord::Schema.define(version: 2020_11_18_221722) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_foreign_key "accounts", "users"
-  add_foreign_key "transactions", "accounts", column: "payer_account_id"
-end
