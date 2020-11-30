@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
 
-    <body>
+    <head>
         <h1>Accounts#show</h1>
         <p>Find me in app/views/accounts/show.html.erb</p>
-
         <p>(Optional) Here we should have a head tab bar to switch between pages.</p>
+    </head>
 
-        <p>
-            Here we should see the id of this account.
-            <!-- <%= @id %> -->
-        </p>
+    <body>
+        <div id="account-info">
+            <div>
+                <p>Account number: <%= @account_number %></p>
+            </div>
+            <div>
+                <p> Balance: <%= @balance %> <%= @currency %></p>
+            </div>
+        </div>
 
-        <p>Here we should have the balance of a bank account: <%= @balance %></p>
-
-        <p>Here we should have the transaction history of a bank account.</p>
-
-        <p>The transactions should bring the users to the page of the corresponding transaction.</p>
+        <div id="transacion-history">
+            <h1>Transaction History</h1>
+            </br>
+            <div>
+                This account has <%= @transactions.length %> transactions.
+            </div>
+            <div>
+                <% @transactions.each do |transaction| %>
+                <%= transaction.reference %></br>
+                <%= transaction.amount %>
+                <%= transaction.currency %> </br>
+                <%= transaction.payee_account_number %></br>
+                <%= transaction.payee_fullname %></br>
+                <% end %>
+            </div>
+            <p>TODO: The transactions should bring the users to the page of the corresponding transaction.</p>
+        </div>
     </body>
 
 </html>
