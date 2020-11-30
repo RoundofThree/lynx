@@ -5,14 +5,10 @@ Rails.application.routes.draw do
   # dashboard of logged in user
   get 'dashboard', to: 'dashboard#index'
 
-  # account detail page 
-  get 'accounts/show'
-  
-  resources :accounts, only: [:show, :new, :create, :edit, :update] do
-    resources :transactions, only: [:new, :create]
-  end
+
+  resources :accounts, only: [:show, :new, :create, :edit, :update]
    # transactions can't be edited, updated or destroyed by normal user
-  resources :transactions, only: [:show]
+  resources :transactions, only: [:new, :create, :show]
 
   # admin module, full resources privileges for admin
   namespace :admin do
