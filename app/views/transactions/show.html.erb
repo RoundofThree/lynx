@@ -1,2 +1,13 @@
-<h1>Transactions#show</h1>
-<p>Find me in app/views/transactions/show.html.erb</p>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Transaction to <%= @transaction.payee_fullname %></h4>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Receiver Account no.: <%= @transaction.payee_account_number %></li>
+        <li class="list-group-item">Amount paid: <%= @transaction.amount %></li>
+        <li class="list-group-item">Reference: <%= @transaction.reference %></li>
+    </ul>
+    <div class="card-body">
+        <%= link_to "Back to account", accounts_path(@transaction.payer_account), class: "card-link" %>
+    </div>
+</div>
