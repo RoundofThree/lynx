@@ -8,6 +8,6 @@
         <li class="list-group-item">Reference: <%= @transaction.reference %></li>
     </ul>
     <div class="card-body">
-        <%= link_to "Back to account", accounts_path(@transaction.payer_account), class: "card-link" %>
+        <%= link_to "Back to account", account_path(@transaction.payer_account), class: "card-link" %>
     </div>
 </div>
