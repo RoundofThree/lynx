@@ -8,7 +8,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Payer Account no.: <%= @transaction.payer_account.account_number %></li>
                 <li class="list-group-item">Receiver Account no.: <%= @transaction.payee_account_number %></li>
-                <li class="list-group-item">Amount paid: <%= "#{@transaction.currency}#{@transaction.amount}" %></li>
+                <li class="list-group-item">Amount paid: <%= number_to_currency(@transaction.amount, :unit => @transaction.currency, :format => "%u %n") %></li>
                 <li class="list-group-item">Reference: <%= @transaction.reference %></li>
             </ul>
             <div class="card-body">

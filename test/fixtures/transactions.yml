@@ -2,7 +2,7 @@
 
 one:
   amount: 9.99
-  currency: £
+  currency: GBP
   payer_account: one 
   payee_account_number: 1234567890
   payee_fullname: Zhuo Ying
@@ -10,7 +10,7 @@ one:
 
 two:
   amount: 9.99
-  currency: £
+  currency: GBP
   payer_account: two 
   payee_account_number: 123456789
   payee_fullname: Zhuo Ying 

@@ -17,7 +17,9 @@
 
       <div class="form-group row">
         <%= form.label :payer_account_id, class: "col-form-label" %>
-        <%= form.select :payer_account_id, options_for_select(@accounts.map{ |c| ["#{c.account_number} - #{c.currency}#{c.balance}", c.id] }), {}, { class: "custom-select d-block w-100" } %>
+        <%= form.select :payer_account_id, options_for_select(@accounts.map{ |c| 
+        ["#{c.account_number} - #{ActiveSupport::NumberHelper.number_to_currency(c.balance, :unit => c.currency, :format => "%u %n")}", c.id] }),
+         {}, { class: "custom-select d-block w-100" } %>
       </div>
 
       <hr class="mb-4">
