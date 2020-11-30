@@ -14,6 +14,9 @@
  *= require_self
  */
 
+ @import 'bootstrap';
+ @import 'bootstrap-sprockets';
+
  body {
    font-family: 'Red Hat Display', sans-serif;
    color: #081158;
