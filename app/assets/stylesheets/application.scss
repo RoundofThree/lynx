@@ -13,143 +13,145 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
 
- .body {
-     font-family: 'Red Hat Display', sans-serif;
-     color: #081158;
-     font-size: 14px;
-     line-height: 1.6em;
-     -moz-osx-font-smoothing: grayscale;
-     font-weight: 400;
-     line-height: 1.5;
- }
+ body {
+   font-family: 'Red Hat Display', sans-serif;
+   color: #081158;
+   font-size: medium;
+   line-height: 1.6em;
+   -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
+   font-weight: 400;
+   line-height: 1.5;
+}
 
- .navbar {
-    position: fixed;
-    top: 10px;
-    left: -100px;
-    z-index: 1400;
-    display: flex;
-    width: 120%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-
-    align-items: center;
+.navbar {
+  position: fixed;
+  top: 10px;
+  left: -100px;
+  z-index: 1400;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  align-items: center;
 }
 
 
- .w-nav {
-    background: #dddddd;
+.w-nav {
+  background: #dddddd;
+  width: 100%;
 }
+
 .container.nav-container {
-    display: flex;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .container {
-    position: relative;
-    z-index: 2;
-    width: 95%;
-    max-width: 1450px;
-}
+  position: relative;
+  z-index: 2;
+  width: 95%;
+} 
 
 .brand {
-    height: 50px;
-    padding-left: -800px;
-    display: inline-block;
-  padding-top: .3125rem;
-  padding-bottom: .3125rem;
-  margin-right: 1rem;
-  font-size: 1.25rem;
-  line-height: inherit;
-  white-space: nowrap;
+  height: 50px;
+  padding-left: -800px;
+  display: inline-block;
+padding-top: .3125rem;
+padding-bottom: .3125rem;
+margin-right: 1rem;
+font-size: 1.25rem;
+line-height: inherit;
+white-space: nowrap;
 }
+
 .w-nav-brand {
-    position: relative;
-    float: left;
-    text-decoration: none;
-    color: #333333;
+  position: relative;
+  float: left;
+  text-decoration: none;
+  color: #333333;
 
 }
 .brand-logo {
-    display: block;
-    height: 90%;
+  display: block;
+  height: 90%;
 }
 .img {
-    vertical-align: middle;
-    max-width: 100%;
-    border: 10;
+  vertical-align: middle;
+  max-width: 100%;
+  border: 10;
 }
 .nav-right-wrap {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
 }
 .nav-menu {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 .w-nav-menu {
-    position: relative;
-    float: right;
+  position: relative;
+  float: right;
 }
 .w-nav[data-animation="over-right"] .w-nav-overlay, .w-nav[data-animation="over-right"] [data-nav-menu-open] {
-    left: auto;
-    z-index: 1;
-    top: 0;
+  left: auto;
+  z-index: 1;
+  top: 0;
 }
 .w-nav[data-animation="over-right"] .w-nav-overlay {
-    width: auto;
+  width: auto;
 }
 .w-nav-overlay {
-    position: absolute;
-    overflow: hidden;
-    display: none;
-    right: 0;
+  position: absolute;
+  overflow: hidden;
+  display: none;
+  right: 0;
 }
 .nav-link {
-    display: block;
-    padding: 10px 20px;
-    border-bottom-style: none;
-    color: #081158;
+  display: block;
+  padding: 10px 20px;
+  border-bottom-style: none;
+  color: #081158;
 }
 .w-nav-link {
-    position: relative;
-    vertical-align: top;
-    text-decoration: none;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
+  position: relative;
+  vertical-align: top;
+  text-decoration: none;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 .column {
-    position: relative;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    -webkit-box-align: start;
-    align-items: flex-start;
+  position: relative;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: start;
+  align-items: flex-start;
 }
 .section.footer-section {
-    color: #fff;
+  color: #fff;
 }
 .footer-brand {
-    height: 60px;
-    padding-left: 0px;
-    border-bottom-style: none;
+  height: 60px;
+  padding-left: 0px;
+  border-bottom-style: none;
 }
 a {
-    transition: opacity 500ms ease;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    background-color: transparent;
+  transition: opacity 500ms ease;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  background-color: transparent;
 }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
