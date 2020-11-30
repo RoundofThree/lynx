@@ -1,41 +1,28 @@
+
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Lynx Bank</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <!-- Bootstrap Core CSS -->
+   <link href="css/bootstrap.min.css" rel="stylesheet">
 
+   <%= stylesheet_link_tag 'carousel', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-        <style>
-          .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-          }
-
-          @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-              font-size: 3.5rem;
-            }
-          }
-        </style>
   </head>
 
  <link href="carousel.css" rel="stylesheet">
   <body>
-    <header>
-      <%= render "home/nav/public" %>
-     </header>
-     <%= yield %>
-    <main role="main">
-
   <!-- Main jumbotron for a primary marketing message or call to action -->
-
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -44,33 +31,28 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block" src=bank1.jpg alt="First slide">
-        <div class="container">
+          <img class="bd-placeholder-img" src=bank1.jpg width="100%" height="200%" alt="First slide">
           <div class="carousel-caption text-center">
-            <h1>Make Money moves.</h1>
-            <p>Open a Checking or Saving Account today!.</p>
-            <p><a class="btn btn-lg btn-outline-light" href="http://localhost:3000/users/sign_up" role="button">Sign Up</a></p>
-            <p><a class="btn btn-lg btn-outline-light" href="http://localhost:3000/users/sign_in" role="button">Sign in</a></p>
-
-          </div>
+            <h1 class="display-1">Make Money moves.</h1>
+            <h4>Open a Checking or Saving Account today!.</h4>
+            <p><a class="btn btn-lg btn-light" href="http://localhost:3000/users/sign_up" role="button">Sign Up</a></p>
+            <p><a class="btn btn-lg btn-light" href="http://localhost:3000/users/sign_in" role="button">Sign in</a></p>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block" src=bank2.jpg alt="Second slide">
-        <div class="container">
+        <img class="bd-placeholder-img" src=bank2.jpg alt="Second slide">
           <div class="carousel-caption text-left">
             <h1>We’re Next Door & Here for you.</h1>
             <p>Online, on the phone, or in one of our local bank branches. We’re here to help you write your story.</p>
-            <p><a class="btn btn-lg btn-outline-light" href="" role="button">Find a local branch</a></p>
-          </div>
+            <p><a class="btn btn-lg btn-info" href="" role="button">Find a local branch</a></p>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block" src=bank4.jpg alt="Third slide">
+        <img class="bd-placeholder-img" src=bank4.jpg alt="Third slide">
           <div class="carousel-caption text-right">
             <h1>Send Money to Partically Anyone.</h1>
             <p>Lynx makes it easy to pay or be paid by the people in your life.</p>
-            <p><a class="btn btn-lg btn-outline-light" href="#" role="button">Learn More</a></p>
+            <p><a class="btn btn-lg btn-info" href="#" role="button">Learn More</a></p>
           </div>
         </div>
       </div>
@@ -97,7 +79,7 @@
             <p class="lead">Turn on Round-up Rules and start saving up effortlessly. Whenever you make a purchase, Simple will round up what you spend to the next whole dollar amount. When the “change” from those transactions reaches or exceeds $5, Simple transfers it to your Protected Goals Account — so easy you won’t even feel it. It’s like a digital change jar... one that adds up to real money in the bank.</p>
           </div>
           <div class="col-md-5">
-            <svg class="Sai bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+            <svg class="bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
               <image width="500" height="500" xlink:href=Savings.jpg>
             </svg>
 
@@ -137,13 +119,38 @@
         <!-- /END THE FEATURETTES -->
 
       </div><!-- /.container -->
+      <%= yield %>
 
-      <!-- FOOTER -->
-      <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2020 Lynx Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
-</main>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-     <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script></body>
-</html>
+      <!-- Footer -->
+      <footer class="page-footer font-small blue pt-4">
+      <div class="container-fluid text-center text-md-left">
+        <div class="row">
+          <div class="col-md-8">
+            <!-- Content -->
+            <a class = "footer-brand w-nav-brand" herf="#">
+              <img class = "brand-logo" src=logo.png width="100%" height="400%"alt="">
+            </a>
+          </div>
+          <hr class="clearfix w-100 d-md-none pb-3">
+          <div class="col-md-3 mb-md-0 mb-3">
+            <h1 class="text-uppercase">About Lynx Bank</h1>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Contact Us</a>
+              </li>
+              <li>
+                <a href="#!">Important Notice</a>
+              </li>
+              <li>
+                <a href="#!">Online Terms & Conditions</a>
+              </li>
+              <li>
+                <a href="#!">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+
+          <main role="main">
+
+          </main>
+          </html>
