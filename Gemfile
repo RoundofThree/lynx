@@ -9,9 +9,6 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
-
-# Use Boostrap for stylesheets
-# gem 'bootstrap-sass', '~> 3.3.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -22,7 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Authentication
 gem 'devise'
-# Authorization with Ability
+# Authorization with Ability 
 gem 'cancancan'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -32,7 +29,6 @@ gem 'cancancan'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-#Boostrap
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
