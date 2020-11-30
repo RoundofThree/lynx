@@ -7,6 +7,9 @@ class Transaction < ApplicationRecord
   validates :payee_account_number, presence: true, length: { is: 14 } # 14 digits
   validates :payee_fullname, presence: true
 
+  CURRENCY_TYPES = ["£", "$", "€"]
+  validates_inclusion_of :currency, in: CURRENCY_TYPES
+
   private
 
   def currency_is_account_currency

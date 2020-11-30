@@ -7,11 +7,6 @@ class Account < ApplicationRecord
   before_validation :check_balance
   belongs_to :user
 
-  def substract_amount(amount)
-    self.balance -= amount
-    self.save!  # should raise exception when balance is negative 
-  end
-
   private
 
     def check_balance

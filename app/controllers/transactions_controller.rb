@@ -12,12 +12,16 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
-    @account = @transaction.payer_account    
-    if @account.user == current_user && @transaction.save  
+    amount = params[:transaction]["amount"]
+    if params[:transaction][:payer_account_id]
+      @account = Account.find(params[:transaction][:payer_account_id])
+    end 
+    if @account && @account.user == current_user && @transaction.save  
       # substract the balance 
-      @account.substract_amount(@transaction.amount)
+      @account.balance = @account.balance - amount.to_d
+      @account.save 
       redirect_to dashboard_path
-    else 
+    else
       redirect_to new_transaction_path, notice: "Failed to process transaction"
     end
   end
