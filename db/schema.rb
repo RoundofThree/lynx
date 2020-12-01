@@ -7,7 +7,7 @@
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
-#
+
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_11_30_083345) do
@@ -66,3 +66,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_083345) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "accounts", "users"
+  add_foreign_key "transactions", "accounts", column: "payer_account_id"
+end

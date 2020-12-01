@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def index
-    @accounts = Account.all
+    @accounts = Account.where(:user => current_user.id)
   end
 end
