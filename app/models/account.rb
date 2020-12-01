@@ -1,6 +1,8 @@
 class Account < ApplicationRecord
-  # A user has many accounts
+  # A user has many accounts.
   belongs_to :user
+  # An account has many transactions.
+  has_many :transactions, class_name: "Transaction", foreign_key: "payer_account_id"
 
   # validations
   validates :user, presence: true
@@ -11,8 +13,7 @@ class Account < ApplicationRecord
 
   # before_validation :check_balance
 
-
-  has_many :transactions
+  
   private
 
     def check_balance

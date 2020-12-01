@@ -1,9 +1,9 @@
 class CreateTransactions < ActiveRecord::Migration[6.0]
   def change
     create_table :transactions do |t|
-      t.references :payer_account, null: false
       t.decimal :amount, null: false
       t.string :currency, null: false
+      t.references :payer_account, null: false
       t.string :payee_account_number, null: false
       t.string :payee_fullname, null: false
       t.string :reference  # kinda why you are tranfering 
