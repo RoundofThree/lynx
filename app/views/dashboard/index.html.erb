@@ -26,9 +26,9 @@
        <td><%= account.user.firstname %></td>
        <td><%= account.balance %></td>
        <td class="user">
-         <%= link_to("Show",'#', :class => 'action show') %>
+         <%= link_to "View details", account_path(account), class: "link" %>
        </td>
      </tr>
-     <%end %>
+     <% end %>
    </table>
 </div>
