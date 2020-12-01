@@ -9,7 +9,7 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index if logged in" do
-    sign_in users(:have_no_accounts)
+    sign_in users(:have_two_accounts)
     get dashboard_url
     assert_response :success
     sign_out :user
