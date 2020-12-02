@@ -1,15 +1,21 @@
 class Account < ApplicationRecord
-  before_validation :check_balance
+  # A user has many accounts.
+  belongs_to :user
+  # An account has many transactions.
+  has_many :transactions, class_name: "Transaction", foreign_key: "payer_account_id"
+
   # validations
   validates :user, presence: true
   validates :account_number, presence: true, uniqueness: true
   validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :expiry_date, presence: true 
-  validate :not_expired 
-
-  belongs_to :user
+  # validates :expiry_month, numericality: {greater_than_or_equal_to: 1}
+  # validates :expiry_month, numericality: {less_than_or_equal_to: 12}
+  # validates :expiry_year, numericality: {greater_than_or_equal_to: 1900}
+  # validates :expiry_year, numericality: {less_than_or_equal_to: 2400}
+  validates :cvv, presence: true, length: {in: 3...4}
   
-  has_many :transactions, class_name: "Transaction", foreign_key: "payer_account_id"
+  CURRENCY_TYPES = ["GBP", "USD", "EUR", "CNY"]
+  validates_inclusion_of :currency, in: CURRENCY_TYPES
   
   private
 
