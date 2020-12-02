@@ -8,10 +8,10 @@ class Account < ApplicationRecord
   validates :user, presence: true
   validates :account_number, presence: true, uniqueness: true
   validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :expiry_month, numericality: {greater_than_or_equal_to: 1}
-  validates :expiry_month, numericality: {less_than_or_equal_to: 12}
-  validates :expiry_year, numericality: {greater_than_or_equal_to: 1900}
-  validates :expiry_year, numericality: {less_than_or_equal_to: 2400}
+  # validates :expiry_month, numericality: {greater_than_or_equal_to: 1}
+  # validates :expiry_month, numericality: {less_than_or_equal_to: 12}
+  # validates :expiry_year, numericality: {greater_than_or_equal_to: 1900}
+  # validates :expiry_year, numericality: {less_than_or_equal_to: 2400}
   validates :cvv, presence: true, length: {in: 3...4}
   
   CURRENCY_TYPES = ["GBP", "USD", "EUR", "CNY"]
@@ -20,12 +20,12 @@ class Account < ApplicationRecord
   private
 
   def assign_expiry_date 
-    not_rounded_date = Time.now + 4.years
-    self.expiry_date = Time.new(not_rounded_date.year, not_rounded_date.month, -1) # The last day of that month
+    not_rounded_date = DateTime.now + 4.years
+    self.expiry_date = DateTime.new(not_rounded_date.year, not_rounded_date.month, -1) # The last day of that month
   end 
 
   def not_expired 
-    if (expiry_date > Time.now)
+    if (expiry_date > DateTime.now)
       true
     else
       errors.add(:expiry_date, "Account is expired")
