@@ -7,12 +7,11 @@ class Account < ApplicationRecord
   validates :expiry_date, presence: true 
   validate :not_expired 
 
-  before_create :generate_expiry_date
   belongs_to :user
 
   private
 
-  def generate_expiry_date 
+  def assign_expiry_date 
     not_rounded_date = Time.now + 4.years
     self.expiry_date = Time.new(not_rounded_date.year, not_rounded_date.month, -1) # The last day of that month
   end 
