@@ -1,5 +1,6 @@
 module Admin
   class ApplicationController < ActionController::Base
-    # validate user is admin 
+    skip_before_action :authenticate_user!
+    before_action :user_is_admin?
   end
 end

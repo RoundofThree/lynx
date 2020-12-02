@@ -63,6 +63,9 @@
     <%= yield %>
     <div class="row col-4 offset-md-4">
       <%= debug(params) if Rails.env.development? %>
+      <% if current_user %>
+      <%= current_user.admin %>
+      <% end %>
     </div>
   </main>
 

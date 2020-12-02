@@ -1,6 +1,7 @@
 class Admin::TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :authenticate_user!
+  before_action :user_is_admin?
   # GET /admin/transactions (or .json)
   def index
     @transactions = Transaction.order("created_at desc")

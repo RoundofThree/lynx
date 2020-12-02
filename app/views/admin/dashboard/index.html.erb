@@ -8,7 +8,7 @@
 
         <h3>Users <span class="small font-italic" style="font-size: x-small;">(ordered by last accessed time)</span></h3>
         <div class="table-responsive">
-            <table class="table table-striped table-sm">
+            <table class="table table-bordered table-sm">
                 <thead>
                     <tr>
                         <th>No. </th>
@@ -21,11 +21,11 @@
                 <tbody>
                     <% @users.each_with_index do |u, i| %>
                     <tr>
-                        <th scope="row"><%= i %></td>
-                        <td><%= u.firstname %></td>
-                        <td><%= u.lastname %></td>
-                        <td><%= u.last_sign_in_at %></td>
-                        <td><%= u.last_sign_in_ip %></td>
+                    <th scope="row"><%= i+1 %></td>
+                    <td><%= link_to u.firstname, admin_user_path(u) %></td>
+                    <td><%= link_to u.lastname, admin_user_path(u) %></td>
+                    <td><%= u.last_sign_in_at %></td>
+                    <td><%= u.last_sign_in_ip %></td>
                     </tr>
                     <% end %>
                 </tbody>
@@ -34,7 +34,7 @@
 
         <h3>Accounts <span class="small font-italic" style="font-size: x-small;">(ordered by last updated time)</span></h3>
         <div class="table-responsive">
-            <table class="table table-striped table-sm">
+            <table class="table table-bordered table-sm">
                 <thead>
                     <tr>
                         <th>No. </th>
@@ -47,11 +47,11 @@
                 <tbody>
                     <% @accounts.each_with_index do |a, i| %>
                     <tr>
-                        <th scope="row"><%= i %></td>
-                        <td><%= a.account_number %></td>
-                        <td><%= "#{a.user.firstname} #{a.user.lastname}" %></td>
-                        <td><%= a.balance %></td>
-                        <td><%= a.updated_at %></td>
+                    <th scope="row"><%= i+1 %></td>
+                    <td><%= link_to a.account_number, admin_account_path(a) %></td>
+                    <td><%= "#{a.user.firstname} #{a.user.lastname}" %></td>
+                    <td><%= number_to_currency(a.balance, unit: a.currency, format: "%u %n") %></td>
+                    <td><%= a.updated_at %></td>
                     </tr>
                     <% end %>
                 </tbody>
@@ -60,25 +60,26 @@
 
         <h3>Transactions <span class="small font-italic" style="font-size: x-small;">(ordered by created time)</span></h3>
         <div class="table-responsive">
-            <table class="table table-striped table-sm">
+            <table class="table table-bordered table-sm">
                 <thead>
                     <tr>
                         <th>No. </th>
-                        <th>Payer</th>
                         <th>Payer account</th>
+                        <th>Payer</th>
                         <th>Amount</th> 
                         <th>Date</th> <!-- Ordering -->
                     </tr>
                 </thead>
                 <tbody>
-                    <% @transactions.each_with_index do |a, i| %>
-                    <% payer = t.payer_account %>
+                    <% @transactions.each_with_index do |t, i| %>
+                    <% payer_account = t.payer_account %>
+                    <% payer = payer_account.user %>
                     <tr>
-                        <th scope="row"><%= i %></td>
-                        <td><%= "#{payer.firstname} #{payer.lastname}" %></td>
-                        <td><%= payer.account_number %></td>
-                        <td><%= t.amount %></td>
-                        <td><%= t.created_at %></td>
+                    <th scope="row"><%= i+1 %></td>
+                    <td><%= link_to payer_account.account_number, admin_transaction_path(t) %></td>
+                    <td><%= "#{payer.firstname} #{payer.lastname}" %></td>
+                    <td><%= number_to_currency(t.amount, unit: t.currency, format: "%u %n") %></td>
+                    <td><%= t.created_at %></td>
                     </tr>
                     <% end %>
                 </tbody>
