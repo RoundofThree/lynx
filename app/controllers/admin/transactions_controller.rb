@@ -3,7 +3,7 @@ class Admin::TransactionsController < ApplicationController
 
   # GET /admin/transactions (or .json)
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.order("created_at desc")
   end
 
   # GET /admin/accounts/1

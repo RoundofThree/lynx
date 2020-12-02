@@ -3,7 +3,7 @@ class Admin::AccountsController < ApplicationController
 
   # GET /admin/accounts (or .json)
   def index
-    @accounts = Account.all
+    @accounts = Account.order("updated_at desc")
   end
 
   # GET /admin/accounts/1

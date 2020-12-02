@@ -1,3 +1,6 @@
+<div class="row">
+<%= render partial: "admin/shared/navbar" %>
+
 <% @transactions.each do |transaction| %>
 <%= link_to transaction do %>
 <div class="columns is-centered mt-6">
@@ -28,3 +31,5 @@
 </div>
 <% end %>
 <% end %>
+
+</div>
