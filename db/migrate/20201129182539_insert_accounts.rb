@@ -9,7 +9,7 @@ class InsertAccounts < ActiveRecord::Migration[6.0]
         cvv: 123,
         expiry_month: 1,
         expiry_year: 2021,
-        currency: 'British Pound'
+        currency: 'GBP'
       },
       {
         user_id: 1,
@@ -18,7 +18,7 @@ class InsertAccounts < ActiveRecord::Migration[6.0]
         cvv: 123,
         expiry_month: 1,
         expiry_year: 2021,
-        currency: 'Chinese Yuan'
+        currency: 'CNY'
       },
       {
         user_id: 1,
@@ -27,7 +27,7 @@ class InsertAccounts < ActiveRecord::Migration[6.0]
         cvv: 123,
         expiry_month: 1,
         expiry_year: 2021,
-        currency: 'US Dollar'
+        currency: 'USD'
       }]
     )
   end

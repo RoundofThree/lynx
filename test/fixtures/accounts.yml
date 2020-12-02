@@ -7,7 +7,7 @@ one:
   cvv: 579
   expiry_month: 1
   expiry_year: 2024
-  currency: £
+  currency: GBP
 
 two:
   user: have_two_accounts
@@ -16,7 +16,7 @@ two:
   cvv: 000
   expiry_month: 1
   expiry_year: 2024
-  currency: £
+  currency: GBP
 
 three:
   user: have_one_account
@@ -25,4 +25,4 @@ three:
   cvv: 123
   expiry_month: 11
   expiry_year: 2025
-  currency: £
+  currency: GBP

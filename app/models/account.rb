@@ -9,12 +9,14 @@ class Account < ApplicationRecord
   validates :account_number, presence: true, uniqueness: true
   validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :cvv, presence: true, length: {in: 3...4}
+  
+  CURRENCY_TYPES = ["GBP", "USD", "EUR", "CNY"]
+  validates_inclusion_of :currency, in: CURRENCY_TYPES
 
   # before_validation :check_balance
 
   
   private
-
     def check_balance
       if self.new_record?
         self.balance = 0.00
