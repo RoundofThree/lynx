@@ -7,8 +7,7 @@ class InsertAccounts < ActiveRecord::Migration[6.0]
         balance: 1000,
         account_number: 12345678,
         cvv: 123,
-        expiry_month: 1,
-        expiry_year: 2021,
+        expiry_date: Date.new(2021, 10),
         currency: 'British Pound'
       },
       {
@@ -16,8 +15,7 @@ class InsertAccounts < ActiveRecord::Migration[6.0]
         balance: 500,
         account_number: 11111111,
         cvv: 123,
-        expiry_month: 1,
-        expiry_year: 2021,
+        expiry_date: Date.new(2021, 10),
         currency: 'Chinese Yuan'
       },
       {
@@ -25,8 +23,7 @@ class InsertAccounts < ActiveRecord::Migration[6.0]
         balance: 1000000,
         account_number: 88888888,
         cvv: 123,
-        expiry_month: 1,
-        expiry_year: 2021,
+        expiry_date: Date.new(2021, 10),
         currency: 'US Dollar'
       }]
     )
