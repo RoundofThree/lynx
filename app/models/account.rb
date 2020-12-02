@@ -16,15 +16,26 @@ class Account < ApplicationRecord
   
   CURRENCY_TYPES = ["GBP", "USD", "EUR", "CNY"]
   validates_inclusion_of :currency, in: CURRENCY_TYPES
-
-  # before_validation :check_balance
-
   
   private
-    def check_balance
-      if self.new_record?
-        self.balance = 0.00
-      end
+
+  def assign_expiry_date 
+    not_rounded_date = Time.now + 4.years
+    self.expiry_date = Time.new(not_rounded_date.year, not_rounded_date.month, -1) # The last day of that month
+  end 
+
+  def not_expired 
+    if (expiry_date > Time.now)
+      true
+    else
+      errors.add(:expiry_date, "Account is expired")
+    end 
+  end  
+
+  def check_balance
+    if self.new_record?
+      self.balance = 0.00
     end
+  end
 
 end
