@@ -30,18 +30,15 @@ class Admin::TransactionsController < ApplicationController
     else 
       render :new # flash errors 
     end
-    end
   end
 
   # PATCH/PUT /admin/accounts/1
   def update
-    respond_to do |format|
       if @transaction.update(transaction_params)
         redirect_to @transaction, notice: 'Transaction was successfully updated.'
       else
         render :edit # flash errors
       end
-    end
   end
 
   # DELETE /admin/accounts/1
