@@ -8,8 +8,7 @@ class Account < ApplicationRecord
   validates :user, presence: true
   validates :account_number, presence: true, uniqueness: true
   validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  # cvv should only be 3-digit or 4-digit long
-  validates :cvv, presense: true, length: {greater_than_or_equal_to: 3, less_than_or_equal_to: 4}
+  validates :cvv, presence: true, length: {in: 3...4}
 
   # before_validation :check_balance
 
