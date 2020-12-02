@@ -1,5 +1,34 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
-<h1>Links</h1>
-<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-<%= link_to 'Make a payment', new_transaction_path %> 
+ <div class="dashboard index">
+   <h2>Personal dashboard</h2>
+
+   <%= link_to("go to payment") %>
+
+   <% total_balance = 0 %>
+   <% @accounts.each do |account| %>
+
+   <% total_balance += account.balance %>
+   <% end %>
+
+   <p>total balance is
+     <%= total_balance %>
+   </p>
+
+   <table class ="listing" summary="Accounts list">
+     <tr class ="header">
+       <th>AccountID</th>
+       <th>User</th>
+       <th>Balance</th>
+       <th>Action</th>
+     </tr>
+     <% @accounts.each do |account| %>
+     <tr>
+       <td><%= account.account_number %></td>
+       <td><%= account.user.firstname %></td>
+       <td><%= account.balance %></td>
+       <td class="user">
+         <%= link_to "View details", account_path(account), class: "link" %>
+       </td>
+     </tr>
+     <% end %>
+   </table>
+</div>

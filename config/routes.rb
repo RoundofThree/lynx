@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  
   # default page for not logged user
   root to: 'home#index'
   # dashboard of logged in user
   get 'dashboard', to: 'dashboard#index'
+
 
   resources :accounts, only: [:show, :new, :create, :edit, :update]
    # transactions can't be edited, updated or destroyed by normal user
