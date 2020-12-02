@@ -17,11 +17,10 @@ ActiveRecord::Schema.define(version: 2020_11_30_103411) do
 
   create_table "accounts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.decimal "balance"
+    t.decimal "balance", precision: 20, scale: 2
     t.string "account_number"
     t.string "cvv"
-    t.integer "expiry_month"
-    t.integer "expiry_year"
+    t.date "expiry_date"
     t.string "currency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

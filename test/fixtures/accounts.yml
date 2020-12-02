@@ -5,24 +5,21 @@ one:
   balance: 1000.00
   account_number: 1112110987654
   cvv: 579
-  expiry_month: 1
-  expiry_year: 2024
-  currency: £
+  expiry_date: <%= Date.new(2024, 10, -1) %>
+  currency: GBP
 
 two:
   user: have_two_accounts
   balance: 1.99
   account_number: 1111110987654
   cvv: 000
-  expiry_month: 1
-  expiry_year: 2024
-  currency: £
+  expiry_date: <%= Date.new(2024, 10, -1) %>
+  currency: GBP
 
 three:
   user: have_one_account
   balance: 1.00
   account_number: 123456781234
   cvv: 123
-  expiry_month: 11
-  expiry_year: 2025
-  currency: £
+  expiry_date: <%= Date.new(2024, 10, -1) %>
+  currency: GBP
