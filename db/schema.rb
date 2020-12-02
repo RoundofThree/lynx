@@ -20,8 +20,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_103411) do
     t.decimal "balance"
     t.string "account_number"
     t.string "cvv"
-    t.integer "expiry_month"
-    t.integer "expiry_year"
+    t.datetime "expiry_date"
     t.string "currency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
