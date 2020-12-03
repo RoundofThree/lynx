@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # default page for not logged user
   root to: 'home#index'
   # dashboard of logged in user
