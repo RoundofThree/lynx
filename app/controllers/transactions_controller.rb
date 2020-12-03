@@ -29,7 +29,8 @@ class TransactionsController < ApplicationController
       amount = params[:transaction][:amount]
       @account.balance = @account.balance - amount.to_d
       @account.save!
-      redirect_to account_path(@account.id)
+      # redirect_to account_path(@account.id)
+      redirect_to transaction_path(@transaction.id)
     else
       redirect_to new_transaction_path, notice: @transaction.errors
     end

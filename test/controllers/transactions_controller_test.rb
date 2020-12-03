@@ -60,7 +60,8 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Transaction.count', 1) do
       post transactions_url, params: { transaction: transaction.attributes }
     end
-    assert_redirected_to account_url(payer_account)
+    transaction = Transaction.last
+    assert_redirected_to transaction_url(transaction)
     # maybe check the transaction is the same one created? But how in the earth do I get the ID of the created transaction...
   end
 
