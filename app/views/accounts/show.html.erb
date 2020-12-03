@@ -18,7 +18,7 @@
             </div>
 
             <div id="transacion-history">
-                <h3>Transactios</h3>
+                <h3>Transactions</h3>
                 <table class="transactions">
                     <colgroup>
                         <col span="1" style="width: 20%;">
@@ -30,10 +30,9 @@
                         <th>Date</th>
                         <th>Description</th>
                         <th>Amount</th>
-                        <th>Balance</th>
+                        <th>Detail</th>
                     </tr>
                     <% @transactions.each do |transaction| %>
-                    <%= link_to transaction_path(transaction), class: "link" do %>
                     <tr class="transaction-row">
                         <td>
                             <!-- Time format: yyyy-mm-dd hh:mm:ss -->
@@ -41,9 +40,8 @@
                             <%= transaction.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
                         <td>Transferred to <%= transaction.payee_fullname %></td>
                         <td><%= transaction.amount %></td>
-                        <td><%= @account.balance %></td>
+                        <td><%= link_to "View", transaction_path(transaction), class: "link"%></td>
                     </tr>
-                    <% end %>
                     <% end %>
                 </table>
 
