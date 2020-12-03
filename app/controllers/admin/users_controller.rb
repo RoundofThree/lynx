@@ -5,7 +5,6 @@ class Admin::UsersController < ApplicationController
   # GET /admin/users (or .json)
   def index
     @users = User.order("last_sign_in_at desc")
-    # but I am special!!
   end
 
   # GET /admin/users/1
