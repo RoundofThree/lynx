@@ -1,7 +1,7 @@
-<%= form_with(scope: :account, url: admin_accounts_path(@account), method: :post, local: true) do |form| %>
+<%= form_with(scope: :account, url: admin_account_path(@account), method: :post, local: true, class: "col-8") do |form| %>
 <!-- Errors -->
   <% if account.errors.any? %>
-    <div class="message is-danger">
+    <div class="alert alert-error">
       <div class="message-header">
         <p><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</p>
       </div>
@@ -15,8 +15,45 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit class: "button is-success" %>
+  <!-- Input fields -->
+
+  <div class="form-group row">
+    <%= form.label :account_number, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :account_number, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :balance, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.number_field :balance, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :currency, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :currency, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :cvv, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :cvv, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :expiry_date, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.date_field :expiry_date, class: "form-control" %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 
 <% end %>

@@ -1,9 +1,10 @@
 class Admin::AccountsController < ApplicationController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :authenticate_user!
+  before_action :user_is_admin?
   # GET /admin/accounts (or .json)
   def index
-    @accounts = Account.all
+    @accounts = Account.order("updated_at desc")
   end
 
   # GET /admin/accounts/1

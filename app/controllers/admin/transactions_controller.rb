@@ -1,13 +1,16 @@
 class Admin::TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :authenticate_user!
+  before_action :user_is_admin?
   # GET /admin/transactions (or .json)
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.order("created_at desc")
   end
 
   # GET /admin/accounts/1
   def show
+    @payer_account = @transaction.payer_account
+    @payer = @payer_account.user
   end
 
   # GET /admin/accounts/new
@@ -22,38 +25,26 @@ class Admin::TransactionsController < ApplicationController
   # POST /admin/accounts
   def create
     @transaction = Transaction.new(transaction_params)
-
-    respond_to do |format|
-      if @transaction.save
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
-        format.json { render :show, status: :created, location: @transaction }
-      else
-        format.html { render :new }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
+    if @transaction.save 
+      redirect_to @transaction, notice: 'Transaction was successfully created.'
+    else 
+      render :new # flash errors 
     end
   end
 
   # PATCH/PUT /admin/accounts/1
   def update
-    respond_to do |format|
       if @transaction.update(transaction_params)
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
-        format.json { render :show, status: :ok, location: @transaction }
+        redirect_to @transaction, notice: 'Transaction was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+        render :edit # flash errors
       end
-    end
   end
 
   # DELETE /admin/accounts/1
   def destroy
     @transaction.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_transactions_url, notice: 'Transaction was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_transactions_url, notice: 'Transaction was successfully destroyed.'
   end
 
   private
@@ -62,7 +53,6 @@ class Admin::TransactionsController < ApplicationController
       @transaction = Transaction.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def transaction_params
       params.require(:transaction).permit(:all)
     end
