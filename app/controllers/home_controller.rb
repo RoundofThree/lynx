@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   # no need to login
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, raise: false
   before_action :redirect_logged_user, if: -> { current_user.present? }
 
   def index

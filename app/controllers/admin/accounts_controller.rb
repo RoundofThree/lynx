@@ -1,6 +1,6 @@
 class Admin::AccountsController < ApplicationController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, raise: false
   before_action :user_is_admin?
   # GET /admin/accounts (or .json)
   def index
