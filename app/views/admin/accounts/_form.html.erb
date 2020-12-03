@@ -1,4 +1,4 @@
-<%= form_with(scope: :account, url: admin_account_path(@account), method: :post, local: true, class: "col-8") do |form| %>
+<%= form_for [:admin, account], class: "col-8" do |form| %>
 <!-- Errors -->
   <% if account.errors.any? %>
     <div class="alert alert-error">
