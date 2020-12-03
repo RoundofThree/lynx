@@ -51,10 +51,7 @@ class Admin::AccountsController < ApplicationController
   # DELETE /admin/accounts/1
   def destroy
     @account.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_accounts_url, notice: 'Account was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_accounts_url, notice: 'Account was successfully destroyed.'
   end
 
   private
