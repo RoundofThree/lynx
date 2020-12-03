@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, raise: false
   before_action :user_is_admin?
   # GET /admin/users (or .json)
   def index

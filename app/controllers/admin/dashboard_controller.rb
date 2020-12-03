@@ -1,5 +1,5 @@
 class Admin::DashboardController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, raise: false
   before_action :user_is_admin?
   def index 
     @users = User.order("last_sign_in_at desc").limit(10)
