@@ -9,13 +9,12 @@
             <h1>
                 <p>Account <%= @account.account_number %></p>
             </h1>
-            <div id="account-info">
-                <h2>Account information</h2>
-                <hr class="transaction-divider">
-                <h6 class="balance"> Current Balance </h6>
-                <br />
-                <h4><%= @account.balance %> <%= @account.currency %></h4>
-                <hr class="transaction-divider">
+            <div>
+                <h2 class="account-info">Account information</h2>
+                <hr class="divider">
+                <h6> Current Balance </h6>
+                <h5 class="balance"><%= @account.balance %> <%= @account.currency %></h5>
+                <hr class="divider">
             </div>
 
             <div id="transacion-history">
@@ -35,7 +34,7 @@
                     </tr>
                     <% @transactions.each do |transaction| %>
                     <%= link_to transaction_path(transaction), class: "link" do %>
-                    <tr class="transaction-row" href="">
+                    <tr class="transaction-row">
                         <td>
                             <!-- Time format: yyyy-mm-dd hh:mm:ss -->
                             <!-- Maybe consider removing year-->

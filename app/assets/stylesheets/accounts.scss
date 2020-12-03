@@ -7,21 +7,33 @@ body {
 }
 
 .account-info {
-  background-color: aqua;
-  border-radius: 25px;
+  color: rgb(9, 9, 182);
 }
 
 .balance {
-  color: blue;
+  color: rgb(7, 7, 177);
+}
+
+.divider {
+  border-top: 3px solid #bbb;
 }
 
 .transaction-history {
   width: 80%;
 }
 
+th {
+  background-color: darkblue;
+  color: white;
+}
+
 table {
   font-family: arial, sans-serif;
   width: 100%;
+}
+
+tr {
+  height: 2rem;
 }
 
 .transaction-container {
@@ -31,23 +43,6 @@ table {
   display: table;
   border-radius: 25px;
   background-color: rgba(255, 4, 4, 0.281);
-}
-
-.transaction-info {
-  display: table-cell;
-  min-width: 70%;
-  font-size: 1em;
-}
-
-.top-row {
-  min-width: 70%;
-  padding: 0.5rem;
-}
-
-.bottom-row {
-  min-width: 70%;
-  padding: 0.5rem;
-  color: grey;
 }
 
 tr:nth-child(even) {
@@ -62,6 +57,21 @@ tr:nth-child(even) {
   font-size: 1.5em;
 }
 
-.transaction-divider {
-  border-top: 3px solid #bbb;
-}
+
+
+// .transaction-info {
+//   display: table-cell;
+//   min-width: 70%;
+//   font-size: 1em;
+// }
+
+// .top-row {
+//   min-width: 70%;
+//   padding: 0.5rem;
+// }
+
+// .bottom-row {
+//   min-width: 70%;
+//   padding: 0.5rem;
+//   color: grey;
+// }
