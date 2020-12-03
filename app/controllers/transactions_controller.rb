@@ -44,7 +44,7 @@ class TransactionsController < ApplicationController
   end
 
   def require_permissions
-    if current_user != Transaction.find(params[:id]).payer_account.user 
+    if current_user != Transaction.find(params[:id]).account.user 
       redirect_to dashboard_path, notice: "Invalid transaction id!"
     end 
   end 
