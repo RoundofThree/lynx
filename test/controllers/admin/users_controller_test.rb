@@ -38,12 +38,12 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
 
   # test destroy 
   test "admin user should be able to destroy any user" do 
-    sign_in(:admin) 
+    sign_in users(:admin) 
     user = users(:have_one_account)
     assert_difference('User.count', -1) do
       delete admin_user_url(user)
     end
-    assert_redirect_to admin_users_url
+    assert_redirected_to admin_users_url
   end 
 
 end

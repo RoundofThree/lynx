@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   validate :validate_age
   # database relations
-  has_many :accounts
+  has_many :accounts, dependent: :destroy
   # before actions
   before_save :format_name
 

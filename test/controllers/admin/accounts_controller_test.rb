@@ -39,12 +39,12 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
 
   # test destroy 
   test "admin user should be able to destroy any account" do 
-    sign_in(:admin) 
+    sign_in users(:admin) 
     account = accounts(:one) 
     assert_difference('Account.count', -1) do
       delete admin_account_url(account)
     end
-    assert_redirect_to admin_accounts_url
+    assert_redirected_to admin_accounts_url
   end 
 
 end

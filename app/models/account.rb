@@ -2,7 +2,7 @@ class Account < ApplicationRecord
   # A user has many accounts.
   belongs_to :user
   # An account has many transactions.
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
 
   # validations
   validates :user, presence: true

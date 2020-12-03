@@ -39,12 +39,12 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
 
   # test destroy 
   test "admin user should be able to destroy any transaction" do 
-    sign_in(:admin) 
+    sign_in users(:admin)
     tx = transactions(:one)
     assert_difference('Transaction.count', -1) do
       delete admin_transaction_url(tx)
     end
-    assert_redirect_to admin_transactions_url
+    assert_redirected_to admin_transactions_url
   end 
 
 end
