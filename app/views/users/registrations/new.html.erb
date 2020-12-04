@@ -1,7 +1,7 @@
-<div class = "container align-items-center">
-  <div class = "row flex-nowrap justify-content-between">
-    <div class="col-md-6 px-10 p-5 ">
-    <h2 class = "display-4">Making Life Simple</h2>
+<div class = "container p-3">
+  <div class = "row mx-md-n5">
+    <div class="col p-5 ">
+    <h2 class = "display-4">Sign Up For Lynx Bank</h2>
     <p class = "lead my-3">Experience the freedom of banking on your own terms with Lynx Bank.</p>
     <p class = "card-text mb-auto">Create your account today.</p>
     <p>Your information will never be shared or sold.</p>
@@ -9,82 +9,93 @@
 
    </div>
 
-<div class="col-md-6 px-10 p-5">
-
+<div class="col-6 ">
+  <br>  <br>  <br>
     <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
       <!-- errors -->
       <%= render "users/shared/error_messages", resource: resource %>
       <div class ="row" id ="user_name">
 
         <div class="field p-3">
-          <%= f.label :firstname %><br />
-          <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
+           <label class="float-left">
+          <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname", placeholder: "First Name" %>
         </div>
 
         <div class="field p-3">
-          <%= f.label :lastname %><br />
-          <%= f.text_field :lastname, autocomplete: "lastname" %>
+          <%= f.text_field :lastname, autocomplete: "lastname", placeholder: "Last Name" %>
         </div>
       </div>
 
       <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autocomplete: "email" %>
+        <%= f.email_field :email, :size=>"45",autocomplete: "email", placeholder: "Email" %>
       </div>
 
-      <div class="field">
+      <div class ="row">
+      <div class="field p-3">
         <%= f.label :birth_date %><br />
         <%= f.date_select :birth_date, start_year: 1800, end_year: Time.now.year %>
       </div>
-
-      <div class="field">
-        <%= f.label :phone %><br />
-        <%= f.text_field :phone, autocomplete: "phone" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :is_female %><br />
+      <div class="field p-3">
+        <%= f.label :Gender %><br />
         <%= f.select :is_female, User::GENDER_TYPES, class: 'form-control' %>
       </div>
-
-      <div class="field">
-        <%= f.label :address_line_1 %><br />
-        <%= f.text_field :address_line_1 %>
       </div>
 
       <div class="field">
-        <%= f.label :address_line_2 %><br />
-        <%= f.text_field :address_line_2 %>
+        <%= f.text_field :phone, :size=>"30",autocomplete: "phone", placeholder: "Phone Number" %>
       </div>
+      <br>
+      <div class="field">
+        <%= f.text_field :address_line_1 , placeholder: "Address Line 1", :size=>"45"%>
+      </div>
+      <br>
 
       <div class="field">
-        <%= f.label :postcode %><br />
-        <%= f.text_field :postcode %>
+        <%= f.text_field :address_line_2,  placeholder: "Address Line 2", :size=>"45" %>
       </div>
 
-      <div class="field">
-        <%= f.label :country %><br />
-        <%= f.text_field :country %>
+      <div class ="row" id ="countryinfo">
+        <div class="field p-3">
+          <%= f.text_field :postcode, placeholder: "Postcode" %>
+        </div>
+        <div class="field p-3">
+          <%= f.text_field :country,placeholder: "Country"%>
+      </div>
       </div>
 
-      <div class="field">
+      <div class = "row" id="password combination">
+      <div class="field p-3">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Choose Your Password" %>
       </div>
-
-      <div class="field">
+      <div class="field p-3">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password" %>
+      </div>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up" %>
+      <div class ="row" id="confirmation">
+        <div class = "col-4 p-3">
+      <div class="actions p-1">
+        <%= f.submit "Sign up", class:'btn btn-outline-primary btn-lg',:style => "width:140px" %>
       </div>
+      </div>
+      <div class ="col-7 p-3">
+        <p class ="text-muted mb-auto">By clicking the "Sign up" button, you are creating
+          a Lynx bank account, and you agree to Lynx's
+            <a href ="#">Terms of Use </a>and
+            <a href ="#">Privacy Policy</a> .</p>
+        </div>
+
+      </div>
+
+
   </div>
 </div>
+
 </div>
 <% end %>
 
