@@ -1,30 +1,54 @@
-<% @transactions.each do |transaction| %>
-<%= link_to transaction do %>
-<div class="columns is-centered mt-6">
-  <div class="column is-one-third">
-<div class="card">
+<div class="row">
+  <%= render partial: "admin/shared/navbar" %>
 
-  <div class="card-content">
-    <p class="title has-text-centered">
-      <%= transaction.amount + transaction.currency %>
-    </p>
-  </div>
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <h1 class="h2">Transactions</h1>
+      
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <form class="form-inline mr-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Filter by payer name...">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="btn-group mr-2">
+          <button type="button" class="btn btn-sm btn-outline-secondary">Export as XLS</button>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+          Sort by
+        </button>
+      </div>
+    </div>
 
-  <footer class="card-footer">
-    <p class="card-footer-item">
-      <span>
-        <%= link_to 'Edit', edit_admin_transaction_path(transaction) %>
-      </span>
-    </p>
-    <p class="card-footer-item">
-      <span>
-        <%= link_to 'Delete', transaction, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </span>
-    </p>
-  </footer>
+    <div class="table-responsive">
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>No. </th>
+            <th>Payer account</th>
+            <th>Payer</th>
+            <th>Amount</th>
+            <th>Date</th> <!-- Ordering -->
+          </tr>
+        </thead>
+        <tbody>
+          <% @transactions.each_with_index do |t, i| %>
+          <% payer_account = t.payer_account %>
+          <% payer = payer_account.user %>
+          <tr>
+            <th scope="row"><%= i+1 %></td>
+            <td><%= link_to payer_account.account_number, admin_transaction_path(t) %></td>
+            <td><%= "#{payer.firstname} #{payer.lastname}" %></td>
+            <td><%= number_to_currency(t.amount, unit: t.currency, format: "%u %n") %></td>
+            <td><%= t.created_at %></td>
+            <td><%= link_to 'Edit', edit_admin_transaction_path(t) %></td>
+            <td><%= link_to 'Delete', admin_transaction_path(t), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
 
 </div>
-</div>
-</div>
-<% end %>
-<% end %>

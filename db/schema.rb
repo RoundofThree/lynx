@@ -7,21 +7,20 @@
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
-
+#
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_083345) do
+ActiveRecord::Schema.define(version: 2020_11_30_103411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.decimal "balance"
+    t.decimal "balance", precision: 20, scale: 2
     t.string "account_number"
     t.string "cvv"
-    t.integer "expiry_month"
-    t.integer "expiry_year"
+    t.date "expiry_date"
     t.string "currency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
