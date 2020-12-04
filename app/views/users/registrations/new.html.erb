@@ -1,74 +1,91 @@
-<h2>Sign up</h2>
+<div class = "container align-items-center">
+  <div class = "row flex-nowrap justify-content-between">
+    <div class="col-md-6 px-10 p-5 ">
+    <h2 class = "display-4">Making Life Simple</h2>
+    <p class = "lead my-3">Experience the freedom of banking on your own terms with Lynx Bank.</p>
+    <p class = "card-text mb-auto">Create your account today.</p>
+    <p>Your information will never be shared or sold.</p>
+    <a href="#" target="_blank">Read Our Privacy Policy</a>
 
-<%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
-  <!-- errors -->
-  <%= render "users/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
-  </div>
+   </div>
 
-  <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname, autocomplete: "lastname" %>
-  </div>
+<div class="col-md-6 px-10 p-5">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
+      <!-- errors -->
+      <%= render "users/shared/error_messages", resource: resource %>
+      <div class ="row" id ="user_name">
 
-  <div class="field">
-    <%= f.label :birth_date %><br />
-    <%= f.date_select :birth_date, start_year: 1800, end_year: Time.now.year %>
-  </div>
+        <div class="field p-3">
+          <%= f.label :firstname %><br />
+          <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone, autocomplete: "phone" %>
-  </div>
+        <div class="field p-3">
+          <%= f.label :lastname %><br />
+          <%= f.text_field :lastname, autocomplete: "lastname" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :is_female %><br />
-    <%= f.select :is_female, User::GENDER_TYPES, class: 'form-control' %>
-  </div>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :address_line_1 %><br />
-    <%= f.text_field :address_line_1 %>
-  </div>
+      <div class="field">
+        <%= f.label :birth_date %><br />
+        <%= f.date_select :birth_date, start_year: 1800, end_year: Time.now.year %>
+      </div>
 
-  <div class="field">
-    <%= f.label :address_line_2 %><br />
-    <%= f.text_field :address_line_2 %>
-  </div>
+      <div class="field">
+        <%= f.label :phone %><br />
+        <%= f.text_field :phone, autocomplete: "phone" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :postcode %><br />
-    <%= f.text_field :postcode %>
-  </div>
+      <div class="field">
+        <%= f.label :is_female %><br />
+        <%= f.select :is_female, User::GENDER_TYPES, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </div>
+      <div class="field">
+        <%= f.label :address_line_1 %><br />
+        <%= f.text_field :address_line_1 %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <div class="field">
+        <%= f.label :address_line_2 %><br />
+        <%= f.text_field :address_line_2 %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="field">
+        <%= f.label :postcode %><br />
+        <%= f.text_field :postcode %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+      <div class="field">
+        <%= f.label :country %><br />
+        <%= f.text_field :country %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
   </div>
+</div>
+</div>
 <% end %>
 
 <%= render "users/shared/links" %>
