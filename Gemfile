@@ -19,7 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Authentication
 gem 'devise'
-# Authorization with Ability 
+# Authorization with Ability
 gem 'cancancan'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -47,6 +47,7 @@ group :development do
 end
 
 group :test do
+  gem 'minitest-reporters'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
