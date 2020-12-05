@@ -10,15 +10,13 @@ class User < ApplicationRecord
   validates :firstname, presence: true, length: {maximum: 127}
   validates :lastname, presence: true, length: {maximum: 127}
   validates :email, confirmation: true, uniqueness: true
-  validates :phone, presence: true  # should check for validity?
+  validates :phone, presence: true 
   validates :birth_date, presence: true
-  validate :validate_age
+  validate :validate_age  # should be over 18 years old
   # database relations
   has_many :accounts
   # before actions
   before_save :format_name
-
-
 
   private
 
@@ -28,8 +26,8 @@ class User < ApplicationRecord
   end
 
   def validate_age
-    if birth_date.present? && birth_date > 18.years.ago.to_i
-      errors.add(:birth_date, 'You should be over 18')
+    if birth_date.present? && birth_date > DateTime.now.years_ago(18)
+      errors.add(:birth_date, 'You should be over 18') 
     end
   end
 end
