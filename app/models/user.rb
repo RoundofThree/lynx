@@ -4,9 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
   # validations
+  # the password can not be nil dut to default devise modules.
+  GENDER_TYPES = [ ["Male", false], [ "Female", true] ]
+  validates_inclusion_of :is_female, in: [true, false]
   validates :firstname, presence: true, length: {maximum: 127}
   validates :lastname, presence: true, length: {maximum: 127}
-  validates :email, confirmation: true
+  validates :email, confirmation: true, uniqueness: true
   validates :phone, presence: true  # should check for validity?
   validates :birth_date, presence: true
   validate :validate_age
@@ -15,8 +18,7 @@ class User < ApplicationRecord
   # before actions
   before_save :format_name
 
-  GENDER_TYPES = [ ["Male", false], [ "Female", true] ]
-  validates_inclusion_of :is_female, in: [true, false]
+
 
   private
 
