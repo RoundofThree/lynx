@@ -2,7 +2,7 @@
 <div class = "limiter">
 <%= stylesheet_link_tag "sign_in", :media => "all" %>
 
-<div class="container-login100" style = "background-image:url(/bank3.jpg)" width="100%">
+<div class="container-login100" width="100%">
 
   <div class ="wrap-login100" width="100px">
   <div class="form-signin">
@@ -34,21 +34,28 @@
       </div>
             </div>
 
+            <% if devise_mapping.rememberable? %>
+            <div class="checkbox100">
+              <%= f.check_box :remember_me%>
+              <%= f.label :Remember_Me, :style=>"color: #fff; font-size: 20px;
+              line-height:1.2; position: relative; padding-left:26px; cursor:pointer" %>
+            </div>
+            <% end %>
 
-    <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-    <% end %>
+
+
 
     <div class="actions">
-      <%= f.submit "Log in" %>
+      <%= f.submit "Log in", class:'btn btn-primary btn-lg',:style => "width: 90%;
+      border-color: #f90e67; margin:20px auto; text-align:center; cursor:pointer;
+      background-color:	#f90e67; border-radius:24px;" %>
     </div>
     </div>
     <% end %>
 
+    <div class="field p-3">
     <%= render "users/shared/links" %>
+      </div>
   </div>
   </div>
 </div>

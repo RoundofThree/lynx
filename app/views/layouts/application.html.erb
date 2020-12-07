@@ -16,11 +16,8 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <!-- This causes the page to be too large
-  <div class="navbar w-nav" style="background-color: transparent; height: 50px;">
-    <div class="container nav-container">
 
+<<<<<<< HEAD
       <div class="nav-right-wrap">
         <nav role="navigation" class="nav-menu w-nav-menu">
           <a href="/" class="nav-link w-nav-link">Banking</a>
@@ -57,6 +54,9 @@
     <% end %>
 
   </div>
+=======
+  <%= render 'shared/navbar' %>
+>>>>>>> e6d56063ec5c0d3982a37dd0b8a7475852a0af9f
 
   <!-- main -->
   <main class="container-fluid">
@@ -69,9 +69,6 @@
     <%= yield %>
     <div class="row col-4 offset-md-4">
       <%= debug(params) if Rails.env.development? %>
-      <% if current_user %>
-      <%= current_user.admin %>
-      <% end %>
     </div>
   </main>
 
