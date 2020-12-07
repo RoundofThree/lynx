@@ -21,15 +21,24 @@
   background-position: center;
   background-size: cover;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   background-image: url('/bank3.jpg');
 
+}
+.container-login100::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.25);
 
 }
 
 .wrap-login100 {
-    width: 500px;
-    border-radius: 10px;
+    width: 400px;
+    border-radius: 20px;
     overflow: hidden;
     padding: 55px 55px 37px 55px;
     background:  #333333;
@@ -41,14 +50,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    background-color: #fff;
     margin: 0 auto;
 }
 .mb-4{
     display: inline-block;
+
 }
 .login-title{
 font-size: 30px;
@@ -73,7 +82,7 @@ display: block;
     margin-bottom: 20px;
 }
 .fa {
-      color: #01045d;
+    color: #fff;
     display: inline-block;
     font-size: inherit;
     text-rendering: auto;

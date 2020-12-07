@@ -7,38 +7,40 @@
   <div class ="wrap-login100" width="100px">
   <div class="form-signin">
     <div class="logo-item">
-      <img class="mb-4" src="/llogo.png" alt="" width="72" height="72">
+      <img class="mb-4" src="/llogo.png" alt="" width="90" height="90">
     </div>
 
-    <span class ="login-title font-weight-bold p-b-34 p-t-27"> ACCOUNT LOGIN </span>
+    <span class ="login-title font-weight-bold p-b-34 p-t-20"> SIGN IN </span>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-      <div class ="container p-3">
+      <div class ="container p-4">
         <div class="form-group row">
-          <span style="font-size: 25px; color: Dodgerblue;">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
+          <span style="font-size: 20px; color: Dodgerblue;">
+            <i class="fa fa-envelope  fa-xs" aria-hidden="true"></i>
           </span>
           <div class ="col-sm-10">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email",
-            :style=> "border-radius: 25px; width: 100%; background: #e6e6e6;line-height: 1.5; padding: 0 30px 0 68px;height: 50px;" %>
+            :style=> "border-radius: 25px; width: 100%; background: #e6e6e6;line-height: 2.0;
+             padding: 0 30px 0 20px;height: 30px;" %>
 
         </div>
           </div>
         <div class="form-group row">
-          <span style="font-size: 35px; color: Dodgerblue;">
-            <i class="fa fa-lock" aria-hidden="true"></i>
+          <span style="font-size: 25px; color: Dodgerblue;">
+            <i class="fa fa-lock  fa-xs" aria-hidden="true"></i>
           </span>
           <div class ="col-sm-10 ">
             <%= f.password_field :password, autocomplete: "current-password",placeholder: "Password",
-            :style=> "border-radius: 25px; width: 100%; background: #e6e6e6;line-height: 1.5;padding: 0 30px 0 68px;height: 50px;" %>
+            :style=> "border-radius: 25px; width: 101%; background: #e6e6e6;line-height: 2.0;
+            padding: 0 30px 0 20px; height: 30px;" %>
       </div>
             </div>
 
             <% if devise_mapping.rememberable? %>
             <div class="checkbox100">
               <%= f.check_box :remember_me%>
-              <%= f.label :Remember_Me, :style=>"color: #fff; font-size: 20px;
-              line-height:1.2; position: relative; padding-left:26px; cursor:pointer" %>
+              <%= f.label :Remember_Me, :style=>"color: #fff; font-size: 15px;
+              line-height:1.2; position: relative; padding-left:30px; cursor:pointer" %>
             </div>
             <% end %>
 
