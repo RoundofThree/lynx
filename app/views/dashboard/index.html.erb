@@ -11,29 +11,39 @@
    <% total_balance += account.balance %>
    <% end %>
 
-   <div class="">
+   <div class="summary", style = "float:left">
      <h3>Summary</h3>
-     <p>Personal summary by <%=current_user.firstname + " " + current_user.lastname %></p>
-     <p>Accounts number is : <%= account_number%></p>
-     <p>Total balance is : <%=total_balance%></p>
+     <h5>
+       <font color = "#C0C0C0">Personal summary for:</font>
+       <b><%=current_user.firstname + " " + current_user.lastname %></b>
+     </h5>
+
+     <p>
+       <font color = "#C0C0C0">Accounts number is :</font>
+       <b><%= account_number%></b>
+     </p>
+
+     <p>
+       <font color = "#C0C0C0">Total balance is :</font>
+       <b><%=total_balance%></p></b>
    </div>
 
-   <div class="">
+   <div class="Inbox", style = "float:right">
      <h3>Inbox</h3>
+     <div class="alert alert-primary" role="alert",style = "width:1000px">
+       Create a new payment
+       <%= link_to ">", new_transaction_path %>
+     </div>
+
+     <div class="alert alert-primary" role="alert",style = "width:1000px">
+       Create a new payment
+       <%= link_to ">", new_transaction_path %>
+     </div>
 
 
    </div>
 
-   <%= button_to "go to payment", new_transaction_path, :method => :get %>
 
-
-
-
-
-   <p class = "text-info">total balance is
-   <%= total_balance %>
-   <!-- todo -->
-   </p>
 
    <table class ="table"  summary="Accounts list">
      <tr class ="header">
