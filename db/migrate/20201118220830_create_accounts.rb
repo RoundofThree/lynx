@@ -6,7 +6,7 @@ class CreateAccounts < ActiveRecord::Migration[6.0]
       t.decimal :balance, precision: 20, scale: 2 
       t.string :account_number
       t.string :cvv
-      t.datetime :expiry_date
+      t.date :expiry_date
       t.string :currency
 
       t.timestamps

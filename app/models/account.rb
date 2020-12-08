@@ -20,12 +20,12 @@ class Account < ApplicationRecord
   private
 
   def assign_expiry_date 
-    not_rounded_date = DateTime.now + 4.years
-    self.expiry_date = DateTime.new(not_rounded_date.year, not_rounded_date.month, -1) # The last day of that month
+    not_rounded_date = Date.today + 4.years
+    self.expiry_date = Date.new(not_rounded_date.year, not_rounded_date.month, -1) # The last day of that month
   end 
 
   def not_expired 
-    if (expiry_date > DateTime.now)
+    if (expiry_date > Date.today)
       true
     else
       errors.add(:expiry_date, "Account is expired")
