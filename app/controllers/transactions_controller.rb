@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
   before_action :check_have_at_least_one_account
   before_action :require_permissions, only: :show
+  before_action :check_amount, only: :create 
 
   def show
     @transaction = Transaction.find(params[:id])
@@ -13,6 +14,7 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
+    @transaction.amount = -@transaction.amount
     # find account 
     if !params[:transaction][:payer_account_id].blank?
       @account = Account.find(params[:transaction][:payer_account_id])
@@ -29,11 +31,17 @@ class TransactionsController < ApplicationController
       @account.save!
       redirect_to account_path(@account.id)
     else
-      redirect_to new_transaction_path, notice: @transaction
+      redirect_to new_transaction_path, notice: @transaction.errors
     end
   end
 
   private
+
+  def check_amount
+    if transaction_params[:amount].to_d <= 0.0
+      redirect_to new_transaction_path, notice: "Invalid amount"
+    end 
+  end
 
   def require_permissions
     if current_user != Transaction.find(params[:id]).payer_account.user 

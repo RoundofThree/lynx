@@ -3,7 +3,7 @@
 one:
   amount: 9.99
   currency: GBP
-  payer_account: one 
+  payer_account: one
   payee_account_number: 12345678901234
   payee_fullname: Zhuo Ying
   reference: Daunting
@@ -11,7 +11,7 @@ one:
 two:
   amount: 9.99
   currency: GBP
-  payer_account: two 
+  payer_account: two
   payee_account_number: 12341234123412
-  payee_fullname: Zhuo Ying 
-  reference: Hack your way in! 
+  payee_fullname: Zhuo Ying
+  reference: Hack your way in!

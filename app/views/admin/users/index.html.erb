@@ -1,30 +1,55 @@
-<% @users.each do |user| %>
-<%= link_to admin_user_path(user) do %>
-<div class="columns is-centered mt-6">
-  <div class="column is-one-third">
-<div class="card">
+<title>Admin - Users</title>
+<div class="row">
+  <!-- Quick links -->
+  <%= render partial: "admin/shared/navbar" %>
 
-  <div class="card-content">
-    <p class="title has-text-centered">
-      <%= user.firstname + user.lastname %>
-    </p>
-  </div>
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <h1 class="h2">Users</h1>
 
-  <footer class="card-footer">
-    <p class="card-footer-item">
-      <span>
-        <%= link_to 'Edit', edit_admin_user_path(user) %>
-      </span>
-    </p>
-    <p class="card-footer-item">
-      <span>
-        <%= link_to 'Delete', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
-      </span>
-    </p>
-  </footer>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <form class="form-inline mr-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Filter by name...">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="btn-group mr-2">
+          <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "New user", new_admin_user_path, style: "color: inherit; text-decoration: none;" %></button>
+          <button type="button" class="btn btn-sm btn-outline-secondary">Export as XLS</button>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+          Sort by
+        </button>
+      </div>
+    </div>
+
+    <!-- List of users -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>No. </th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Last accessed time</th> <!-- Ordered by last accessed time by default -->
+            <th>Last accessed IP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each_with_index do |u, i| %>
+          <tr>
+            <th scope="row"><%= i+1 %></td>
+            <td><%= link_to u.firstname, admin_user_path(u) %></td>
+            <td><%= link_to u.lastname, admin_user_path(u) %></td>
+            <td><%= u.last_sign_in_at %></td>
+            <td><%= u.last_sign_in_ip %></td>
+            <td><%= link_to 'Edit', edit_admin_user_path(u) %></td>
+            <td><%= link_to 'Delete', admin_user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </main>
 
 </div>
-</div>
-</div>
-<% end %>
-<% end %>
