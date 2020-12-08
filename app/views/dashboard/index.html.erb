@@ -1,18 +1,37 @@
 <div class="dashboard index">
+
    <h2>Personal dashboard</h2>
 
-   <%= link_to "go to payment", new_transaction_path %>
-
    <% total_balance = 0 %>
+   <% account_number = 0 %>
+
    <% @accounts.each do |account| %>
+   <% account_number +=1 %>
 
    <% total_balance += account.balance %>
    <% end %>
 
+   <div class="">
+     <h3>Summary</h3>
+     <p>Personal summary by <%=current_user.firstname + " " + current_user.lastname %></p>
+     <p>Accounts number is : <%= account_number%></p>
+     <p>Total balance is : <%=total_balance%></p>
+   </div>
+
+   <div class="">
+     <h3>Inbox</h3>
+
+
+   </div>
+
+   <%= button_to "go to payment", new_transaction_path, :method => :get %>
+
+
+
+
+
    <p class = "text-info">total balance is
    <%= total_balance %>
-   <%= current_user.firstname %>
-   <%= current_user.lastname %>
    <!-- todo -->
    </p>
 
@@ -27,7 +46,7 @@
      <tr>
        <td><%= account.account_number %></td>
        <td><%= account.user.firstname %></td>
-       <td><%= account.balance %></td>
+       <td><%= account.currency + ":" + account.balance.to_s %></td>
        <td class="user">
          <%= link_to "View details", account_path(account), class: "link" %>
        </td>
