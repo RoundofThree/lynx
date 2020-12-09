@@ -9,8 +9,8 @@ class Admin::TransactionsController < ApplicationController
 
   # GET /admin/accounts/1
   def show
-    @payer_account = @transaction.payer_account
-    @payer = @payer_account.user
+    @account = @transaction.account
+    @payer = @account.user
   end
 
   # GET /admin/accounts/new
