@@ -38,6 +38,7 @@ class Admin::UsersController < ApplicationController
   # PATCH/PUT /admin/users/1
   def update
     respond_to do |format|
+
       if @user.update(user_params)
         format.html { redirect_to admin_users_url, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
