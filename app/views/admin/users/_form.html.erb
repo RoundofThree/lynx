@@ -20,6 +20,41 @@
     <%= form.text_field :firstname, class: "input" %>
   </div>
 
+  <div class="field">
+    <%= form.label :lastname, class: "label" %>
+    <%= form.text_field :lastname, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email, class: "label" %>
+    <%= form.text_field :email, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone, class: "label" %>
+    <%= form.text_field :phone, class: "input" %>
+  </div>
+
+  <div class="field p-3">
+    <%= form.label :birth_date, class: "label" %>
+    <%= form.date_select :birth_date, start_year: 1800, end_year: Time.now.year %>
+  </div>
+
+  <div class="field p-3">
+    <%= form.label :is_female, class: "label" %>
+    <%= form.check_box :is_female %>
+  </div>
+
+  <div class="field p-3">
+    <%= form.label :password, class: "label" %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field p-3">
+    <%= form.label :password_confirmation, class: "label" %>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
   <div class="actions">
     <%= form.submit class: "button is-success" %>
   </div>
