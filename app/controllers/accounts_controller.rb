@@ -21,7 +21,7 @@ class AccountsController < ApplicationController
   private
 
   def check_ownership
-    if current_user != Transaction.find(params[:id]).payer_account.user 
+    if current_user != Account.find(params[:id]).user
       redirect_to dashboard_path, notice: "This account is not yours!"
     end 
   end
