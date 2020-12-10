@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_182539) do
+ActiveRecord::Schema.define(version: 2020_12_09_181953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,16 +27,27 @@ ActiveRecord::Schema.define(version: 2020_11_29_182539) do
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
+  create_table "dealers", force: :cascade do |t|
+    t.string "currency"
+    t.string "name"
+    t.string "account_number"
+    t.integer "min_amount"
+    t.integer "max_amount"
+    t.integer "frequency"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "transactions", force: :cascade do |t|
-    t.decimal "amount", precision: 20, scale: 2, null: false
+    t.decimal "amount", null: false
     t.string "currency", null: false
-    t.string "dealer_account_number", null: false
-    t.string "dealer_name", null: false
+    t.bigint "payer_account_id", null: false
+    t.string "payee_account_number", null: false
+    t.string "payee_fullname", null: false
     t.string "reference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "account_id"
-    t.index ["account_id"], name: "index_transactions_on_account_id"
+    t.index ["payer_account_id"], name: "index_transactions_on_payer_account_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,5 +78,5 @@ ActiveRecord::Schema.define(version: 2020_11_29_182539) do
   end
 
   add_foreign_key "accounts", "users"
-  add_foreign_key "transactions", "accounts"
+  add_foreign_key "transactions", "accounts", column: "payer_account_id"
 end
