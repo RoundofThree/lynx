@@ -38,7 +38,7 @@
                             <!-- Time format: yyyy-mm-dd hh:mm:ss -->
                             <!-- Maybe consider removing year-->
                             <%= transaction.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
-                        <td>Transferred to <%= transaction.payee_fullname %></td>
+                        <td>Transferred to <%= transaction.dealer_name %></td>
                         <td><%= transaction.amount %></td>
                         <td><%= link_to "View", transaction_path(transaction), class: "link"%></td>
                     </tr>

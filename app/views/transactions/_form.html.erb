@@ -16,8 +16,8 @@
       <% end %>
 
       <div class="form-group row">
-        <%= form.label :payer_account_id, class: "col-form-label" %>
-        <%= form.select :payer_account_id, options_for_select(@accounts.map{ |c| 
+        <%= form.label :account_id, "From account...", class: "col-form-label" %>
+        <%= form.select :account_id, options_for_select(@accounts.map{ |c| 
         ["#{c.account_number} - #{ActiveSupport::NumberHelper.number_to_currency(c.balance, :unit => c.currency, :format => "%u %n")}", c.id] }),
          {}, { class: "custom-select d-block w-100" } %>
       </div>
@@ -30,17 +30,17 @@
       </div>
 
       <div class="form-group row">
-        <%= form.label :payee_account_number, class: "col-form-label" %>
-        <%= form.text_field :payee_account_number, class: "form-control" %>
+        <%= form.label :dealer_account_number, "Receiver account number", class: "col-form-label" %>
+        <%= form.text_field :dealer_account_number, class: "form-control" %>
       </div>
 
       <div class="form-group row">
-        <%= form.label :payee_fullname, class: "col-form-label" %>
-        <%= form.text_field :payee_fullname, class: "form-control" %>
+        <%= form.label :dealer_name, "Receiver fullname", class: "col-form-label" %>
+        <%= form.text_field :dealer_name, class: "form-control" %>
       </div>
 
       <div class="form-group row">
-        <%= form.submit class: "btn btn-primary btn-lg btn-block" %>
+        <%= form.submit "Confirm payment", class: "btn btn-primary btn-lg btn-block" %>
       </div>
   
 <% end %>
