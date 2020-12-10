@@ -1,8 +1,11 @@
+<div class="container " style ="max-width: 680px;padding-bottom: 100px;
+padding-top: 100px;a">
 <div class="columns is-centered mt-6">
   <div class="column is-one-third">
-    <h1 class="is-size-2 has-text-weight-bold mb-3">New user</h1>
+    <h1 class="is-size-2 has-text-weight-bold mb-3" style ="font-size: 35px;color: #525252;font-weight: 400; font-family:sans-serif;
+margin-bottom: 40px;">Creat new user</h1>
+    <%= link_to 'Back to account list', admin_users_path, class: "button is-danger" %>
     <%= render 'form', user: @user %>
   </div>
 </div>
-
-<%= link_to 'Back to account list', admin_users_path, class: "button is-danger" %>
+</div>
