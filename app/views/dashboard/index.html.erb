@@ -58,15 +58,6 @@
        <th>Balance</th>
        <th>Action</th>
      </tr>
-     <% @accounts.each do |account| %>
-     <tr>
-       <td><%= account.account_number %></td>
-       <td><%= account.user.firstname %></td>
-       <td><%= account.currency + ":" + account.balance.to_s %></td>
-       <td class="user">
-         <%= link_to "View details", account_path(account), class: "link" %>
-       </td>
-     </tr>
-     <% end %>
+       <%= render partial: "user_list", collection: @accounts, as: :account %>
    </table>
 </div>
