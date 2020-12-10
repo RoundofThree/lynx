@@ -4,19 +4,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
   # validations
+  # the password can not be nil dut to default devise modules.
+  GENDER_TYPES = [ ["Male", false], [ "Female", true] ]
+  validates_inclusion_of :is_female, in: [true, false]
   validates :firstname, presence: true, length: {maximum: 127}
   validates :lastname, presence: true, length: {maximum: 127}
-  validates :email, confirmation: true
-  validates :phone, presence: true  # should check for validity?
+  validates :email, confirmation: true, uniqueness: true
+  validates :phone, presence: true 
   validates :birth_date, presence: true
-  validate :validate_age
+  validate :validate_age  # should be over 18 years old
   # database relations
   has_many :accounts, dependent: :destroy
   # before actions
   before_save :format_name
-
-  GENDER_TYPES = [ ["Male", false], [ "Female", true] ]
-  validates_inclusion_of :is_female, in: [true, false]
 
   private
 
@@ -26,8 +26,8 @@ class User < ApplicationRecord
   end
 
   def validate_age
-    if birth_date.present? && birth_date > 18.years.ago.to_i
-      errors.add(:birth_date, 'You should be over 18')
+    if birth_date.present? && birth_date > DateTime.now.years_ago(18)
+      errors.add(:birth_date, 'You should be over 18') 
     end
   end
 end
