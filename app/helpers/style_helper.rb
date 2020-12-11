@@ -4,6 +4,6 @@ module StyleHelper
   end 
   
   def current_style 
-    Style.current 
+    Style.first
   end 
 end 

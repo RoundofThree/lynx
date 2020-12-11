@@ -1,13 +1,8 @@
 class Style < ApplicationRecord
-  default_value_for :bank_name, 'Lynx'
+  validates :bank_name, presence: true, length: {in: 1...20}
   
   # validate only one style stored in DB
   validate :single_row, on: :create 
-
-  # current appearance options set 
-  def current 
-    first
-  end 
 
   private
 
