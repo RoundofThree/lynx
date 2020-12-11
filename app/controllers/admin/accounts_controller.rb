@@ -26,6 +26,7 @@ class Admin::AccountsController < ApplicationController
 
   # GET /admin/accounts/1
   def show
+    @user = @account.user 
   end
 
   # GET /admin/accounts/new

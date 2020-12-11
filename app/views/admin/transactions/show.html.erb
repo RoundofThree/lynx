@@ -14,6 +14,14 @@
       </div>
     </div>
 
+    <!-- Link to parent -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Account <%= "#{@account.account_number}, owned by #{@payer.firstname} #{@payer.lastname}" %></h5>
+        <%= link_to "View details", admin_account_path(@account), class: "card-link" %>
+      </div>
+    </div>
+
     <!-- Table -->
       <div class="table-responsive">
         <div class="table-wrapper">
