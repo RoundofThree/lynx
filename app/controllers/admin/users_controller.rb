@@ -4,7 +4,24 @@ class Admin::UsersController < ApplicationController
   before_action :user_is_admin?
   # GET /admin/users (or .json)
   def index
-    @users = User.order("last_sign_in_at desc")
+    @users = User.search(params[:search])
+    sort_users
+  end
+
+  # sort users by last_sign_in_at, created_at 
+  def sort_users
+    if params[:sort_by].present?
+      criteria = params[:sort_by]
+      if criteria == "last_sign_in_at"
+        @users = @users.order("last_sign_in_at desc")
+      elsif criteria == "last_created_at"
+        @users = @users.order("created_at desc")
+      else 
+        @users = @users.order("created_at asc")
+      end 
+    else # default sorting 
+      @users = @users.order("last_sign_in_at desc")
+    end       
   end
 
   # GET /admin/users/1
