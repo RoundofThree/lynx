@@ -20,13 +20,9 @@ class User < ApplicationRecord
 
   def self.search(keyword)
     if !keyword.blank?
-      keyword = keyword.upcase 
-      users = self.where("firstname = ? OR lastname = ?", keyword, keyword)
-      if !users.empty?
-        users 
-      else 
-        self.all 
-      end 
+      keyword = "%#{keyword.upcase}%" 
+      users = self.where("firstname LIKE ? OR lastname LIKE ?", keyword, keyword)
+      users
     else 
       self.all
     end 

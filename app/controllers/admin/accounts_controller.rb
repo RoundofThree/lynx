@@ -4,8 +4,25 @@ class Admin::AccountsController < ApplicationController
   before_action :user_is_admin?
   # GET /admin/accounts (or .json)
   def index
-    @accounts = Account.order("updated_at desc")
+    @accounts = Account.search(params[:search]) # maybe search by name of user?
+    sort_accounts if !@accounts.empty?
   end
+
+  # sort by created_at, updated_at 
+  def sort_accounts
+    if params[:sort_by].present?
+      criteria = params[:sort_by]
+      if criteria == "last_created_at"
+        @accounts = @accounts.order("created_at desc")
+      elsif criteria == "first_created_at"
+        @accounts = @accounts.order("created_at asc")
+      else 
+        @accounts = @accounts.order("updated_at desc")
+      end 
+    else # default sorting 
+      @accounts = @accounts.order("updated_at desc")
+    end 
+  end 
 
   # GET /admin/accounts/1
   def show

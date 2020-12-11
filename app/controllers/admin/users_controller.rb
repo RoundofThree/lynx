@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
   # GET /admin/users (or .json)
   def index
     @users = User.search(params[:search])
-    sort_users
+    sort_users if !@users.empty?
   end
 
   # sort users by last_sign_in_at, created_at 
