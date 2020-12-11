@@ -2,7 +2,7 @@ class Account < ApplicationRecord
   # A user has many accounts.
   belongs_to :user
   # An account has many transactions.
-  has_many :transactions, class_name: "Transaction", foreign_key: "payer_account_id"
+  has_many :transactions
 
   # validations
   validates :user, presence: true

@@ -16,8 +16,8 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     @transaction.amount = -@transaction.amount
     # find account 
-    if !params[:transaction][:payer_account_id].blank?
-      @account = Account.find(params[:transaction][:payer_account_id])
+    if !params[:transaction][:account_id].blank?
+      @account = Account.find(params[:transaction][:account_id])
     end
     if @account.nil? 
       redirect_to new_transaction_path, notice: "Select a valid account"
@@ -29,7 +29,8 @@ class TransactionsController < ApplicationController
       amount = params[:transaction][:amount]
       @account.balance = @account.balance - amount.to_d
       @account.save!
-      redirect_to account_path(@account.id)
+      # redirect_to account_path(@account.id)
+      redirect_to transaction_path(@transaction.id)
     else
       redirect_to new_transaction_path, notice: @transaction.errors
     end
@@ -44,7 +45,7 @@ class TransactionsController < ApplicationController
   end
 
   def require_permissions
-    if current_user != Transaction.find(params[:id]).payer_account.user 
+    if current_user != Transaction.find(params[:id]).account.user 
       redirect_to dashboard_path, notice: "Invalid transaction id!"
     end 
   end 
@@ -58,7 +59,7 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:amount, :payer_account_id, :payee_account_number, :payee_fullname,
+    params.require(:transaction).permit(:amount, :account_id, :dealer_account_number, :dealer_name,
                                         :currency, :reference)
   end
 
