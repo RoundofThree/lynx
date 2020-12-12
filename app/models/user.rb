@@ -14,9 +14,19 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   validate :validate_age  # should be over 18 years old
   # database relations
-  has_many :accounts
+  has_many :accounts, dependent: :destroy
   # before actions
   before_save :format_name
+
+  def self.search(keyword)
+    if !keyword.blank?
+      keyword = "%#{keyword.upcase}%" 
+      users = self.where("firstname LIKE ? OR lastname LIKE ?", keyword, keyword)
+      users
+    else 
+      self.all
+    end 
+  end
 
   private
 
