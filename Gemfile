@@ -47,6 +47,7 @@ group :development do
 end
 
 group :test do
+  # Adds code coverage report generator 
   gem 'simplecov', require: false
   gem 'minitest-reporters'
   # Adds support for Capybara system testing and selenium driver
