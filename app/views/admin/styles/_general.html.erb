@@ -1,0 +1,5 @@
+<%= form_for [:admin, styles], class: "col-8" do |f| %>
+  <%= f.text_field :bank_name, class: "form-field" %>
+  <%= f.file_field :header_logo %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

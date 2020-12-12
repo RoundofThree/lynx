@@ -1,5 +1,6 @@
 class Style < ApplicationRecord
   validates :bank_name, presence: true, length: {in: 1...20}
+  has_one_attached :header_logo
   
   # validate only one style stored in DB
   validate :single_row, on: :create 

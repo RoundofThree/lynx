@@ -3,6 +3,14 @@ module StyleHelper
     current_style&.bank_name.presence || "Lynx"
   end
 
+  def header_logo 
+    if current_style.header_logo.attached?
+      current_style.header_logo_path
+    else 
+      "/logo.png"
+    end
+  end 
+
   # navbar_color
   # dashboard_background_color
   # home_background_color
