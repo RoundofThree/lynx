@@ -1,5 +1,23 @@
-<%= form_for [:admin, styles], class: "col-8" do |f| %>
-  <%= f.text_field :bank_name, class: "form-field" %>
-  <%= f.file_field :header_logo %>
-  <%= f.submit class: "btn btn-primary" %>
+
+<div class="pb-2 mb-3 border-bottom">
+<h4>General</h4>
+</div>
+<%= form_for styles, url: admin_styles_path, method: :put, html: {class: "col-8", style: "margin: 15px;"} do |f| %>
+  <div class="form-group row">
+    <%= f.label :bank_name, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :bank_name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :header_logo, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= image_tag header_logo, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
+      <%= f.file_field :header_logo, class: "form-control-file" %>
+    </div>
+  </div>
+
+
+  <%= f.submit class: "btn btn-outline-info" %>
 <% end %>

@@ -1,0 +1,8 @@
+
+<div class="pb-2 mb-3 border-bottom">
+<h4>Home</h4>
+</div>
+<%= form_for styles, url: admin_styles_path, method: :put, html: {class: "col-8", style: "margin: 15px;"} do |f| %>
+
+  <%= f.submit class: "btn btn-outline-info" %>
+<% end %>

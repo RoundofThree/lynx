@@ -25,7 +25,8 @@ class Admin::StylesController < ApplicationController
   # all customizable elements 
   def styles_params 
     params.require(:style).permit(:bank_name,
-                                  :header_logo)
+                                  :header_logo,
+                                  :login_background_image)
   end 
 
 end

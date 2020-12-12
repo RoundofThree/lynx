@@ -5,10 +5,18 @@ module StyleHelper
 
   def header_logo 
     if current_style.header_logo.attached?
-      current_style.header_logo_path
+      url_for(current_style.header_logo)
     else 
       "/logo.png"
     end
+  end 
+
+  def login_background_image
+    if current_style.login_background_image.attached?
+      url_for(current_style.login_background_image)
+    else 
+      "/bank3.jpg"
+    end 
   end 
 
   # navbar_color
