@@ -1,10 +1,10 @@
 class Admin::TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, raise: false
   before_action :user_is_admin?
   # GET /admin/transactions (or .json)
   def index
-    @transactions = Transaction.order("created_at desc")
+    @transactions = Transaction.order('created_at desc')
   end
 
   # GET /admin/accounts/1
@@ -19,26 +19,25 @@ class Admin::TransactionsController < ApplicationController
   end
 
   # GET /admin/accounts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /admin/accounts
   def create
     @transaction = Transaction.new(transaction_params)
-    if @transaction.save 
+    if @transaction.save
       redirect_to @transaction, notice: 'Transaction was successfully created.'
-    else 
-      render :new # flash errors 
+    else
+      render :new # flash errors
     end
   end
 
   # PATCH/PUT /admin/accounts/1
   def update
-      if @transaction.update(transaction_params)
-        redirect_to @transaction, notice: 'Transaction was successfully updated.'
-      else
-        render :edit # flash errors
-      end
+    if @transaction.update(transaction_params)
+      redirect_to @transaction, notice: 'Transaction was successfully updated.'
+    else
+      render :edit # flash errors
+    end
   end
 
   # DELETE /admin/accounts/1
@@ -48,12 +47,13 @@ class Admin::TransactionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_transaction
-      @transaction = Transaction.find(params[:id])
-    end
 
-    def transaction_params
-      params.require(:transaction).permit(:all)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_transaction
+    @transaction = Transaction.find(params[:id])
+  end
+
+  def transaction_params
+    params.require(:transaction).permit(:all)
+  end
 end

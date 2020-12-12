@@ -8,14 +8,14 @@ class Transaction < ApplicationRecord
   validates :dealer_account_number, presence: true, length: { is: 14 } # 14 digits
   validates :dealer_name, presence: true
 
-  CURRENCY_TYPES = ["GBP", "USD", "EUR"]
+  CURRENCY_TYPES = %w[GBP USD EUR].freeze
   validates_inclusion_of :currency, in: CURRENCY_TYPES
 
   private
 
   def currency_is_account_currency
     if account
-      self.currency == account.currency
+      currency == account.currency
     else
       false
     end
@@ -28,5 +28,4 @@ class Transaction < ApplicationRecord
       0.00
     end
   end
-
 end
