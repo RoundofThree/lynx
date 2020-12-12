@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root to: 'home#index'
   # dashboard of logged in user
   get 'dashboard', to: 'dashboard#index'
-  # transaction generator
-  get 'dashboard/transaction_generator'
+
+  get 'generator', to: 'generator#index'
+  get 'generator/index', to: 'generator#index'
 
   resources :accounts, only: [:show, :new, :create, :edit, :update]
    # transactions can't be edited, updated or destroyed by normal user

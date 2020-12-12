@@ -2,6 +2,7 @@
    <h2>Personal dashboard</h2>
 
    <%= link_to "go to payment", new_transaction_path %>
+   <%= link_to 'generator', generator_path %>
 
    <% total_balance = 0 %>
    <% @accounts.each do |account| %>
