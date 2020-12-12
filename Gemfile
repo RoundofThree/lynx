@@ -47,6 +47,7 @@ group :development do
 end
 
 group :test do
+  gem 'simplecov', require: false
   gem 'minitest-reporters'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'

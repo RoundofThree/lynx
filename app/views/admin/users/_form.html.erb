@@ -14,14 +14,83 @@
       </div>
     </div>
   <% end %>
+  <div class = "card card-4" style= "background: #fff;
+  border-radius: 10px;box-shadow: 0 8px 20px 0 rgba(0,0,0,.15);">
+    <div class = "card-body" style ="padding: 57px 65px;padding-bottom: 65px;">
+
+    <div class = "row" >
+        <div class = "col">
+          <div class="field" style="margin-bottom: 22px;">
+          <%= form.label :Fisrt_Name, class: "label",style:"font-family:sans-serif;color: #555;" %>
+          <%= form.text_field :firstname, class: "input",style:"background: #fafafa;line-height: 50px;
+          border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;" %>
+          </div>
+        </div>
+    <div class = "col ">
+          <div class="field">
+            <%= form.label :Last_name, class: "label",style:"font-family:sans-serif;color: #555;"%>
+            <%= form.text_field :lastname, class: "input",style:"background: #fafafa;line-height: 50px;
+            border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;"%>
+          </div>
+            </div>
+    </div>
+    <div class = "row">
+      <div class ="col">
+      <div class="field"style="margin-bottom: 22px;">
+        <%= form.label :Gender, class: "label",style:"font-family:sans-serif;color: #555;" %>
+        <%= form.select :is_female, User::GENDER_TYPES,style:"  border-radius: 5px;color: #666;" %>
+      </div>
+      </div>
+  <div class ="col">
+      <div class="field">
+        <%= form.label :birth_date, class: "label",style:"font-family:sans-serif;color: #555;"  %>
+        <%= form.date_select :birth_date, start_year: 1800, end_year: Time.now.year %>
+
+      </div>
+        </div>
+    </div>
+
+<div class = "row">
+    <div class = "col">
+      <div class="field style="margin-bottom: 22px;">
+        <%= form.label :phone, class: "label",style:"font-family:sans-serif;color: #555;"  %>
+        <%= form.text_field :phone, class: "input" ,style:"background: #fafafa;line-height: 50px;
+        border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;"%>
+      </div>
+        </div>
+        <div class = "col">
+
+      <div class="field" style="margin-bottom: 22px;">
+        <%= form.label :email, class: "label",style:"font-family:sans-serif;color: #555;"  %>
+        <%= form.text_field :email, class: "input",style:"background: #fafafa;line-height: 50px;
+        border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;" %>
+      </div>
+        </div>
+        </div>
+
+<div class = "row">
+  <div class = "col">
+  <div class="field" style="margin-bottom: 22px;">
+    <%= form.label :password, class: "label",style:"font-family:sans-serif;color: #555;"  %>
+    <%= form.password_field :password,style:"background: #fafafa;line-height: 50px;
+    border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;" %>
+  </div>
+  </div>
+  <div class = "col">
 
   <div class="field">
-    <%= form.label :firstname, class: "label" %>
-    <%= form.text_field :firstname, class: "input" %>
+    <%= form.label :password_confirmation, class: "label",style:"font-family:sans-serif;color: #555;"  %>
+    <%= form.password_field :password_confirmation,style:"background: #fafafa;line-height: 50px;
+    border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;" %>
   </div>
+    </div>
+      </div>
 
   <div class="actions">
-    <%= form.submit class: "button is-success" %>
+    <%= form.submit class: "button is-success",style:"border-radius:5px;line-height: 50px;background: #4272d7;font-size: 18px;
+color: #fff;font-family:sans-serif;"%>
+  </div>
+  </div>
   </div>
 
 <% end %>
