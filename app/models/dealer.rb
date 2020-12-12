@@ -1,5 +1,5 @@
 class Dealer < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :account_number, presence: true, length: { is:14 }
   validates :min_amount, presence: true
   validates :max_amount, presence: true
