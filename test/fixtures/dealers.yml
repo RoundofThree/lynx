@@ -1,11 +1,27 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  currency: GBP
+  name: KFC
+  account_number: "00001000010001"
+  min_amount: 2
+  max_amount: 30
+  frequency: 10
+
+two:
+  currency: GBP
+  name: McDonald's
+  account_number: "00001000010002"
+  min_amount: 2
+  max_amount: 20
+  frequency: 5
+
+three:
+  currency: GBP
+  name: PC World
+  account_number: "00001000010003"
+  min_amount: 50
+  max_amount: 2000
+  frequency: 1
+
+
