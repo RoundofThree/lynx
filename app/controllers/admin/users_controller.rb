@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, raise: false
   before_action :user_is_admin?
   # GET /admin/users (or .json)
@@ -25,8 +25,7 @@ class Admin::UsersController < ApplicationController
   end
 
   # GET /admin/users/1
-  def show
-  end
+  def show; end
 
   # GET /admin/users/new
   def new
@@ -34,8 +33,7 @@ class Admin::UsersController < ApplicationController
   end
 
   # GET /admin/users/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /admin/users
   def create
@@ -55,7 +53,6 @@ class Admin::UsersController < ApplicationController
   # PATCH/PUT /admin/users/1
   def update
     respond_to do |format|
-
       if @user.update(user_params)
         format.html { redirect_to admin_users_url, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
@@ -73,14 +70,15 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:firstname, :lastname, :email,:is_female,
-        :phone, :birth_date, :password, :password_confirmation)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:firstname, :lastname, :email, :is_female,
+                                 :phone, :birth_date, :password, :password_confirmation)
+  end
 end

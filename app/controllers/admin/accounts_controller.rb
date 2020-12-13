@@ -1,5 +1,5 @@
 class Admin::AccountsController < ApplicationController
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_action :set_account, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, raise: false
   before_action :user_is_admin?
   # GET /admin/accounts (or .json)
@@ -35,8 +35,7 @@ class Admin::AccountsController < ApplicationController
   end
 
   # GET /admin/accounts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /admin/accounts
   def create
@@ -73,13 +72,14 @@ class Admin::AccountsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_account
-      @account = Account.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def account_params
-      params.permit(:all)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_account
+    @account = Account.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def account_params
+    params.permit(:all)
+  end
 end

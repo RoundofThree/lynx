@@ -8,12 +8,12 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :missing
   end
 
-  test "not admin user should render 404" do 
+  test 'not admin user should render 404' do
     sign_in users(:have_one_account)
     get admin_accounts_url
     assert_response :missing
-    sign_out :user 
-  end 
+    sign_out :user
+  end
 
   test "admin user should get accounts list" do 
     sign_in users(:admin)
