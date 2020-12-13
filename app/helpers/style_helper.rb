@@ -3,21 +3,25 @@ module StyleHelper
     current_style&.bank_name.presence || "Lynx"
   end
 
-  def header_logo 
+  def dashboard_background_color
+    current_style&.dashboard_color.presence || "gray"
+  end
+
+  def header_logo
     if current_style.header_logo.attached?
       url_for(current_style.header_logo)
-    else 
+    else
       "/logo.png"
     end
-  end 
+  end
 
   def login_background_image
     if current_style.login_background_image.attached?
       url_for(current_style.login_background_image)
-    else 
+    else
       "/bank3.jpg"
-    end 
-  end 
+    end
+  end
 
   # navbar_color
   # dashboard_background_color
@@ -27,8 +31,8 @@ module StyleHelper
   # signin
   # transaction
   # payment
-  
-  def current_style 
+
+  def current_style
     Style.first
   end
-end 
+end

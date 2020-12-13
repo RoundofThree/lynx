@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
 
   create_table "styles", force: :cascade do |t|
     t.string "bank_name"
+    t.string "dashboard_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

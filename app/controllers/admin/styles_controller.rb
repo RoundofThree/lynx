@@ -5,28 +5,29 @@ class Admin::StylesController < ApplicationController
 
   # GET /admin/styles/edit
   def edit
-  end 
+  end
 
   # PATCH/PUT /admin/styles
-  def update 
+  def update
     if @styles.update(styles_params)
       redirect_to admin_styles_edit_path, notice: "Style changes successfully applied."
-    else 
+    else
       redirect_to admin_styles_edit_path, notice: "Failed to save changes."
     end
-  end 
+  end
 
-  private 
-  # Always the first row 
-  def set_styles 
-    @styles = Style.first 
-  end 
-  
-  # all customizable elements 
-  def styles_params 
+  private
+  # Always the first row
+  def set_styles
+    @styles = Style.first
+  end
+
+  # all customizable elements
+  def styles_params
     params.require(:style).permit(:bank_name,
                                   :header_logo,
+                                  :dashboard_color,
                                   :login_background_image)
-  end 
+  end
 
 end
