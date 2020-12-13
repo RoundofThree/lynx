@@ -5,7 +5,7 @@
 <div class="form-group row">
   <%= f.label :dashboard_background_color, class: "col-sm-4 col-form-label" %>
   <div class="col-sm-6">
-    <%= f.select :dashboard_color,options_for_select(["yellow","blue","green","pink","dark"]), class: "form-select" %>
+    <%= f.select :dashboard_color,options_for_select(["yellow","blue","green","pink","dark"],current_style&.dashboard_color), class: "form-select" %>
   </div>
 </div>
 
