@@ -4,8 +4,25 @@ class Admin::TransactionsController < ApplicationController
   before_action :user_is_admin?
   # GET /admin/transactions (or .json)
   def index
-    @transactions = Transaction.order('created_at desc')
+    @transactions = Transaction.search(params[:search])
+    sort_transactions if !@transactions.empty?
   end
+
+  # sort by created_at, amount
+  def sort_transactions 
+    if params[:sort_by].present?
+      criteria = params[:sort_by]
+      if criteria == "last_created_at"
+        @transactions = @transactions.order("created_at desc")
+      elsif criteria == "first_created_at"
+        @transactions = @transactions.order("created_at asc")
+      else 
+        @transactions = @transactions.order("amount asc")
+      end
+    else # default sorting 
+      @transactions = @transactions.order("amount asc")
+    end   
+  end 
 
   # GET /admin/accounts/1
   def show

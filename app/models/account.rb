@@ -2,7 +2,7 @@ class Account < ApplicationRecord
   # A user has many accounts.
   belongs_to :user
   # An account has many transactions.
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
 
   # validations
   validates :user, presence: true
@@ -17,6 +17,15 @@ class Account < ApplicationRecord
   CURRENCY_TYPES = %w[GBP USD EUR CNY].freeze
   validates_inclusion_of :currency, in: CURRENCY_TYPES
 
+  def self.search(keyword)
+    if !keyword.blank?
+      accounts = self.where("account_number LIKE ?", "%#{keyword}%")
+      accounts  
+    else 
+      self.all
+    end 
+  end
+  
   private
 
   def assign_expiry_date
