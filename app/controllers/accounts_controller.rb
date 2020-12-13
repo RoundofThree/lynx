@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  before_action :check_ownership, only: :show
+
   def show
     @account = Account.find(params[:id])
     @transactions = @account.transactions
@@ -14,5 +16,13 @@ class AccountsController < ApplicationController
   end
 
   def update
+  end
+  
+  private
+
+  def check_ownership
+    if current_user != Account.find(params[:id]).user
+      redirect_to dashboard_path, notice: "This account is not yours!"
+    end 
   end
 end

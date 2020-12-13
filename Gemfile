@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 # Authorization with Ability
 gem 'cancancan'
+# Markdown 
+gem 'kramdown'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -47,6 +49,8 @@ group :development do
 end
 
 group :test do
+  # Adds code coverage report generator 
+  gem 'simplecov', require: false
   gem 'minitest-reporters'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
