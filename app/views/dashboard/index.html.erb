@@ -1,4 +1,4 @@
-<div class="dashboard index" style="background-color:<%="dashboard_background_color "%> " >>
+<div class="dashboard index" style="background-color:<%=dashboard_background_color%> " >>
    <h2>Personal dashboard</h2>
 
    <%= link_to "go to payment", new_transaction_path %>
@@ -13,6 +13,7 @@
    <%= total_balance %>
    <%= current_user.firstname %>
    <%= current_user.lastname %>
+
    </p>
 
    <table class ="table" summary="Accounts list">
