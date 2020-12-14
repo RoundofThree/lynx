@@ -14,7 +14,7 @@
             <% account = t.account %>
             <% user = account.user %>
             <tr>
-                <th scope="row"><%= i+1 %></td>
+                <th scope="row"><%= i+1 %></th>
                 <td><%= link_to account.account_number, admin_transaction_path(t) %></td>
                 <td><%= "#{user.firstname} #{user.lastname}" %></td>
                 <td><%= number_to_currency(t.amount, unit: t.currency, format: "%u %n") %></td>
