@@ -14,47 +14,8 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <!-- This causes the page to be too large
-  <div class="navbar w-nav" style="background-color: transparent; height: 50px;">
-    <div class="container nav-container">
 
-      <div class="nav-right-wrap">
-        <nav role="navigation" class="nav-menu w-nav-menu">
-          <a href="/" class="nav-link w-nav-link">Banking</a>
-          <a href="/" class="nav-link w-nav-link">Investments</a>
-          <a href="/" class="nav-link w-nav-link">Loans</a>
-          <a href="/" class="nav-link w-nav-link">Mortage</a>
-          <a href="/" class="button small w-button">Book a call</a>
-        </nav>
-      </div>
-      <div id="w-nav-overlay-0" class="w-nav-overlay" data-wf-ignore=""></div>
-    </div>
-  </div>
--->
-
-  <div class="d-flex flex-column flex-md-row align-items-center p-2 px-md-6 bg-white border-bottom box-shadow">
-    <a class="my-0 mr-md-auto brand w-nav-brand w--current" href="/" aria-current="page" aria-label="home">
-      <img class="brand-logo" src="/logo.png" alt="Lynx Bank logo" width="130px">
-    </a>
-    <nav class="my-2 my-md-0 mr-md-3">
-      <a href="/" class="p-2 text-dark">Banking</a>
-      <a href="/" class="p-2 text-dark">Investments</a>
-      <a href="/" class="p-2 text-dark">Loans</a>
-      <a href="/" class="p-2 text-dark">Mortage</a>
-      <a href="/" class="button small w-button">Book a call</a>
-    </nav>
-    <% if current_user.nil? %>
-      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary mr-1" %>
-      <%= link_to "Login", new_user_session_path, class: "btn btn-outline-primary" %>
-    <% else %>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger mr-1" %>
-      <% if current_user.admin %>
-        <%= link_to "Admin Area", admin_dashboard_path, class: "btn btn-outline-dark" %>
-      <% end %>
-    <% end %>
-
-  </div>
+  <%= render 'shared/navbar' %>
 
   <!-- main -->
   <main class="container-fluid">
@@ -67,9 +28,6 @@
     <%= yield %>
     <div class="row col-4 offset-md-4">
       <%= debug(params) if Rails.env.development? %>
-      <% if current_user %>
-      <%= current_user.admin %>
-      <% end %>
     </div>
   </main>
 
