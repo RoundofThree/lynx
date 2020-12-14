@@ -16,7 +16,7 @@
   <% end %>
   <!-- form body -->
   <div class = "card" style= "border-radius: 10px;">
-    <div class = "card" style ="padding: 57px 60px; padding-bottom: 20px;">
+    <div class = "card" style ="padding: 57px 80px; padding-bottom: 20px;">
 
   <!-- name fields -->
     <div class = "row" style="margin-bottom: 22px;" >
@@ -65,7 +65,7 @@
     </div>
 
     <!-- password fields -->
-<div class = "row" style="margin-bottom: 22px;">
+<div class = "row" style="margin-bottom: 40px;">
   <div class = "col">
     <%= form.label :password, class: "label"%>
     <%= form.password_field :password,style:"line-height: 50px;
@@ -75,11 +75,47 @@
 
   <div class="field">
     <%= form.label :password_confirmation, class: "label"%>
-    <%= form.password_field :password_confirmation,style:"line-height: 50px;
+    <%= form.text_field :password_confirmation,style:"line-height: 50px;
     border-radius: 5px;padding: 0 20px;" %>
   </div>
     </div>
       </div>
+
+      <!-- postcode & country fields -->
+  <div class = "row" style="margin-bottom: 40px;">
+    <div class = "col">
+      <%= form.label :postcode, class: "label"%>
+      <%= form.text_field :postcode,style:"line-height: 50px;
+  border-radius: 5px;padding: 0 20px;" %>
+    </div>
+    <div class = "col">
+
+    <div class="field">
+      <%= form.label :country, class: "label"%>
+      <br>
+      <%= form.text_field :country,style:"line-height: 50px;
+    border-radius: 5px;padding: 0 20px;" %>
+    </div>
+    </div>
+  </div>
+
+
+        <!-- address info -->
+    <div class = "row" style="margin-bottom: 40px;">
+      <div class = "col">
+        <%= form.label :address_line_1, class: "label"%>
+        <%= form.text_field :address_line_1,style:"line-height: 50px;
+    border-radius: 5px;padding: 0 20px;" %>
+      </div>
+      <div class = "col">
+
+      <div class="field">
+        <%= form.label :address_line_2, class: "label"%>
+        <%= form.text_field :address_line_2,style:"line-height: 50px;
+      border-radius: 5px;padding: 0 20px;" %>
+      </div>
+      </div>
+    </div>
 
   <div class="actions">
     <%= form.submit class: "btn btn-outline-primary"%>
