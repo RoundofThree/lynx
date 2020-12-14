@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, raise: false
   before_action :user_is_admin?
   # GET /admin/users (or .json)
@@ -8,8 +8,7 @@ class Admin::UsersController < ApplicationController
     sort_users if !@users.empty?
   end
 
-
-  # sort users by last_sign_in_at, created_at
+  # sort users by last_sign_in_at, created_at 
   def sort_users
     if params[:sort_by].present?
       criteria = params[:sort_by]
@@ -17,18 +16,16 @@ class Admin::UsersController < ApplicationController
         @users = @users.order("last_sign_in_at desc")
       elsif criteria == "last_created_at"
         @users = @users.order("created_at desc")
-      else
+      else 
         @users = @users.order("created_at asc")
-      end
-    else # default sorting
+      end 
+    else # default sorting 
       @users = @users.order("last_sign_in_at desc")
-    end
-
+    end       
   end
 
   # GET /admin/users/1
-  def show
-  end
+  def show; end
 
   # GET /admin/users/new
   def new
@@ -36,8 +33,7 @@ class Admin::UsersController < ApplicationController
   end
 
   # GET /admin/users/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /admin/users
   def create
@@ -45,7 +41,8 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to admin_user_path(@user), notice: 'User was successfully created.' }
+        format.html { redirect_to admin_users_url, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -56,11 +53,12 @@ class Admin::UsersController < ApplicationController
   # PATCH/PUT /admin/users/1
   def update
     respond_to do |format|
-
       if @user.update(user_params)
-        format.html { redirect_to admin_user_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to admin_users_url, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,19 +67,18 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to admin_users_url, notice: 'User was successfully destroyed.'
-
-    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:firstname, :lastname, :email,:is_female,
-        :phone, :birth_date, :password, :password_confirmation,:postcode, :country,
-         :address_line_1,:address_line_2)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:firstname, :lastname, :email, :is_female,
+                                 :phone, :birth_date, :password, :password_confirmation)
+  end
+end

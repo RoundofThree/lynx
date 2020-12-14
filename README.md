@@ -28,6 +28,18 @@ rake routes # see routes
 rails s  # start the server at localhost:3000
 ```
 
+## How to run the test suite
+
+Generate code coverage support: 
+```
+rm -rf coverage/ && DISABLE_SPRING=1 COVERAGE=1 bin/rails test
+```
+
+Run without generating coverage report:
+```
+rails test
+```
+
 ## Task allocation
 
 Please only change these files...
