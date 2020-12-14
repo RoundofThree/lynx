@@ -9,8 +9,8 @@
       <div class="btn-toolbar row mb-2 mb-md-0" style="width: 60%; position: relative; left: 30px;">
         <!-- Search/sort functionality -->
         <%= form_with url: admin_transactions_path, method: :get, local: true, class: "row mt-md-0 container-fluid" do |f| %>
-        <%= f.text_field :search, placeholder: "Filter by dealer...", class: "form-control mr-1 col-xs-6 col-md-4" %>
-        <%= f.select :sort_by, options_for_select([["Most negative amount", "amount"], ["Last created", "last_created_at"], ["First created", "first_created_at"]]), {}, {class: "form-control col-xs-6 col-md-4" } %>
+        <%= f.text_field :search, value: params[:search], placeholder: "Filter by dealer...", class: "form-control mr-1 col-xs-6 col-md-4" %>
+        <%= f.select :sort_by, options_for_select([["Most negative amount", "amount"], ["Last created", "last_created_at"], ["First created", "first_created_at"]], params[:sort_by]), {}, {class: "form-control col-xs-6 col-md-4" } %>
         <%= f.submit "Filter and sort", class: "btn btn-outline-success ml-1 col-xs-6 col-md-3" %>
         <% end %>
       </div>

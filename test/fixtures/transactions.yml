@@ -5,7 +5,7 @@ one:
   currency: GBP
   account: one 
   dealer_account_number: 12345678901234
-  dealer_name: Zhuo Ying
+  dealer_name: ZHUO YING
   reference: Daunting
 
 two:
@@ -13,5 +13,5 @@ two:
   currency: GBP
   account: two 
   dealer_account_number: 12341234123412
-  dealer_name: Zhuo Ying 
+  dealer_name: HACKER
   reference: Hack your way in! 
