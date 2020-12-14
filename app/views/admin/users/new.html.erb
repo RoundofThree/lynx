@@ -1,11 +1,16 @@
-<div class="container " style ="max-width: 680px;padding-bottom: 100px;
-padding-top: 100px;a">
-<div class="columns is-centered mt-6">
-  <div class="column is-one-third">
-    <h1 class="is-size-2 has-text-weight-bold mb-3" style ="font-size: 35px;color: #525252;font-weight: 400; font-family:sans-serif;
-margin-bottom: 40px;">Creat new user</h1>
-    <%= link_to 'Back to account list', admin_users_path, class: "button is-danger" %>
+<div class ="row">
+  <!-- render shared navbar-->
+<%= render partial: "admin/shared/navbar" %>
+<!-- create user form -->
+<div class="col-3 " style ="max-width: 680px;padding-bottom: 100px;
+padding-top:20px">
+<div class="columns mt-3">
+    <h1 class="mb-3" style ="font-size: 35px;color: #525252;margin-bottom: 40px;">Creat new user</h1>
+    <%= link_to 'Back to account list', admin_users_path, class: "button" %>
+</div>
+
+</div>
+<div class="col-7 mt-3">
     <%= render 'form', user: @user %>
-  </div>
 </div>
 </div>

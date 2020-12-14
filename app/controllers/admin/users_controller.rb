@@ -4,7 +4,28 @@ class Admin::UsersController < ApplicationController
   before_action :user_is_admin?
   # GET /admin/users (or .json)
   def index
+<<<<<<< Updated upstream
     @users = User.order("last_sign_in_at desc")
+=======
+    @users = User.search(params[:search])
+    sort_users if !@users.empty?
+  end
+
+  # sort users by last_sign_in_at, created_at
+  def sort_users
+    if params[:sort_by].present?
+      criteria = params[:sort_by]
+      if criteria == "last_sign_in_at"
+        @users = @users.order("last_sign_in_at desc")
+      elsif criteria == "last_created_at"
+        @users = @users.order("created_at desc")
+      else
+        @users = @users.order("created_at asc")
+      end
+    else # default sorting
+      @users = @users.order("last_sign_in_at desc")
+    end
+>>>>>>> Stashed changes
   end
 
   # GET /admin/users/1
@@ -26,7 +47,11 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+<<<<<<< Updated upstream
         format.html { redirect_to admin_users_path(@user), notice: 'User was successfully created.' }
+=======
+        format.html { redirect_to admin_user_path(@user), notice: 'User was successfully created.' }
+>>>>>>> Stashed changes
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -40,7 +65,11 @@ class Admin::UsersController < ApplicationController
     respond_to do |format|
 
       if @user.update(user_params)
+<<<<<<< Updated upstream
         format.html { redirect_to admin_users_path(@user), notice: 'User was successfully updated.' }
+=======
+        format.html { redirect_to admin_user_path(@user), notice: 'User was successfully updated.' }
+>>>>>>> Stashed changes
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
