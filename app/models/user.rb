@@ -4,30 +4,38 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
   # validations
-  validates :firstname, presence: true, length: {maximum: 127}
-  validates :lastname, presence: true, length: {maximum: 127}
-  validates :email, confirmation: true
-  validates :phone, presence: true  # should check for validity?
+  # the password can not be nil dut to default devise modules.
+  GENDER_TYPES = [['Male', false], ['Female', true]].freeze
+  validates_inclusion_of :is_female, in: [true, false]
+  validates :firstname, presence: true, length: { maximum: 127 }
+  validates :lastname, presence: true, length: { maximum: 127 }
+  validates :email, confirmation: true, uniqueness: true
+  validates :phone, presence: true
   validates :birth_date, presence: true
-  validate :validate_age
+  validate :validate_age # should be over 18 years old
   # database relations
-  has_many :accounts
+  has_many :accounts, dependent: :destroy
   # before actions
   before_save :format_name
 
-  GENDER_TYPES = [ ["Male", false], [ "Female", true] ]
-  validates_inclusion_of :is_female, in: [true, false]
+  def self.search(keyword)
+    if !keyword.blank?
+      keyword = "%#{keyword.upcase}%" 
+      users = self.where("firstname LIKE ? OR lastname LIKE ?", keyword, keyword)
+      users
+    else 
+      self.all
+    end 
+  end
 
   private
 
   def format_name
-    self.firstname = self.firstname.upcase
-    self.lastname = self.lastname.upcase
+    self.firstname = firstname.upcase
+    self.lastname = lastname.upcase
   end
 
   def validate_age
-    if birth_date.present? && birth_date > 18.years.ago.to_i
-      errors.add(:birth_date, 'You should be over 18')
-    end
+    errors.add(:birth_date, 'You should be over 18') if birth_date.present? && birth_date > DateTime.now.years_ago(18)
   end
 end

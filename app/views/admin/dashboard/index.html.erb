@@ -64,20 +64,20 @@
                 <thead>
                     <tr>
                         <th>No. </th>
-                        <th>Payer account</th>
-                        <th>Payer</th>
+                        <th>Account</th>
+                        <th>Dealer</th>
                         <th>Amount</th> 
                         <th>Date</th> <!-- Ordering -->
                     </tr>
                 </thead>
                 <tbody>
                     <% @transactions.each_with_index do |t, i| %>
-                    <% payer_account = t.payer_account %>
-                    <% payer = payer_account.user %>
+                    <% account = t.account %>
+                    <% user = account.user %>
                     <tr>
                     <th scope="row"><%= i+1 %></td>
-                    <td><%= link_to payer_account.account_number, admin_transaction_path(t) %></td>
-                    <td><%= "#{payer.firstname} #{payer.lastname}" %></td>
+                    <td><%= link_to account.account_number, admin_transaction_path(t) %></td>
+                    <td><%= "#{user.firstname} #{user.lastname}" %></td>
                     <td><%= number_to_currency(t.amount, unit: t.currency, format: "%u %n") %></td>
                     <td><%= t.created_at %></td>
                     </tr>
