@@ -1,63 +1,51 @@
-<div class="dashboard index">
+<div class="row">
+    <%= render partial: "dashboard/navbar" %>
 
-   <h2>Personal dashboard</h2>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Personal dashboard</h1>
+        </div>
 
-   <% total_balance = 0 %>
-   <% account_number = 0 %>
+        <h3>Personal Summary <span class="small font-italic" style="font-size: x-small;"></span></h3>
+        <div class="table-responsive">
+          <ul>
+            <li>
+              NAME:
+              <input class="form-control" type="text" placeholder="<%= current_user.lastname + current_user.lastname %>" aria-label ="user name" readonly>
+            </li>
+            <li>
+              EMAIL:
+              <input class="form-control" type="text" placeholder="<%= current_user.email %>" aria-label ="user name" readonly>
+            </li>
+            <li>
+              PHONE:
+              <input class="form-control" type="text" placeholder="<%= current_user.phone %>" aria-label ="user name" readonly>
+            </li>
+            <li>
+              BIRTH DATE:
+              <input class="form-control" type="text" placeholder="<%= current_user.birth_date %>" aria-label ="user name" readonly>
+            </li>
+            <li>
+              ACCOUNT NUMBER:
+              <input class="form-control" type="text" placeholder="<%= @accounts.length %>" aria-label ="user name" readonly>
+            </li>
+          </ul>
+        </div>
 
-   <% @accounts.each do |account| %>
-   <% account_number +=1 %>
-
-   <% total_balance += account.balance %>
-   <% end %>
-
-   <div class="head">
-     <div class="summary">
-       <h3>Summary</h3>
-       <h5>
-         <font color = "#C0C0C0">Personal summary for:</font>
-         <b><%=current_user.firstname + " " + current_user.lastname %></b>
-       </h5>
-
-       <p>
-         <font color = "#C0C0C0">Accounts number is :</font>
-         <b><%= account_number%></b>
-       </p>
-
-       <p>
-         <font color = "#C0C0C0">Total balance is :</font>
-         <b><%=total_balance%></p></b>
-     </div>
-
-     <div class="Inbox">
-       <h3>Inbox</h3>
-       <div class="alert alert-primary" role="alert">
-         Create a new payment
-         <%= link_to ">", new_transaction_path %>
-       </div>
-
-       <div class="alert alert-primary" role="alert">
-         Create a new payment
-         <%= link_to ">", new_transaction_path %>
-       </div>
-
-
-     </div>
-
-   </div>
+        <h3>Account List <span class="small font-italic" style="font-size: x-small;"></span></h3>
+        <div class="table-responsive">
+          <table class ="table"  summary="Accounts list">
+            <tr class ="header">
+              <th>AccountID</th>
+              <th>Balance</th>
+              <th>Action</th>
+            </tr>
+              <%= render partial: "user_list", collection: @accounts, as: :account %>
+          </table>
+        </div>
 
 
 
 
-
-
-   <table class ="table"  summary="Accounts list">
-     <tr class ="header">
-       <th>AccountID</th>
-       <th>User</th>
-       <th>Balance</th>
-       <th>Action</th>
-     </tr>
-       <%= render partial: "user_list", collection: @accounts, as: :account %>
-   </table>
+    </main>
 </div>
