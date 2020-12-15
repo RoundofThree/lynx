@@ -1,12 +1,12 @@
 class Admin::UsersController < Admin::ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  # GET /admin/users (or .json)
+  # GET /admin/users
   def index
     @users = User.search(params[:search])
     sort_users if !@users.empty?
   end
 
-  # sort users by last_sign_in_at, created_at 
+  # sort users by last_sign_in_at, created_at
   def sort_users
     if params[:sort_by].present?
       criteria = params[:sort_by]
@@ -14,16 +14,17 @@ class Admin::UsersController < Admin::ApplicationController
         @users = @users.order("last_sign_in_at desc")
       elsif criteria == "last_created_at"
         @users = @users.order("created_at desc")
-      else 
+      else
         @users = @users.order("created_at asc")
-      end 
-    else # default sorting 
+      end
+    else # default sorting
       @users = @users.order("last_sign_in_at desc")
-    end       
+    end
   end
 
   # GET /admin/users/1
-  def show; end
+  def show
+  end
 
   # GET /admin/users/new
   def new
@@ -31,33 +32,32 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   # GET /admin/users/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /admin/users
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
       if @user.save
-        format.html { redirect_to admin_users_url, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        redirect_to admin_users_url, notice: 'User was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        flash[:error] = "Error in creating user."
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /admin/users/1
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to admin_users_url, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user == current_user && params[:admin] == True 
+      flash[:error] = "Cannot change admin privileges for current user."
+      render :edit 
+      return 
+    end 
+    if @user.update(user_params)
+      redirect_to admin_users_url, notice: 'User was successfully updated.'
+    else
+      flash[:error] = "Failed to save changes."
+      render :edit
     end
   end
 
@@ -77,6 +77,8 @@ class Admin::UsersController < Admin::ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:firstname, :lastname, :email, :is_female,
-                                 :phone, :birth_date, :password, :password_confirmation)
+                                 :phone, :birth_date, :password, :password_confirmation,
+                                 :postcode, :address_line_1, :address_line_2, :country, 
+                                 :admin)
   end
 end

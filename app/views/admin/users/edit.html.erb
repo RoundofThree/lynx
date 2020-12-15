@@ -1,12 +1,15 @@
+<div class = "row">
+  <%= render partial: "admin/shared/navbar" %>
 
+<div class="col-3 " style ="max-width: 680px;padding-bottom: 100px;
+padding-top: 20px;">
 
-<div class="container " style ="max-width: 680px;padding-bottom: 100px;
-padding-top: 100px;a">
-
-  <div class="column is-one-third" >
-    <h1 class="title " style ="font-size: 35px;color: #525252;font-weight: 400; font-family:sans-serif;
-margin-bottom: 40px;">Edit <%= @user.firstname %> profile</h1>
+<div class="columns mt-3">
+    <h1 class="mb-3" style="font-size: 35px;color: #525252;margin-bottom: 40px;">Edit <%= @user.firstname %> profile</h1>
 <%= link_to 'Back to account list', admin_users_path, class: "button is-danger" %>
+</div>
+</div>
+<div class="col-7 mt-3">
 
     <%= render 'form', user: @user %>
   </div>
