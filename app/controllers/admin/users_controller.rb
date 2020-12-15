@@ -1,3 +1,4 @@
+
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, raise: false
@@ -67,29 +68,10 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to admin_users_url, notice: 'User was successfully destroyed.'
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    end
-=======
->>>>>>> main
-=======
->>>>>>> 2db40ab068d1838fb9b566086ebe7d1c57cdadc6
   end
 
   private
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:firstname, :lastname, :email,:is_female,
-        :phone, :birth_date, :password, :password_confirmation,:postcode, :country,
-         :address_line_1,:address_line_2)
-    end
-=======
-=======
->>>>>>> 2db40ab068d1838fb9b566086ebe7d1c57cdadc6
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
@@ -100,9 +82,4 @@ class Admin::UsersController < ApplicationController
     params.require(:user).permit(:firstname, :lastname, :email, :is_female,
                                  :phone, :birth_date, :password, :password_confirmation)
   end
-<<<<<<< HEAD
 end
->>>>>>> main
-=======
-end
->>>>>>> 2db40ab068d1838fb9b566086ebe7d1c57cdadc6
