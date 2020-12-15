@@ -48,7 +48,7 @@ class Admin::UsersController < Admin::ApplicationController
 
   # PATCH/PUT /admin/users/1
   def update
-    if @user == current_user && params[:admin] == True 
+    if @user == current_user && params[:admin] == true 
       flash[:error] = "Cannot change admin privileges for current user."
       render :edit 
       return 
@@ -76,9 +76,10 @@ class Admin::UsersController < Admin::ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
+    params[:user][:admin_passphrase_digest] = Digest::SHA2.hexdigest(params[:user][:admin_passphrase]) if !params[:user][:admin_passphrase].blank?
     params.require(:user).permit(:firstname, :lastname, :email, :is_female,
                                  :phone, :birth_date, :password, :password_confirmation,
                                  :postcode, :address_line_1, :address_line_2, :country, 
-                                 :admin)
+                                 :admin, :admin_passphrase_digest)
   end
 end
