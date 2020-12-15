@@ -1,4 +1,4 @@
-<%= form_for [:admin, user], class: "col-8" do |form| %>
+<%= form_for [:admin, user], class: "col-7" do |form| %>
 <!-- Error -->
   <% if user.errors.any? %>
     <div class="message is-danger">
@@ -14,81 +14,119 @@
       </div>
     </div>
   <% end %>
-  <div class = "card card-4" style= "background: #fff;
-  border-radius: 10px;box-shadow: 0 8px 20px 0 rgba(0,0,0,.15);">
-    <div class = "card-body" style ="padding: 57px 65px;padding-bottom: 65px;">
+  <!-- form body -->
+  <div class = "card" style= "border-radius: 10px;">
+    <div class = "card" style ="padding: 57px 80px; padding-bottom: 20px;">
 
-    <div class = "row" >
+  <!-- name fields -->
+    <div class = "row" style="margin-bottom: 22px;" >
         <div class = "col">
-          <div class="field" style="margin-bottom: 22px;">
-          <%= form.label :Fisrt_Name, class: "label",style:"font-family:sans-serif;color: #555;" %>
-          <%= form.text_field :firstname, class: "input",style:"background: #fafafa;line-height: 50px;
-          border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;" %>
-          </div>
+          <%= form.label :Fisrt_Name, class: "label" %>
+          <%= form.text_field :firstname, class: "input",style:"line-height: 50px;
+          border-radius: 5px;padding: 0 20px;" %>
         </div>
-    <div class = "col ">
-          <div class="field">
-            <%= form.label :Last_name, class: "label",style:"font-family:sans-serif;color: #555;"%>
-            <%= form.text_field :lastname, class: "input",style:"background: #fafafa;line-height: 50px;
-            border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;"%>
+
+        <div class = "col">
+            <%= form.label :Last_name, class: "label"%>
+            <%= form.text_field :lastname, class: "input",style:"line-height: 50px;
+            border-radius: 5px;padding: 0 20px;"%>
           </div>
-            </div>
     </div>
-    <div class = "row">
+    <!-- birthdate & gender fields -->
+    <div class = "row" style="margin-bottom: 22px;">
       <div class ="col">
-      <div class="field"style="margin-bottom: 22px;">
-        <%= form.label :Gender, class: "label",style:"font-family:sans-serif;color: #555;" %>
-        <%= form.select :is_female, User::GENDER_TYPES,style:"  border-radius: 5px;color: #666;" %>
+        <%= form.label :Gender, class: "label" %>
+        <br>
+        <%= form.select :is_female, User::GENDER_TYPES,style:"border-radius: 5px;" %>
       </div>
-      </div>
-  <div class ="col">
-      <div class="field">
-        <%= form.label :birth_date, class: "label",style:"font-family:sans-serif;color: #555;"  %>
-        <%= form.date_select :birth_date, start_year: 1800, end_year: Time.now.year %>
 
+      <div class ="col">
+        <%= form.label :birth_date, class: "label"%>
+        <br>
+        <%= form.date_select :birth_date, start_year: 1800, end_year: Time.now.year %>
       </div>
-        </div>
+  </div>
+
+  <!-- phone & email fields -->
+  <div class = "row" style="margin-bottom: 22px;">
+    <div class = "col">
+        <%= form.label :phone, class: "label"  %>
+        <br>
+        <%= form.text_field :phone, class: "input" ,style:"line-height: 50px;
+        border-radius: 5px;padding: 0 20px;"%>
+    </div>
+    <div class = "col">
+        <%= form.label :email, class: "label"  %>
+        <br>
+
+        <%= form.text_field :email, class: "input",style:"line-height: 50px;
+        border-radius: 5px;padding: 0 20px;"%>
+      </div>
     </div>
 
-<div class = "row">
-    <div class = "col">
-      <div class="field style="margin-bottom: 22px;">
-        <%= form.label :phone, class: "label",style:"font-family:sans-serif;color: #555;"  %>
-        <%= form.text_field :phone, class: "input" ,style:"background: #fafafa;line-height: 50px;
-        border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;"%>
-      </div>
-        </div>
-        <div class = "col">
-
-      <div class="field" style="margin-bottom: 22px;">
-        <%= form.label :email, class: "label",style:"font-family:sans-serif;color: #555;"  %>
-        <%= form.text_field :email, class: "input",style:"background: #fafafa;line-height: 50px;
-        border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;" %>
-      </div>
-        </div>
-        </div>
-
-<div class = "row">
+    <!-- password fields -->
+<div class = "row" style="margin-bottom: 40px;">
   <div class = "col">
-  <div class="field" style="margin-bottom: 22px;">
-    <%= form.label :password, class: "label",style:"font-family:sans-serif;color: #555;"  %>
-    <%= form.password_field :password,style:"background: #fafafa;line-height: 50px;
-    border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;" %>
-  </div>
+    <%= form.label :password, class: "label"%>
+    <%= form.password_field :password,style:"line-height: 50px;
+    border-radius: 5px;padding: 0 20px;" %>
   </div>
   <div class = "col">
 
   <div class="field">
-    <%= form.label :password_confirmation, class: "label",style:"font-family:sans-serif;color: #555;"  %>
-    <%= form.password_field :password_confirmation,style:"background: #fafafa;line-height: 50px;
-    border-radius: 5px;color: #666;font-size: 16px;padding: 0 20px;" %>
+    <%= form.label :password_confirmation, class: "label"%>
+    <%= form.text_field :password_confirmation,style:"line-height: 50px;
+    border-radius: 5px;padding: 0 20px;" %>
   </div>
     </div>
       </div>
 
+      <!-- postcode & country fields -->
+  <div class = "row" style="margin-bottom: 40px;">
+    <div class = "col">
+      <%= form.label :postcode, class: "label"%>
+      <%= form.text_field :postcode,style:"line-height: 50px;
+  border-radius: 5px;padding: 0 20px;" %>
+    </div>
+    <div class = "col">
+
+    <div class="field">
+      <%= form.label :country, class: "label"%>
+      <br>
+      <%= form.text_field :country,style:"line-height: 50px;
+    border-radius: 5px;padding: 0 20px;" %>
+    </div>
+    </div>
+  </div>
+
+
+        <!-- address info -->
+    <div class = "row" style="margin-bottom: 40px;">
+      <div class = "col">
+        <%= form.label :address_line_1, class: "label"%>
+        <%= form.text_field :address_line_1,style:"line-height: 50px;
+    border-radius: 5px;padding: 0 20px;" %>
+      </div>
+      <div class = "col">
+
+      <div class="field">
+        <%= form.label :address_line_2, class: "label"%>
+        <%= form.text_field :address_line_2,style:"line-height: 50px;
+      border-radius: 5px;padding: 0 20px;" %>
+      </div>
+      </div>
+    </div>
+
+    <!-- Whether admin or not, cannot change if it's the current user --> 
+    <div class = "row" style="margin-bottom: 40px;">
+      <div class = "col">
+        <%= form.label :admin %>
+        <%= form.check_box :admin, disabled: user == current_user %>
+    </div>
+
+
   <div class="actions">
-    <%= form.submit class: "button is-success",style:"border-radius:5px;line-height: 50px;background: #4272d7;font-size: 18px;
-color: #fff;font-family:sans-serif;"%>
+    <%= form.submit class: "btn btn-outline-primary"%>
   </div>
   </div>
   </div>
