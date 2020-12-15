@@ -76,10 +76,20 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.valid?
   end
 
-  # todo
   test 'user with full information should pass validations' do
     user = User.new(firstname: 'tao', lastname: 'huang', email: 'huangtao@abc.com', phone: 13_756_181_581,
                     birth_date: DateTime.new(2001, 11, 15), password: '1234567890', is_female: false)
     assert user.valid?
+  end
+
+  test 'user with same email to another user should not pass validatioin' do
+    user = User.new(firstname: 'tao', lastname: 'huang', email: 'huangtao@abc.com', phone: 13_756_181_581,
+                    birth_date: DateTime.new(2001, 11, 15), password: '1234567890', is_female: false)
+    user2 = User.new(firstname: 'ta1o', lastname: 'hua1ng', email: 'huangtao@abc.com', phone: 13_756_181_581,
+                    birth_date: DateTime.new(2001, 11, 15), password: '1234567890', is_female: false)
+    user.save
+
+    assert_not user2.valid?
+
   end
 end

@@ -1,35 +1,33 @@
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
-    <div class="sidebar-sticky">
+<nav class="col-md-3 col-lg-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky" style="background-color:white">
         <!-- Quick links -->
+        <%= link_to dashboard_path, class: "nav-link" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+        </svg>
+        <span style="color: dark"><%= current_user.lastname + " " + current_user.lastname %></span>
+        <% end %>
+        <!-- todo -->
+
+      <div style="background-color:Chartreuse">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">Main</h6>
         <ul class="nav flex-column">
-            <!-- Transfer -->
-            <li class="nav-item">
-                <%= link_to new_transaction_path, class: "nav-link" do %>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-home">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                </svg>
-                <!-- todo -->
-                <span style="color: dark">Make a Transfer</span>
-                <% end %>
-            </li>
-            <!-- funds(not implement functioin) -->
-            <li class="nav-item">
-                <%= link_to dashboard_path, class: "nav-link" do %>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-users">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-                <!-- todo -->
-                <span style="color: dark">Mutual Funds</span>
-                <% end %>
-            </li>
+          <li class="nav-item">
+            <%= link_to dashboard_path, class: "nav-link" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-users">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <!-- todo -->
+            <span style="color: dark">Summary</span>
+            <% end %>
+          </li>
             <!-- broker(not implement functioin) -->
             <li class="nav-item">
                 <%= link_to dashboard_path, class: "nav-link" do %>
@@ -72,5 +70,52 @@
                 <% end %>
             </li>
         </ul>
-    </div>
+
+      </div>
+
+        <div style="background-color: pink">
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">Action</h6>
+          <ul class="nav flex-column" >
+            <!-- Transfer -->
+            <li class="nav-item">
+                <%= link_to new_transaction_path, class: "nav-link" do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-home">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <!-- todo -->
+                <span style="color: dark">Make a Transfer</span>
+                <% end %>
+            </li>
+            <li class="nav-item">
+                <%= link_to new_transaction_path, class: "nav-link" do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-home">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <!-- todo -->
+                <span style="color: dark">Setting</span>
+                <% end %>
+            </li>
+            <li class="nav-item">
+                <%= link_to new_transaction_path, class: "nav-link" do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-home">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <!-- todo -->
+                <span style="color: dark">Contact us</span>
+                <% end %>
+            </li>
+          </ul>
+      </div>
+      </div>
+
+
 </nav>
