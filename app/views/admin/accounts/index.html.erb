@@ -26,11 +26,12 @@
       <div class="btn-toolbar row mb-2 mb-md-0" style="width: 60%; position: relative; left: 30px;">
         <%= form_tag({controller: "generator", action: "generate_transactions"}, method: "post") do %>
           <%= number_field_tag 'how_many', 10, in: 1..100, step: 1 %>
-          Account 
+          Account(s)
           <%= select_tag 'account', options_for_select([["All", "All"]].concat(Account.all.map{ |a| [a.account_number, a.id]})) %>
-          Time Range 
-          From<%= date_field_tag 'start_date' %>
-          To<%= date_field_tag 'end_date' %>
+          Time Period
+          <% period_options = [["Recent month", "1 month"], ["Recent 3 months", "3 months"],
+                               ["Recent year", "1 year"], ["Recent 3 years", "3 years"]] %>
+          <%= select_tag 'period', options_for_select(period_options) %>
           <%= submit_tag "Generate Transactions" %>
         <% end %>
       </div>
