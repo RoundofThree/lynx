@@ -1,5 +1,5 @@
 class Admin::AccountsController < ApplicationController
-  before_action :set_account, only: %i[show edit update destroy]
+  #before_action :set_account, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, raise: false
   before_action :user_is_admin?
   # GET /admin/accounts (or .json)
@@ -36,7 +36,7 @@ class Admin::AccountsController < ApplicationController
 
   # GET /admin/accounts/1/edit
   def edit; end
-
+  
   # POST /admin/accounts
   def create
     @account = Account.new(account_params)
@@ -71,8 +71,8 @@ class Admin::AccountsController < ApplicationController
     redirect_to admin_accounts_url, notice: 'Account was successfully destroyed.'
   end
 
-  private
-
+  private 
+  
   # Use callbacks to share common setup or constraints between actions.
   def set_account
     @account = Account.find(params[:id])
@@ -82,4 +82,5 @@ class Admin::AccountsController < ApplicationController
   def account_params
     params.permit(:all)
   end
+
 end

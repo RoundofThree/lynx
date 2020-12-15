@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   # dashboard of logged in user
   get 'dashboard', to: 'dashboard#index'
+  
   # transaction generator
   get 'generator', to: 'generator#index'
   post 'generator/generate_transactions'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   end
   get 'admin', to: 'admin/dashboard#index'
   get 'admin/dashboard', to: 'admin/dashboard#index'
+  post 'admin/generator/generate_transactions' # transaction generator
 
   # Devise controllers
   devise_for :users, controllers: {

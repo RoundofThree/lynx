@@ -5,7 +5,7 @@
     <!-- Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
       <h1 class="h2">Accounts</h1>
-
+       
       <div class="btn-toolbar row mb-2 mb-md-0" style="width: 60%; position: relative; left: 30px;">
         <!-- Search/sort functionality -->
         <%= form_with url: admin_accounts_path, method: :get, local: true, class: "row mt-md-0 container-fluid" do |f| %>
@@ -19,7 +19,22 @@
         <button type="button" class="btn btn-sm btn-outline-secondary">Export as XLS</button>
       </div>
     </div>
-
+    
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <h3 class="h3">Transaction Generator Options</h3>
+       
+      <div class="btn-toolbar row mb-2 mb-md-0" style="width: 60%; position: relative; left: 30px;">
+        <%= form_tag({controller: "generator", action: "generate_transactions"}, method: "post") do %>
+          <%= number_field_tag 'how_many', 10, in: 1..100, step: 1 %>
+          Account 
+          <%= select_tag 'account', options_for_select([["All", "All"]].concat(Account.all.map{ |a| [a.account_number, a.id]})) %>
+          Time Range 
+          From<%= date_field_tag 'start_date' %>
+          To<%= date_field_tag 'end_date' %>
+          <%= submit_tag "Generate Transactions" %>
+        <% end %>
+      </div>
+    </div>
     <%= render 'admin/accounts/list', {accounts: @accounts} %>
 
   </main>
