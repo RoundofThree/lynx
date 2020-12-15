@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   # transactions can't be edited, updated or destroyed by normal user
   resources :transactions, only: %i[new create show]
 
+  # admin login, logout
+  get 'admin/login', to: 'admin/sessions#new'
+  post 'admin/login', to: 'admin/sessions#create'
+  delete 'admin/logout', to: 'admin/sessions#destroy'
+
   # admin module, full resources privileges for admin
   namespace :admin do
     resources :styles, :users, :accounts, :transactions
