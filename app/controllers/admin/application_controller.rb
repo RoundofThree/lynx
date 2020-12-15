@@ -7,7 +7,6 @@ module Admin
 
     def user_is_logged_in_admin?
       unless current_user && current_user.admin && admin_logged_in
-        puts session
         render_404
       end
     end
