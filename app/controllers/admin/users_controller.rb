@@ -51,13 +51,16 @@ class Admin::UsersController < ApplicationController
 
   # PATCH/PUT /admin/users/1
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        redirect_to admin_users_url, notice: 'User was successfully updated.'
-      else
-        flash[:error] = "Failed to save changes."
-        render :edit
-      end
+    if @user == current_user && params[:admin] == True 
+      flash[:error] = "Cannot change admin privileges for current user."
+      render :edit 
+      return 
+    end 
+    if @user.update(user_params)
+      redirect_to admin_users_url, notice: 'User was successfully updated.'
+    else
+      flash[:error] = "Failed to save changes."
+      render :edit
     end
   end
 
