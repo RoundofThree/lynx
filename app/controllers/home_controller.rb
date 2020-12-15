@@ -3,8 +3,7 @@ class HomeController < ApplicationController
   skip_before_action :authenticate_user!, raise: false
   before_action :redirect_logged_user, if: -> { current_user.present? }
 
-  def index
-  end
+  def index; end
 
   protected
 

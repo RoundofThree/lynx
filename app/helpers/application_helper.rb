@@ -12,4 +12,5 @@ module ApplicationHelper
             when :alert then "alert alert-error"
         end
     end
+  end
 end

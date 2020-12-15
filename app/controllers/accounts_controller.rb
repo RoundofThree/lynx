@@ -6,23 +6,17 @@ class AccountsController < ApplicationController
     @transactions = @account.transactions
   end
 
-  def new
-  end
+  def new; end
 
-  def create
-  end
+  def create; end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
-  
+  def update; end
+
   private
 
   def check_ownership
-    if current_user != Account.find(params[:id]).user
-      redirect_to dashboard_path, notice: "This account is not yours!"
-    end 
+    redirect_to dashboard_path, notice: 'This account is not yours!' if current_user != Account.find(params[:id]).user
   end
 end
