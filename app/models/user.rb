@@ -53,7 +53,7 @@ class User < ApplicationRecord
 
   # to test 
   def admin_passphrase_if_admin 
-    errors.add(:admin_passphrase_hash, 'Invalid') if admin && admin_passphrase_digest.blank?
+    errors.add(:admin_passphrase_digest, 'Invalid') if admin && admin_passphrase_digest.blank?
   end 
 
 end
