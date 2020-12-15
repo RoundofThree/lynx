@@ -14,9 +14,13 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   validate :validate_age # should be over 18 years old
   # database relations
+<<<<<<< HEAD
+=======
+
+  has_many :accounts, dependent: :destroy
+>>>>>>> 2db40ab068d1838fb9b566086ebe7d1c57cdadc6
   # before actions
   before_save :format_name
-  has_many :accounts, dependent: :destroy
 
   def self.search(keyword)
     if !keyword.blank?
@@ -47,11 +51,15 @@ class User < ApplicationRecord
 
   def validate_age
 <<<<<<< HEAD
+<<<<<<< HEAD
     if birth_date.present? && birth_date > DateTime.now.years_ago(18)
       errors.add(:birth_date, 'You should be over 18')
     end
 =======
     errors.add(:birth_date, 'You should be over 18') if birth_date.present? && birth_date > DateTime.now.years_ago(18)
 >>>>>>> main
+=======
+    errors.add(:birth_date, 'You should be over 18') if birth_date.present? && birth_date > DateTime.now.years_ago(18)
+>>>>>>> 2db40ab068d1838fb9b566086ebe7d1c57cdadc6
   end
 end

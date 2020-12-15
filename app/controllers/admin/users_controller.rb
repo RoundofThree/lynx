@@ -8,24 +8,6 @@ class Admin::UsersController < ApplicationController
     sort_users if !@users.empty?
   end
 
-
-  # sort users by last_sign_in_at, created_at
-  def sort_users
-    if params[:sort_by].present?
-      criteria = params[:sort_by]
-      if criteria == "last_sign_in_at"
-        @users = @users.order("last_sign_in_at desc")
-      elsif criteria == "last_created_at"
-        @users = @users.order("created_at desc")
-      else
-        @users = @users.order("created_at asc")
-      end
-    else # default sorting
-      @users = @users.order("last_sign_in_at desc")
-    end
-
-  end
-
   # sort users by last_sign_in_at, created_at
   def sort_users
     if params[:sort_by].present?
@@ -59,7 +41,8 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to admin_user_path(@user), notice: 'User was successfully created.' }
+        format.html { redirect_to admin_users_url, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -71,9 +54,11 @@ class Admin::UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to admin_user_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to admin_users_url, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -83,14 +68,18 @@ class Admin::UsersController < ApplicationController
     @user.destroy
     redirect_to admin_users_url, notice: 'User was successfully destroyed.'
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     end
 =======
 >>>>>>> main
+=======
+>>>>>>> 2db40ab068d1838fb9b566086ebe7d1c57cdadc6
   end
 
   private
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     # Only allow a list of trusted parameters through.
     def user_params
@@ -99,6 +88,8 @@ class Admin::UsersController < ApplicationController
          :address_line_1,:address_line_2)
     end
 =======
+=======
+>>>>>>> 2db40ab068d1838fb9b566086ebe7d1c57cdadc6
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
@@ -109,5 +100,9 @@ class Admin::UsersController < ApplicationController
     params.require(:user).permit(:firstname, :lastname, :email, :is_female,
                                  :phone, :birth_date, :password, :password_confirmation)
   end
+<<<<<<< HEAD
 end
 >>>>>>> main
+=======
+end
+>>>>>>> 2db40ab068d1838fb9b566086ebe7d1c57cdadc6
