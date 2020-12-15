@@ -1,64 +1,58 @@
-<body>
-<div class = "limiter">
-<%= stylesheet_link_tag "sign_in", :media => "all" %>
+<div class="container p-5" style = " display: flex; align-items: center;justify-content: center;">
 
-<div class="container-login100" width="100%">
-
-  <div class ="wrap-login100" width="100px">
+<!-- Main container for sign in -->
+  <div class ="box" width="120px" style=" border-radius:20px;border: 2px solid #01045d;">
   <div class="form-signin">
-    <div class="logo-item">
-      <img class="mb-4" src="/llogo.png" alt="" width="90" height="90">
+    <div class="logo-item" style = " display: flex; align-items: center;justify-content: center;">
+      <!-- TODO: /llogo.png -->
+      <img class="mt-3" src="/llogo.png" alt="" width="90" height="90">
     </div>
 
-    <span class ="login-title font-weight-bold p-b-34 p-t-20"> SIGN IN </span>
+    <p class =" font-weight-bold mt-3" style ="font-size:30px;text-align: center;color:#01045d;"> SIGN IN </p>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
       <div class ="container p-4">
-        <div class="form-group row">
-          <span style="font-size: 20px; color: Dodgerblue;">
-            <i class="fa fa-envelope  fa-xs" aria-hidden="true"></i>
+        <div class=" row p-3">
+          <span style="font-size: 20px;">
+            <i class="fa fa-envelope  fa-xs"></i>
           </span>
           <div class ="col-sm-10">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email",
-            :style=> "border-radius: 25px; width: 100%; background: #e6e6e6;line-height: 2.0;
+            :style=> "border-radius: 25px; width: 100%; ;line-height: 2.0;
              padding: 0 30px 0 20px;height: 30px;" %>
 
         </div>
           </div>
-        <div class="form-group row">
-          <span style="font-size: 25px; color: Dodgerblue;">
-            <i class="fa fa-lock  fa-xs" aria-hidden="true"></i>
+        <div class="row p-3">
+          <span style="font-size: 25px;">
+            <i class="fa fa-lock  fa-xs"></i>
           </span>
           <div class ="col-sm-10 ">
             <%= f.password_field :password, autocomplete: "current-password",placeholder: "Password",
-            :style=> "border-radius: 25px; width: 101%; background: #e6e6e6;line-height: 2.0;
+            :style=> "border-radius: 25px; width: 101%; line-height: 2.0;
             padding: 0 30px 0 20px; height: 30px;" %>
       </div>
             </div>
 
             <% if devise_mapping.rememberable? %>
-            <div class="checkbox100">
+            <div class ="mt-3">
               <%= f.check_box :remember_me%>
-              <%= f.label :Remember_Me, :style=>"color: #fff; font-size: 15px;
-              line-height:1.2; position: relative; padding-left:30px; cursor:pointer" %>
+              <%= f.label :Remember_Me, :style=>"color: #01045d; font-size: 15px;padding:3px" %>
             </div>
             <% end %>
 
 
-
-
     <div class="actions">
-      <%= f.submit "Log in", class:'btn btn-primary btn-lg',:style => "width: 90%;
-      border-color: #f90e67; margin:20px auto; text-align:center; cursor:pointer;
-      background-color:	#f90e67; border-radius:24px;" %>
+      <%= f.submit "Log in", class:'btn btn-primary btn-lg',:style => "width: 100%;
+      border-color: #f90e67; text-align:center;background-color:#f90e67; border-radius:24px;" %>
+    </div>
     </div>
     </div>
     <% end %>
 
-    <div class="field p-3">
+    <div class="p-5">
     <%= render "users/shared/links" %>
       </div>
   </div>
   </div>
 </div>
-</body>
