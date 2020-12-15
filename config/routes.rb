@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   # default page for not logged user
   root to: 'home#index'
   # dashboard of logged in user
@@ -8,9 +7,9 @@ Rails.application.routes.draw do
   get 'generator', to: 'generator#index'
   post 'generator/generate_transactions'
 
-  resources :accounts, only: [:show, :new, :create, :edit, :update]
-   # transactions can't be edited, updated or destroyed by normal user
-  resources :transactions, only: [:new, :create, :show]
+  resources :accounts, only: %i[show new create edit update]
+  # transactions can't be edited, updated or destroyed by normal user
+  resources :transactions, only: %i[new create show]
 
   # admin module, full resources privileges for admin
   namespace :admin do
