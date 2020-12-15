@@ -1,40 +1,42 @@
-<div class="row">
+
+<div class="container-fluid">
+  <div class="row">
     <%= render partial: "dashboard/navbar" %>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Personal dashboard</h1>
-        </div>
 
-        <!-- todo -->
-        <h3 style="color: dark">Personal Summary </h3>
-        <div class="table-responsive">
-          <ul>
-            <li>
-              NAME:
-              <input class="form-control" type="text" placeholder="<%= current_user.lastname + current_user.lastname %>" aria-label ="user name" readonly style="width:100">
-            </li>
-            <li>
-              EMAIL:
-              <input class="form-control" type="text" placeholder="<%= current_user.email %>" aria-label ="user name" readonly>
-            </li>
-            <li>
-              PHONE:
-              <input class="form-control" type="text" placeholder="<%= current_user.phone %>" aria-label ="user name" readonly>
-            </li>
-            <li>
-              BIRTH DATE:
-              <input class="form-control" type="text" placeholder="<%= current_user.birth_date %>" aria-label ="user name" readonly>
-            </li>
-            <li>
-              ACCOUNT NUMBER:
-              <input class="form-control" type="text" placeholder="<%= @accounts.length %>" aria-label ="user name" readonly>
-            </li>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <h2>Personal Summary</h2>
+        <div class="card mb" style="width: 25rem;">
+            <div class="card-header">
+              Personal information summary
+            </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span> Name: </span><%= current_user.lastname + " " + current_user.firstname %></li>
+            <li class="list-group-item"><span> Email: </span> <%= current_user.email %></li>
+            <li class="list-group-item"><span> PHONE: </span><%= current_user.phone %></li>
+            <li class="list-group-item"><span> BIRTH DATE: </span><%= current_user.birth_date %></li>
+            <li class="list-group-item"><span> ACCOUNT NUMBER: </span><%= @accounts.length %></li>
+            <li class="list-group-item"><span> TOTAL BALANCE: </span><%= @accounts.length %></li>
           </ul>
         </div>
-<!-- todo -->
-        <h3 style="color: dark">Account List </h3>
-        <div class="table-responsive">
+
+        <div class="list-group" style="width: 25rem; position:absolute; right:50px; top: 50px">
+          <a class="list-group-item list-group-item-action active">
+            Action List
+          </a>
+          <a>
+            <%= link_to new_transaction_path, class: "list-group-item list-group-item-action" do %>
+            Make a Transfer
+            <%end%>
+          </a>
+          <a class="list-group-item list-group-item-action">1</a>
+          <a class="list-group-item list-group-item-action">2</a>
+
+        </div>
+
+
+
+      <h3 style="color: dark">Account List </h3>
           <table class ="table"  summary="Accounts list">
             <tr class ="header">
               <th>AccountID</th>
@@ -43,10 +45,7 @@
             </tr>
               <%= render partial: "user_list", collection: @accounts, as: :account %>
           </table>
-        </div>
-
-
-
 
     </main>
+  </div>
 </div>
