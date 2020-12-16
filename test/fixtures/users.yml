@@ -40,3 +40,13 @@ admin:
   birth_date: <%= DateTime.new(1999) %>
   is_female: true
   admin: true
+
+one:
+  email: a@email.com
+  firstname: a
+  lastname: a
+  phone: "13333333333"
+  birth_date:  <%= DateTime.new(1999) %>
+  encrypted_password: <%= User.new.send(:password_digest, '1234567890') %>
+  is_female: true
+  encrypted_password: $2a$12$KuGb6SFMjXQWRnnwn0layuXH2bYWXjdDdbulRza8uWK.VaFe2.mda
