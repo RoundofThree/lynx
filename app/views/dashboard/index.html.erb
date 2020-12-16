@@ -5,13 +5,13 @@
 
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <h2>Personal Summary</h2>
+      <h2 style="color:blue">Personal Summary</h2>
+      <hr align=left width=400 SIZE=1>
         <div class="card mb" style="width: 25rem;">
             <div class="card-header">
-              Personal information summary
+              Personal Summary for <%= current_user.lastname + " " + current_user.firstname %>
             </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><span> Name: </span><%= current_user.lastname + " " + current_user.firstname %></li>
             <li class="list-group-item"><span> Email: </span> <%= current_user.email %></li>
             <li class="list-group-item"><span> PHONE: </span><%= current_user.phone %></li>
             <li class="list-group-item"><span> BIRTH DATE: </span><%= current_user.birth_date %></li>
@@ -20,7 +20,7 @@
           </ul>
         </div>
 
-        <div class="list-group" style="width: 25rem; position:absolute; right:50px; top: 50px">
+        <div class="list-group" style="width: 25rem; position:absolute; right:50px; top: 70px;">
           <a class="list-group-item list-group-item-action active">
             Action List
           </a>
@@ -29,22 +29,27 @@
             Make a Transfer
             <%end%>
           </a>
-          <a class="list-group-item list-group-item-action">1</a>
-          <a class="list-group-item list-group-item-action">2</a>
+          <a class="list-group-item list-group-item-action">Invest</a>
+          <a class="list-group-item list-group-item-action">Help</a>
+          <a class="list-group-item list-group-item-action">Contact us</a>
 
         </div>
 
+        <div style=" margin-top:50px">
+          <h3 style="color: dark">Account List </h3>
+              <table class ="table table-striped"  summary="Accounts list">
+                <tr class ="header">
+                  <th>AccountID</th>
+                  <th>Balance</th>
+                  <th>Action</th>
+                </tr>
+                  <%= render partial: "user_list", collection: @accounts, as: :account %>
+              </table>
+          </div>
 
 
-      <h3 style="color: dark">Account List </h3>
-          <table class ="table"  summary="Accounts list">
-            <tr class ="header">
-              <th>AccountID</th>
-              <th>Balance</th>
-              <th>Action</th>
-            </tr>
-              <%= render partial: "user_list", collection: @accounts, as: :account %>
-          </table>
+
+
 
     </main>
   </div>
