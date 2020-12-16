@@ -8,7 +8,7 @@ class Admin::AccountsController < ApplicationController
     sort_accounts if !@accounts.empty?
   end
 
-  # sort by created_at, updated_at 
+  # sort by created_at, updated_at
   def sort_accounts
     if params[:sort_by].present?
       criteria = params[:sort_by]
@@ -16,17 +16,17 @@ class Admin::AccountsController < ApplicationController
         @accounts = @accounts.order("created_at desc")
       elsif criteria == "first_created_at"
         @accounts = @accounts.order("created_at asc")
-      else 
+      else
         @accounts = @accounts.order("updated_at desc")
-      end 
-    else # default sorting 
+      end
+    else # default sorting
       @accounts = @accounts.order("updated_at desc")
-    end 
-  end 
+    end
+  end
 
   # GET /admin/accounts/1
   def show
-    @user = @account.user 
+    @user = @account.user
   end
 
   # GET /admin/accounts/new
@@ -55,7 +55,7 @@ class Admin::AccountsController < ApplicationController
       redirect_to @account, notice: 'Account was successfully updated.'
     else
       flash[:error] = "Failed to save changes."
-      render :edit 
+      render :edit
     end
   end
 
@@ -65,6 +65,7 @@ class Admin::AccountsController < ApplicationController
     redirect_to admin_accounts_url, notice: 'Account was successfully destroyed.'
   end
 
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -72,8 +73,10 @@ class Admin::AccountsController < ApplicationController
     @account = Account.find(params[:id])
   end
 
+
   # Only allow a list of trusted parameters through.
   def account_params
-    params.require(:account).permit(:balance, :account_number, :cvv, :expiry_date, :currency)
+    params.require(:account).permit(:balance, :account_number,
+      :cvv, :expiry_date, :currency,:user_id)
   end
 end

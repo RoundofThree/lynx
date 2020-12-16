@@ -20,18 +20,21 @@ class Account < ApplicationRecord
   def self.search(keyword)
     if !keyword.blank?
       accounts = self.where("account_number LIKE ?", "%#{keyword}%")
-      accounts  
-    else 
+      accounts
+    else
       self.all
-    end 
+    end
   end
-  
+
   private
 
   def assign_expiry_date
     not_rounded_date = Date.today + 4.years
     self.expiry_date = Date.new(not_rounded_date.year, not_rounded_date.month, -1) # The last day of that month
   end
+
+
+
 
   def not_expired
     if expiry_date > Date.today
@@ -40,6 +43,7 @@ class Account < ApplicationRecord
       errors.add(:expiry_date, 'Account is expired')
     end
   end
+
 
   def check_balance
     self.balance = 0.00 if new_record?
