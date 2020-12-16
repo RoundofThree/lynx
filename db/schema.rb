@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_12_14_123126) do
     t.integer "min_amount"
     t.integer "max_amount"
     t.integer "frequency"
+    t.boolean "is_vendor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
