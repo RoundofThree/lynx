@@ -14,17 +14,17 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     sign_out :user
   end
 
-  test "admin user should get users list" do 
+  test 'admin user should get users list' do
     sign_in users(:admin)
-    login_as_admin("abc")
+    login_as_admin('abc')
     get admin_users_url
     assert_response :success
-  end 
+  end
 
-  # test show 
-  test "admin user should get user details by any user" do 
+  # test show
+  test 'admin user should get user details by any user' do
     sign_in users(:admin)
-    login_as_admin("abc")
+    login_as_admin('abc')
     user = users(:have_one_account)
     get admin_user_url(user)
     assert_response :success
@@ -38,15 +38,14 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
 
   # test update (Yuxin)
 
-  # test destroy 
-  test "admin user should be able to destroy any user" do 
-    sign_in users(:admin) 
-    login_as_admin("abc")
+  # test destroy
+  test 'admin user should be able to destroy any user' do
+    sign_in users(:admin)
+    login_as_admin('abc')
     user = users(:have_one_account)
     assert_difference('User.count', -1) do
       delete admin_user_url(user)
     end
     assert_redirected_to admin_users_url
-  end 
-
+  end
 end
