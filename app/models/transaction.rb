@@ -15,18 +15,18 @@ class Transaction < ApplicationRecord
 
   def self.search(keyword)
     if !keyword.blank?
-      keyword = "%#{keyword.upcase}%" 
-      transactions = self.where("dealer_name LIKE ?", keyword)
-      transactions 
-    else 
-      self.all
-    end 
+      keyword = "%#{keyword.upcase}%"
+      where('dealer_name LIKE ?', keyword)
+
+    else
+      all
+    end
   end
 
   private
 
   def format_name
-    self.dealer_name = self.dealer_name.upcase
+    self.dealer_name = dealer_name.upcase
   end
 
   def currency_is_account_currency

@@ -19,10 +19,10 @@ class Account < ApplicationRecord
 
   def self.search(keyword)
     if !keyword.blank?
-      accounts = self.where("account_number LIKE ?", "%#{keyword}%")
-      accounts
+      where('account_number LIKE ?', "%#{keyword}%")
+
     else
-      self.all
+      all
     end
   end
 

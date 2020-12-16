@@ -1,17 +1,15 @@
 module Admin
   class ApplicationController < ApplicationController
-    include Admin::SessionsHelper 
+    include Admin::SessionsHelper
 
     skip_before_action :authenticate_user!, raise: false
     before_action :user_is_logged_in_admin?
 
     def user_is_logged_in_admin?
-      unless current_user && current_user.admin && admin_logged_in
-        render_404
-      end
+      render_404 unless current_user && current_user.admin && admin_logged_in
     end
 
-    private 
+    private
 
     def render_404
       # raise ActionController::RoutingError.new('Not Found')
