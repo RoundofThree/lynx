@@ -4,6 +4,8 @@
             <tr>
                 <th>No. </th>
                 <th>Account</th>
+                <th>Account owner</th>
+                <th>Dealer account</th>
                 <th>Dealer</th>
                 <th>Amount</th>
                 <th>Date</th> <!-- Ordering -->
@@ -14,10 +16,12 @@
             <% account = t.account %>
             <% user = account.user %>
             <tr>
-                <th scope="row"><%= i+1 %></td>
+                <th scope="row"><%= i+1 %></th>
                 <td><%= link_to account.account_number, admin_transaction_path(t) %></td>
                 <td><%= "#{user.firstname} #{user.lastname}" %></td>
-                <td><%= number_to_currency(t.amount, unit: t.currency, format: "%u %n") %></td>
+                <td><%= t.dealer_account_number %></td>
+                <td><%= t.dealer_name %></td>
+                <td class="<%= t.amount > 0 ? 'text-success' : 'text-danger' %>"><%= number_to_currency(t.amount, unit: t.currency, format: "%u %n") %></td>
                 <td><%= t.created_at %></td>
                 <td><%= link_to 'Edit', edit_admin_transaction_path(t) %></td>
                 <td><%= link_to 'Delete', admin_transaction_path(t), method: :delete, data: { confirm: 'Are you sure?' } %>

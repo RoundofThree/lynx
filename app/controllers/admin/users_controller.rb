@@ -1,8 +1,5 @@
-
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < Admin::ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, raise: false
-  before_action :user_is_admin?
   # GET /admin/users
   def index
     @users = User.search(params[:search])
@@ -15,7 +12,7 @@ class Admin::UsersController < ApplicationController
       criteria = params[:sort_by]
       if criteria == "last_sign_in_at"
         @users = @users.order("last_sign_in_at desc")
-      elsif criteria == "last_created_at"
+        else if criteria == "last_created_at"
         @users = @users.order("created_at desc")
       else
         @users = @users.order("created_at asc")
@@ -52,7 +49,10 @@ class Admin::UsersController < ApplicationController
 
   # PATCH/PUT /admin/users/1
   def update
-    if @user == current_user && params[:admin] == True
+
+    if @user == current_user && params[:admin] == true 
+  
+
       flash[:error] = "Cannot change admin privileges for current user."
       render :edit
       return
@@ -80,9 +80,11 @@ class Admin::UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
+    params[:user][:admin_passphrase_digest] = Digest::SHA2.hexdigest(params[:user][:admin_passphrase]) if !params[:user][:admin_passphrase].blank?
     params.require(:user).permit(:firstname, :lastname, :email, :is_female,
                                  :phone, :birth_date, :password, :password_confirmation,
-                                 :postcode, :address_line_1, :address_line_2, :country,
-                                 :admin)
+                                 :postcode, :address_line_1, :address_line_2, :country, 
+                                 :admin, :admin_passphrase_digest)
+
   end
 end

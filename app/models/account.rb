@@ -14,7 +14,7 @@ class Account < ApplicationRecord
   # validates :expiry_year, numericality: {less_than_or_equal_to: 2400}
   validates :cvv, presence: true, length: { in: 3...4 }
 
-  CURRENCY_TYPES = %w[GBP USD EUR CNY].freeze
+  CURRENCY_TYPES = %w[GBP USD EUR].freeze
   validates_inclusion_of :currency, in: CURRENCY_TYPES
 
   def self.search(keyword)
