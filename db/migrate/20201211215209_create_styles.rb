@@ -10,6 +10,8 @@ class CreateStyles < ActiveRecord::Migration[6.0]
       t.text :home_main_marketing_text_2
       t.string :home_main_marketing_message_3
       t.text :home_main_marketing_text_3
+      t.text :home_footer_md
+      t.string :home_background_color
       t.string :dashboard_color
       t.timestamps
     end

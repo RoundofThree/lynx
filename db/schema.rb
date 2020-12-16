@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
     t.text "home_main_marketing_text_2"
     t.string "home_main_marketing_message_3"
     t.text "home_main_marketing_text_3"
+    t.text "home_footer_md"
+    t.string "home_background_color"
     t.string "dashboard_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

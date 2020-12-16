@@ -84,6 +84,14 @@ module StyleHelper
       growing bit-by-bit until you’re ready to spend."
   end 
 
+  def home_footer_md 
+    current_style&.home_footer_md.presence || ""
+  end
+
+  def home_background_color
+    current_style&.home_background_color.presence || "#ffffff"
+  end
+
   # dashboard
   def dashboard_background_color
     current_style&.dashboard_color.presence || "gray"

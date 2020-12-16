@@ -38,6 +38,8 @@ class Admin::StylesController < ApplicationController
                                   :home_main_marketing_message_3,
                                   :home_main_marketing_text_3,
                                   :home_main_marketing_card_image_3,
+                                  :home_footer_md,
+                                  :home_background_color,
                                   :dashboard_color,
                                   :login_background_image)
   end

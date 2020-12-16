@@ -5,12 +5,19 @@
 <%= form_for styles, url: admin_styles_path, method: :put, html: {class: "col-8", style: "margin: 15px;"} do |f| %>
 
   <!-- TODO: Background color and font --> 
+  <!-- Background color --> 
+  <div class="form-group row">
+    <%= f.label :home_background_color, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.color_field :home_background_color, value: home_background_color, class: "form-control" %>
+    </div>
+  </div>
 
   <!-- Main marketing title --> 
   <div class="form-group row">
     <%= f.label :home_main_marketing_title, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= f.text_field :home_main_marketing_title, class: "form-control" %>
+      <%= f.text_field :home_main_marketing_title, value: home_main_marketing_title, class: "form-control" %>
     </div>
   </div>
 
@@ -18,7 +25,7 @@
   <div class="form-group row">
     <%= f.label :home_main_marketing_subtitle, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= f.text_field :home_main_marketing_subtitle, class: "form-control" %>
+      <%= f.text_field :home_main_marketing_subtitle, value: home_main_marketing_subtitle, class: "form-control" %>
     </div>
   </div>
 
@@ -37,7 +44,7 @@
   <div class="form-group row">
     <%= f.label :home_main_marketing_message_1, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= f.text_field :home_main_marketing_message_1, class: "form-control" %>
+      <%= f.text_field :home_main_marketing_message_1, value: home_main_marketing_message_1, class: "form-control" %>
     </div>
   </div>
 
@@ -45,7 +52,7 @@
   <div class="form-group row">
     <%= f.label :home_main_marketing_text_1, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= f.text_area :home_main_marketing_text_1, class: "form-control" %>
+      <%= f.text_area :home_main_marketing_text_1, value: home_main_marketing_text_1, class: "form-control" %>
     </div>
   </div>
 
@@ -64,7 +71,7 @@
   <div class="form-group row">
     <%= f.label :home_main_marketing_message_2, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= f.text_field :home_main_marketing_message_2, class: "form-control" %>
+      <%= f.text_field :home_main_marketing_message_2, value: home_main_marketing_message_2, class: "form-control" %>
     </div>
   </div>
 
@@ -72,7 +79,7 @@
   <div class="form-group row">
     <%= f.label :home_main_marketing_text_2, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= f.text_area :home_main_marketing_text_2, class: "form-control" %>
+      <%= f.text_area :home_main_marketing_text_2, value: home_main_marketing_text_2, class: "form-control" %>
     </div>
   </div>
 
@@ -91,7 +98,7 @@
   <div class="form-group row">
     <%= f.label :home_main_marketing_message_3, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= f.text_field :home_main_marketing_message_3, class: "form-control" %>
+      <%= f.text_field :home_main_marketing_message_3, value: home_main_marketing_message_3, class: "form-control" %>
     </div>
   </div>
 
@@ -99,7 +106,7 @@
   <div class="form-group row">
     <%= f.label :home_main_marketing_text_3, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= f.text_area :home_main_marketing_text_3, class: "form-control" %>
+      <%= f.text_area :home_main_marketing_text_3, value: home_main_marketing_text_3, class: "form-control" %>
     </div>
   </div>
 
@@ -112,9 +119,13 @@
     </div>
   </div>
 
-  <!-- Add more marketing cards --> 
-
   <!-- Footer free style message --> 
+  <div class="form-group row">
+    <%= f.label :home_footer_md, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_area :home_footer_md, class: "form-control" %>
+    </div>
+  </div>
 
   <!-- including links --> 
 
