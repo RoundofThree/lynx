@@ -90,6 +90,27 @@ class UserTest < ActiveSupport::TestCase
     user.save
 
     assert_not user2.valid?
+  end 
 
+  # searching tests
+  test "searching should return the users with the keyword as a case-insensitive substring of either firstname or lastname" do
+    results = User.search("JiAnG")
+    assert_equal 1, results.size
+    assert_equal users(:have_two_accounts), results[0]
   end
+
+  test "searching should return an empty list if there are no matching users" do
+    results = User.search("geeky")
+    assert_equal 0, results.size
+  end
+
+  test "searching without keyword should return the whole list of users" do
+    results = User.search("")
+    assert_equal users(:have_two_accounts), results[0]
+    assert_equal users(:have_one_account), results[1]
+    assert_equal users(:have_no_accounts), results[2]
+    assert_equal users(:admin), results[3]
+  end
+
+
 end
