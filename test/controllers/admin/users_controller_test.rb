@@ -16,6 +16,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "admin user should get users list" do 
     sign_in users(:admin)
+    login_as_admin("abc")
     get admin_users_url
     assert_response :success
   end 
@@ -23,6 +24,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   # test show 
   test "admin user should get user details by any user" do 
     sign_in users(:admin)
+    login_as_admin("abc")
     user = users(:have_one_account)
     get admin_user_url(user)
     assert_response :success
@@ -39,6 +41,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   # test destroy 
   test "admin user should be able to destroy any user" do 
     sign_in users(:admin) 
+    login_as_admin("abc")
     user = users(:have_one_account)
     assert_difference('User.count', -1) do
       delete admin_user_url(user)
