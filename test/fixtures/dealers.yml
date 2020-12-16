@@ -7,6 +7,7 @@ one:
   min_amount: 2
   max_amount: 30
   frequency: 10
+  is_vendor: true
 
 two:
   currency: GBP
@@ -15,6 +16,7 @@ two:
   min_amount: 2
   max_amount: 20
   frequency: 5
+  is_vendor: true
 
 three:
   currency: GBP
@@ -23,5 +25,6 @@ three:
   min_amount: 50
   max_amount: 2000
   frequency: 1
+  is_vendor: true
 
 

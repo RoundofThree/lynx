@@ -9,6 +9,7 @@ class CreateDealers < ActiveRecord::Migration[6.0]
       # how many times would a person deal with 
       # this dealer during 100 days
       t.integer :frequency
+      t.boolean :is_vendor
 
       t.timestamps
     end

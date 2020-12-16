@@ -7,7 +7,8 @@ class InsertDealers < ActiveRecord::Migration[6.0]
         account_number: "00001000010001",
         min_amount: 2,
         max_amount: 30,
-        frequency: 10
+        frequency: 10,
+        is_vendor: true
       },
       {
         currency: "GBP",
@@ -15,7 +16,8 @@ class InsertDealers < ActiveRecord::Migration[6.0]
         account_number: "00001000010002",
         min_amount: 2,
         max_amount: 20,
-        frequency: 5
+        frequency: 5,
+        is_vendor: true
       }, 
       {
         currency: "GBP",
@@ -23,7 +25,8 @@ class InsertDealers < ActiveRecord::Migration[6.0]
         account_number: "00001000010003",
         min_amount: 50,
         max_amount: 2000,
-        frequency: 1
+        frequency: 1,
+        is_vendor: true
       },
       {
         currency: "USD",
@@ -31,7 +34,8 @@ class InsertDealers < ActiveRecord::Migration[6.0]
         account_number: "00001000010004",
         min_amount: 4,
         max_amount: 30,
-        frequency: 6
+        frequency: 6,
+        is_vendor: true
       }]
     )
   end
