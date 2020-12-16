@@ -12,11 +12,11 @@
               Personal Summary for <span style="font-weight:bold"><%= current_user.lastname + " " + current_user.firstname %></span>
             </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><span> Email: </span>  <span style="float:right;font-weight:bold"><%= current_user.email %></span></li>
+            <li class="list-group-item"><span> EMAIL: </span>  <span style="float:right;font-weight:bold"><%= current_user.email %></span></li>
             <li class="list-group-item"><span> PHONE: </span><span style="float:right;font-weight:bold"><%= current_user.phone %></span></li>
-            <li class="list-group-item"><span> BIRTH DATE: </span><span style="float:right;font-weight:bold"><%= current_user.birth_date %></span></li>
+            <li class="list-group-item"><span> BIRTH DATE: </span><span style="float:right;font-weight:bold"><%= (current_user.birth_date).strftime("%d/%m/%Y") %></span></li>
             <li class="list-group-item"><span> ACCOUNT NUMBER: </span><span style="float:right;font-weight:bold"><%= @accounts.length %></span></li>
-            <li class="list-group-item"><span> TOTAL BALANCE: </span><span style="float:right;font-weight:bold"><%= total_balance %></span></li>
+            <li class="list-group-item"><span> TOTAL BALANCE: </span><span style="float:right;font-weight:bold"><%="€ " + total_balance_EUR.to_s + " +￡ " + total_balance_GBP.to_s + " + $ " + total_balance_USD.to_s %></span></li>
           </ul>
         </div>
 
