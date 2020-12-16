@@ -32,6 +32,17 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   # test new (Yuxin)
+  test "admin user should be able to create an account " do
+    user = users(:admin)
+    sign_in user
+    account = accounts(:one)
+
+    assert_difference('Account.count') do
+      post admin_accounts_url, params: { account: {account_number: account.account_number, user: account.user, balance: account.balance,
+                                    cvv: account.cvv, currency: account.balance,  expiry_date: account.expiry_date}}
+    end
+    assert_redirected_to [:admin, Account.last]
+  end
 
   # test create (Yuxin)
 
@@ -40,11 +51,11 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
   # test update (Yuxin)
 
 
-  # test destroy 
-  test "admin user should be able to destroy any account" do 
-    sign_in users(:admin) 
+  # test destroy
+  test "admin user should be able to destroy any account" do
+    sign_in users(:admin)
     login_as_admin("abc")
-    account = accounts(:one) 
+    account = accounts(:one)
 
     assert_difference('Account.count', -1) do
       delete admin_account_url(account)
