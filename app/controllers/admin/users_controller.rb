@@ -12,7 +12,7 @@ class Admin::UsersController < Admin::ApplicationController
       criteria = params[:sort_by]
       if criteria == "last_sign_in_at"
         @users = @users.order("last_sign_in_at desc")
-        else if criteria == "last_created_at"
+      elsif criteria == "last_created_at"
         @users = @users.order("created_at desc")
       else
         @users = @users.order("created_at asc")
@@ -38,6 +38,7 @@ class Admin::UsersController < Admin::ApplicationController
   # POST /admin/users
   def create
     @user = User.new(user_params)
+    respond_to do |format|
       if @user.save
         format.html { redirect_to [:admin, User.last], notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
@@ -45,25 +46,24 @@ class Admin::UsersController < Admin::ApplicationController
         flash[:error] = "Error in creating user."
         render :new
       end
+    end
   end
 
   # PATCH/PUT /admin/users/1
   def update
-
-    if @user == current_user && params[:admin] == true 
-  
-
+    if @user == current_user && params[:admin] == true
       flash[:error] = "Cannot change admin privileges for current user."
       render :edit
       return
     end
     if @user.update(user_params)
-      redirect_to [:admin, User.last], notice: 'User was successfully updated.'
+      redirect_to admin_user_path(@user), notice: 'User was successfully updated.'
     else
       flash[:error] = "Failed to save changes."
       render :edit
     end
-  end
+
+end
 
   # DELETE /admin/users/1
   def destroy
@@ -83,7 +83,7 @@ class Admin::UsersController < Admin::ApplicationController
     params[:user][:admin_passphrase_digest] = Digest::SHA2.hexdigest(params[:user][:admin_passphrase]) if !params[:user][:admin_passphrase].blank?
     params.require(:user).permit(:firstname, :lastname, :email, :is_female,
                                  :phone, :birth_date, :password, :password_confirmation,
-                                 :postcode, :address_line_1, :address_line_2, :country, 
+                                 :postcode, :address_line_1, :address_line_2, :country,
                                  :admin, :admin_passphrase_digest)
 
   end
