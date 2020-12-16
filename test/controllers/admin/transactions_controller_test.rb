@@ -16,6 +16,7 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
 
   test "admin user should get transactions list" do 
     sign_in users(:admin)
+    login_as_admin("abc")
     get admin_transactions_url
     assert_response :success
     sign_out :user
@@ -24,6 +25,7 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
   # test show 
   test "admin user should get transaction details by any user" do 
     sign_in users(:admin)
+    login_as_admin("abc")
     tx = transactions(:one)
     get admin_transaction_url(tx)
     assert_response :success
@@ -40,6 +42,7 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
   # test destroy 
   test "admin user should be able to destroy any transaction" do 
     sign_in users(:admin)
+    login_as_admin("abc")
     tx = transactions(:one)
     assert_difference('Transaction.count', -1) do
       delete admin_transaction_url(tx)

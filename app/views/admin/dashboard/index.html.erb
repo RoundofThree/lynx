@@ -21,7 +21,7 @@
                 <tbody>
                     <% @users.each_with_index do |u, i| %>
                     <tr>
-                    <th scope="row"><%= i+1 %></td>
+                    <th scope="row"><%= i+1 %></th>
                     <td><%= link_to u.firstname, admin_user_path(u) %></td>
                     <td><%= link_to u.lastname, admin_user_path(u) %></td>
                     <td><%= u.last_sign_in_at %></td>
@@ -47,7 +47,7 @@
                 <tbody>
                     <% @accounts.each_with_index do |a, i| %>
                     <tr>
-                    <th scope="row"><%= i+1 %></td>
+                    <th scope="row"><%= i+1 %></th>
                     <td><%= link_to a.account_number, admin_account_path(a) %></td>
                     <td><%= "#{a.user.firstname} #{a.user.lastname}" %></td>
                     <td><%= number_to_currency(a.balance, unit: a.currency, format: "%u %n") %></td>
@@ -66,7 +66,7 @@
                         <th>No. </th>
                         <th>Account</th>
                         <th>Dealer</th>
-                        <th>Amount</th> 
+                        <th>Amount</th>
                         <th>Date</th> <!-- Ordering -->
                     </tr>
                 </thead>
@@ -75,7 +75,7 @@
                     <% account = t.account %>
                     <% user = account.user %>
                     <tr>
-                    <th scope="row"><%= i+1 %></td>
+                    <th scope="row"><%= i+1 %></th>
                     <td><%= link_to account.account_number, admin_transaction_path(t) %></td>
                     <td><%= "#{user.firstname} #{user.lastname}" %></td>
                     <td><%= number_to_currency(t.amount, unit: t.currency, format: "%u %n") %></td>

@@ -1,7 +1,5 @@
-class Admin::AccountsController < ApplicationController
+class Admin::AccountsController < Admin::ApplicationController
   before_action :set_account, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, raise: false
-  before_action :user_is_admin?
   # GET /admin/accounts (or .json)
   def index
     @accounts = Account.search(params[:search]) # maybe search by name of user?

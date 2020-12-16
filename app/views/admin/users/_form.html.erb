@@ -107,14 +107,13 @@
         <%= form.text_field :address_line_1,style:"line-height: 50px;
     border-radius: 5px;padding: 0 20px;" %>
       </div>
-      <div class = "col">
 
-      <div class="field">
+      <div class = "col">
         <%= form.label :address_line_2, class: "label"%>
         <%= form.text_field :address_line_2,style:"line-height: 50px;
       border-radius: 5px;padding: 0 20px;" %>
       </div>
-      </div>
+
     </div>
 
     <!-- Whether admin or not, cannot change if it's the current user --> 
@@ -122,7 +121,17 @@
       <div class = "col">
         <%= form.label :admin %>
         <%= form.check_box :admin, disabled: user == current_user %>
+      </div>
+
+      <div class="col">
+        <%= form.label :admin_passphrase %>
+        <%= form.password_field :admin_passphrase, style: "line-height: 50px;
+        border-radius: 5px;padding: 0 20px;" %> 
+      </div> 
+      
     </div>
+
+
 
 
   <div class="actions">

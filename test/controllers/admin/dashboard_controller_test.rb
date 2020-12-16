@@ -17,6 +17,7 @@ class Admin::DashboardControllerTest < ActionDispatch::IntegrationTest
 
   test 'admin user should get admin dashboard' do
     sign_in users(:admin)
+    login_as_admin("abc")
     get admin_dashboard_url
     assert_response :success
     sign_out :user
