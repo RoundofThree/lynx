@@ -1,10 +1,7 @@
 module StyleHelper
+  # general
   def bank_name
-    current_style&.bank_name.presence || "Lynx"
-  end
-
-  def dashboard_background_color
-    current_style&.dashboard_color.presence || "gray"
+    current_style&.bank_name.presence || "Lynx Bank"
   end
 
   def header_logo
@@ -15,6 +12,84 @@ module StyleHelper
     end
   end
 
+  # homepage 
+  def home_main_marketing_image
+    if current_style.home_main_marketing_image.attached?
+      url_for(current_style.home_main_marketing_image)
+    else
+      "/bank1.jpg"
+    end
+  end
+
+  def home_main_marketing_title
+    current_style&.home_main_marketing_title.presence || "Make Money move."
+  end 
+
+  def home_main_marketing_subtitle
+    current_style&.home_main_marketing_subtitle.presence || "Open a Checking or Saving Account today!"
+  end 
+
+  def home_main_marketing_message_1
+    current_style&.home_main_marketing_message_1.presence || "Build your savings without even trying."
+  end 
+
+  def home_main_marketing_card_image_1 
+    if current_style.home_main_marketing_card_image_1.attached?
+      url_for(current_style.home_main_marketing_card_image_1)
+    else
+      "/savings.jpg"
+    end
+  end 
+
+  def home_main_marketing_text_1
+    current_style&.home_main_marketing_text_1.presence || "Turn on Round-up Rules and start saving up effortlessly. Whenever you make a purchase, Simple will
+    round up what you spend to the next whole dollar amount. When the “change” from those transactions reaches or
+    exceeds $5, Simple transfers it to your Protected Goals Account — so easy you won’t even feel it. It’s like a
+    digital change jar... one that adds up to real money in the bank."
+  end 
+
+  def home_main_marketing_message_2
+    current_style&.home_main_marketing_message_2.presence || "Make plans for what to do, not what’s due."
+  end 
+
+  def home_main_marketing_card_image_2
+    if current_style.home_main_marketing_card_image_2.attached?
+      url_for(current_style.home_main_marketing_card_image_2)
+    else
+      "/plan.jpg"
+    end
+  end 
+
+  def home_main_marketing_text_2
+    current_style&.home_main_marketing_text_2.presence || "Set up your recurring expenses in our app, and we'll do the work of saving for them each month.
+      When you know your bills are covered, you can focus on the fun parts of having money—like saving for a trip to
+      Japan and buying that new bike."
+  end 
+
+  def home_main_marketing_message_3
+    current_style&.home_main_marketing_message_3.presence || "Save toward your goals, automatically."
+  end 
+
+  def home_main_marketing_card_image_3
+    if current_style.home_main_marketing_card_image_3.attached?
+      url_for(current_style.home_main_marketing_card_image_3)
+    else
+      "/success.jpg"
+    end
+  end 
+
+  def home_main_marketing_text_3
+    current_style&.home_main_marketing_text_3.presence || "Goals make it easy to save for the things you want or want to do. There’s no need for
+      spreadsheets or extra apps to budget and track your money. It’s right there inside your Simple checking account,
+      growing bit-by-bit until you’re ready to spend."
+  end 
+
+  # dashboard
+  def dashboard_background_color
+    current_style&.dashboard_color.presence || "gray"
+  end
+
+  # login 
   def login_background_image
     if current_style.login_background_image.attached?
       url_for(current_style.login_background_image)

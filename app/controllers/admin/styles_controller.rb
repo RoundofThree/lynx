@@ -17,7 +17,7 @@ class Admin::StylesController < ApplicationController
   end
 
   private
-  # Always the first row
+  # Always the first row and the only row
   def set_styles
     @styles = Style.first
   end
@@ -26,6 +26,18 @@ class Admin::StylesController < ApplicationController
   def styles_params
     params.require(:style).permit(:bank_name,
                                   :header_logo,
+                                  :home_main_marketing_image,
+                                  :home_main_marketing_title,
+                                  :home_main_marketing_subtitle,
+                                  :home_main_marketing_message_1,
+                                  :home_main_marketing_text_1,
+                                  :home_main_marketing_card_image_1,
+                                  :home_main_marketing_message_2,
+                                  :home_main_marketing_text_2,
+                                  :home_main_marketing_card_image_2,
+                                  :home_main_marketing_message_3,
+                                  :home_main_marketing_text_3,
+                                  :home_main_marketing_card_image_3,
                                   :dashboard_color,
                                   :login_background_image)
   end

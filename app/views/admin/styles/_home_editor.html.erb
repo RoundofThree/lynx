@@ -4,5 +4,119 @@
 </div>
 <%= form_for styles, url: admin_styles_path, method: :put, html: {class: "col-8", style: "margin: 15px;"} do |f| %>
 
+  <!-- TODO: Background color and font --> 
+
+  <!-- Main marketing title --> 
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_title, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :home_main_marketing_title, class: "form-control" %>
+    </div>
+  </div>
+
+  <!-- Main marketing subtitle --> 
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_subtitle, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :home_main_marketing_subtitle, class: "form-control" %>
+    </div>
+  </div>
+
+  <!-- Main marketing image -->
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_image, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= image_tag home_main_marketing_image, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
+      <%= f.file_field :home_main_marketing_image, class: "form-control-file" %>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Main marketing message 1 -->
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_message_1, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :home_main_marketing_message_1, class: "form-control" %>
+    </div>
+  </div>
+
+  <!-- Main marketing text 1 -->
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_text_1, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_area :home_main_marketing_text_1, class: "form-control" %>
+    </div>
+  </div>
+
+  <!-- Main marketing card image 1 -->
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_card_image_1, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= image_tag home_main_marketing_card_image_1, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
+      <%= f.file_field :home_main_marketing_card_image_1, class: "form-control-file" %>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Main marketing message 2 -->
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_message_2, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :home_main_marketing_message_2, class: "form-control" %>
+    </div>
+  </div>
+
+  <!-- Main marketing text 2 -->
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_text_2, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_area :home_main_marketing_text_2, class: "form-control" %>
+    </div>
+  </div>
+
+  <!-- Main marketing card image 2 -->
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_card_image_2, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= image_tag home_main_marketing_card_image_2, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
+      <%= f.file_field :home_main_marketing_card_image_2, class: "form-control-file" %>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Main marketing message 3 -->
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_message_3, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :home_main_marketing_message_3, class: "form-control" %>
+    </div>
+  </div>
+
+  <!-- Main marketing text 3 -->
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_text_3, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_area :home_main_marketing_text_3, class: "form-control" %>
+    </div>
+  </div>
+
+  <!-- Main marketing card image 3 -->
+  <div class="form-group row">
+    <%= f.label :home_main_marketing_card_image_3, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= image_tag home_main_marketing_card_image_3, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
+      <%= f.file_field :home_main_marketing_card_image_3, class: "form-control-file" %>
+    </div>
+  </div>
+
+  <!-- Add more marketing cards --> 
+
+  <!-- Footer free style message --> 
+
+  <!-- including links --> 
+
   <%= f.submit class: "btn btn-outline-info" %>
 <% end %>
