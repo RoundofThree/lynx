@@ -117,6 +117,14 @@
       </div>
     </div>
 
+    <!-- Whether admin or not, cannot change if it's the current user --> 
+    <div class = "row" style="margin-bottom: 40px;">
+      <div class = "col">
+        <%= form.label :admin %>
+        <%= form.check_box :admin, disabled: user == current_user %>
+    </div>
+
+
   <div class="actions">
     <%= form.submit class: "btn btn-outline-primary"%>
   </div>

@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, raise: false
   before_action :user_is_admin?
-  # GET /admin/users (or .json)
+  # GET /admin/users
   def index
     @users = User.search(params[:search])
     sort_users if !@users.empty?
@@ -26,7 +26,8 @@ class Admin::UsersController < ApplicationController
   end
 
   # GET /admin/users/1
-  def show; end
+  def show
+  end
 
   # GET /admin/users/new
   def new
@@ -34,33 +35,33 @@ class Admin::UsersController < ApplicationController
   end
 
   # GET /admin/users/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /admin/users
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
       if @user.save
         format.html { redirect_to [:admin, User.last], notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        flash[:error] = "Error in creating user."
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /admin/users/1
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to [:admin, User.last], notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user == current_user && params[:admin] == True
+      flash[:error] = "Cannot change admin privileges for current user."
+      render :edit
+      return
+    end
+    if @user.update(user_params)
+      redirect_to [:admin, User.last], notice: 'User was successfully updated.'
+    else
+      flash[:error] = "Failed to save changes."
+      render :edit
     end
   end
 
@@ -80,6 +81,8 @@ class Admin::UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:firstname, :lastname, :email, :is_female,
-                                 :phone, :birth_date, :password, :password_confirmation)
+                                 :phone, :birth_date, :password, :password_confirmation,
+                                 :postcode, :address_line_1, :address_line_2, :country,
+                                 :admin)
   end
 end
