@@ -1,4 +1,4 @@
-class Admin::StylesController < ApplicationController
+class Admin::StylesController < Admin::ApplicationController
   skip_before_action :authenticate_user!, raise: false
   before_action :user_is_admin?
   before_action :set_styles

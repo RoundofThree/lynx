@@ -15,7 +15,10 @@
     <% else %>
     <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger mr-1" %>
     <% if current_user.admin %>
-    <%= link_to "Admin Area", admin_dashboard_path, class: "btn btn-outline-dark" %>
+    <%= link_to "Admin Area", admin_login_path, class: "btn btn-outline-dark" %>
+    <% if admin_logged_in %>
+        <%= link_to "Logout as admin", admin_logout_path, method: :delete, class: "btn btn-outline-danger ml-1" %>
+    <% end %>
     <% end %>
     <% end %>
 

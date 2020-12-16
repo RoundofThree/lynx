@@ -12,7 +12,7 @@
         <tbody>
             <% accounts.each_with_index do |a, i| %>
             <tr>
-                <th scope="row"><%= i+1 %></td>
+                <th scope="row"><%= i+1 %></th>
                 <td><%= link_to a.account_number, admin_account_path(a) %></td>
                 <td><%= "#{a.user.firstname} #{a.user.lastname}" %></td>
                 <td><%= number_to_currency(a.balance, unit: a.currency, format: "%u %n") %></td>

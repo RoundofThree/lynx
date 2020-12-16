@@ -14,16 +14,18 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     sign_out :user
   end
 
-  test "admin user should get transactions list" do 
+  test 'admin user should get transactions list' do
     sign_in users(:admin)
+    login_as_admin('abc')
     get admin_transactions_url
     assert_response :success
     sign_out :user
-  end 
+  end
 
-  # test show 
-  test "admin user should get transaction details by any user" do 
+  # test show
+  test 'admin user should get transaction details by any user' do
     sign_in users(:admin)
+    login_as_admin('abc')
     tx = transactions(:one)
     get admin_transaction_url(tx)
     assert_response :success
@@ -37,14 +39,14 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
 
   # test update (Yuxin)
 
-  # test destroy 
-  test "admin user should be able to destroy any transaction" do 
+  # test destroy
+  test 'admin user should be able to destroy any transaction' do
     sign_in users(:admin)
+    login_as_admin('abc')
     tx = transactions(:one)
     assert_difference('Transaction.count', -1) do
       delete admin_transaction_url(tx)
     end
     assert_redirected_to admin_transactions_url
-  end 
-
+  end
 end
