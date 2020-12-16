@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
 
   create_table "styles", force: :cascade do |t|
     t.string "bank_name"
+    t.string "font_family"
     t.string "home_main_marketing_title"
     t.string "home_main_marketing_subtitle"
     t.string "home_main_marketing_message_1"
@@ -59,7 +60,10 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
     t.string "home_main_marketing_message_3"
     t.text "home_main_marketing_text_3"
     t.text "home_footer_md"
+    t.string "home_footer_text_color"
     t.string "home_background_color"
+    t.text "home_links_1"
+    t.text "home_links_2"
     t.string "dashboard_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

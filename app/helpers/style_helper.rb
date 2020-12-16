@@ -12,6 +12,10 @@ module StyleHelper
     end
   end
 
+  def font_family 
+    current_style&.font_family.presence || '"Assistant"'
+  end 
+
   # homepage 
   def home_main_marketing_image
     if current_style.home_main_marketing_image.attached?
@@ -88,8 +92,22 @@ module StyleHelper
     current_style&.home_footer_md.presence || ""
   end
 
+  def home_footer_text_color
+    current_style&.home_footer_text_color.presence || "#02376D"
+  end
+
   def home_background_color
     current_style&.home_background_color.presence || "#ffffff"
+  end
+
+  def home_links_1
+    # first one is title
+    current_style&.home_links_1.presence || ['Products', 'Bank account', 'Savings', 'Mortgage', 'Personal Loans', 'Credit Cards']
+  end
+
+  def home_links_2
+    # first one is title
+    current_style&.home_links_2.presence || ['Support & Security', 'Help and Support', 'Security and fraud', 'Accessibility', 'Online Terms and Services']
   end
 
   # dashboard

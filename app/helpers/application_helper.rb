@@ -3,6 +3,18 @@ module ApplicationHelper
     Kramdown::Document.new(markdown, parse_block_html: true).to_html 
   end 
 
+  def serialize(arr)
+    arr.join(",")
+  end 
+
+  def deserialize(input)
+    if input.blank?
+      []
+    else
+      input.split(/\s*,\s*/)
+    end 
+  end 
+
   # flash classes overriden with boostrap styles 
   def flash_class(level)
     case level

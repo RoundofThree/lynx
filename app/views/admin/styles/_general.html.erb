@@ -11,6 +11,13 @@
   </div>
 
   <div class="form-group row">
+    <%= f.label :font_family, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.select :font_family, options_for_select(['"Merryweather"', '"Assistant"', '"Lato"', '"Abhaya Libre"', '"Open Sans"'], font_family), {}, {class: "form-control"} %>
+    </div>
+  </div>
+
+  <div class="form-group row">
     <%= f.label :header_logo, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
       <%= image_tag header_logo, style: "height: 160px; width: auto; margin-bottom: 5px;" %>

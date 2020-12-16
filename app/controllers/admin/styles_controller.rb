@@ -1,6 +1,4 @@
 class Admin::StylesController < Admin::ApplicationController
-  skip_before_action :authenticate_user!, raise: false
-  before_action :user_is_admin?
   before_action :set_styles
 
   # GET /admin/styles/edit
@@ -24,8 +22,13 @@ class Admin::StylesController < Admin::ApplicationController
 
   # all customizable elements
   def styles_params
+    params[:style][:home_links_1] = deserialize(params[:style][:home_links_1]) if params[:style][:home_links_1].present?
+    params[:style][:home_links_1] = [] if params[:style][:home_links_1].blank?
+    params[:style][:home_links_2] = deserialize(params[:style][:home_links_2]) if params[:style][:home_links_2].present?
+    params[:style][:home_links_2] = [] if params[:style][:home_links_2].blank?
     params.require(:style).permit(:bank_name,
                                   :header_logo,
+                                  :font_family,
                                   :home_main_marketing_image,
                                   :home_main_marketing_title,
                                   :home_main_marketing_subtitle,
@@ -39,9 +42,12 @@ class Admin::StylesController < Admin::ApplicationController
                                   :home_main_marketing_text_3,
                                   :home_main_marketing_card_image_3,
                                   :home_footer_md,
+                                  :home_footer_text_color,
                                   :home_background_color,
                                   :dashboard_color,
-                                  :login_background_image)
+                                  :login_background_image,
+                                  :home_links_1 => [],
+                                  :home_links_2 => [])
   end
 
 end

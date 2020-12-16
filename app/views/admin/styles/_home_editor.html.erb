@@ -4,7 +4,6 @@
 </div>
 <%= form_for styles, url: admin_styles_path, method: :put, html: {class: "col-8", style: "margin: 15px;"} do |f| %>
 
-  <!-- TODO: Background color and font --> 
   <!-- Background color --> 
   <div class="form-group row">
     <%= f.label :home_background_color, class: "col-sm-4 col-form-label" %>
@@ -127,7 +126,28 @@
     </div>
   </div>
 
-  <!-- including links --> 
+  <!-- Footer links -->
+  <div class="form-group row">
+    <%= f.label :home_links_1, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_area :home_links_1, placeholder: "Separate links with a comma", value: serialize(home_links_1), class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :home_links_2, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_area :home_links_2, placeholder: "Separate links with a comma", value: serialize(home_links_2), class: "form-control" %>
+    </div>
+  </div>
+
+  <!-- Footer text color -->
+  <div class="form-group row">
+    <%= f.label :home_footer_text_color, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.color_field :home_footer_text_color, value: home_footer_text_color, class: "form-control" %>
+    </div>
+  </div>
 
   <%= f.submit class: "btn btn-outline-info" %>
 <% end %>
