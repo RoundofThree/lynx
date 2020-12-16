@@ -7,16 +7,16 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <h2 style="color:blue">Personal Summary</h2>
       <hr align=left width=400 SIZE=1>
-        <div class="card mb" style="width: 25rem;">
+        <div class="card mb" style="width: 35rem;">
             <div class="card-header">
-              Personal Summary for <%= current_user.lastname + " " + current_user.firstname %>
+              Personal Summary for <span style="font-weight:bold"><%= current_user.lastname + " " + current_user.firstname %></span>
             </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><span> Email: </span> <%= current_user.email %></li>
-            <li class="list-group-item"><span> PHONE: </span><%= current_user.phone %></li>
-            <li class="list-group-item"><span> BIRTH DATE: </span><%= current_user.birth_date %></li>
-            <li class="list-group-item"><span> ACCOUNT NUMBER: </span><%= @accounts.length %></li>
-            <li class="list-group-item"><span> TOTAL BALANCE: </span><%= total_balance %></li>
+            <li class="list-group-item"><span> Email: </span>  <span style="float:right;font-weight:bold"><%= current_user.email %></span></li>
+            <li class="list-group-item"><span> PHONE: </span><span style="float:right;font-weight:bold"><%= current_user.phone %></span></li>
+            <li class="list-group-item"><span> BIRTH DATE: </span><span style="float:right;font-weight:bold"><%= current_user.birth_date %></span></li>
+            <li class="list-group-item"><span> ACCOUNT NUMBER: </span><span style="float:right;font-weight:bold"><%= @accounts.length %></span></li>
+            <li class="list-group-item"><span> TOTAL BALANCE: </span><span style="float:right;font-weight:bold"><%= total_balance %></span></li>
           </ul>
         </div>
 
