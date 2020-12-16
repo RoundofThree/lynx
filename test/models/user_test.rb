@@ -113,4 +113,20 @@ class UserTest < ActiveSupport::TestCase
   end
 
 
+  # admin 
+  test "admin user should have an admin passphrase digest" do 
+    user = User.new(firstname: 'tao', lastname: 'huang', email: 'huangtao@abc.com', phone: 13_756_181_581,
+                    birth_date: DateTime.new(2001, 11, 15), password: '1234567890', is_female: false, admin: true,
+                    admin_passphrase_digest: Digest::SHA2.hexdigest("hello"))
+    assert user.valid?
+  end 
+
+  test "admin user with a blank admin passphrase digest is invalid" do 
+    user = User.new(firstname: 'tao', lastname: 'huang', email: 'huangtao@abc.com', phone: 13_756_181_581,
+                    birth_date: DateTime.new(2001, 11, 15), password: '1234567890', is_female: false, admin: true,
+                    admin_passphrase_digest: "")
+    assert_not user.valid?
+  end 
+
+
 end

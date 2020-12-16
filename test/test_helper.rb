@@ -28,5 +28,13 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def login_as_admin(passphrase = "")
+      post admin_login_url, params: { admin_passphrase: passphrase }
+    end
+
+    def logout_as_admin
+      delete admin_logout_url
+    end 
   end
 end
+

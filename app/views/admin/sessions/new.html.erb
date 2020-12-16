@@ -1,0 +1,6 @@
+<h1>Test</h1>
+<%= form_with url: admin_login_path, method: :post do |f| %>
+  <%= f.label :admin_passphrase %>
+  <%= f.password_field :admin_passphrase %>
+  <%= f.submit "Login as admin", class: "btn btn-outline-info" %>
+<% end %>

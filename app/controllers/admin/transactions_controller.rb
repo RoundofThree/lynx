@@ -1,7 +1,5 @@
-class Admin::TransactionsController < ApplicationController
+class Admin::TransactionsController < Admin::ApplicationController
   before_action :set_transaction, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, raise: false
-  before_action :user_is_admin?
   # GET /admin/transactions (or .json)
   def index
     @transactions = Transaction.search(params[:search])
