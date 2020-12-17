@@ -2,7 +2,10 @@ require 'test_helper'
 
 class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
-  # test index
+  setup do
+    @account = accounts(:one)
+  end
+
   test 'not logged in user should render 404' do
     get admin_accounts_url
     assert_response :missing
@@ -22,7 +25,19 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test show
+  test 'admin user should get new' do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get new_account_url
+    assert_response :success
+  end
+
+  test 'admin user should get edit' do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get edit_account_url(@account)
+    assert_response :success
+  end
 
   test 'admin user should get account details by any user' do
     sign_in users(:admin)
@@ -56,7 +71,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "admin user should be able to edit and update an account " do
+  test "admin user should be able to update an account " do
     sign_in users(:admin)
     login_as_admin('abc')
     accountuser = users(:have_one_account)
