@@ -17,7 +17,6 @@ class Transaction < ApplicationRecord
     if !keyword.blank?
       keyword = "%#{keyword.upcase}%"
       where('dealer_name LIKE ?', keyword)
-
     else
       all
     end
@@ -34,14 +33,6 @@ class Transaction < ApplicationRecord
       currency == account.currency
     else
       false
-    end
-  end
-
-  def account_balance
-    if account
-      account.balance
-    else
-      0.00
     end
   end
 end

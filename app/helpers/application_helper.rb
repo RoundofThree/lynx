@@ -8,11 +8,9 @@ module ApplicationHelper
   end 
 
   def deserialize(input)
-    if input.blank?
-      []
-    else
+    if !input.blank?
       input.split(/\s*,\s*/)
-    end 
+    end
   end 
 
   # flash classes overriden with boostrap styles 
