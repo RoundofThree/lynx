@@ -54,7 +54,7 @@ class Admin::UsersController < Admin::ApplicationController
       return
     end
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: 'User was successfully updated.'
+      redirect_to  [:admin, User.last], notice: 'User was successfully updated.'
     else
       flash[:error] = 'Failed to save changes.'
       render :edit
