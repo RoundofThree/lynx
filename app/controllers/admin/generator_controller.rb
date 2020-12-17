@@ -1,5 +1,4 @@
 class Admin::GeneratorController < ApplicationController
-  before_action :user_is_admin?
   before_action :all_params_present?
 
   # Generates some transactions by the given parameters
