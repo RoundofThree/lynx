@@ -51,6 +51,7 @@ class Admin::StylesController < Admin::ApplicationController
                                   :dashboard_summary_head_color,
                                   :dashboard_summary_head_font_color,
                                   :login_background_image,
+                                  :sign_up_head_size,
                                   :home_links_1 => [],
                                   :home_links_2 => [])
   end

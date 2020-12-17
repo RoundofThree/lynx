@@ -21,6 +21,7 @@ class CreateStyles < ActiveRecord::Migration[6.0]
       t.string :dashboard_action_head_font_color
       t.string :dashboard_summary_head_color
       t.string :dashboard_summary_head_font_color
+      t.string :sign_up_head_size
       t.timestamps
     end
   end

@@ -143,6 +143,11 @@ module StyleHelper
     end
   end
 
+  #signup
+  def sign_up_head_size
+    current_style&.sign_up_head_size.presence || "50"
+  end
+
   # navbar_color
   # dashboard_background_color
   # home_background_color
