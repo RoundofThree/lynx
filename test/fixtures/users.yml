@@ -40,6 +40,8 @@ admin:
   birth_date: <%= DateTime.new(1999) %>
   is_female: true
   admin: true
+  admin_passphrase_digest: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad # abc in SHA-256
+
 
 
 one:
@@ -52,5 +54,4 @@ one:
   is_female: true
   encrypted_password: $2a$12$KuGb6SFMjXQWRnnwn0layuXH2bYWXjdDdbulRza8uWK.VaFe2.mda
 
-  admin_passphrase_digest: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad # abc in SHA-256 
-
+  admin_passphrase_digest: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad # abc in SHA-256

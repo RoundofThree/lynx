@@ -42,7 +42,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
       post admin_accounts_url, params: { account: {account_number: account.account_number, user: account.user, balance: account.balance,
                                     cvv: account.cvv, currency: account.balance,  expiry_date: account.expiry_date}}
     end
-    assert_redirected_to [:admin, Account.last]
+    assert_redirected_to admin_account_url(account)
   end
 
   # test create (Yuxin)

@@ -38,7 +38,7 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to admin_users_url, notice: 'User was successfully created.'
+      redirect_to [:admin, User.last], notice: 'User was successfully created.'
     else
       flash[:error] = 'Error in creating user.'
       render :new
