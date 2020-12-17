@@ -22,10 +22,9 @@
           <td><%= d.min_amount %></td>
           <td><%= d.max_amount %></td>
           <td><%= d.frequency %></td>
-          <td><%= d.is_vendor ? Vendor : Individual %></td>
+          <td><%= d.is_vendor ? "Vendor" : "Individual" %></td>
           <td><%= link_to 'Edit', edit_admin_dealer_path(d) %></td>
-          <td><%= link_to 'Delete', admin_dealer_path(d), method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
+          <td><%= link_to 'Delete', admin_dealer_path(d), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

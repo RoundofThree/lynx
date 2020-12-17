@@ -2,10 +2,7 @@ class Admin::DealersController < ApplicationController
   before_action :set_dealer, only: %i[show edit update destroy]
   # GET /admin/users
   def index
-  end
-
-  # sort users by last_sign_in_at, created_at
-  def sort_dealers
+    @dealers = Dealer.all
   end
 
   # GET /admin/dealers/1
@@ -50,7 +47,7 @@ class Admin::DealersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_dealer
-    @user = User.find(params[:id])
+    @dealer = Dealer.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
