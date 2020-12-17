@@ -3,24 +3,24 @@ class Admin::TransactionsController < Admin::ApplicationController
   # GET /admin/transactions (or .json)
   def index
     @transactions = Transaction.search(params[:search])
-    sort_transactions if !@transactions.empty?
+    sort_transactions unless @transactions.empty?
   end
 
   # sort by created_at, amount
-  def sort_transactions 
+  def sort_transactions
     if params[:sort_by].present?
       criteria = params[:sort_by]
-      if criteria == "last_created_at"
-        @transactions = @transactions.order("created_at desc")
-      elsif criteria == "first_created_at"
-        @transactions = @transactions.order("created_at asc")
-      else 
-        @transactions = @transactions.order("amount asc")
-      end
-    else # default sorting 
-      @transactions = @transactions.order("amount asc")
-    end   
-  end 
+      @transactions = if criteria == 'last_created_at'
+                        @transactions.order('created_at desc')
+                      elsif criteria == 'first_created_at'
+                        @transactions.order('created_at asc')
+                      else
+                        @transactions.order('amount asc')
+                      end
+    else # default sorting
+      @transactions = @transactions.order('amount asc')
+    end
+  end
 
   # GET /admin/accounts/1
   def show
@@ -69,7 +69,7 @@ class Admin::TransactionsController < Admin::ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:amount, :currency, :dealer_account_number, 
+    params.require(:transaction).permit(:amount, :currency, :dealer_account_number,
                                         :dealer_name, :reference, :created_at)
   end
 end
