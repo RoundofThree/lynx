@@ -1,10 +1,8 @@
-<!-- TODO: style -->
-<div class="row justify-content-center" style="background: linear-gradient(to right, #add8e6, white); padding: 10px;">
+<div class="row justify-content-center" style="padding: 10px; <%= show_payment_page_style %>">
 
   <div class="col-sm-3">
-    <!-- TODO: image -->
-    <img src="/payment.png" width="100%">
-    <!-- markdown -->
+    <img src="<%= show_payment_image %>" width="100%">
+    <%= raw render_markdown(show_payment_md) %>
   </div>
 
     <div class="col-sm-6">
@@ -41,7 +39,7 @@
               </li>
             </ul>
             <div class="card-body">
-                <i class="fa fa-arrow-left"></i>
+                <i class="fa fa-arrow-left" style="color: #000000;"></i>
                 <%= link_to "Back to account", account_path(@transaction.account), class: "card-link" %>
             </div>
           </div>

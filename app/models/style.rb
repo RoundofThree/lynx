@@ -6,12 +6,15 @@ class Style < ApplicationRecord
   has_one_attached :home_main_marketing_card_image_2
   has_one_attached :home_main_marketing_card_image_3
   has_one_attached :login_background_image
+  has_one_attached :login_sigup_logo_image
+  has_one_attached :make_payment_image
+  has_one_attached :show_payment_image
 
   serialize :home_links_1, Array
   serialize :home_links_2, Array
-  
+
   # validate only one style stored in DB
-  validate :single_row, on: :create 
+  validate :single_row, on: :create
 
   private
 

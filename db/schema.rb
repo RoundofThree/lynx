@@ -65,7 +65,18 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
     t.string "home_background_color"
     t.text "home_links_1"
     t.text "home_links_2"
-    t.string "dashboard_color"
+    t.string "dashboard_action_head_color"
+    t.string "dashboard_action_head_font_color"
+    t.string "dashboard_summary_head_color"
+    t.string "dashboard_summary_head_font_color"
+    t.string "sign_up_head_size"
+    t.string "make_payment_page_style"
+    t.text "make_payment_md"
+    t.string "make_payment_title"
+    t.string "make_payment_subtitle"
+    t.string "show_payment_page_style"
+    t.text "show_payment_md"
+    t.string "account_table_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

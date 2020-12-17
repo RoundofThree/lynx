@@ -1,15 +1,12 @@
-<!-- TODO: style -->
-  <div class="row justify-content-center" style="background: linear-gradient(to right, #add8e6, white); padding: 10px;">
+  <div class="row justify-content-center" style="padding: 10px; <%= make_payment_page_style %>">
 
     <div class="col-lg-4 mx-auto">
-      <!-- TODO: image -->
-      <img src="/payment.png" width="100%">
-      <!-- TODO: markdown text --> 
+      <img src="<%= make_payment_image %>" width="100%"> 
+      <%= raw render_markdown(make_payment_md) %>
     </div>
 
       <div class="col-lg-4 mx-auto">
-      <!-- Text --> 
-      <h2 class="display-4 text-info">Transfer to any part of the world</h2>
+      <h2 class="display-4 text-info"><%= make_payment_title %></h2>
       <em>...and do it securely</em>
         <hr>
           <%= render 'form', transaction: @transaction %>
@@ -18,7 +15,7 @@
             <!-- button style -->
             <div class="btn btn-light" style="color: #6c757d; border-color: #dee2e6;">
             <i class="fa fa-arrow-left" style="color: #000000;"></i>
-            Cancel payment
+            Cancel
             </div>
           <% end %>
       </div>
