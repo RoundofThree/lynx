@@ -62,7 +62,6 @@ class Admin::AccountsController < Admin::ApplicationController
     redirect_to admin_accounts_url, notice: 'Account was successfully destroyed.'
   end
 
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -76,4 +75,5 @@ class Admin::AccountsController < Admin::ApplicationController
     params.require(:account).permit(:balance, :account_number,
       :cvv, :expiry_date, :currency,:user_id)
   end
+
 end
