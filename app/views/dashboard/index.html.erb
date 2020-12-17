@@ -1,5 +1,4 @@
 
-<div class="container-fluid">
   <div class="row">
     <%= render partial: "dashboard/navbar" %>
 
@@ -8,7 +7,7 @@
       <h2 style="color:blue">Personal Summary</h2>
       <hr align=left width=400 SIZE=1>
         <div class="card mb" style="width: 35rem;">
-            <div class="card-header">
+            <div class="card-header" style="background-color:<%= dashboard_summary_head_color%>; color:<%=dashboard_summary_head_font_color%>">
               Personal Summary for <span style="font-weight:bold"><%= current_user.lastname + " " + current_user.firstname %></span>
             </div>
           <ul class="list-group list-group-flush">
@@ -16,12 +15,12 @@
             <li class="list-group-item"><span> PHONE: </span><span style="float:right;font-weight:bold"><%= current_user.phone %></span></li>
             <li class="list-group-item"><span> BIRTH DATE: </span><span style="float:right;font-weight:bold"><%= (current_user.birth_date).strftime("%d/%m/%Y") %></span></li>
             <li class="list-group-item"><span> ACCOUNT NUMBER: </span><span style="float:right;font-weight:bold"><%= @accounts.length %></span></li>
-            <li class="list-group-item"><span> TOTAL BALANCE: </span><span style="float:right;font-weight:bold"><%="€ " + total_balance_EUR.to_s + " +￡ " + total_balance_GBP.to_s + " + $ " + total_balance_USD.to_s %></span></li>
+            <li class="list-group-item"><span> TOTAL BALANCE: </span><span style="float:right;font-weight:bold"><%="€ " + total_balance_EUR.to_s + " + £ " + total_balance_GBP.to_s + " + $ " + total_balance_USD.to_s %></span></li>
           </ul>
         </div>
 
         <div class="list-group" style="width: 25rem; position:absolute; right:50px; top: 70px;">
-          <a class="list-group-item list-group-item-action active">
+          <a class="list-group-item list-group-item-action active" style="background-color:<%= dashboard_action_head_color%>; color:<%=dashboard_action_head_font_color%>">
             <span style="font-size:20px">Action List</span>
           </a>
           <a>
@@ -53,4 +52,3 @@
 
     </main>
   </div>
-</div>

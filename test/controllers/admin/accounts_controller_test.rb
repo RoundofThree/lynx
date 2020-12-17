@@ -23,6 +23,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   # test show
+
   test 'admin user should get account details by any user' do
     sign_in users(:admin)
     login_as_admin('abc')
@@ -31,15 +32,55 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test new (Yuxin)
+  # create
+  test "admin user should be able to create an account " do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    accountuser = users(:have_one_account)
 
-  # test create (Yuxin)
+    account = Account.new(user: accountuser, account_number: "999999", balance:"2313", currency:"GBP",
+    cvv:"132", expiry_date:"20221022")
+      assert_difference('Account.count') do
+      post admin_accounts_url, params: { account: account.attributes}
+    end
+    assert_redirected_to [:admin, Account.last]
+  end
 
-  # test edit (Yuxin)
+  test "create should fail if not all params are filled " do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    accountuser = users(:have_one_account)
+    account = Account.new(user: accountuser)
+      assert_no_difference('Account.count') do
+      post admin_accounts_url, params: { account: account.attributes}
+    end
+    assert_response :success
+  end
 
-  # test update (Yuxin)
+  # update
+  test "admin user should be able to update an account " do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    accountuser = users(:have_one_account)
+    account = accounts(:one)
+    patch admin_account_url(account), params: {
+      account:{ user: accountuser, account_number: "999999", balance:"2313",
+      currency:"GBP",cvv:"132", expiry_date:"20221022"}}
+      assert_redirected_to [:admin, Account.last]
+  end
 
-  # test destroy
+  test "update should fail if no required params are filled " do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    accountuser = users(:have_one_account)
+    account = accounts(:one)
+    patch admin_account_url(account), params: {
+      account:{ balance:"2313",
+      currency:"GBP",cvv:"132", expiry_date:"20221022"}}
+      assert_redirected_to [:admin, Account.last]
+  end
+
+  # destroy 
   test 'admin user should be able to destroy any account' do
     sign_in users(:admin)
     login_as_admin('abc')

@@ -1,0 +1,40 @@
+<!-- Footer -->
+<footer >
+  <div class="container text-center text-md-left mt-5">
+    <div class="row mt-3">
+      <%= raw render_markdown(home_footer_md) %>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+        <h4 class="font-weight-bold" style="color: <%= home_footer_text_color %>"><%= bank_name %></h4>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;">
+        <br>
+        <image width="80%" height="40%" src="<%= header_logo %>">
+      </div>
+
+      <div class="col-md-4 col-lg-3 mb-5">
+      </div>
+
+      <div class="col-md-4 col-lg-2 col-xl-2 mb-4">
+        <h4 class="font-weight-bold"style="color: <%= home_footer_text_color %>;"><%= home_links_1[0] %></h4>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;">
+        <% links_1 = home_links_1[1..-1] %>
+        <% links_1.each do |link| %>
+          <p><a class="lead text-muted" style="color: black;" href="#"><%= link %></a></p>
+        <% end %>
+      </div>
+
+      <div class="col-md-4 col-lg-2 col-xl-2 mb-4">
+        <h4 class="font-weight-bold"style="color: <%= home_footer_text_color %>;"><%= home_links_2[0] %></h4>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;">
+        <% links_2 = home_links_2[1..-1] %>
+        <% links_2.each do |link| %>
+          <p><a class="lead text-muted" style="color: black;" href="#"><%= link %></a></p>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>

@@ -3,11 +3,13 @@
 
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <!-- Header -->
+
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
       <h1 class="h2">Account - <%= @account.account_number %></h1>
       <!-- buttons -->
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group mr-2">
+          <button type="button" class="btn btn-sm btn-outline-primary"><%= link_to "Back", admin_accounts_path %></button>
           <button type="button" class="btn btn-sm btn-outline-info"><%= link_to "Edit", edit_admin_account_path(@account), style: "color: inherit; text-decoration: none;" %></button>
           <button type="button" class="btn btn-sm btn-outline-danger"><%= link_to "Delete", admin_account_path(@account), method: :delete, data: { confirm: "Are you sure?" }, style: "color: inherit; text-decoration: none;" %></button>
         </div>
