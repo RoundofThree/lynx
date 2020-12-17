@@ -29,7 +29,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "admin user should be able to create a user" do
+  test "admin user should create user" do
     sign_in users(:admin)
     user = users(:one)
     assert_difference('User.count') do
@@ -68,6 +68,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
          end
     assert_redirected_to [:admin, User.last]
   end
+
 
   # test destroy
   test "admin user should be able to destroy any user" do
