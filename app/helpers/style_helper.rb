@@ -134,6 +134,7 @@ module StyleHelper
   def dashboard_summary_head_font_color
     current_style&.dashboard_summary_head_font_color.presence || "#000000"
   end
+
   # login
   def login_background_image
     if current_style.login_background_image.attached?
@@ -157,14 +158,49 @@ module StyleHelper
     current_style&.sign_up_head_size.presence || "50"
   end
 
-  # navbar_color
-  # dashboard_background_color
-  # home_background_color
-  # account ||
-  # login
-  # signin
-  # transaction
-  # payment
+  # make payment page 
+
+  def make_payment_page_style 
+    current_style&.make_payment_page_style.presence || "background: linear-gradient(to right, #add8e6, white);"
+  end 
+
+  def make_payment_image
+    if current_style.make_payment_image.attached?
+      url_for(current_style.make_payment_image)
+    else
+      "/payment.png"
+    end
+  end 
+
+  def make_payment_md
+    current_style&.make_payment_md.presence || ""
+  end 
+
+  def make_payment_title 
+    current_style&.make_payment_title.presence || "Transfer to any part of the world"
+  end 
+
+  def make_payment_subtitle 
+    current_style&.make_payment_subtitle.presence || "...and do it securely"
+  end 
+
+  # show payment page
+
+  def show_payment_page_style
+    current_style&.show_payment_page_style.presence || "background: linear-gradient(to right, #add8e6, white);"
+  end 
+
+  def show_payment_image 
+    if current_style.show_payment_image.attached?
+      url_for(current_style.show_payment_image)
+    else
+      "/payment.png"
+    end
+  end 
+
+  def show_payment_md 
+    current_style&.make_payment_md.presence || ""
+  end 
 
   def current_style
     Style.first

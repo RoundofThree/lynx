@@ -53,6 +53,14 @@ class Admin::StylesController < Admin::ApplicationController
                                   :login_background_image,
                                   :login_sigup_logo_image,
                                   :sign_up_head_size,
+                                  :make_payment_page_style,
+                                  :make_payment_md,
+                                  :make_payment_title,
+                                  :make_payment_subtitle,
+                                  :make_payment_image,
+                                  :show_payment_page_style,
+                                  :show_payment_md,
+                                  :show_payment_image,
                                   :home_links_1 => [],
                                   :home_links_2 => [])
   end

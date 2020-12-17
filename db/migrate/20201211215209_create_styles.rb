@@ -22,6 +22,12 @@ class CreateStyles < ActiveRecord::Migration[6.0]
       t.string :dashboard_summary_head_color
       t.string :dashboard_summary_head_font_color
       t.string :sign_up_head_size
+      t.string :make_payment_page_style
+      t.text :make_payment_md
+      t.string :make_payment_title 
+      t.string :make_payment_subtitle
+      t.string :show_payment_page_style
+      t.text :show_payment_md
       t.timestamps
     end
   end
