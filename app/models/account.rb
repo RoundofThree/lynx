@@ -8,6 +8,10 @@ class Account < ApplicationRecord
   validates :user, presence: true
   validates :account_number, presence: true, uniqueness: true
   validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  # validates :expiry_month, numericality: {greater_than_or_equal_to: 1}
+  # validates :expiry_month, numericality: {less_than_or_equal_to: 12}
+  # validates :expiry_year, numericality: {greater_than_or_equal_to: 1900}
+  # validates :expiry_year, numericality: {less_than_or_equal_to: 2400}
   validates :cvv, presence: true, length: { in: 3...4 }
 
   CURRENCY_TYPES = %w[GBP USD EUR].freeze

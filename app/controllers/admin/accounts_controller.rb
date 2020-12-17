@@ -75,5 +75,4 @@ class Admin::AccountsController < Admin::ApplicationController
     params.require(:account).permit(:balance, :account_number,
       :cvv, :expiry_date, :currency,:user_id)
   end
-
 end
