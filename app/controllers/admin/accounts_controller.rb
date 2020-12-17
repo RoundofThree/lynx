@@ -49,7 +49,7 @@ class Admin::AccountsController < Admin::ApplicationController
   # PATCH/PUT /admin/accounts/1
   def update
     if @account.update(account_params)
-      redirect_to @account, notice: 'Account was successfully updated.'
+      redirect_to  [:admin, Account.last], notice: 'Account was successfully updated.'
     else
       flash[:error] = 'Failed to save changes.'
       render :edit
