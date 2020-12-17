@@ -1,3 +1,71 @@
 <%= form_for [:admin, dealer], class: "col-7" do |form| %>
+  <!-- Error -->
+  <% if dealer.errors.any? %>
+    <div class="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(dealer.errors.count, "error") %> prohibited this dealer from being saved:</p>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% dealer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 
+  <!-- form body -->
+  <div class = "card" style= "border-radius: 10px;">
+    <div class = "card" style ="padding: 57px 80px; padding-b ottom: 20px;">
+      <!-- name fields -->
+      <div class = "row" style="margin-bottom: 22px;" >
+        <div class = "col">
+          <%= form.label :currency, class: "label" %>
+          <%= form.text_field :currency, class: "input", style: "line-height: 50px; border-radius: 5px;padding: 0 20px;" %>
+        </div>
+      </div>
+      <div class = "row" style="margin-bottom: 22px;" >
+        <div class = "col">
+          <%= form.label :currency, class: "label" %>
+          <%= form.text_field :currency, class: "input", style: "line-height: 50px; border-radius: 5px;padding: 0 20px;" %>
+        </div>
+      </div>
+
+      <!-- birthdate & gender fields -->
+      <div class = "row" style="margin-bottom: 22px;">
+        <div class ="col">
+          <%= form.label :account_number, class: "label" %>
+          <%= form.text_field :account_number, class: "input", style: "line-height: 50px; border-radius: 5px;padding: 0 20px;" %>
+        </div>
+      </div>
+      <!-- min & max amounts fields -->
+      <div class = "row" style="margin-bottom: 22px;">
+        <div class = "col">
+          <%= form.label :min_amount, class: "label" %>
+          <br>
+          <%= form.number :min_amount, class: "input" %>
+        </div>
+        <div class = "col">
+          <%= form.label :max_amount, class: "label" %>
+          <br>
+          <%= form.number :max_amount, class: "input" %>
+        </div>
+      </div>
+      <!-- frequency -->
+      <div class = "row" style="margin-bottom: 40px;">
+        <div class = "col">
+          <%= form.label :frequency, class: "label" %>
+          <%= form.number :frequency, class: "input" %>
+        </div>
+      </div>
+      <!-- postcode & country fields -->
+      <div class = "row" style="margin-bottom: 40px;">
+        <div class = "col">
+          <%= form.label :is_vendor, class: "label" %>
+          <%= form.radio_button :is_vendor, false, :checked => true, class: "input", style: "line-height: 50px; border-radius: 5px;padding: 0 20px;" %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

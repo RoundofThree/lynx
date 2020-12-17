@@ -1,3 +1,33 @@
 <div class="table-responsive">
-
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th>No. </th>
+        <th>Currency</th>
+        <th>Name</th>
+        <th>Account number</th>
+        <th>Min amount</th>
+        <th>Max amount</th>
+        <th>Frequency</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% dealers.each_with_index do |d, i| %>
+        <tr>
+          <th scope="row"><%= i+1 %></th>
+          <td><%= d.currency %></td>
+          <td><%= d.name %></td>
+          <td><%= d.account_number %></td>
+          <td><%= d.min_amount %></td>
+          <td><%= d.max_amount %></td>
+          <td><%= d.frequency %></td>
+          <td><%= d.is_vendor ? Vendor : Individual %></td>
+          <td><%= link_to 'Edit', edit_admin_dealer_path(d) %></td>
+          <td><%= link_to 'Delete', admin_dealer_path(d), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
