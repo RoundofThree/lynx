@@ -18,8 +18,9 @@
   <div class="form-group row">
     <%= form.label :account, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= form.collection_select :account,Account.all, :user, :account_number,:prompt => true %>
+      <%= form.collection_select :account_id,Account.all, :id, :account_number,:prompt => true %>
     </div>
+
   </div>
   <div class="form-group row">
     <%= form.label :amount, class: "col-sm-4 col-form-label" %>

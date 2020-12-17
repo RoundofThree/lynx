@@ -55,7 +55,7 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:amount, :account_id, :dealer_account_number, :dealer_name,
+    params.require(:transaction).permit(:amount, :account, :dealer_account_number, :dealer_name,
                                         :currency, :reference)
   end
 end

@@ -30,8 +30,6 @@ class Account < ApplicationRecord
   end
 
 
-
-
   def not_expired
     if expiry_date > Date.today
       true
