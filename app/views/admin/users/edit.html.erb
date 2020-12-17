@@ -1,7 +1,17 @@
+<div class = "row">
+  <%= render partial: "admin/shared/navbar" %>
 
-<div class="columns is-centered mt-6">
-  <div class="column is-one-third">
-    <h1 class="is-size-2 has-text-weight-bold mb-3">Editing user</h1>
+<div class="col-3 " style ="max-width: 680px;padding-bottom: 100px;
+padding-top: 20px;">
+
+<div class="columns mt-3">
+    <h1 class="mb-3" style="font-size: 35px;color: #525252;margin-bottom: 40px;">Edit <%= @user.firstname %> profile</h1>
+<%= link_to 'Back to account list', admin_users_path, class: "button is-danger" %>
+</div>
+</div>
+<div class="col-7 mt-3">
+
     <%= render 'form', user: @user %>
   </div>
+
 </div>

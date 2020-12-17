@@ -4,13 +4,21 @@
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <!-- Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-      <h1 class="h2">Transaction - from <%= "#{@payer.firstname} #{@payer.lastname}" %> to <%= @transaction.payee_fullname %> </h1>
+      <h1 class="h2">Transaction - from <%= "#{@payer.firstname} #{@payer.lastname}" %> to <%= @transaction.dealer_name %> </h1>
       <!-- buttons -->
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group mr-2">
           <button type="button" class="btn btn-sm btn-outline-info"><%= link_to "Edit", edit_admin_transaction_path(@transaction), style: "color: inherit; text-decoration: none;" %></button>
           <button type="button" class="btn btn-sm btn-outline-danger"><%= link_to "Delete", admin_transaction_path(@transaction), method: :delete, data: { confirm: "Are you sure?" }, style: "color: inherit; text-decoration: none;" %></button>
         </div>
+      </div>
+    </div>
+
+    <!-- Link to parent -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Account <%= "#{@account.account_number}, owned by #{@payer.firstname} #{@payer.lastname}" %></h5>
+        <%= link_to "View details", admin_account_path(@account), class: "card-link" %>
       </div>
     </div>
 
