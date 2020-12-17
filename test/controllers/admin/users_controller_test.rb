@@ -2,7 +2,9 @@ require 'test_helper'
 
 class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
-
+  def setup
+    @users = User.all
+  end
 
   test 'not logged in user should render 404' do
     get admin_users_url
@@ -28,6 +30,13 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     login_as_admin('abc')
     user = users(:have_no_accounts)
     get admin_user_url(user)
+    assert_response :success
+  end
+
+  test 'admin user should get new' do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get new_admin_user_url
     assert_response :success
   end
 
@@ -69,14 +78,22 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
       end
 
-      test "not admin user should not be able to create a user" do
+    test "not admin user should not be able to create a user" do
           assert_no_difference('User.count') do
             post admin_users_url, params: {user:{firstname: "hello"}}
           end
           assert_response :missing
         end
 
-    test "admin user should be able to edit and update user" do
+    test 'admin user should get edit' do
+          sign_in users(:admin)
+          login_as_admin('abc')
+          user = users(:have_one_account)
+          get edit_admin_user_url(user)
+          assert_response :success
+        end
+
+    test "admin user should be able to update user" do
       sign_in users(:admin)
       login_as_admin('abc')
       user = users(:have_one_account)
