@@ -3,7 +3,6 @@ require 'test_helper'
 class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-
   test 'not logged in user should render 404' do
     get admin_users_url
     assert_response :missing
@@ -30,6 +29,17 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     get admin_user_url(user)
     assert_response :success
   end
+
+  test "admin user should be able to search and specify sorting criteria of users" do 
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get admin_users_url, params: { sort_by: "last_sign_in_at" }
+    assert_response :success 
+    get admin_users_url, params: { sort_by: "last_created_at" }
+    assert_response :success 
+    get admin_users_url, params: { sort_by: "first_created_at" }
+    assert_response :success
+  end 
 
   test "admin user should be able to create a user" do
       sign_in users(:admin)
@@ -128,7 +138,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
          assert_response :missing
   end
 
-    test "admin user should be able to destroy any user" do
+  test "admin user should be able to destroy any user" do
       sign_in users(:admin)
       login_as_admin('abc')
       user = users(:have_one_account)
