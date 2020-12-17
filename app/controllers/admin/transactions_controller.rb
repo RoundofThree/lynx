@@ -40,7 +40,7 @@ class Admin::TransactionsController < Admin::ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
-      redirect_to @transaction, notice: 'Transaction was successfully created.'
+      redirect_to  [:admin, Transaction.last], notice: 'Transaction was successfully created.'
     else
       render :new # flash errors
     end
@@ -49,7 +49,7 @@ class Admin::TransactionsController < Admin::ApplicationController
   # PATCH/PUT /admin/accounts/1
   def update
     if @transaction.update(transaction_params)
-      redirect_to @transaction, notice: 'Transaction was successfully updated.'
+      redirect_to [:admin, Transaction.last], notice: 'Transaction was successfully updated.'
     else
       render :edit # flash errors
     end
@@ -70,6 +70,6 @@ class Admin::TransactionsController < Admin::ApplicationController
 
   def transaction_params
     params.require(:transaction).permit(:account_id,:amount, :currency, :dealer_account_number,
-                                        :dealer_name, :reference, :created_at)
+                                        :dealer_name)
   end
 end

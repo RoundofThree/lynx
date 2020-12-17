@@ -37,11 +37,12 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:admin)
     login_as_admin("abc")
     payer_account = accounts(:one)
+    transaction = Transaction.new(account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
+                                  amount: 1.0, currency: 'GBP')
     assert_difference('Transaction.count') do
-      post admin_transactions_url, params: {transaction:{account: payer_account, dealer_account_number: '12345678901234',
-         dealer_name: 'Nyx', amount: 1.0, currency: 'GBP', created_at:""}}
+      post admin_transactions_url, params: { transaction: transaction.attributes }
     end
-    assert_redirected_to admin_transactions_url
+    assert_redirected_to [:admin, Transaction.last]
   end
 
   # test create (Yuxin)
