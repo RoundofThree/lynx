@@ -34,7 +34,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   test "admin user should be able to create a user" do
       sign_in users(:admin)
       login_as_admin('abc')
-      user = users(:one)
+      user = users(:have_one_account)
       assert_difference('User.count') do
         post admin_users_url, params: { user:
           { firstname: user.firstname, lastname: user.lastname,
@@ -49,7 +49,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     test "admin user should be able to create a user with only required fields" do
         sign_in users(:admin)
         login_as_admin('abc')
-        user = users(:one)
+        user = users(:have_one_account)
         assert_difference('User.count') do
           post admin_users_url, params: { user:
             { firstname: user.firstname, lastname: user.lastname,
@@ -79,7 +79,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     test "admin user should be able to edit and update user" do
       sign_in users(:admin)
       login_as_admin('abc')
-      user = users(:one)
+      user = users(:have_one_account)
       patch admin_user_url(user), params: { user:
          { firstname: user.firstname, lastname: user.lastname,
             phone: user.phone, birth_date: "19991010", is_female: true,
@@ -92,7 +92,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     test "edit should success if required fields are filled" do
       sign_in users(:admin)
       login_as_admin('abc')
-      user = users(:one)
+      user = users(:have_one_account)
       patch admin_user_url(user), params: { user:
          { firstname: user.firstname, lastname: user.lastname,
             phone: user.phone, birth_date: "19991010", is_female: true,
@@ -103,7 +103,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     test "edit should fail if required fields are not filled" do
      sign_in users(:admin)
      login_as_admin('abc')
-     user = users(:one)
+     user = users(:have_one_account)
      assert_no_difference 'User.count' do
      patch admin_user_url(user), params: { user:
         { firstname: user.firstname, lastname: user.lastname,
@@ -116,7 +116,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
    end
 
    test "not admin user should not be able to edit an user" do
-    user = users(:one)
+    user = users(:have_one_account)
     assert_no_difference 'User.count' do
     patch admin_user_url(user), params: { user:
        { firstname: user.firstname, lastname: user.lastname,
