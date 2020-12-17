@@ -32,7 +32,6 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
 
-  # test new (Yuxin)
   test "admin user should be able to create a transaction" do
     sign_in users(:admin)
     login_as_admin("abc")
@@ -45,11 +44,41 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to [:admin, Transaction.last]
   end
 
-  # test create (Yuxin)
+  test "create should fail if some params are not filled" do
+    sign_in users(:admin)
+    login_as_admin("abc")
+    payer_account = accounts(:one)
+    transaction = Transaction.new(account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
+                                  amount: 1.0)
+    assert_no_difference('Transaction.count') do
+      post admin_transactions_url, params: { transaction: transaction.attributes }
+    end
+    assert_response :success
+  end
 
-  # test edit (Yuxin)
+  test "admin user should be able to edit and update a transaction" do
+    sign_in users(:admin)
+    login_as_admin("abc")
+    transaction = transactions(:one)
+    payer_account = accounts(:one)
+    patch admin_transaction_url(transaction), params: {transaction:
+       {account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
+         amount: 1.0, currency: 'GBP'}}
+    assert_redirected_to [:admin, Transaction.last]
+  end
 
-  # test update (Yuxin)
+  test "edit should fail if required fields are not filled" do
+    sign_in users(:admin)
+    login_as_admin("abc")
+    transaction = transactions(:one)
+    payer_account = accounts(:one)
+    assert_no_difference 'User.count' do
+    patch admin_transaction_url(transaction), params: {transaction:
+       {account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
+      currency: 'GBP'}}
+    end
+    assert_redirected_to [:admin, Transaction.last]
+  end
 
   # test destroy
   test "admin user should be able to destroy any transaction" do
