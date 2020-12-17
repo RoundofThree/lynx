@@ -157,12 +157,18 @@ module StyleHelper
     current_style&.sign_up_head_size.presence || "50"
   end
 
+  #account
+  def account_table_color (count = 0)
+    if count % 2 == 0
+      current_style&.account_table_color.presence || ""
+    else
+      ""
+    end
+  end
+
+
   # navbar_color
-  # dashboard_background_color
   # home_background_color
-  # account ||
-  # login
-  # signin
   # transaction
   # payment
 

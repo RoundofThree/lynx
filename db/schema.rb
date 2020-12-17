@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
     t.string "dashboard_summary_head_color"
     t.string "dashboard_summary_head_font_color"
     t.string "sign_up_head_size"
+    t.string "account_table_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
