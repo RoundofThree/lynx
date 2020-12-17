@@ -143,6 +143,15 @@ module StyleHelper
     end
   end
 
+  #this function apply both login logo and signup logo
+  def login_sigup_logo_image
+    if current_style.login_sigup_logo_image.attached?
+      url_for(current_style.login_sigup_logo_image)
+    else
+      "/llogo.png"
+    end
+  end
+
   #signup
   def sign_up_head_size
     current_style&.sign_up_head_size.presence || "50"
