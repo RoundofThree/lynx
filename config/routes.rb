@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   end
   get 'admin', to: 'admin/dashboard#index'
   get 'admin/dashboard', to: 'admin/dashboard#index'
-  post 'admin/generator/generate_transactions' # transaction generator
 
   # Devise controllers
   devise_for :users, controllers: {
