@@ -1,5 +1,6 @@
 class Admin::SessionsController < Admin::ApplicationController
   skip_before_action :user_is_logged_in_admin?
+  before_action :user_is_admin? # ensure current_user is admin
   before_action :redirect_logged_admin, only: %i[new create]
 
   # GET /admin/login

@@ -1,5 +1,6 @@
 class Admin::AccountsController < Admin::ApplicationController
   before_action :set_account, only: %i[show edit update destroy]
+
   # GET /admin/accounts (or .json)
   def index
     @accounts = Account.search(params[:search]) # maybe search by name of user?

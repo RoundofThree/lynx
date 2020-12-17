@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
+class Admin::SessionsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   # new

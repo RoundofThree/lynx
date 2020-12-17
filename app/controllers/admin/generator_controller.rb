@@ -1,4 +1,5 @@
-class Admin::GeneratorController < ApplicationController
+class Admin::GeneratorController < Admin::ApplicationController
+
   before_action :all_params_present?
 
   # Generates some transactions by the given parameters
