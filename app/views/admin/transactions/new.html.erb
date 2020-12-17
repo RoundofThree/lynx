@@ -1,5 +1,6 @@
 <div class="columns is-centered mt-6">
   <div class="column is-one-third">
+    <%= render partial: "admin/shared/navbar" %>
     <h1 class="is-size-2 has-text-weight-bold mb-3">New transaction</h1>
     <%= render 'form', transaction: @transaction %>
   </div>

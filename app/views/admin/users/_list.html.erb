@@ -12,7 +12,7 @@
         <tbody>
           <% users.each_with_index do |u, i| %>
           <tr>
-            <th scope="row"><%= i+1 %></td>
+            <th scope="row"><%= i+1 %></th>
             <td><%= link_to u.firstname, admin_user_path(u) %></td>
             <td><%= link_to u.lastname, admin_user_path(u) %></td>
             <td><%= u.last_sign_in_at %></td>

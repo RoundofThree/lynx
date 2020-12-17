@@ -10,18 +10,18 @@ class Account < ApplicationRecord
   validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :cvv, presence: true, length: { in: 3...4 }
 
-  CURRENCY_TYPES = %w[GBP USD EUR CNY].freeze
+  CURRENCY_TYPES = %w[GBP USD EUR].freeze
   validates_inclusion_of :currency, in: CURRENCY_TYPES
 
   def self.search(keyword)
     if !keyword.blank?
-      accounts = self.where("account_number LIKE ?", "%#{keyword}%")
-      accounts  
-    else 
-      self.all
-    end 
+      where('account_number LIKE ?', "%#{keyword}%")
+
+    else
+      all
+    end
   end
-  
+
   private
 
   def assign_expiry_date

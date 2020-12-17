@@ -45,6 +45,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
       t.timestamps null: false # created_at, updated_at
       t.boolean :admin, default: false
+      t.string :admin_passphrase_digest, default: ''
     end
 
     add_index :users, :email,                unique: true
@@ -66,6 +67,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       u.address_line_2 = 'London'
       u.country = 'GB'
       u.admin = true
+      u.admin_passphrase_digest = 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad' # abc SHA-256
     end
   end
 end

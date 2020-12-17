@@ -81,19 +81,19 @@ class AccountTest < ActiveSupport::TestCase
   end
 
   # searching tests
-  test "searching should return the accounts with the keyword as a substring of the account number" do 
-    results = Account.search("1111")
+  test 'searching should return the accounts with the keyword as a substring of the account number' do
+    results = Account.search('1111')
     assert_equal 1, results.size
     assert_equal accounts(:two), results[0]
   end
 
-  test "searching should return an empty list if there are no matching account numbers" do 
-    results = Account.search("321")
-    assert_equal 0, results.size 
-  end 
+  test 'searching should return an empty list if there are no matching account numbers' do
+    results = Account.search('321')
+    assert_equal 0, results.size
+  end
 
-  test "searching without keyword should return the whole list of accounts" do 
-    results = Account.search("")
+  test 'searching without keyword should return the whole list of accounts' do
+    results = Account.search('')
     assert_equal accounts(:one), results[0]
     assert_equal accounts(:two), results[1]
     assert_equal accounts(:three), results[2]
