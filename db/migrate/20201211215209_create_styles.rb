@@ -17,7 +17,6 @@ class CreateStyles < ActiveRecord::Migration[6.0]
       t.string :home_background_color
       t.text :home_links_1
       t.text :home_links_2
-      t.string :dashboard_color
       t.string :dashboard_action_head_color
       t.string :dashboard_action_head_font_color
       t.string :dashboard_summary_head_color

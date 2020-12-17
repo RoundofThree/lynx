@@ -119,10 +119,6 @@ module StyleHelper
   end
 
   # dashboard
-  def dashboard_background_color
-    current_style&.dashboard_color.presence || "gray"
-  end
-
   def dashboard_action_head_color
     current_style&.dashboard_action_head_color.presence || "#3399ff"
   end
