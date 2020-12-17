@@ -49,7 +49,7 @@ class Admin::AccountsController < Admin::ApplicationController
   # PATCH/PUT /admin/accounts/1
   def update
     if @account.update(account_params)
-      redirect_to @account, notice: 'Account was successfully updated.'
+      redirect_to  [:admin, Account.last], notice: 'Account was successfully updated.'
     else
       flash[:error] = 'Failed to save changes.'
       render :edit
@@ -69,8 +69,10 @@ class Admin::AccountsController < Admin::ApplicationController
     @account = Account.find(params[:id])
   end
 
+
   # Only allow a list of trusted parameters through.
   def account_params
-    params.require(:account).permit(:balance, :account_number, :cvv, :expiry_date, :currency)
+    params.require(:account).permit(:balance, :account_number,
+      :cvv, :expiry_date, :currency,:user_id)
   end
 end

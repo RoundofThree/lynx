@@ -34,8 +34,7 @@
   <div class="form-group row">
     <%= form.label :currency, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= form.text_field :currency, class: "form-control" %>
-    </div>
+      <%= form.select :currency, Account::CURRENCY_TYPES, class: "form-control"%>    </div>
   </div>
 
   <div class="form-group row">
@@ -49,6 +48,13 @@
     <%= form.label :expiry_date, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
       <%= form.date_field :expiry_date, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :user, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+    <%= form.collection_select :user_id, User.all, :id, :firstname,:prompt => true %> 
     </div>
   </div>
 
