@@ -25,6 +25,14 @@
     </div>
   </div>
 
+  <!-- Markdown -->
+  <div class="form-group row">
+    <%= f.label :navbar_md, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_area :navbar_md, value: navbar_md, class: "form-control" %>
+    </div>
+  </div>
+
 
   <%= f.submit class: "btn btn-outline-info" %>
 <% end %>

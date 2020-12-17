@@ -16,6 +16,14 @@ module StyleHelper
     current_style&.font_family.presence || '"Assistant"'
   end 
 
+  def navbar_md
+    current_style&.navbar_md.presence || '<span style="position: relative; top: 7px;"><a href="/" class="p-2 text-dark">Banking</a>
+    <a href="/" class="p-2 text-dark">Investments</a>
+    <a href="/" class="p-2 text-dark">Loans</a>
+    <a href="/" class="p-2 text-dark">Mortgage</a>
+    <a href="/" class="button small w-button">Book a call</a></span>'
+  end 
+
   # homepage 
   def home_main_marketing_image
     if current_style.home_main_marketing_image.attached?

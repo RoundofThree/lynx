@@ -3,6 +3,7 @@ class CreateStyles < ActiveRecord::Migration[6.0]
     create_table :styles do |t|
       t.string :bank_name
       t.string :font_family
+      t.text :navbar_md
       t.string :home_main_marketing_title
       t.string :home_main_marketing_subtitle
       t.string :home_main_marketing_message_1

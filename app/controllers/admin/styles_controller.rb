@@ -29,6 +29,7 @@ class Admin::StylesController < Admin::ApplicationController
     params.require(:style).permit(:bank_name,
                                   :header_logo,
                                   :font_family,
+                                  :navbar_md,
                                   :home_main_marketing_image,
                                   :home_main_marketing_title,
                                   :home_main_marketing_subtitle,
