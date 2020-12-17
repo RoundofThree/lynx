@@ -12,9 +12,9 @@ module StyleHelper
     end
   end
 
-  def font_family 
+  def font_family
     current_style&.font_family.presence || '"Assistant"'
-  end 
+  end
 
   def navbar_md
     current_style&.navbar_md.presence || '<span style="position: relative; top: 7px;"><a href="/" class="p-2 text-dark">Banking</a>
@@ -22,9 +22,9 @@ module StyleHelper
     <a href="/" class="p-2 text-dark">Loans</a>
     <a href="/" class="p-2 text-dark">Mortgage</a>
     <a href="/" class="button small w-button">Book a call</a></span>'
-  end 
+  end
 
-  # homepage 
+  # homepage
   def home_main_marketing_image
     if current_style.home_main_marketing_image.attached?
       url_for(current_style.home_main_marketing_image)
@@ -35,34 +35,34 @@ module StyleHelper
 
   def home_main_marketing_title
     current_style&.home_main_marketing_title.presence || "Make Money move."
-  end 
+  end
 
   def home_main_marketing_subtitle
     current_style&.home_main_marketing_subtitle.presence || "Open a Checking or Saving Account today!"
-  end 
+  end
 
   def home_main_marketing_message_1
     current_style&.home_main_marketing_message_1.presence || "Build your savings without even trying."
-  end 
+  end
 
-  def home_main_marketing_card_image_1 
+  def home_main_marketing_card_image_1
     if current_style.home_main_marketing_card_image_1.attached?
       url_for(current_style.home_main_marketing_card_image_1)
     else
       "/savings.jpg"
     end
-  end 
+  end
 
   def home_main_marketing_text_1
     current_style&.home_main_marketing_text_1.presence || "Turn on Round-up Rules and start saving up effortlessly. Whenever you make a purchase, Simple will
     round up what you spend to the next whole dollar amount. When the “change” from those transactions reaches or
     exceeds $5, Simple transfers it to your Protected Goals Account — so easy you won’t even feel it. It’s like a
     digital change jar... one that adds up to real money in the bank."
-  end 
+  end
 
   def home_main_marketing_message_2
     current_style&.home_main_marketing_message_2.presence || "Make plans for what to do, not what’s due."
-  end 
+  end
 
   def home_main_marketing_card_image_2
     if current_style.home_main_marketing_card_image_2.attached?
@@ -70,17 +70,17 @@ module StyleHelper
     else
       "/plan.jpg"
     end
-  end 
+  end
 
   def home_main_marketing_text_2
     current_style&.home_main_marketing_text_2.presence || "Set up your recurring expenses in our app, and we'll do the work of saving for them each month.
       When you know your bills are covered, you can focus on the fun parts of having money—like saving for a trip to
       Japan and buying that new bike."
-  end 
+  end
 
   def home_main_marketing_message_3
     current_style&.home_main_marketing_message_3.presence || "Save toward your goals, automatically."
-  end 
+  end
 
   def home_main_marketing_card_image_3
     if current_style.home_main_marketing_card_image_3.attached?
@@ -88,15 +88,15 @@ module StyleHelper
     else
       "/success.jpg"
     end
-  end 
+  end
 
   def home_main_marketing_text_3
     current_style&.home_main_marketing_text_3.presence || "Goals make it easy to save for the things you want or want to do. There’s no need for
       spreadsheets or extra apps to budget and track your money. It’s right there inside your Simple checking account,
       growing bit-by-bit until you’re ready to spend."
-  end 
+  end
 
-  def home_footer_md 
+  def home_footer_md
     current_style&.home_footer_md.presence || ""
   end
 
@@ -123,7 +123,22 @@ module StyleHelper
     current_style&.dashboard_color.presence || "gray"
   end
 
-  # login 
+  def dashboard_action_head_color
+    current_style&.dashboard_action_head_color.presence || "#3399ff"
+  end
+
+  def dashboard_action_head_font_color
+    current_style&.dashboard_action_head_font_color.presence || "#ffffff"
+  end
+
+  def dashboard_summary_head_color
+    current_style&.dashboard_summary_head_color.presence || "#f4f4f4"
+  end
+
+  def dashboard_summary_head_font_color
+    current_style&.dashboard_summary_head_font_color.presence || "#000000"
+  end
+  # login
   def login_background_image
     if current_style.login_background_image.attached?
       url_for(current_style.login_background_image)

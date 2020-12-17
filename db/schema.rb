@@ -78,6 +78,10 @@ ActiveRecord::Schema.define(version: 2020_12_14_123126) do
     t.text "home_links_1"
     t.text "home_links_2"
     t.string "dashboard_color"
+    t.string "dashboard_action_head_color"
+    t.string "dashboard_action_head_font_color"
+    t.string "dashboard_summary_head_color"
+    t.string "dashboard_summary_head_font_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

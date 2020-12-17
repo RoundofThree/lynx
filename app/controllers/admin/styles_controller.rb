@@ -46,6 +46,10 @@ class Admin::StylesController < Admin::ApplicationController
                                   :home_footer_text_color,
                                   :home_background_color,
                                   :dashboard_color,
+                                  :dashboard_action_head_color,
+                                  :dashboard_action_head_font_color,
+                                  :dashboard_summary_head_color,
+                                  :dashboard_summary_head_font_color,
                                   :login_background_image,
                                   :home_links_1 => [],
                                   :home_links_2 => [])

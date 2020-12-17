@@ -7,7 +7,7 @@
       <h2 style="color:blue">Personal Summary</h2>
       <hr align=left width=400 SIZE=1>
         <div class="card mb" style="width: 35rem;">
-            <div class="card-header">
+            <div class="card-header" style="background-color:<%= dashboard_summary_head_color%>; color:<%=dashboard_summary_head_font_color%>">
               Personal Summary for <span style="font-weight:bold"><%= current_user.lastname + " " + current_user.firstname %></span>
             </div>
           <ul class="list-group list-group-flush">
@@ -20,7 +20,7 @@
         </div>
 
         <div class="list-group" style="width: 25rem; position:absolute; right:50px; top: 70px;">
-          <a class="list-group-item list-group-item-action active">
+          <a class="list-group-item list-group-item-action active" style="background-color:<%= dashboard_action_head_color%>; color:<%=dashboard_action_head_font_color%>">
             <span style="font-size:20px">Action List</span>
           </a>
           <a>

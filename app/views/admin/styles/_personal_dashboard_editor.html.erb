@@ -3,10 +3,27 @@
 </div>
 <%= form_for styles, url: admin_styles_path, method: :put, html: {class: "col-8", style: "margin: 15px;"} do |f| %>
 <div class="form-group row">
-  <%= f.label :dashboard_background_color, class: "col-sm-4 col-form-label" %>
+  <%= f.label :dashboard_action_head_color, class: "col-sm-4 col-form-label" %>
   <div class="col-sm-6">
-    <%= f.select :dashboard_color,options_for_select(["yellow","blue","green","pink","dark"],current_style&.dashboard_color),{}, {class: "form-control col-xs-6 col-md-4" } %>
-  </div>
+    <%= f.color_field :dashboard_action_head_color, value: dashboard_action_head_color, class: "form-control" %></div>
+</div>
+
+<div class="form-group row">
+  <%= f.label :dashboard_action_head_font_color, class: "col-sm-4 col-form-label" %>
+  <div class="col-sm-6">
+    <%= f.color_field :dashboard_action_head_font_color, value: dashboard_action_head_font_color, class: "form-control" %></div>
+</div>
+
+<div class="form-group row">
+  <%= f.label :dashboard_summary_head_color, class: "col-sm-4 col-form-label" %>
+  <div class="col-sm-6">
+    <%= f.color_field :dashboard_summary_head_color, value: dashboard_summary_head_color, class: "form-control" %></div>
+</div>
+
+<div class="form-group row">
+  <%= f.label :dashboard_summary_head_font_color, class: "col-sm-4 col-form-label" %>
+  <div class="col-sm-6">
+    <%= f.color_field :dashboard_summary_head_font_color, value: dashboard_summary_head_font_color, class: "form-control" %></div>
 </div>
 
   <%= f.submit class: "btn btn-outline-info" %>
