@@ -1,17 +1,12 @@
 <%= form_for [:admin, transaction], class: "col-8" do |form| %>
-<!-- Errors -->
+  <!-- Errors -->
   <% if transaction.errors.any? %>
-    <div class="message is-danger">
-      <div class="message-header">
-        <p><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</p>
-      </div>
-      <div class="message-body">
+    <div class="alert alert-danger">
         <ul>
           <% transaction.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
-      </div>
     </div>
   <% end %>
 

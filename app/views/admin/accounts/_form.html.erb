@@ -1,17 +1,12 @@
 <%= form_for [:admin, account], class: "col-8" do |form| %>
 <!-- Errors -->
   <% if account.errors.any? %>
-    <div class="alert alert-error">
-      <div class="message-header">
-        <p><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</p>
-      </div>
-      <div class="message-body">
+    <div class="alert alert-danger">
         <ul>
           <% account.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
-      </div>
     </div>
   <% end %>
 
