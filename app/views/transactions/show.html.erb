@@ -1,49 +1,44 @@
 <div class="row justify-content-center" style="padding: 10px; <%= show_payment_page_style %>">
-
   <div class="col-sm-3">
     <img src="<%= show_payment_image %>" width="100%">
     <%= raw render_markdown(show_payment_md) %>
   </div>
-
-    <div class="col-sm-6">
-
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex flex-column align-items-center text-center">
-                  <!-- image -->
-                    <img src="https://logosandtypes.com/wp-content/uploads/2020/07/ashmolean.svg" class="rounded-circle"
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex flex-column align-items-center text-center">
+          <!-- image -->
+          <img src="https://logosandtypes.com/wp-content/uploads/2020/07/ashmolean.svg" class="rounded-circle"
                         width="150">
-                    <div class="mt-3">
-                        <h4><%= @transaction.dealer_name %></h4>
-                        <p class="display-4 <%= @transaction.amount > 0 ? 'text-success' : 'text-danger' %>"><%= number_to_currency(@transaction.amount, :unit => @transaction.currency, :format => "%u %n") %></p>
-                        <p class="text-secondary mb-1"><%= @transaction.created_at %></p>
-                        <button class="btn btn-outline-danger"><i class="fa fa-flag" style="color: #000000;"></i> Report</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card mt-1">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                <h6 class="mb-0">My Account</h6>
-                <span class="text-secondary"><%= @transaction.account.account_number %></span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                <h6 class="mb-0">Dealer Account</h6>
-                <span class="text-secondary"><%= @transaction.dealer_account_number %></span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                <h6 class="mb-0">Reference</h6>
-                <span class="text-secondary"><%= @transaction.reference %></span>
-              </li>
-            </ul>
-            <div class="card-body">
-                <i class="fa fa-arrow-left" style="color: #000000;"></i>
-                <%= link_to "Back to account", account_path(@transaction.account), class: "card-link" %>
-            </div>
+          <div class="mt-3">
+            <h4><%= @transaction.dealer_name %></h4>
+            <p class="display-4 <%= @transaction.amount > 0 ? 'text-success' : 'text-danger' %>"><%= number_to_currency(@transaction.amount, :unit => @transaction.currency, :format => "%u %n") %></p>
+            <p class="text-secondary mb-1"><%= @transaction.created_at %></p>
+            <button class="btn btn-outline-danger"><i class="fa fa-flag" style="color: #000000;"></i> Report</button>
           </div>
         </div>
-
-    <%= render "shared/footer" %>
+      </div>
+    </div>
+    <div class="card mt-1">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+          <h6 class="mb-0">My Account</h6>
+          <span class="text-secondary"><%= @transaction.account.account_number %></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+          <h6 class="mb-0">Dealer Account</h6>
+          <span class="text-secondary"><%= @transaction.dealer_account_number %></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+          <h6 class="mb-0">Reference</h6>
+          <span class="text-secondary"><%= @transaction.reference %></span>
+        </li>
+      </ul>
+      <div class="card-body">
+        <i class="fa fa-arrow-left" style="color: #000000;"></i>
+        <%= link_to "Back to account", account_path(@transaction.account), class: "card-link" %>
+      </div>
+    </div>
+  </div>
+  <%= render "shared/footer" %>
 </div>
