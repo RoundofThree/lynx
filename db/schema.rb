@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_14_123126) do
+ActiveRecord::Schema.define(version: 2020_12_12_103241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,18 +48,6 @@ ActiveRecord::Schema.define(version: 2020_12_14_123126) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "dealers", force: :cascade do |t|
-    t.string "currency"
-    t.string "name"
-    t.string "account_number"
-    t.integer "min_amount"
-    t.integer "max_amount"
-    t.integer "frequency"
-    t.boolean "is_vendor"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "styles", force: :cascade do |t|
     t.string "bank_name"
     t.string "font_family"
@@ -77,7 +65,6 @@ ActiveRecord::Schema.define(version: 2020_12_14_123126) do
     t.string "home_background_color"
     t.text "home_links_1"
     t.text "home_links_2"
-    t.string "dashboard_color"
     t.string "dashboard_action_head_color"
     t.string "dashboard_action_head_font_color"
     t.string "dashboard_summary_head_color"
