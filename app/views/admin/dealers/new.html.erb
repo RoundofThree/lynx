@@ -1,1 +1,12 @@
-
+<div class ="row">
+  <!-- render shared navbar-->
+  <%= render partial: "admin/shared/navbar" %>
+  <!-- create user form -->
+  <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" style ="max-width: 680px; padding-bottom: 100px; padding-top:20px">
+    <div class="columns">
+      <h1 class="h1" style ="font-size: 35px; color: #525252; margin-bottom: 40px;">Creat new dealer</h1>
+      <%= link_to 'Back to dealers list', admin_dealers_path, class: "button" %>
+    </div>
+    <%= render 'form', dealer: @dealer %>  
+  </div>
+</div>
