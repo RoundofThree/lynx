@@ -201,6 +201,21 @@ module StyleHelper
   def show_payment_md 
     current_style&.make_payment_md.presence || ""
   end 
+  
+  #account
+  def account_table_color (count = 0)
+    if count % 2 == 0
+      current_style&.account_table_color.presence || ""
+    else
+      ""
+    end
+  end
+
+
+  # navbar_color
+  # home_background_color
+  # transaction
+  # payment
 
   def current_style
     Style.first

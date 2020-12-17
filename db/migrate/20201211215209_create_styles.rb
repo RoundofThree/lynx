@@ -28,6 +28,7 @@ class CreateStyles < ActiveRecord::Migration[6.0]
       t.string :make_payment_subtitle
       t.string :show_payment_page_style
       t.text :show_payment_md
+      t.string :account_table_color
       t.timestamps
     end
   end

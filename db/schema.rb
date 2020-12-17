@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
     t.string "make_payment_subtitle"
     t.string "show_payment_page_style"
     t.text "show_payment_md"
+    t.string "account_table_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
