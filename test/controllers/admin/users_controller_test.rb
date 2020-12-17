@@ -46,6 +46,20 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to [:admin, User.last]
     end
 
+    test "admin user should be able to create a user with only required fields" do
+        sign_in users(:admin)
+        login_as_admin('abc')
+        user = users(:one)
+        assert_difference('User.count') do
+          post admin_users_url, params: { user:
+            { firstname: user.firstname, lastname: user.lastname,
+              phone: user.phone, birth_date: "19991010",
+              is_female: true, email: "a@q.com", password: "123456",
+              password_confirmation: "123456" } }
+        end
+        assert_redirected_to [:admin, User.last]
+      end
+
     test "create should fail if not all requried params are filled" do
         sign_in users(:admin)
         login_as_admin('abc')
@@ -54,6 +68,13 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
         end
         assert_response :success
       end
+
+      test "not admin user should not be able to create a user" do
+          assert_no_difference('User.count') do
+            post admin_users_url, params: {user:{firstname: "hello"}}
+          end
+          assert_response :missing
+        end
 
     test "admin user should be able to edit and update user" do
       sign_in users(:admin)
@@ -65,6 +86,17 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
              email: "a@q.com", password: "123456", password_confirmation: "123456",
              postcode:"N79AW", country:"UK",
              address_line_1:"a", address_line_2:"2" } }
+      assert_redirected_to [:admin, User.last]
+    end
+
+    test "edit should success if required fields are filled" do
+      sign_in users(:admin)
+      login_as_admin('abc')
+      user = users(:one)
+      patch admin_user_url(user), params: { user:
+         { firstname: user.firstname, lastname: user.lastname,
+            phone: user.phone, birth_date: "19991010", is_female: true,
+             email: "a@q.com", password: "123456", password_confirmation: "123456" } }
       assert_redirected_to [:admin, User.last]
     end
 
@@ -83,6 +115,19 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
      assert_redirected_to [:admin, User.last]
    end
 
+   test "not admin user should not be able to edit an user" do
+    user = users(:one)
+    assert_no_difference 'User.count' do
+    patch admin_user_url(user), params: { user:
+       { firstname: user.firstname, lastname: user.lastname,
+          phone: user.phone, birth_date: "19991010", is_female: true,
+           email: "a@q.com", password: "123456", password_confirmation: "123456",
+           postcode:"N79AW", country:"UK",
+           address_line_1:"a"} }
+         end
+         assert_response :missing
+  end
+
     test "admin user should be able to destroy any user" do
       sign_in users(:admin)
       login_as_admin('abc')
@@ -91,5 +136,13 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
         delete admin_user_url(user)
       end
       assert_redirected_to admin_users_url
+  end
+
+  test "not admin user should not be able to destroy any user" do
+    user = users(:have_one_account)
+    assert_no_difference('User.count') do
+      delete admin_user_url(user)
+    end
+    assert_response :missing
   end
 end
