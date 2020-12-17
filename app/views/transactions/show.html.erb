@@ -1,16 +1,25 @@
-<div class="row justify-content-center mt-4">
+<!-- TODO: style -->
+<div class="row justify-content-center" style="background: linear-gradient(to right, #add8e6, white); padding: 10px;">
+
+  <div class="col-sm-3">
+    <!-- TODO: image -->
+    <img src="/payment.png" width="100%">
+    <!-- markdown -->
+  </div>
+
     <div class="col-sm-6">
 
         <div class="card">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center text-center">
+                  <!-- image -->
                     <img src="https://logosandtypes.com/wp-content/uploads/2020/07/ashmolean.svg" class="rounded-circle"
                         width="150">
                     <div class="mt-3">
                         <h4><%= @transaction.dealer_name %></h4>
                         <p class="display-4 <%= @transaction.amount > 0 ? 'text-success' : 'text-danger' %>"><%= number_to_currency(@transaction.amount, :unit => @transaction.currency, :format => "%u %n") %></p>
                         <p class="text-secondary mb-1"><%= @transaction.created_at %></p>
-                        <button class="btn btn-outline-danger"><i class="fa fa-flag"></i> Report</button>
+                        <button class="btn btn-outline-danger"><i class="fa fa-flag" style="color: #000000;"></i> Report</button>
                     </div>
                 </div>
             </div>
@@ -37,5 +46,6 @@
             </div>
           </div>
         </div>
-    </div>
+
+    <%= render "shared/footer" %>
 </div>
