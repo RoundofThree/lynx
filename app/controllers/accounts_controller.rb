@@ -18,6 +18,9 @@ class AccountsController < ApplicationController
 
   def check_ownership
     account = Account.find(params[:id])
-    redirect_to dashboard_path, alert: 'This account is not yours!' if account.nil? || current_user != account.user
+    if account.nil? || current_user != account.user
+      flash[:error] = 'This account is not yours!' 
+      redirect_to dashboard_path
+    end 
   end
 end

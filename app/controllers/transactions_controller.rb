@@ -17,7 +17,8 @@ class TransactionsController < ApplicationController
     # find account
     @account = Account.find(params[:transaction][:account_id]) unless params[:transaction][:account_id].blank?
     if @account.nil?
-      redirect_to new_transaction_path, error: 'Select a valid account.'
+      flash[:error] = 'Select a valid account.'
+      redirect_to new_transaction_path
       return
     end
     @transaction.currency = @account.currency
@@ -26,28 +27,41 @@ class TransactionsController < ApplicationController
       # substract the balance
       amount = params[:transaction][:amount]
       @account.balance = @account.balance - amount.to_d
-      @account.save!
-      redirect_to transaction_path(@transaction.id), success: "Payment success."
+      
+      if @account.save 
+        flash[:success] = "Payment success."
+        redirect_to transaction_path(@transaction.id)
+      else 
+        @transaction.destroy 
+        flash[:alert] = "Payment failed, try again."
+        redirect_to new_transaction_path
+      end 
     else
-      redirect_to new_transaction_path, error: "Payment failed, try again. "
+      flash[:error] = "Payment failed, try again."
+      redirect_to new_transaction_path
     end
   end
 
   private
 
   def check_amount
-    redirect_to new_transaction_path, error: 'Invalid amount' if transaction_params[:amount].to_d <= 0.0
+    if transaction_params[:amount].to_d <= 0.0
+      flash[:error] = 'Invalid amount'
+      redirect_to new_transaction_path
+    end 
   end
 
   def require_permissions
     if current_user != Transaction.find(params[:id]).account.user
-      redirect_to dashboard_path, error: 'Invalid transaction id!'
+      flash[:error] = 'Invalid transaction id!'
+      redirect_to dashboard_path
     end
   end
 
   def check_have_at_least_one_account
     if current_user.accounts.empty?
-      redirect_to dashboard_path, alert: "You don't have any accounts yet!"
+      flash[:error] = "You don't have any accounts yet!"
+      redirect_to dashboard_path
     else
       @accounts = current_user.accounts
     end

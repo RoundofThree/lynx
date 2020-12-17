@@ -42,7 +42,6 @@ class Admin::UsersController < Admin::ApplicationController
     else
       flash[:error] = 'Error in creating user.'
       render :new
-
     end
   end
 
@@ -59,8 +58,7 @@ class Admin::UsersController < Admin::ApplicationController
       flash[:error] = 'Failed to save changes.'
       render :edit
     end
-
-end
+  end
 
   # DELETE /admin/users/1
   def destroy
