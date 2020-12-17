@@ -10,7 +10,7 @@ class Admin::DealersController < ApplicationController
 
   # GET /admin/dealers/new
   def new
-    @user = Dealer.new
+    @dealer = Dealer.new
   end
 
   # GET /admin/dealers/1/edit
@@ -18,11 +18,11 @@ class Admin::DealersController < ApplicationController
 
   # POST /admin/dealers
   def create
-    @user = User.new(dealer_params)
+    @dealer = Dealer.new(dealer_params)
     if @dealer.save
       redirect_to admin_dealers_url, notice: "Dealer was successfully created."
     else
-      flash[:error] = "Error in creating user."
+      flash[:error] = "Error in creating dealer."
       render :new
     end
   end
