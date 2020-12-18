@@ -67,7 +67,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     login_as_admin('abc')
     accountuser = users(:have_one_account)
 
-    account = Account.new(user: accountuser, account_number: "999999", balance:"2313", currency:"GBP",
+    account = Account.new(user: accountuser, account_number: "12345678901234", balance:"2313", currency:"GBP",
     cvv:"132", expiry_date:"20221022")
       assert_difference('Account.count') do
       post admin_accounts_url, params: { account: account.attributes}
@@ -93,7 +93,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     accountuser = users(:have_one_account)
     account = accounts(:one)
     patch admin_account_url(account), params: {
-      account:{ user: accountuser, account_number: "999999", balance:"2313",
+      account:{ user: accountuser, account_number: "12345678901234", balance:"2313",
       currency:"GBP",cvv:"132", expiry_date:"20221022"}}
       assert_redirected_to [:admin, Account.last]
   end

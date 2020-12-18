@@ -5,7 +5,7 @@ class InsertAccounts < ActiveRecord::Migration[6.0]
       [{
         user_id: 1,
         balance: 1000,
-        account_number: 12_345_678,
+        account_number: "57035847940742",
         cvv: 123,
         expiry_date: Date.new(2021, 10, -1),
         currency: 'GBP'
@@ -13,7 +13,7 @@ class InsertAccounts < ActiveRecord::Migration[6.0]
        {
          user_id: 1,
          balance: 500,
-         account_number: 11_111_111,
+         account_number: "14696478537063",
          cvv: 123,
          expiry_date: Date.new(2021, 10, -1),
          currency: 'GBP'
@@ -21,7 +21,7 @@ class InsertAccounts < ActiveRecord::Migration[6.0]
        {
          user_id: 1,
          balance: 1_000_000,
-         account_number: 88_888_888,
+         account_number: "73042859175930",
          cvv: 123,
          expiry_date: Date.new(2021, 10, -1),
          currency: 'USD'
