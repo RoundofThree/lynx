@@ -2,7 +2,10 @@
     <a class="my-0 mr-md-auto brand w-nav-brand w--current" href="/" aria-current="page" aria-label="home">
         <img class="brand-logo" src="<%= header_logo %>" width="100px">
     </a>
-    <nav class="my-2 my-md-0 mr-md-3">
+    <% if !current_user.nil? %>
+        <%= link_to "Dashboard", dashboard_path, class: "p-2 text-dark" %>
+    <% end %>
+    <nav class="my-2 my-md-0 mr-md-3" style="display: inline;">
         <%= raw render_markdown(navbar_md) %>
     </nav>
     <% if current_user.nil? %>
@@ -17,5 +20,4 @@
     <% end %>
     <% end %>
     <% end %>
-
 </div>
