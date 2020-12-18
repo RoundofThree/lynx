@@ -1,6 +1,6 @@
 class Admin::DealersController < Admin::ApplicationController
   before_action :set_dealer, only: %i[show edit update destroy]
-  # GET /admin/users
+  # GET /admin/dealers
   def index
     @dealers = Dealer.all
   end
