@@ -25,17 +25,17 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'admin user should get new' do
-    sign_in users(:admin)
-    login_as_admin('abc')
-    get new_account_url
-    assert_response :success
-  end
-
   test 'admin user should get edit' do
     sign_in users(:admin)
     login_as_admin('abc')
     get edit_account_url(@account)
+    assert_response :success
+  end
+
+  test 'admin user should get new' do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get "/admin/accounts/new"
     assert_response :success
   end
 
@@ -82,15 +82,15 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to [:admin, Account.last]
   end
 
-  test "edit should fail if no required params are filled " do
+  test "update should fail if balance is negative" do
     sign_in users(:admin)
     login_as_admin('abc')
     accountuser = users(:have_one_account)
     account = accounts(:one)
     patch admin_account_url(account), params: {
-      account:{ balance:"2313",
-      currency:"GBP",cvv:"132", expiry_date:"20221022"}}
-      assert_redirected_to [:admin, Account.last]
+      account:{ balance:"-2313",user: accountuser, account_number: "999999",
+      currency:"GBP",cvv:"1321", expiry_date:"20221022"}}
+      assert_response :success
 
   end
 
