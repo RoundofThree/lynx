@@ -1,14 +1,48 @@
-# Lynx Online Banking System
+## SEG small group project 
 
-* Rails v6
+* Team: Lynx 
+* Members: Zhuo Ying Jiang Li, Shumeng Liu, Tao Huang, Yuxin Hong, Tung-sen Wu
+* Deployed to Heroku: https://warm-headland-19695.herokuapp.com/
 
-* Database: PostgreSQL.
+### User Credentials 
 
-* How to run the test suite!!!
+* Normal User
 
-* Services (job queues, cache servers, search engines, etc.) --> maybe ElasticSearch :)
+    Email: roland.budka@gmail.com 
 
-* Deployment instructions --> Heroku
+    Password: jkrolling2001 
+
+* Administrative User 
+
+    Email: tom.waterson@gmail.com 
+
+    Password: SEGproj3ctover 
+
+    Admin Area passphrase: 4dminLynx!123 
+
+##### Code reuse and references 
+
+1. Bootstrap CSS (via CDN) 
+2. FontAwesome icons 
+3. Google Fonts 
+* * Lato, sans-serif 
+* * Abhaya Libre, serif 
+* * Merriweather, serif 
+* * Assistant, sans-serif 
+* * Open Sans, sans-serif 
+
+4. Gems 
+    1. Devise: for authentication of users  
+    2. Rubocop: for code standard checking 
+    3. Rufo and htmlbeatifier: code styling/formatter 
+    4. Kramdown: render markdown  
+    5. Simplecov: code coverage report generator  
+    6. Rails-controller-testing: use for testing controller tests 
+    7. Minitest-reporters: rails testing support  
+
+5. https://v4.bootcss.com/docs/examples/dashboard/ in app/views/dashboard/_navbar.html.erb number of lines of code:64 
+
+---
 
 ## How to setup development env
 
@@ -32,57 +66,13 @@ rails s  # start the server at localhost:3000
 
 Generate code coverage support: 
 ```
-rm -rf coverage/ && DISABLE_SPRING=1 COVERAGE=1 bin/rails test
+rm -rf coverage/ && DISABLE_SPRING=1 COVERAGE=1 rails test
 ```
 
 Run without generating coverage report:
 ```
 rails test
 ```
-
-## Task allocation
-
-Please only change these files...
-
-### Login, sign up...
-
-Models: /user.rb
-
-Controllers: /users/ folder (registrations, sessions, passwords)
-
-Views: /users and /dashboard folders
-
-Assets: stylesheets/home.scss, dashboard.scss
-
-### List of accounts and so
-
-Models: /account.rb
-
-Controllers: /accounts/ folder
-
-Views: /accounts/ folder
-
-Assets: accounts.scss
-
-### List of transactions
-
-Models: /transaction.rb
-
-Views: /transactions folder related to show
-
-Controllers: transactions actions: show
-
-### Payments
-
-Models: /transaction.rb
-
-Views: /transactions folder related to create and new
-
-Controllers: transactions actions: create and new
-
-### Admin
-
-MVC of admin: dashboard, add generate random transactions 
 
 ## How to contribute
 
