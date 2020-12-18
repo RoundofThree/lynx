@@ -1,0 +1,30 @@
+<div class="pb-2 mb-3 border-bottom">
+  <h4>Personal dashboard</h4>
+</div>
+<!-- dashboard action header color -->
+<%= form_for styles, url: admin_styles_path, method: :put, html: {class: "col-8", style: "margin: 15px;"} do |f| %>
+  <div class="form-group row">
+    <%= f.label :dashboard_action_head_color, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.color_field :dashboard_action_head_color, value: dashboard_action_head_color, class: "form-control" %></div>
+  </div>
+  <!-- dashboard action header text color -->
+  <div class="form-group row">
+    <%= f.label :dashboard_action_head_font_color, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.color_field :dashboard_action_head_font_color, value: dashboard_action_head_font_color, class: "form-control" %></div>
+  </div>
+  <!-- dashboard summary header color -->
+  <div class="form-group row">
+    <%= f.label :dashboard_summary_head_color, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.color_field :dashboard_summary_head_color, value: dashboard_summary_head_color, class: "form-control" %></div>
+  </div>
+  <!-- dashboard summary header text color -->
+  <div class="form-group row">
+    <%= f.label :dashboard_summary_head_font_color, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.color_field :dashboard_summary_head_font_color, value: dashboard_summary_head_font_color, class: "form-control" %></div>
+  </div>
+  <%= f.submit class: "btn btn-outline-info" %>
+<% end %>

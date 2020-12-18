@@ -1,0 +1,35 @@
+<div class="pb-2 mb-3 border-bottom">
+  <h4>Show payment page</h4>
+</div>
+<%= form_for styles, url: admin_styles_path, method: :put, html: {class: "col-8", style: "margin: 15px;"} do |f| %>
+  <div class="form-group row">
+    <%= f.label :show_payment_page_style, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_area :show_payment_page_style, value: show_payment_page_style, class: "form-control" %>
+    </div>
+  </div>
+  <!-- Image -->
+  <div class="form-group row">
+    <%= f.label :show_payment_image, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= image_tag show_payment_image, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
+      <%= f.file_field :show_payment_image, class: "form-control-file" %>
+    </div>
+  </div>
+  <!-- Markdown -->
+  <div class="form-group row">
+    <%= f.label :show_payment_md, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_area :show_payment_md, value: show_payment_md, class: "form-control" %>
+    </div>
+  </div>
+  <!-- Dealer image --> 
+  <div class="form-group row">
+    <%= f.label :dealer_image, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= image_tag dealer_image, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
+      <%= f.file_field :dealer_image, class: "form-control-file" %>
+    </div>
+  </div>
+  <%= f.submit class: "btn btn-outline-info" %>
+<% end %>

@@ -1,27 +1,45 @@
 <%= form_for [:admin, transaction], class: "col-8" do |form| %>
-<!-- Errors -->
+  <!-- Errors -->
   <% if transaction.errors.any? %>
-    <div class="message is-danger">
-      <div class="message-header">
-        <p><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</p>
-      </div>
-      <div class="message-body">
-        <ul>
-          <% transaction.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
+    <div class="alert alert-danger">
+      <ul>
+        <% transaction.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :amount, class: "label" %>
-    <%= form.number :amount, class: "input" %>
+  <div class="form-group row">
+    <%= form.label :account, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.collection_select :account_id, Account.all, :id, :account_number,:prompt => true %>
+    </div>
   </div>
-
+  <div class="form-group row">
+    <%= form.label :amount, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :amount, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :currency, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.select :currency, Account::CURRENCY_TYPES, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :dealer_account_number, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :dealer_account_number, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :dealer_name, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :dealer_name, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
   <div class="actions">
     <%= form.submit class: "button is-success" %>
   </div>
-
 <% end %>

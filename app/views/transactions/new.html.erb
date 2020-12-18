@@ -1,37 +1,20 @@
-
-
-  <main>
-
-  <div class="container mt-4">
-  <div class="row justify-content-center">
-      <div class="col-lg-6 mx-auto">
-      <h2 class="display-4 text-info">Transfer to any part of the world</h2>
-      <em>...and do it securely</em>
-        <hr />
-          <%= render 'form', transaction: @transaction %>
-          
-          <%= link_to dashboard_path do %>
-            <div class="btn btn-danger">
-            <i class="fa fa-arrow-left"></i>
-            Cancel payment
-            </div>
-          <% end %>
-      </div>
-      </div>
-      
+  
+<div class="row justify-content-center" style="padding: 10px; <%= make_payment_page_style %>">
+  <div class="col-lg-4 mx-auto">
+    <img src="<%= make_payment_image %>" width="100%">
+    <%= raw render_markdown(make_payment_md) %>
   </div>
+  <div class="col-lg-4 mx-auto">
+    <h2 class="display-4 text-info"><%= make_payment_title %></h2>
+    <em>...and do it securely</em>
+    <hr>
+    <%= render 'form', transaction: @transaction %>
+    <%= link_to dashboard_path do %>
+      <div class="btn btn-light" style="color: #6c757d; border-color: #dee2e6;">
+        <i class="fa fa-arrow-left" style="color: #000000;"></i>
+        Cancel
+      </div>
+    <% end %>
+  </div>
+  <%= render "shared/footer" %>
 </div>
-</div>
-
-  </main>
-
-
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">© Lynx Bank Ltd.</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
-  </footer>
-

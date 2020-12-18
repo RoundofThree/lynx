@@ -1,59 +1,53 @@
 <%= form_for [:admin, account], class: "col-8" do |form| %>
-<!-- Errors -->
+  <!-- Errors -->
   <% if account.errors.any? %>
-    <div class="alert alert-error">
-      <div class="message-header">
-        <p><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</p>
-      </div>
-      <div class="message-body">
-        <ul>
-          <% account.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
+    <div class="alert alert-danger">
+      <ul>
+        <% account.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
-
   <!-- Input fields -->
-
   <div class="form-group row">
     <%= form.label :account_number, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
       <%= form.text_field :account_number, autofocus: true, class: "form-control" %>
     </div>
   </div>
-
   <div class="form-group row">
     <%= form.label :balance, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
       <%= form.number_field :balance, class: "form-control" %>
     </div>
   </div>
-
   <div class="form-group row">
     <%= form.label :currency, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
       <%= form.text_field :currency, class: "form-control" %>
     </div>
   </div>
-
   <div class="form-group row">
     <%= form.label :cvv, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
       <%= form.text_field :cvv, class: "form-control" %>
     </div>
   </div>
-
   <div class="form-group row">
     <%= form.label :expiry_date, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
       <%= form.date_field :expiry_date, class: "form-control" %>
     </div>
   </div>
+  <div class="form-group row">
+    <%= form.label :user, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.collection_select :user_id, User.all, :id, :firstname,:prompt => true %>
 
+    </div>
+  </div>
   <div>
     <%= form.submit class: "btn btn-primary" %>
   </div>
-
 <% end %>

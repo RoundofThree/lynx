@@ -45,6 +45,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
       t.timestamps null: false # created_at, updated_at
       t.boolean :admin, default: false
+      t.string :admin_passphrase_digest, default: ''
     end
 
     add_index :users, :email,                unique: true
@@ -54,18 +55,34 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
     # Add admin user
     User.create! do |u|
-      u.firstname = 'Nyx'
-      u.lastname = 'Random'
-      u.email = 'zhuoyingjiangli@random.com'
-      u.password = 'thisisalooooooooooooooongpassword'
+      u.firstname = 'Tom'
+      u.lastname = 'Waterson'
+      u.email = 'tom.waterson@gmail.com'
+      u.password = 'SEGproj3ctover'
       u.birth_date = Date.new(2001, 11, 28)
       u.phone = '+44 07740271205'
-      u.is_female = true
-      u.postcode = 'HAHAHA'
+      u.is_female = false 
+      u.postcode = 'WC2N 5RJ'
       u.address_line_1 = '1 Strand'
       u.address_line_2 = 'London'
-      u.country = 'GB'
+      u.country = 'United Kingdom'
       u.admin = true
+      u.admin_passphrase_digest = "4824e89b43d8ca05bef6fea622f2920962fc7b57c9faccaa28657d762ecf663c" # 4dminLynx!123 SHA-256
+    end
+
+    # Add normal user
+    User.create! do |u|
+      u.firstname = 'Roland'
+      u.lastname = 'Budka'
+      u.email = 'roland.budka@gmail.com'
+      u.password = 'jkrolling2001'
+      u.birth_date = Date.new(2001, 11, 28)
+      u.phone = '+44 07740271205'
+      u.is_female = false 
+      u.postcode = 'WC2N 5RJ'
+      u.address_line_1 = '1 Strand'
+      u.address_line_2 = 'London'
+      u.country = 'United Kingdom'
     end
   end
 end

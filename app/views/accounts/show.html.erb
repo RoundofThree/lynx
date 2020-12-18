@@ -1,65 +1,48 @@
-<div class="account-show">
-    <div class="container">
-        <h2>
-            <p>Account <%= @account.account_number %>
-            </p>
-        </h2>
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-secondary active" name="button" style="margin-right:10px">Detail</button>
-          <button type="button" class="btn btn-secondary" name="button" style="margin-right:10px">Transfer</button>
-          <button type="button" class="btn btn-secondary" name="button" style="margin-right:10px">Documents</button>
-          <button type="button" class="btn btn-secondary" name="button" style="margin-right:10px">Categorize</button>
-          <button type="button" class="btn btn-secondary" name="button" style="margin-right:10px">Download</button>
+   <div class="account-show">
+      <div class="row">
+     <%= render partial: "/shared/navbar" %>
+       <div class = "col p-4" style="align-items-center">
+       <h1><p>Account Number <%= @account.account_number %></p>  </h1>
+             <div>
+                 <h4 class="account-info">Account information</h4>
+                 <hr class="divider">
+                 <h4> Current Balance </h4>
+                 <h5 class="balance"><%= @account.balance %> <%= @account.currency %></h5>
+                 <hr class="divider">
+             </div>
 
-        </div>
-        <div style="margin-top:15px">
-            <h3 class="account-info">Account information</h3>
-            <hr class="divider">
-            <h7> Current Balance </h7>
-            <h4 class="balance" style="margin-bottom:30px">
-                <%= @account.balance %>
-                <%= @account.currency %>
-                available balance
-            </h4>
-            <hr class="divider">
-        </div>
+             <div id="transacion-history">
+                 <h4>Transactions</h4>
+                 <!--TODO: The background colour of the th and tr elements should be editable
+                 ideally the even rows in the table should have different colours as odd rows-->
+                 <table class="transactions">
+                     <colgroup>
+                         <col span="1" style="width: 20%;">
+                         <col span="1" style="width: 50%;">
+                         <col span="1" style="width: 15%;">
+                         <col span="1" style="width: 15%;">
+                     </colgroup>
+                     <tr>
+                         <th>Date</th>
+                         <th>Description</th>
+                         <th>Amount</th>
+                         <th>Detail</th>
+                     </tr>
+                     <% count = 1 %>
+                     <% @transactions.each do |transaction| %>
+                     <% count = count + 1 %>
+                     <tr class="transaction-row" style="background-color:<%= account_table_color count %>">
+                         <td>
+                             <!-- Time format: yyyy-mm-dd hh:mm:ss -->
+                             <!-- Maybe consider removing year-->
+                             <%= transaction.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+                         <td>Transferred to <%= transaction.dealer_name %></td>
+                         <td><%= transaction.amount %></td>
+                         <td><%= link_to "View", transaction_path(transaction), class: "link"%></td>
+                     </tr>
+                     <% end %>
+                 </table>
 
-        <div id="transacion-history" style="margin-top:20px">
-            <h3>Transactions</h3>
-            <!--TODO: The background colour of the th and tr elements should be editable
-                ideally the even rows in the table should have different colours as odd rows-->
-            <table class="transactions">
-                <colgroup>
-                    <col span="1" style="width: 20%;">
-                    <col span="1" style="width: 30%;">
-                    <col span="1" style="width: 15%;">
-                    <col span="1" style="width: 15%;">
-                    <col span="1" style="width: 15%;">
-                    <col span="1" style="width: 15%;">
-                </colgroup>
-                <tr>
-                    <th>Date</th>
-                    <th>Description</th>
-                    <th>Transfer to/by</th>
-                    <th>Amount</th>
-                    <th>Currency</th>
-                    <th>Detail</th>
-                </tr>
-                <% @transactions.each do |transaction| %>
-                <tr class="transaction-row">
-                    <td>
-                        <!-- Time format: yyyy-mm-dd hh:mm:ss -->
-                        <!-- Maybe consider removing year-->
-                        <%= transaction.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-                    </td>
-                    <td>Transferred to <%= transaction.dealer_name %></td>
-                    <td><%= transaction.dealer_account_number %></td>
-                    <td><%= transaction.amount %></td>
-                    <td><%= @account.currency %></td>
-                    <td><%= link_to "View" , transaction_path(transaction), class: "link" %></td>
-                </tr>
-                <% end %>
-            </table>
-        </div>
-    </div>
-</div>
+             </div>
+         </div>
+   </div>
