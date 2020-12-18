@@ -34,7 +34,7 @@ class Admin::AccountsController < Admin::ApplicationController
 
   # GET /admin/accounts/1/edit
   def edit; end
-
+  
   # POST /admin/accounts
   def create
     @account = Account.new(account_params)
@@ -65,16 +65,18 @@ class Admin::AccountsController < Admin::ApplicationController
     redirect_to admin_accounts_url
   end
 
-  private
 
+  private 
+  
+  # Use callbacks to share common setup or constraints between actions.
   def set_account
     @account = Account.find(params[:id])
   end
-
 
   # Only allow a list of trusted parameters through.
   def account_params
     params.require(:account).permit(:balance, :account_number,
       :cvv, :expiry_date, :currency, :user_id)
   end
+
 end
