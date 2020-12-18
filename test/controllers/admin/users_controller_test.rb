@@ -84,7 +84,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
         assert_redirected_to [:admin, User.last]
       end
 
-    test "create should fail if not all requried params are filled" do
+    test "create should fail if not all required params are filled" do
         sign_in users(:admin)
         login_as_admin('abc')
         assert_no_difference('User.count') do
@@ -121,6 +121,19 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to admin_user_url(user)
     end
 
+    test "admin user should be able to update admin passphrase" do
+      sign_in users(:admin)
+      login_as_admin('abc')
+      user = users(:admin)
+      patch admin_user_url(user), params: { user:
+         { firstname: user.firstname, lastname: user.lastname,
+            phone: user.phone, birth_date: "19991010", is_female: true,
+             email: "a@q.com", password: "123456", password_confirmation: "123456",
+             postcode:"N79AW", country:"UK",
+             address_line_1:"a", address_line_2:"2", admin_passphrase: "123456" } }
+      assert_redirected_to admin_user_url(user)
+    end
+
     test "update should success if required fields are filled" do
       sign_in users(:admin)
       login_as_admin('abc')
@@ -147,8 +160,6 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'Failed to save changes.', flash[:error]
      assert_template :edit
    end
-
-
 
   test "not admin user should not be able to update an user" do
    user = users(:have_one_account)

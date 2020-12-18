@@ -72,7 +72,7 @@
           <div class="field">
             <%= form.label :password_confirmation, class: "label"%>*
               <br>
-            <%= form.text_field :password_confirmation,style:"line-height: 40px;
+            <%= form.password_field :password_confirmation,style:"line-height: 40px;
     border-radius: 5px;padding: 0 20px;width:70%" ,disabled: user == current_user%>
           </div>
 
@@ -120,7 +120,7 @@
           <%= form.label :admin_passphrase %>
             <br>
           <%= form.password_field :admin_passphrase, style: "line-height: 40px;
-        border-radius: 5px;padding: 0 20px;width:70%",disabled: user == current_user %>
+        border-radius: 5px;padding: 0 20px;width:70%", disabled: user == current_user %>
         </div>
       </div>
       <div class="actions">

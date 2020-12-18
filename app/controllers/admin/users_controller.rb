@@ -46,12 +46,6 @@ class Admin::UsersController < Admin::ApplicationController
 
   # PATCH/PUT /admin/users/1
   def update
-    if @user == current_user && params[:admin] == true
-      flash[:error] = 'Cannot change admin privileges for current user.'
-      render :edit
-      return
-    end
-
     if @user.update(user_params)
       redirect_to admin_user_path(@user), notice: 'User was successfully updated.'
     else
