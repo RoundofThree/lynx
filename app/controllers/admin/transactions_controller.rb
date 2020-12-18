@@ -52,13 +52,8 @@ class Admin::TransactionsController < Admin::ApplicationController
     if @transaction.update(transaction_params)
       redirect_to [:admin, Transaction.last], notice: 'Transaction was successfully updated.'
     else
-<<<<<<< HEAD
-      flash[:error] = 'Failed to save changes.'
-      render :edit # flash errors
-=======
       flash.now[:error] = "Error in updating transaction."
       render :edit
->>>>>>> main
     end
   end
 

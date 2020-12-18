@@ -22,7 +22,6 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     sign_out :user
   end
 
-
   test "not admin user should not get transactions list" do
     get admin_transactions_url
     assert_response :missing
@@ -35,19 +34,6 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     get "/admin/transactions/new"
     assert_response :success
     end
-
-  test "admin user should be able to search and specify sorting criteria of transactions" do
-    sign_in users(:admin)
-    login_as_admin('abc')
-    get admin_transactions_url, params: { sort_by: "last_created_at" }
-    assert_response :success
-    get admin_transactions_url, params: { sort_by: "first_created_at" }
-    assert_response :success
-    get admin_transactions_url, params: { sort_by: "amount" }
-    assert_response :success
-  end
-
-  # test show
   test "admin user should get transaction details by any user" do
     sign_in users(:admin)
     login_as_admin("abc")
