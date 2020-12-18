@@ -22,6 +22,17 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "admin user should be able to search and specify sorting criteria of accounts" do 
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get admin_accounts_url, params: { sort_by: "last_created_at" }
+    assert_response :success 
+    get admin_accounts_url, params: { sort_by: "first_created_at" }
+    assert_response :success 
+    get admin_accounts_url, params: { sort_by: "last_updated_at" }
+    assert_response :success
+  end 
+
   # test show
 
   test 'admin user should get account details by any user' do
@@ -32,6 +43,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # create
   test "admin user should be able to create an account " do
     sign_in users(:admin)
     login_as_admin('abc')
@@ -56,7 +68,8 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "admin user should be able to edit and update an account " do
+  # update
+  test "admin user should be able to update an account " do
     sign_in users(:admin)
     login_as_admin('abc')
     accountuser = users(:have_one_account)
@@ -67,7 +80,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to [:admin, Account.last]
   end
 
-  test "edit should fail if no required params are filled " do
+  test "update should fail if no required params are filled " do
     sign_in users(:admin)
     login_as_admin('abc')
     accountuser = users(:have_one_account)
@@ -76,9 +89,9 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
       account:{ balance:"2313",
       currency:"GBP",cvv:"132", expiry_date:"20221022"}}
       assert_redirected_to [:admin, Account.last]
-
   end
 
+  # destroy 
   test 'admin user should be able to destroy any account' do
     sign_in users(:admin)
     login_as_admin('abc')
