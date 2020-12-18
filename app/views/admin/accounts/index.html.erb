@@ -20,6 +20,23 @@
         <button type="button" class="btn btn-sm btn-outline-secondary">Export as XLS</button>
       </div>
     </div>
-    <%= render 'admin/accounts/list', {accounts: @accounts} %>
+   
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <h4 class="h4">Transaction Generator Options</h4>
+      <div class="btn-toolbar row mb-2 mb-md-0" style="width: 70%; position: relative; left: 30px;">
+        <%= form_tag({ controller: "generator", action: "generate_transactions" }, method: "post", class: "row container-fluid") do %>
+          <%= number_field_tag "how_many", 10, in: 1..100, step: 1, class: "form-control col-1" %>
+          <%= select_tag "account", options_for_select([["All Accounts", "All"]].concat(Account.all.map { |a| [a.account_number, a.id] })), class: "form-control col-2" %>
+          <% period_options = [["Recent month", "1 month"], ["Recent 3 months", "3 months"],
+                               ["Recent year", "1 year"], ["Recent 3 years", "3 years"]] %>
+          <%= select_tag "period", options_for_select(period_options), class: "form-control col-2" %>
+          <%= submit_tag "Generate Transactions", class: "btn btn-outline-success col-3" %>
+        <% end %>
+      </div>
+    </div>
+    <%= render "admin/accounts/list", { accounts: @accounts } %>
+
   </main>
+
 </div>
+

@@ -34,7 +34,6 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
   end 
 
   # test show
-
   test 'admin user should get account details by any user' do
     sign_in users(:admin)
     login_as_admin('abc')

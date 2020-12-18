@@ -1,5 +1,5 @@
-class Admin::GeneratorController < ApplicationController
-  before_action :user_is_admin?
+class Admin::GeneratorController < Admin::ApplicationController
+
   before_action :all_params_present?
 
   # Generates some transactions by the given parameters
@@ -61,7 +61,7 @@ class Admin::GeneratorController < ApplicationController
       return rand(3.year.ago..Time.now)
     end
   end
-
+  
   # Check if all parameters are present, if not, redirect to admin accounts page
   def all_params_present?
     unless params[:account] && params[:period] && params[:how_many]

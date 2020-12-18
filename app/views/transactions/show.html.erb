@@ -17,28 +17,6 @@
             <button class="btn btn-outline-danger"><i class="fa fa-flag" style="color: #000000;"></i> Report</button>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="card mt-1">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-          <h6 class="mb-0">My Account</h6>
-          <span class="text-secondary"><%= @transaction.account.account_number %></span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-          <h6 class="mb-0">Dealer Account</h6>
-          <span class="text-secondary"><%= @transaction.dealer_account_number %></span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-          <h6 class="mb-0">Reference</h6>
-          <span class="text-secondary"><%= @transaction.reference %></span>
-        </li>
-      </ul>
-      <div class="card-body">
-        <i class="fa fa-arrow-left" style="color: #000000;"></i>
-        <%= link_to "Back to account", account_path(@transaction.account), class: "card-link" %>
-      </div>
-    </div>
-  </div>
-  <%= render "shared/footer" %>
+    <%= render "shared/footer" %>
 </div>
+
