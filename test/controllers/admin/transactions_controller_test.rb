@@ -46,7 +46,7 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     login_as_admin('abc')
     get "/admin/transactions/new"
     assert_response :success
-  end 
+  end
 
   # test show
   test 'admin user should get transaction details by any user' do
@@ -78,7 +78,18 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
         assert_response :missing
   end
 
-  # test create
+  test "admin user should be able to create a transaction" do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    payer_account = accounts(:one)
+    transaction = Transaction.new(account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
+                                  amount: 1.0, currency: 'GBP')
+    assert_difference('Transaction.count') do
+      post admin_transactions_url, params: { transaction: transaction.attributes }
+    end
+    assert_redirected_to [:admin, Transaction.last]
+  end
+
   test "not admin user should not be able to create a transaction" do
     payer_account = accounts(:one)
     transaction = Transaction.new(account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
