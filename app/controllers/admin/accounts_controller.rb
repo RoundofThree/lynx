@@ -1,9 +1,8 @@
 class Admin::AccountsController < Admin::ApplicationController
   before_action :set_account, only: %i[show edit update destroy]
-
-  # GET /admin/accounts (or .json)
+  # GET /admin/accounts
   def index
-    @accounts = Account.search(params[:search]) # maybe search by name of user?
+    @accounts = Account.search(params[:search])
     sort_accounts unless @accounts.empty?
   end
 
@@ -40,9 +39,10 @@ class Admin::AccountsController < Admin::ApplicationController
   def create
     @account = Account.new(account_params)
     if @account.save
-      redirect_to admin_account_path(@account), notice: 'Account was successfully created.'
+      flash[:notice] = 'Account was successfully created.'
+      redirect_to admin_account_path(@account)
     else
-      flash[:error] = 'Error in creating account.'
+      flash.now[:error] = 'Error in creating account.'
       render :new
     end
   end
@@ -50,9 +50,10 @@ class Admin::AccountsController < Admin::ApplicationController
   # PATCH/PUT /admin/accounts/1
   def update
     if @account.update(account_params)
-      redirect_to @account, notice: 'Account was successfully updated.'
+      flash[:notice] = 'Account was successfully updated.'
+      redirect_to  [:admin, Account.last]
     else
-      flash[:error] = 'Failed to save changes.'
+      flash.now[:error] = 'Failed to save changes.'
       render :edit
     end
   end
@@ -60,8 +61,10 @@ class Admin::AccountsController < Admin::ApplicationController
   # DELETE /admin/accounts/1
   def destroy
     @account.destroy
-    redirect_to admin_accounts_url, notice: 'Account was successfully destroyed.'
+    flash[:notice] = 'Account was successfully destroyed.'
+    redirect_to admin_accounts_url
   end
+
 
   private 
   
@@ -72,7 +75,8 @@ class Admin::AccountsController < Admin::ApplicationController
 
   # Only allow a list of trusted parameters through.
   def account_params
-    params.require(:account).permit(:balance, :account_number, :cvv, :expiry_date, :currency)
+    params.require(:account).permit(:balance, :account_number,
+      :cvv, :expiry_date, :currency, :user_id)
   end
 
 end

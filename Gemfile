@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 # Authorization with Ability
 gem 'cancancan'
+# Markdown 
+gem 'kramdown'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

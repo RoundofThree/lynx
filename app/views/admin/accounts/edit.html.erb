@@ -1,6 +1,5 @@
 <div class="row">
   <%= render partial: "admin/shared/navbar" %>
-
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <!-- Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
@@ -13,12 +12,10 @@
         </div>
       </div>
     </div>
-
     <!-- Form -->
-      <div class="row justify-content-md-center">
-        <%= render 'form', account: @account %>
-      </div>
-
+    <div class="row justify-content-md-center">
+      <%= render 'form', account: @account %>
+    </div>
   </main>
 </div>
 

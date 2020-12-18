@@ -1,6 +1,5 @@
 <div class="row">
   <%= render partial: "admin/shared/navbar" %>
-
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <!-- Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
@@ -13,28 +12,26 @@
         </div>
       </div>
     </div>
-
     <!-- Table -->
-      <div class="table-responsive">
-        <div class="table-wrapper">
-          <table class="table table-striped table-hover">
-            <thead>
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @user.attributes.each do |key, value| %>
               <tr>
-                <th>Attribute</th>
-                <th>Value</th>
+                <td><%= key %></td>
+                <td><%= value %></td>
               </tr>
-            </thead>
-            <tbody>
-              <% @user.attributes.each do |key, value| %>
-                <tr>
-                  <td><%= key %></td>
-                  <td><%= value %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+            <% end %>
+          </tbody>
+        </table>
       </div>
-
+    </div>
   </main>
 </div>
