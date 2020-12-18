@@ -40,7 +40,7 @@ class Admin::TransactionsController < Admin::ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
-      redirect_to @transaction, notice: 'Transaction was successfully created.'
+      redirect_to admin_transaction_path(@transaction), notice: 'Transaction was successfully created.'
     else
       flash.now[:error] = "Error in creating transaction."
       render :new
@@ -50,7 +50,7 @@ class Admin::TransactionsController < Admin::ApplicationController
   # PATCH/PUT /admin/transactions/1
   def update
     if @transaction.update(transaction_params)
-      redirect_to @transaction, notice: 'Transaction was successfully updated.'
+      redirect_to admin_transaction_path(@transaction), notice: 'Transaction was successfully updated.'
     else
       flash.now[:error] = "Error in updating transaction."
       render :edit

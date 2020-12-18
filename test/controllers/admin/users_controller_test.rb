@@ -118,7 +118,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
              email: "a@q.com", password: "123456", password_confirmation: "123456",
              postcode:"N79AW", country:"UK",
              address_line_1:"a", address_line_2:"2" } }
-      assert_redirected_to [:admin, User.last]
+      assert_redirected_to admin_user_url(user)
     end
 
     test "edit should success if required fields are filled" do
@@ -129,7 +129,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
          { firstname: user.firstname, lastname: user.lastname,
             phone: user.phone, birth_date: "19991010", is_female: true,
              email: "a@q.com", password: "123456", password_confirmation: "123456" } }
-      assert_redirected_to [:admin, User.last]
+      assert_redirected_to admin_user_url(user)
     end
 
     test "edit should fail if required fields are not filled" do
@@ -144,7 +144,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
             postcode:"N79AW", country:"UK",
             address_line_1:"a"} }
           end
-     assert_redirected_to [:admin, User.last]
+     assert_redirected_to admin_user_url(user)
    end
 
    test "not admin user should not be able to edit an user" do
