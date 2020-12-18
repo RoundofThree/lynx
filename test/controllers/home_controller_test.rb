@@ -7,11 +7,4 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get root_url
     assert_response :success
   end
-
-  test 'should direct to personal dashboard if logged in' do
-    sign_in users(:have_one_account)
-    get root_url
-    assert_redirected_to dashboard_url
-    sign_out :user
-  end
 end

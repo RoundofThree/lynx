@@ -23,5 +23,13 @@
       <%= f.text_area :show_payment_md, value: show_payment_md, class: "form-control" %>
     </div>
   </div>
+  <!-- Dealer image --> 
+  <div class="form-group row">
+    <%= f.label :dealer_image, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= image_tag dealer_image, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
+      <%= f.file_field :dealer_image, class: "form-control-file" %>
+    </div>
+  </div>
   <%= f.submit class: "btn btn-outline-info" %>
 <% end %>

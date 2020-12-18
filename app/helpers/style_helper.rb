@@ -17,7 +17,7 @@ module StyleHelper
   end
 
   def navbar_md
-    current_style&.navbar_md.presence || '<span style="position: relative; top: 7px;"><a href="/" class="p-2 text-dark">Banking</a>
+    current_style&.navbar_md.presence || '<span style="position: relative; top: 9px;"><a href="/" class="p-2 text-dark">Banking</a>
     <a href="/" class="p-2 text-dark">Investments</a>
     <a href="/" class="p-2 text-dark">Loans</a>
     <a href="/" class="p-2 text-dark">Mortgage</a>
@@ -200,6 +200,14 @@ module StyleHelper
 
   def show_payment_md 
     current_style&.make_payment_md.presence || ""
+  end 
+
+  def dealer_image 
+    if current_style.dealer_image.attached?
+      url_for(current_style.dealer_image)
+    else
+      "https://logosandtypes.com/wp-content/uploads/2020/07/ashmolean.svg"
+    end
   end 
   
   #account
