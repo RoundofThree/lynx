@@ -10,7 +10,7 @@ class Account < ApplicationRecord
   validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :cvv, presence: true, length: { in: 3...4 }
   validates :expiry_date, presence: true 
-  validates :not_expired
+  validate :not_expired
 
   CURRENCY_TYPES = %w[GBP USD EUR].freeze
   validates_inclusion_of :currency, in: CURRENCY_TYPES
