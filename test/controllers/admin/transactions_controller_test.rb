@@ -7,6 +7,19 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :missing
   end
 
+
+  test "admin user should be able to search and specify sorting criteria of transactions" do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get admin_transactions_url, params: { sort_by: "last_created_at" }
+    assert_response :success
+    get admin_transactions_url, params: { sort_by: "first_created_at" }
+    assert_response :success
+    get admin_transactions_url, params: { sort_by: "amount" }
+    assert_response :success
+  end
+
+
   test 'not admin user should render 404' do
     sign_in users(:have_one_account)
     get admin_transactions_url
