@@ -22,21 +22,21 @@ class Admin::TransactionsController < Admin::ApplicationController
     end
   end
 
-  # GET /admin/accounts/1
+  # GET /admin/transactions/1
   def show
     @account = @transaction.account
     @payer = @account.user
   end
 
-  # GET /admin/accounts/new
+  # GET /admin/transactions/new
   def new
     @transaction = Transaction.new
   end
 
-  # GET /admin/accounts/1/edit
+  # GET /admin/transactions/1/edit
   def edit; end
 
-  # POST /admin/accounts
+  # POST /admin/transactions
   def create
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
@@ -46,16 +46,17 @@ class Admin::TransactionsController < Admin::ApplicationController
     end
   end
 
-  # PATCH/PUT /admin/accounts/1
+  # PATCH/PUT /admin/transactions/1
   def update
     if @transaction.update(transaction_params)
       redirect_to [:admin, Transaction.last], notice: 'Transaction was successfully updated.'
     else
+      flash[:error] = 'Failed to save changes.'
       render :edit # flash errors
     end
   end
 
-  # DELETE /admin/accounts/1
+  # DELETE /admin/transactions/1
   def destroy
     @transaction.destroy
     redirect_to admin_transactions_url, notice: 'Transaction was successfully destroyed.'

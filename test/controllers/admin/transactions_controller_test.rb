@@ -28,6 +28,12 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     sign_out :user
   end
 
+  test 'admin user should get new' do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get "/admin/transactions/new"
+    assert_response :success
+    end
   test "admin user should get transaction details by any user" do
     sign_in users(:admin)
     login_as_admin("abc")
@@ -113,17 +119,17 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :missing
   end
 
-  test "update should fail if required fields are not filled" do
+  test "update should fail if dealer_account_number is not 14 characters" do
     sign_in users(:admin)
     login_as_admin("abc")
     transaction = transactions(:one)
     payer_account = accounts(:one)
     assert_no_difference 'User.count' do
     patch admin_transaction_url(transaction), params: {transaction:
-       {account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
+       {account: payer_account, dealer_account_number: '12345622278901234', dealer_name: 'Nyx',
       currency: 'GBP'}}
     end
-    assert_redirected_to [:admin, Transaction.last]
+    assert_response :success
   end
 
   test "admin user should be able to destroy any transaction" do
