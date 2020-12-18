@@ -10,7 +10,8 @@ class Admin::StylesController < Admin::ApplicationController
     if @styles.update(styles_params)
       redirect_to admin_styles_edit_path, notice: "Style changes successfully applied."
     else
-      redirect_to admin_styles_edit_path, notice: "Failed to save changes."
+      flash[:error] = "Failed to save changes."
+      redirect_to admin_styles_edit_path
     end
   end
 

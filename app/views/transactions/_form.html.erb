@@ -1,19 +1,14 @@
 <%= form_with(scope: :transaction, url: transactions_path(transaction), method: :post, local: true) do |form| %>
-    <!-- Errors -->
-      <% if transaction.errors.any? %>
-        <div class="alert alert-danger">
-          <div class="message-header">
-            <p><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</p>
-          </div>
-          <div class="message-body">
-            <ul>
-              <% transaction.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      <% end %>
+  <!-- Errors -->
+  <% if transaction.errors.any? %>
+    <div class="alert alert-danger">
+        <ul>
+          <% transaction.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
 
       <div class="form-group row">
         <%= form.label :account_id, "From account...", class: "col-form-label" %>

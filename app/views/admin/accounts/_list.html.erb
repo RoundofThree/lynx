@@ -1,27 +1,28 @@
 <div class="table-responsive">
-    <table class="table table-bordered table-sm">
-        <thead>
-            <tr>
-                <th>No. </th>
-                <th>Account number</th>
-                <th>User</th>
-                <th>Balance</th>
-                <th>Updated at</th> <!-- Ordering -->
-            </tr>
-        </thead>
-        <tbody>
-            <% accounts.each_with_index do |a, i| %>
-            <tr>
-                <th scope="row"><%= i+1 %></th>
-                <td><%= link_to a.account_number, admin_account_path(a) %></td>
-                <td><%= "#{a.user.firstname} #{a.user.lastname}" %></td>
-                <td><%= number_to_currency(a.balance, unit: a.currency, format: "%u %n") %></td>
-                <td><%= a.updated_at %></td>
-                <td><%= link_to 'Edit', edit_admin_account_path(a) %></td>
-                <td><%= link_to 'Delete', admin_account_path(a), method: :delete, data: { confirm: 'Are you sure?' } %>
-                </td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th>No. </th>
+        <th>Account number</th>
+        <th>User</th>
+        <th>Balance</th>
+        <th>Updated at</th>
+         <!-- Ordering -->
+      </tr>
+    </thead>
+    <tbody>
+      <% accounts.each_with_index do |a, i| %>
+        <tr>
+          <th scope="row"><%= i+1 %></th>
+          <td><%= link_to a.account_number, admin_account_path(a) %></td>
+          <td><%= "#{a.user.firstname} #{a.user.lastname}" %></td>
+          <td><%= number_to_currency(a.balance, unit: a.currency, format: "%u %n") %></td>
+          <td><%= a.updated_at %></td>
+          <td><%= link_to 'Edit', edit_admin_account_path(a) %></td>
+          <td><%= link_to 'Delete', admin_account_path(a), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
