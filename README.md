@@ -47,7 +47,7 @@
     6. Rails-controller-testing: use for testing controller tests 
     7. Minitest-reporters: rails testing support  
 
-5. https://v4.bootcss.com/docs/examples/dashboard/ in app/views/dashboard/_navbar.html.erb number of lines of code:64 
+5. https://v4.bootcss.com/docs/examples/dashboard/ in app/views/dashboard/_navbar.html.erb. Number of lines of reused code: 64 
 
 ---
 
