@@ -1,8 +1,8 @@
 <!-- Main container for bank marketing message and sign in & sign up buttons -->
 <div style="background-color: <%= home_background_color %>">
 <div class="container-flex">
-  <div class="carousel-inner">
-      <img class="bd-placeholder-img" src="<%= home_main_marketing_image %>" width="100%" height="80%">
+  <div class="carousel-inner"  style ="height:700px">
+      <img class="bd-placeholder-img" src="<%= home_main_marketing_image %>" width="100%" height="100%">
       <div class="carousel-caption text-center">
         <h1 class="display-1"><%= home_main_marketing_title %></h1>
         <h4><%= home_main_marketing_subtitle %></h4>
@@ -23,8 +23,8 @@
 
     <div class="col-md-5">
       <svg width="500" height="500">
-        <rect width="100%" height="100%" fill="#eee" />
-        <image xlink:href="<%= home_main_marketing_card_image_1 %>" width="500" height="500">
+        <rect width="100%" height="100%" fill="" />
+        <image id="first" xlink:href="<%= home_main_marketing_card_image_1 %>" width="500" height="500">
       </svg>
     </div>
   </div>
