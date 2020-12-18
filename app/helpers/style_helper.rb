@@ -201,6 +201,14 @@ module StyleHelper
   def show_payment_md 
     current_style&.make_payment_md.presence || ""
   end 
+
+  def dealer_image 
+    if current_style.dealer_image.attached?
+      url_for(current_style.dealer_image)
+    else
+      "https://logosandtypes.com/wp-content/uploads/2020/07/ashmolean.svg"
+    end
+  end 
   
   #account
   def account_table_color (count = 0)

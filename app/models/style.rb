@@ -9,6 +9,7 @@ class Style < ApplicationRecord
   has_one_attached :login_sigup_logo_image
   has_one_attached :make_payment_image
   has_one_attached :show_payment_image
+  has_one_attached :dealer_image
 
   serialize :home_links_1, Array
   serialize :home_links_2, Array
