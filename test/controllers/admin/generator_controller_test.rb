@@ -3,9 +3,9 @@ require "test_helper"
 class Admin::GeneratorControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  test "access generator without log in should be redirected to log in" do
+  test "access generator without log in should get 404" do
     post "/admin/generator/generate_transactions", params: { account: accounts(:one).id, how_many: 10, period: "1 month" }
-    assert_redirected_to new_user_session_url
+    assert_response(404)
   end
 
   test "access generator with user who is not admin should get 404" do
