@@ -42,7 +42,7 @@ module StyleHelper
   end
 
   def home_main_marketing_message_1
-    current_style&.home_main_marketing_message_1.presence || "Build your savings without even trying."
+    current_style&.home_main_marketing_message_1.presence || "Transfer and Withdraw Easily with Lynx Bank."
   end
 
   def home_main_marketing_card_image_1
@@ -54,14 +54,13 @@ module StyleHelper
   end
 
   def home_main_marketing_text_1
-    current_style&.home_main_marketing_text_1.presence || "Turn on Round-up Rules and start saving up effortlessly. Whenever you make a purchase, Simple will
-    round up what you spend to the next whole dollar amount. When the “change” from those transactions reaches or
-    exceeds $5, Simple transfers it to your Protected Goals Account — so easy you won’t even feel it. It’s like a
-    digital change jar... one that adds up to real money in the bank."
+    current_style&.home_main_marketing_text_1.presence || "You can easily manage your
+    financial operations with an Lynx Bank account. Lynx IBAN accounts support up
+    to 25 different currencies. The most affordable rates and fees found anywhere online for banking services. We provide simple, smart, and flexible solutions for our customers. Open your account today!"
   end
 
   def home_main_marketing_message_2
-    current_style&.home_main_marketing_message_2.presence || "Make plans for what to do, not what’s due."
+    current_style&.home_main_marketing_message_2.presence || "Enjoy the Benefits of Lynx Bank."
   end
 
   def home_main_marketing_card_image_2
@@ -73,13 +72,12 @@ module StyleHelper
   end
 
   def home_main_marketing_text_2
-    current_style&.home_main_marketing_text_2.presence || "Set up your recurring expenses in our app, and we'll do the work of saving for them each month.
-      When you know your bills are covered, you can focus on the fun parts of having money—like saving for a trip to
-      Japan and buying that new bike."
+    current_style&.home_main_marketing_text_2.presence || "We are aim to build a delightful experience for customers and make banking easier. You can spend more consciously,
+    save up to your goals easily. A positive and enthusiastic spirit is what we want customer to feel. We will make our customer to feel supported and address their needs."
   end
 
   def home_main_marketing_message_3
-    current_style&.home_main_marketing_message_3.presence || "Save toward your goals, automatically."
+    current_style&.home_main_marketing_message_3.presence || "The Story About Us."
   end
 
   def home_main_marketing_card_image_3
@@ -91,9 +89,9 @@ module StyleHelper
   end
 
   def home_main_marketing_text_3
-    current_style&.home_main_marketing_text_3.presence || "Goals make it easy to save for the things you want or want to do. There’s no need for
-      spreadsheets or extra apps to budget and track your money. It’s right there inside your Simple checking account,
-      growing bit-by-bit until you’re ready to spend."
+    current_style&.home_main_marketing_text_3.presence || "Lynx Bank is focus
+    on building a secure bank service that brings great experience to our customers.
+    We believe that customer come first – whether face to face or in our app. We are rated No.1 for our digital services in the global banking service quality survey. We act transparently and always do what is right for customer."
   end
 
   def home_footer_md
@@ -158,11 +156,11 @@ module StyleHelper
     current_style&.sign_up_head_size.presence || "50"
   end
 
-  # make payment page 
+  # make payment page
 
-  def make_payment_page_style 
+  def make_payment_page_style
     current_style&.make_payment_page_style.presence || "background: linear-gradient(to right, #add8e6, white);"
-  end 
+  end
 
   def make_payment_image
     if current_style.make_payment_image.attached?
@@ -170,46 +168,46 @@ module StyleHelper
     else
       "/payment.png"
     end
-  end 
+  end
 
   def make_payment_md
     current_style&.make_payment_md.presence || ""
-  end 
+  end
 
-  def make_payment_title 
+  def make_payment_title
     current_style&.make_payment_title.presence || "Transfer to any part of the world"
-  end 
+  end
 
-  def make_payment_subtitle 
+  def make_payment_subtitle
     current_style&.make_payment_subtitle.presence || "...and do it securely"
-  end 
+  end
 
   # show payment page
 
   def show_payment_page_style
     current_style&.show_payment_page_style.presence || "background: linear-gradient(to right, #add8e6, white);"
-  end 
+  end
 
-  def show_payment_image 
+  def show_payment_image
     if current_style.show_payment_image.attached?
       url_for(current_style.show_payment_image)
     else
       "/payment.png"
     end
-  end 
+  end
 
-  def show_payment_md 
+  def show_payment_md
     current_style&.make_payment_md.presence || ""
-  end 
+  end
 
-  def dealer_image 
+  def dealer_image
     if current_style.dealer_image.attached?
       url_for(current_style.dealer_image)
     else
       "https://logosandtypes.com/wp-content/uploads/2020/07/ashmolean.svg"
     end
-  end 
-  
+  end
+
   #account
   def account_table_color (count = 0)
     if count % 2 == 0
