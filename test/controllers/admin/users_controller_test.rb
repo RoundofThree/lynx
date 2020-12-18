@@ -106,7 +106,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to [:admin, User.last]
     end
 
-    test "edit should success if required fields are filled" do
+    test "update should success if required fields are filled" do
       sign_in users(:admin)
       login_as_admin('abc')
       user = users(:have_one_account)
@@ -117,22 +117,22 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to [:admin, User.last]
     end
 
-    test "edit should fail if required fields are not filled" do
+    test "update should fail if current user is an admin" do
      sign_in users(:admin)
      login_as_admin('abc')
-     user = users(:have_one_account)
+     user = users(:admin)
      assert_no_difference 'User.count' do
      patch admin_user_url(user), params: { user:
         { firstname: user.firstname, lastname: user.lastname,
            phone: user.phone, birth_date: "19991010", is_female: true,
             email: "a@q.com", password: "123456", password_confirmation: "123456",
             postcode:"N79AW", country:"UK",
-            address_line_1:"a"} }
+            address_line_1:"a",admin: false} }
           end
      assert_redirected_to [:admin, User.last]
    end
 
-   test "not admin user should not be able to edit an user" do
+   test "not admin user should not be able to update an user" do
     user = users(:have_one_account)
     assert_no_difference 'User.count' do
     patch admin_user_url(user), params: { user:
@@ -140,7 +140,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
           phone: user.phone, birth_date: "19991010", is_female: true,
            email: "a@q.com", password: "123456", password_confirmation: "123456",
            postcode:"N79AW", country:"UK",
-           address_line_1:"a"} }
+           address_line_1:"a",admin: true} }
          end
          assert_response :missing
   end
