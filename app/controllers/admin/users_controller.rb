@@ -36,8 +36,9 @@ class Admin::UsersController < Admin::ApplicationController
   # POST /admin/users
   def create
     @user = User.new(user_params)
+
     if @user.save
-      redirect_to admin_users_url, notice: 'User was successfully created.'
+      redirect_to [:admin, User.last], notice: 'User was successfully created.'
     else
       flash[:error] = 'Error in creating user.'
       render :new
@@ -52,7 +53,7 @@ class Admin::UsersController < Admin::ApplicationController
       return
     end
     if @user.update(user_params)
-      redirect_to admin_users_url, notice: 'User was successfully updated.'
+      redirect_to  [:admin, User.last], notice: 'User was successfully updated.'
     else
       flash[:error] = 'Failed to save changes.'
       render :edit
@@ -81,5 +82,6 @@ class Admin::UsersController < Admin::ApplicationController
                                  :phone, :birth_date, :password, :password_confirmation,
                                  :postcode, :address_line_1, :address_line_2, :country,
                                  :admin, :admin_passphrase_digest)
+
   end
 end

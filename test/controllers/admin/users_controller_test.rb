@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
-  
+
   test 'not logged in user should render 404' do
     get admin_users_url
     assert_response :missing
@@ -22,11 +22,10 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test show
   test 'admin user should get user details by any user' do
     sign_in users(:admin)
     login_as_admin('abc')
-    user = users(:have_one_account)
+    user = users(:have_no_accounts)
     get admin_user_url(user)
     assert_response :success
   end
@@ -71,11 +70,61 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
         assert_redirected_to [:admin, User.last]
       end
 
-  # test create (Yuxin)
+    test "create should fail if not all requried params are filled" do
+        sign_in users(:admin)
+        login_as_admin('abc')
+        assert_no_difference('User.count') do
+          post admin_users_url, params: {user:{firstname: "hello"}}
+        end
+        assert_response :success
+      end
 
-  # test edit (Yuxin)
+      test "not admin user should not be able to create a user" do
+          assert_no_difference('User.count') do
+            post admin_users_url, params: {user:{firstname: "hello"}}
+          end
+          assert_response :missing
+        end
 
-  # test update (Yuxin)
+    test "admin user should be able to edit and update user" do
+      sign_in users(:admin)
+      login_as_admin('abc')
+      user = users(:have_one_account)
+      patch admin_user_url(user), params: { user:
+         { firstname: user.firstname, lastname: user.lastname,
+            phone: user.phone, birth_date: "19991010", is_female: true,
+             email: "a@q.com", password: "123456", password_confirmation: "123456",
+             postcode:"N79AW", country:"UK",
+             address_line_1:"a", address_line_2:"2" } }
+      assert_redirected_to [:admin, User.last]
+    end
+
+    test "edit should success if required fields are filled" do
+      sign_in users(:admin)
+      login_as_admin('abc')
+      user = users(:have_one_account)
+      patch admin_user_url(user), params: { user:
+         { firstname: user.firstname, lastname: user.lastname,
+            phone: user.phone, birth_date: "19991010", is_female: true,
+             email: "a@q.com", password: "123456", password_confirmation: "123456" } }
+      assert_redirected_to [:admin, User.last]
+    end
+
+    test "edit should fail if required fields are not filled" do
+     sign_in users(:admin)
+     login_as_admin('abc')
+     user = users(:have_one_account)
+     assert_no_difference 'User.count' do
+     patch admin_user_url(user), params: { user:
+        { firstname: user.firstname, lastname: user.lastname,
+           phone: user.phone, birth_date: "19991010", is_female: true,
+            email: "a@q.com", password: "123456", password_confirmation: "123456",
+            postcode:"N79AW", country:"UK",
+            address_line_1:"a"} }
+          end
+     assert_redirected_to [:admin, User.last]
+   end
+
    test "not admin user should not be able to edit an user" do
     user = users(:have_one_account)
     assert_no_difference 'User.count' do
@@ -101,9 +150,9 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "not admin user should not be able to destroy any user" do
     user = users(:have_one_account)
-    assert_difference('User.count', -1) do
+    assert_no_difference('User.count') do
       delete admin_user_url(user)
     end
-    assert_redirected_to admin_users_url
+    assert_response :missing
   end
 end
