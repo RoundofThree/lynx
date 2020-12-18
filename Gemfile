@@ -19,8 +19,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Authentication
 gem 'devise'
-# Authorization with Ability
-gem 'cancancan'
 # Markdown
 gem 'kramdown'
 # Use Redis adapter to run Action Cable in production
