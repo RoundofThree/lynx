@@ -2,7 +2,6 @@ class Transaction < ApplicationRecord
   belongs_to :account
 
   validates :account, presence: true
-  # validates :amount, presence: true, numericality: { :greater_than => 0, less_than_or_equal_to: :account_balance } # change
   validates :amount, presence: true, numericality: { other_than: 0 }
   validates :currency, presence: true, if: :currency_is_account_currency
   validates :dealer_account_number, presence: true, length: { is: 14 } # 14 digits
