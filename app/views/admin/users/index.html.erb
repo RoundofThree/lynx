@@ -17,9 +17,11 @@
         <% end %>
       </div>
 
-      <button type="button"
-        class="btn btn btn-outline-info"><%= link_to "New user", new_admin_user_path, style: "color: inherit; text-decoration: none;" %></button>
+      <div class="btn-group mr-2">
+        <button type="button"
+          class="btn btn-sm btn-outline-secondary"><%= link_to "New user", new_admin_user_path, style: "color: inherit; text-decoration: none;" %></button>
         <button type="button" class="btn btn-sm btn-outline-secondary">Export as XLS</button>
+      </div>
     </div>
 
     <!-- List of users -->

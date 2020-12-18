@@ -13,16 +13,10 @@
         <%= f.select :sort_by, options_for_select([["Most negative amount", "amount"], ["Last created", "last_created_at"], ["First created", "first_created_at"]], params[:sort_by]), {}, {class: "form-control col-xs-6 col-md-4" } %>
         <%= f.submit "Filter and sort", class: "btn btn-outline-success ml-1 col-xs-6 col-md-3" %>
         <% end %>
-
       </div>
 
       <div class="btn-group mr-2">
-          <button type="button"
-          class="btn  btn-outline-secondary">
-          <%= link_to "New", new_admin_transaction_path %>
-        </button>
-        <button type="button" class="btn btn-sm btn-outline-secondary">Export as XLS</button>
-
+          <button type="button" class="btn btn-sm btn-outline-secondary">Export as XLS</button>
       </div>
     </div>
 

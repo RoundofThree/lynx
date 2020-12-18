@@ -1,0 +1,30 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  currency: GBP
+  name: KFC
+  account_number: "00001000010001"
+  min_amount: 2
+  max_amount: 30
+  frequency: 10
+  is_vendor: true
+
+two:
+  currency: GBP
+  name: McDonald's
+  account_number: "00001000010002"
+  min_amount: 2
+  max_amount: 20
+  frequency: 5
+  is_vendor: true
+
+three:
+  currency: GBP
+  name: PC World
+  account_number: "00001000010003"
+  min_amount: 50
+  max_amount: 2000
+  frequency: 1
+  is_vendor: true
+
+

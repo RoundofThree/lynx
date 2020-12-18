@@ -8,7 +8,6 @@
       <!-- buttons -->
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group mr-2">
-          <button type="button" class="btn btn-sm btn-outline-info"><%= link_to "Back", admin_users_path%></button>
           <button type="button" class="btn btn-sm btn-outline-info"><%= link_to "Edit", edit_admin_user_path(@user), style: "color: inherit; text-decoration: none;" %></button>
           <button type="button" class="btn btn-sm btn-outline-danger"><%= link_to "Delete", admin_user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, style: "color: inherit; text-decoration: none;" %></button>
         </div>
