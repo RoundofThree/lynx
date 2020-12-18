@@ -27,17 +27,6 @@ ActiveRecord::Schema.define(version: 2020_12_14_123126) do
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
-  create_table "dealers", force: :cascade do |t|
-    t.string "currency"
-    t.string "name"
-    t.string "account_number"
-    t.integer "min_amount"
-    t.integer "max_amount"
-    t.integer "frequency"
-    t.boolean "is_vendor"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -57,6 +46,18 @@ ActiveRecord::Schema.define(version: 2020_12_14_123126) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "dealers", force: :cascade do |t|
+    t.string "currency"
+    t.string "name"
+    t.string "account_number"
+    t.integer "min_amount"
+    t.integer "max_amount"
+    t.integer "frequency"
+    t.boolean "is_vendor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "styles", force: :cascade do |t|
@@ -88,6 +89,8 @@ ActiveRecord::Schema.define(version: 2020_12_14_123126) do
     t.string "show_payment_page_style"
     t.text "show_payment_md"
     t.string "account_table_color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "transactions", force: :cascade do |t|
