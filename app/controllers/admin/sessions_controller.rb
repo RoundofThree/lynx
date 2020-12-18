@@ -10,7 +10,8 @@ class Admin::SessionsController < Admin::ApplicationController
   def create
     if current_user.authenticate_admin_passphrase(params[:admin_passphrase])
       admin_login
-      redirect_to admin_dashboard_path, notice: 'Logged in as admin.'
+      flash[:success] = 'Logged in as admin'
+      redirect_to admin_dashboard_path
     else
       flash.now[:alert] = 'Invalid'
       render :new
@@ -20,7 +21,8 @@ class Admin::SessionsController < Admin::ApplicationController
   # DELETE /admin/logout
   def destroy
     admin_logout
-    redirect_to dashboard_path, notice: 'Logged out as admin.'
+    flash[:success] = 'Logged out as admin.'
+    redirect_to dashboard_path
   end
 
   private

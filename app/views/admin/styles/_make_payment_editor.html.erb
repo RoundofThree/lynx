@@ -1,5 +1,5 @@
 <div class="pb-2 mb-3 border-bottom">
-<h4>Make payment page</h4>
+  <h4>Make payment page</h4>
 </div>
 <%= form_for styles, url: admin_styles_path, method: :put, html: {class: "col-8", style: "margin: 15px;"} do |f| %>
   <div class="form-group row">
@@ -8,22 +8,19 @@
       <%= f.text_area :make_payment_page_style, value: make_payment_page_style, class: "form-control" %>
     </div>
   </div>
-
   <div class="form-group row">
     <%= f.label :make_payment_title, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
       <%= f.text_field :make_payment_title, value: make_payment_title, class: "form-control" %>
     </div>
   </div>
-
   <div class="form-group row">
     <%= f.label :make_payment_subtitle, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
       <%= f.text_field :make_payment_subtitle, value: make_payment_subtitle, class: "form-control" %>
     </div>
   </div>
-
-    <!-- Image -->
+  <!-- Image -->
   <div class="form-group row">
     <%= f.label :make_payment_image, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
@@ -31,7 +28,6 @@
       <%= f.file_field :make_payment_image, class: "form-control-file" %>
     </div>
   </div>
-
   <!-- Markdown -->
   <div class="form-group row">
     <%= f.label :make_payment_md, class: "col-sm-4 col-form-label" %>
@@ -39,6 +35,5 @@
       <%= f.text_area :make_payment_md, value: make_payment_md, class: "form-control" %>
     </div>
   </div>
-
   <%= f.submit class: "btn btn-outline-info" %>
 <% end %>
