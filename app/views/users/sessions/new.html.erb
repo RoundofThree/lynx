@@ -16,7 +16,7 @@ background-image: url('/bank4.jpg');background-position: center center;backgroun
       <img class="mt-3" src="<%=login_sigup_logo_image%>" alt="" width="90" height="90">
     </div>
 
-    <p class =" font-weight-bold mt-3" style ="font-size:30px;text-align: center;color:#01045d;"> SIGN IN </p>
+    <p class =" font-weight-bold mt-3" style ="font-size:35px;text-align: center;color:#01045d;"> SIGN IN </p>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
       <div class ="container p-4">
@@ -24,7 +24,8 @@ background-image: url('/bank4.jpg');background-position: center center;backgroun
           <span style="font-size: 20px;">
             <i class="fa fa-envelope  fa-xs"></i>
           </span>
-          <div class ="col-sm-10">
+          <div class ="col-10">
+            <%= f.label :email %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email",
             :style=> "border-radius: 25px; width: 100%; ;line-height: 2.0;
              padding: 0 30px 0 40px;height: 30px;" %>
@@ -35,7 +36,8 @@ background-image: url('/bank4.jpg');background-position: center center;backgroun
           <span style="font-size: 25px;">
             <i class="fa fa-lock  fa-xs"></i>
           </span>
-          <div class ="col-sm-10 ">
+          <div class ="col-10 ">
+            <%= f.label :password %>
             <%= f.password_field :password, autocomplete: "current-password",placeholder: "Password",
             :style=> "border-radius: 25px; width: 101%; line-height: 2.0;
             padding: 0 30px 0 40px; height: 30px;" %>
