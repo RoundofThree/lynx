@@ -1,25 +1,26 @@
 <div class="row">
   <%= render partial: "admin/shared/navbar" %>
-
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <!-- Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
       <h1 class="h2">Accounts</h1>
-       
       <div class="btn-toolbar row mb-2 mb-md-0" style="width: 60%; position: relative; left: 30px;">
         <!-- Search/sort functionality -->
         <%= form_with url: admin_accounts_path, method: :get, local: true, class: "row mt-md-0 container-fluid" do |f| %>
-        <%= f.text_field :search, value: params[:search], placeholder: "Filter by account number...", class: "form-control mr-1 col-xs-6 col-md-4" %>
-        <%= f.select :sort_by, options_for_select([["Last updated", "last_updated_at"], ["Last created", "last_created_at"], ["First created", "first_created_at"]], params[:sort_by]), {}, { class: "form-control col-xs-6 col-md-4" } %>
-        <%= f.submit "Filter and sort", class: "btn btn-outline-success ml-1 col-xs-6 col-md-3" %>
+          <%= f.text_field :search, value: params[:search], placeholder: "Filter by account number...", class: "form-control mr-1 col-xs-6 col-md-4" %>
+          <%= f.select :sort_by, options_for_select([["Last updated", "last_updated_at"], ["Last created", "last_created_at"], ["First created", "first_created_at"]], params[:sort_by]), {}, {class: "form-control col-xs-6 col-md-4" } %>
+          <%= f.submit "Filter and sort", class: "btn btn-outline-success ml-1 col-xs-6 col-md-3" %>
         <% end %>
       </div>
-
+      <button type="button"
+        class="btn  btn-outline-secondary">
+        <%= link_to "New account", new_admin_account_path %>
+      </button>
       <div class="btn-group mr-2">
         <button type="button" class="btn btn-sm btn-outline-secondary">Export as XLS</button>
       </div>
     </div>
-    
+   
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
       <h4 class="h4">Transaction Generator Options</h4>
       <div class="btn-toolbar row mb-2 mb-md-0" style="width: 70%; position: relative; left: 30px;">
@@ -38,3 +39,4 @@
   </main>
 
 </div>
+

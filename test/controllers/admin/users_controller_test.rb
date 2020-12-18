@@ -2,6 +2,7 @@ require 'test_helper'
 
 class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
+  
   test 'not logged in user should render 404' do
     get admin_users_url
     assert_response :missing
@@ -30,18 +31,75 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test new (Yuxin)
+  test "admin user should be able to search and specify sorting criteria of users" do 
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get admin_users_url, params: { sort_by: "last_sign_in_at" }
+    assert_response :success 
+    get admin_users_url, params: { sort_by: "last_created_at" }
+    assert_response :success 
+    get admin_users_url, params: { sort_by: "first_created_at" }
+    assert_response :success
+  end 
+
+  test "admin user should be able to create a user" do
+      sign_in users(:admin)
+      login_as_admin('abc')
+      user = users(:have_one_account)
+      assert_difference('User.count') do
+        post admin_users_url, params: { user:
+          { firstname: user.firstname, lastname: user.lastname,
+            phone: user.phone, birth_date: "19991010",
+            is_female: true, email: "a@q.com", password: "123456",
+            password_confirmation: "123456",postcode:"N79AW", country:"UK",
+            address_line_1:"a", address_line_2:"2" } }
+      end
+      assert_redirected_to [:admin, User.last]
+    end
+
+    test "admin user should be able to create a user with only required fields" do
+        sign_in users(:admin)
+        login_as_admin('abc')
+        user = users(:have_one_account)
+        assert_difference('User.count') do
+          post admin_users_url, params: { user:
+            { firstname: user.firstname, lastname: user.lastname,
+              phone: user.phone, birth_date: "19991010",
+              is_female: true, email: "a@q.com", password: "123456",
+              password_confirmation: "123456" } }
+        end
+        assert_redirected_to [:admin, User.last]
+      end
 
   # test create (Yuxin)
 
   # test edit (Yuxin)
 
   # test update (Yuxin)
+   test "not admin user should not be able to edit an user" do
+    user = users(:have_one_account)
+    assert_no_difference 'User.count' do
+    patch admin_user_url(user), params: { user:
+       { firstname: user.firstname, lastname: user.lastname,
+          phone: user.phone, birth_date: "19991010", is_female: true,
+           email: "a@q.com", password: "123456", password_confirmation: "123456",
+           postcode:"N79AW", country:"UK",
+           address_line_1:"a"} }
+         end
+         assert_response :missing
+  end
 
-  # test destroy
-  test 'admin user should be able to destroy any user' do
-    sign_in users(:admin)
-    login_as_admin('abc')
+  test "admin user should be able to destroy any user" do
+      sign_in users(:admin)
+      login_as_admin('abc')
+      user = users(:have_one_account)
+      assert_difference('User.count', -1) do
+        delete admin_user_url(user)
+      end
+      assert_redirected_to admin_users_url
+  end
+
+  test "not admin user should not be able to destroy any user" do
     user = users(:have_one_account)
     assert_difference('User.count', -1) do
       delete admin_user_url(user)

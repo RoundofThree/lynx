@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   # admin module, full resources privileges for admin
   namespace :admin do
-    resources :styles, :users, :accounts, :transactions
+    resources :users, :accounts, :transactions
+    get 'styles/edit', to: 'styles#edit'
+    put 'styles', to: 'styles#update'
   end
   get 'admin', to: 'admin/dashboard#index'
   get 'admin/dashboard', to: 'admin/dashboard#index'

@@ -37,6 +37,57 @@ ActiveRecord::Schema.define(version: 2020_12_14_123126) do
     t.boolean "is_vendor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "styles", force: :cascade do |t|
+    t.string "bank_name"
+    t.string "font_family"
+    t.text "navbar_md"
+    t.string "home_main_marketing_title"
+    t.string "home_main_marketing_subtitle"
+    t.string "home_main_marketing_message_1"
+    t.text "home_main_marketing_text_1"
+    t.string "home_main_marketing_message_2"
+    t.text "home_main_marketing_text_2"
+    t.string "home_main_marketing_message_3"
+    t.text "home_main_marketing_text_3"
+    t.text "home_footer_md"
+    t.string "home_footer_text_color"
+    t.string "home_background_color"
+    t.text "home_links_1"
+    t.text "home_links_2"
+    t.string "dashboard_action_head_color"
+    t.string "dashboard_action_head_font_color"
+    t.string "dashboard_summary_head_color"
+    t.string "dashboard_summary_head_font_color"
+    t.string "sign_up_head_size"
+    t.string "make_payment_page_style"
+    t.text "make_payment_md"
+    t.string "make_payment_title"
+    t.string "make_payment_subtitle"
+    t.string "show_payment_page_style"
+    t.text "show_payment_md"
+    t.string "account_table_color"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -80,5 +131,6 @@ ActiveRecord::Schema.define(version: 2020_12_14_123126) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "transactions", "accounts"
 end

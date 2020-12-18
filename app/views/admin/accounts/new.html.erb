@@ -1,8 +1,13 @@
-<div class="columns is-centered mt-6">
-  <div class="column is-one-third">
-    <h1 class="is-size-2 has-text-weight-bold mb-3">New account</h1>
-    <%= render 'form', account: @account %>
+
+<div class = "row">
+  <%= render partial: "admin/shared/navbar" %>
+  <div class="col-md-9 ml-sm-auto col-lg-10 pt-5 px-4 p-4">
+    <div class="column is-one-third">
+      <h1 class="is-size-2 has-text-weight-bold mb-5 ">Create new account</h1>
+      <%= link_to 'Back to account list', admin_accounts_path, class: "button is-danger" %>
+      <hr>
+      <%= render 'form', account: @account %>
+    </div>
   </div>
 </div>
 
-<%= link_to 'Back to account list', admin_accounts_path, class: "button is-danger" %>

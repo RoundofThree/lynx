@@ -64,6 +64,9 @@ class Admin::GeneratorController < Admin::ApplicationController
   
   # Check if all parameters are present, if not, redirect to admin accounts page
   def all_params_present?
-    redirect_to admin_accounts_url unless params[:account] && params[:period] && params[:how_many]
+    unless params[:account] && params[:period] && params[:how_many]
+      flash[:error] = "Please enter all the details to automatically generate transactions."
+      redirect_to admin_accounts_url 
+    end 
   end
 end
