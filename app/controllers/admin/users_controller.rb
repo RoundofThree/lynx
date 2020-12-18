@@ -51,6 +51,7 @@ class Admin::UsersController < Admin::ApplicationController
       render :edit
       return
     end
+
     if @user.update(user_params)
       redirect_to admin_user_path(@user), notice: 'User was successfully updated.'
     else

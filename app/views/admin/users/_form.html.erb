@@ -65,7 +65,7 @@
           <%= form.label :password, class: "label"%>*
           <br>
           <%= form.password_field :password,style:"line-height: 40px;
-    border-radius: 5px;padding: 0 20px;width:70%" %>
+    border-radius: 5px;padding: 0 20px;width:70%",disabled: user == current_user %>
         </div>
 
         <div class = "col-5">
@@ -73,7 +73,7 @@
             <%= form.label :password_confirmation, class: "label"%>*
               <br>
             <%= form.text_field :password_confirmation,style:"line-height: 40px;
-    border-radius: 5px;padding: 0 20px;width:70%" %>
+    border-radius: 5px;padding: 0 20px;width:70%" ,disabled: user == current_user%>
           </div>
 
       </div>
@@ -120,7 +120,7 @@
           <%= form.label :admin_passphrase %>
             <br>
           <%= form.password_field :admin_passphrase, style: "line-height: 40px;
-        border-radius: 5px;padding: 0 20px;width:70%" %>
+        border-radius: 5px;padding: 0 20px;width:70%",disabled: user == current_user %>
         </div>
       </div>
       <div class="actions">

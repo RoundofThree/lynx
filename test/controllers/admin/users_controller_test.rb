@@ -144,8 +144,10 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
             postcode:"N79AW", country:"UK",
             address_line_1:"a"} }
           end
+    assert_equal 'Failed to save changes.', flash[:error]
      assert_template :edit
    end
+
 
 
   test "not admin user should not be able to update an user" do
