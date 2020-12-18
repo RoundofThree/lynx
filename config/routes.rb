@@ -4,10 +4,6 @@ Rails.application.routes.draw do
   # dashboard of logged in user
   get 'dashboard', to: 'dashboard#index'
   
-  # transaction generator
-  get 'generator', to: 'generator#index'
-  post 'generator/generate_transactions'
-
   resources :accounts, only: %i[show new create edit update]
   # transactions can't be edited, updated or destroyed by normal user
   resources :transactions, only: %i[new create show]
