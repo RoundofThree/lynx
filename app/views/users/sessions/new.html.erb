@@ -27,7 +27,7 @@ background-image: url('/bank4.jpg');background-position: center center;backgroun
           <div class ="col-sm-10">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email",
             :style=> "border-radius: 25px; width: 100%; ;line-height: 2.0;
-             padding: 0 30px 0 20px;height: 30px;" %>
+             padding: 0 30px 0 70px;height: 30px;" %>
 
         </div>
           </div>
@@ -38,25 +38,28 @@ background-image: url('/bank4.jpg');background-position: center center;backgroun
           <div class ="col-sm-10 ">
             <%= f.password_field :password, autocomplete: "current-password",placeholder: "Password",
             :style=> "border-radius: 25px; width: 101%; line-height: 2.0;
-            padding: 0 30px 0 20px; height: 30px;" %>
+            padding: 0 30px 0 70px; height: 30px;" %>
       </div>
             </div>
 
             <% if devise_mapping.rememberable? %>
-            <div class ="mt-3">
-              <%= f.check_box :remember_me%>
-              <%= f.label :Remember_Me, :style=>"color: #01045d; font-size: 15px;padding:3px" %>
+            <div class ="row p-3">
+            <div class ="col-sm-10 ">
+                  <%= f.check_box :remember_me%>
+              <%= f.label :Remember_Me, :style=>"color: #01045d; font-size: 15px;" %>
+            </div>
             </div>
             <% end %>
 
-
+<div class ="col-sm-11 ">
     <div class="actions">
       <br>
-      <%= f.submit "Log in", class:'btn btn-primary btn-lg',:style => "width: 100%;
+      <%= f.submit "Log in", class:'btn btn-primary btn',:style => "width: 100%;
       border-color: #f90e67; text-align:center;background-color:#f90e67; border-radius:24px;" %>
     </div>
     </div>
     </div>
+        </div>
     <% end %>
 
     <div class="p-5">
