@@ -25,6 +25,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+
   test 'admin user should get edit' do
     sign_in users(:admin)
     login_as_admin('abc')
@@ -39,6 +40,18 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "admin user should be able to search and specify sorting criteria of accounts" do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get admin_accounts_url, params: { sort_by: "last_created_at" }
+    assert_response :success
+    get admin_accounts_url, params: { sort_by: "first_created_at" }
+    assert_response :success
+    get admin_accounts_url, params: { sort_by: "last_updated_at" }
+    assert_response :success
+  end
+
+
   test 'admin user should get account details by any user' do
     sign_in users(:admin)
     login_as_admin('abc')
@@ -47,6 +60,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # create
   test "admin user should be able to create an account " do
     sign_in users(:admin)
     login_as_admin('abc')
@@ -71,6 +85,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # update
   test "admin user should be able to update an account " do
     sign_in users(:admin)
     login_as_admin('abc')
@@ -94,6 +109,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
 
   end
 
+  # destroy
   test 'admin user should be able to destroy any account' do
     sign_in users(:admin)
     login_as_admin('abc')

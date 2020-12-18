@@ -6,37 +6,46 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <!-- favicon logo -->
+  <%= favicon_link_tag login_sigup_logo_image %>
+
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-  <!-- favicon logo -->
-  <%= favicon_link_tag asset_path('/llogo.png') %>
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <!-- Google Fonts -->  
+  <!-- Lato, sans-serif -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap">
+  <!-- 'Abhaya Libre', serif -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abhaya+Libre:wght@400;500;700&display=swap">
+  <!-- Merriweather, serif -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Headland+One&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap">
+  <!-- Assistant, sans-serif -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Assistant:wght@300;400;500;700&display=swap">
+  <!-- Open Sans, sans-serif -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap">
 
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="padding: 0; font-family: <%= font_family %>;">
   <!--load navbar -->
   <%= render 'shared/navbar' %>
 
   <!-- main -->
-  <main class="container-fluid">
-    <% if notice.present? %>
-    <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if alert.present? %>
-    <p class="alert"><%= alert %></p>
-    <% end %>
-    <%= yield %>
-    <div class="row col-4 offset-md-4">
-      <%= debug(params) if Rails.env.development? %>
+  <main>
+  <% flash.each do |type, msg| %>
+    <div class="<%= flash_class(type) %>" style="margin-bottom: 0;">
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <%= msg %>
     </div>
+  <% end %>
+  
+  <%= yield %>
   </main>
 
 

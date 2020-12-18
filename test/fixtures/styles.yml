@@ -1,0 +1,6 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+current:
+  bank_name: MyString
+  home_links_1: ["hu", "hu"]
+  home_links_2: ["ja", "ja"]

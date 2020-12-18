@@ -23,7 +23,6 @@ class User < ApplicationRecord
     if !keyword.blank?
       keyword = "%#{keyword.upcase}%"
       where('firstname LIKE ? OR lastname LIKE ?', keyword, keyword)
-
     else
       all
     end

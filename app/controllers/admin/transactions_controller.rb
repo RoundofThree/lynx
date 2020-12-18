@@ -1,6 +1,6 @@
 class Admin::TransactionsController < Admin::ApplicationController
   before_action :set_transaction, only: %i[show edit update destroy]
-  # GET /admin/transactions (or .json)
+  # GET /admin/transactions
   def index
     @transactions = Transaction.search(params[:search])
     sort_transactions unless @transactions.empty?
@@ -42,7 +42,8 @@ class Admin::TransactionsController < Admin::ApplicationController
     if @transaction.save
       redirect_to  [:admin, Transaction.last], notice: 'Transaction was successfully created.'
     else
-      render :new # flash errors
+      flash.now[:error] = "Error in creating transaction."
+      render :new
     end
   end
 
@@ -51,8 +52,13 @@ class Admin::TransactionsController < Admin::ApplicationController
     if @transaction.update(transaction_params)
       redirect_to [:admin, Transaction.last], notice: 'Transaction was successfully updated.'
     else
+<<<<<<< HEAD
       flash[:error] = 'Failed to save changes.'
       render :edit # flash errors
+=======
+      flash.now[:error] = "Error in updating transaction."
+      render :edit
+>>>>>>> main
     end
   end
 
@@ -64,13 +70,12 @@ class Admin::TransactionsController < Admin::ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_transaction
     @transaction = Transaction.find(params[:id])
   end
 
   def transaction_params
-    params.require(:transaction).permit(:account_id,:amount, :currency, :dealer_account_number,
-                                        :dealer_name)
+    params.require(:transaction).permit(:account_id, :amount, :currency, :dealer_account_number,
+                                        :dealer_name, :reference)
   end
 end

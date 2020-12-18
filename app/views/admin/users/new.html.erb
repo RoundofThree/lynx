@@ -1,16 +1,15 @@
 <div class ="row">
   <!-- render shared navbar-->
-<%= render partial: "admin/shared/navbar" %>
-<!-- create user form -->
-<div class="col-3 " style ="max-width: 680px;padding-bottom: 100px;
+  <%= render partial: "admin/shared/navbar" %>
+  <!-- create user form -->
+  <div class="col-3 " style ="max-width: 680px;padding-bottom: 100px;
 padding-top:20px">
-<div class="columns mt-3">
-    <h1 class="mb-3" style ="font-size: 35px;color: #525252;margin-bottom: 40px;">Creat new user</h1>
-    <button type="button" class="btn btn-lg btn-outline-primary"><%= link_to "Back", admin_users_path %></button>
-</div>
-
-</div>
-<div class="col-7 mt-3">
+    <div class="columns mt-3">
+      <h1 class="mb-3" style ="font-size: 35px;color: #525252;margin-bottom: 40px;">Creat new user</h1>
+      <button type="button" class="btn btn-lg btn-outline-primary"><%= link_to "Back", admin_users_path %></button>
+    </div>
+  </div>
+  <div class="col-7 mt-3">
     <%= render 'form', user: @user %>
-</div>
+  </div>
 </div>

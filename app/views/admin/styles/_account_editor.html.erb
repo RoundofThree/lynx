@@ -1,0 +1,14 @@
+
+
+<div class="pb-2 mb-3 border-bottom">
+<h4>account</h4>
+</div>
+<%= form_for styles, url: admin_styles_path, method: :put, html: {class: "col-8", style: "margin: 15px;"} do |f| %>
+
+<div class="form-group row">
+  <%= f.label :account_table_color, class: "col-sm-4 col-form-label" %>
+  <div class="col-sm-6">
+    <%= f.color_field :account_table_color, value: account_table_color, class: "form-control" %></div>
+</div>
+  <%= f.submit class: "btn btn-outline-info" %>
+<% end %>
