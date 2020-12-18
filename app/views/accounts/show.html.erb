@@ -1,6 +1,5 @@
    <div class="account-show">
       <div class="row">
-     <%= render partial: "admin/shared/navbar" %>
        <div class = "col p-4" style="align-items-center">
        <h1><p>Account Number <%= @account.account_number %></p>  </h1>
              <div>
@@ -10,7 +9,6 @@
                  <h5 class="balance"><%= @account.balance %> <%= @account.currency %></h5>
                  <hr class="divider">
              </div>
-
              <div id="transacion-history">
                  <h4>Transactions</h4>
                  <!--TODO: The background colour of the th and tr elements should be editable
