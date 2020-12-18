@@ -6,7 +6,7 @@ class Account < ApplicationRecord
 
   # validations
   validates :user, presence: true
-  validates :account_number, presence: true, uniqueness: true
+  validates :account_number, presence: true, uniqueness: true, length: { is: 14 }
   validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :cvv, presence: true, length: { in: 3...4 }
   validates :expiry_date, presence: true 
