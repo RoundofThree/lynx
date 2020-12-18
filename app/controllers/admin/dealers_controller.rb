@@ -1,4 +1,4 @@
-class Admin::DealersController < ApplicationController
+class Admin::DealersController < Admin::ApplicationController
   before_action :set_dealer, only: %i[show edit update destroy]
   # GET /admin/users
   def index
