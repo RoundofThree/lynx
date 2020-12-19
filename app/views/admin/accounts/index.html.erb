@@ -1,39 +1,49 @@
 <div class="row">
   <%= render partial: "admin/shared/navbar" %>
-  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-    <!-- Header -->
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-      <h1 class="h2">Accounts</h1>
-      <div class="btn-toolbar row mb-2 mb-md-0" style="width: 60%; position: relative; left: 30px;">
-        <!-- Search/sort functionality -->
-        <%= form_with url: admin_accounts_path, method: :get, local: true, class: "row mt-md-0 container-fluid" do |f| %>
-          <%= f.text_field :search, value: params[:search], placeholder: "Filter by account number...", class: "form-control mr-1 col-xs-6 col-md-4" %>
-          <%= f.select :sort_by, options_for_select([["Last updated", "last_updated_at"], ["Last created", "last_created_at"], ["First created", "first_created_at"]], params[:sort_by]), {}, {class: "form-control col-xs-6 col-md-4" } %>
-          <%= f.submit "Filter and sort", class: "btn btn-outline-success ml-1 col-xs-6 col-md-3" %>
-        <% end %>
-      </div>
-      <button type="button"
-        class="btn  btn-outline-secondary">
-        <%= link_to "New account", new_admin_account_path %>
-      </button>
+  <div class="col ml-sm-auto col-lg-10 px-4">
+    <div class="col p-3">
+    <div class ="row" >
+    <h1 style="font-weight:bold;"> Accounts</h1>
+    <i class ="fa fa-lg fa-pencil"style ="font-size:25px;padding-top:20px;padding-left:10px;"></i>
+    <p style="padding-top:20px;font-size:18px;padding-left:20px;"><%= Account.count %> accounts</p>
     </div>
-   
+      <div class ="row" style="margin-bottom:10px">
+        <div class ="col"style="padding-left:0px;">
+            <button type="button"class="btn btn-info" style="background-color:#01045d; border-color:#01045d; border-radius:10px">
+                <i class="fa fa-user-plus p-1" style="color:#ffffff"></i>
+              <%= link_to "Add", new_admin_account_path, style: "color: inherit; text-decoration: none;font-weight:bold;" %>
+            </button>
+            <button type="button" class="btn btn-info "style="background-color:#ffffff;
+            border-color:#01045d; border-radius:10px;font-weight:bold;color:#01045d;">
+              <i class="fa fa-download p-1" style="color:#01045d;"></i>
+            Export as XLS</button>
+            </div>
+            </div>
+
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <div class ="row">
+
       <h4 class="h4">Transaction Generator Options</h4>
-      <div class="btn-toolbar row mb-2 mb-md-0" style="width: 70%; position: relative; left: 30px;">
+      </div>
+      <div class ="row">
+      <div class=" row" style="width: 200%; position: relative;">
         <%= form_tag({ controller: "generator", action: "generate_transactions" }, method: "post", class: "row container-fluid") do %>
-          <%= number_field_tag "how_many", 10, in: 1..100, step: 1, class: "form-control col-1" %>
-          <%= select_tag "account", options_for_select([["All Accounts", "All"]].concat(Account.all.map { |a| [a.account_number, a.id] })), class: "form-control col-2" %>
+          <%= number_field_tag "how_many", 10, in: 1..100, step: 1, class: "form-control col-2" %>
+          <%= select_tag "account", options_for_select([["All Accounts", "All"]].concat(Account.all.map { |a| [a.account_number, a.id] })), class: "form-control col-3" %>
           <% period_options = [["Recent month", "1 month"], ["Recent 3 months", "3 months"],
                                ["Recent year", "1 year"], ["Recent 3 years", "3 years"]] %>
-          <%= select_tag "period", options_for_select(period_options), class: "form-control col-2" %>
-          <%= submit_tag "Generate Transactions", class: "btn btn-outline-success col-3" %>
+          <%= select_tag "period", options_for_select(period_options), class: "form-control col-4" %>
+          <button type="button"class="btn btn-info col-3" style="background-color:#01045d; border-color:#01045d; border-radius:10px">
+            <%= link_to "Generate", admin_transactions_path, style: "color: inherit; text-decoration: none;font-weight:bold;" %>
+          </button>
+
         <% end %>
       </div>
+    </div>
+
+    </div>
     </div>
     <%= render "admin/accounts/list", { accounts: @accounts } %>
 
-  </main>
 
 </div>
-
