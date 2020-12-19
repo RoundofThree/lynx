@@ -16,21 +16,21 @@
   <% end %>
 
   <!-- form body -->
-  <div class = "card" style= "border-radius: 10px;">
+  <div class = "container" style ="padding: 27px 50px; padding-bottom: 20px;">
     <div class = "card" style ="padding: 57px 80px; padding-b ottom: 20px;">
       <!-- currency and name -->
       <div class = "row" style="margin-bottom: 22px;" >
-        <div class = "col">
+        <div class = "col-5">
           <%= form.label :currency, class: "label" %>
-          <%= form.text_field :currency, class: "input", style: "line-height: 50px; border-radius: 5px; padding: 0 20px;" %>
-        </div>
-        <div class = "col">
+          <%= form.select :currency, Account::CURRENCY_TYPES,style:"border-radius: 5px;" %>
+        <div class = "col-5">
           <%= form.label :name, class: "label" %>
           <%= form.text_field :name, class: "input", style: "line-height: 50px; border-radius: 5px; padding: 0 20px;" %>
         </div>
       </div>
+      </div>
 
-      <!-- min & max amounts --> 
+      <!-- min & max amounts -->
       <div class = "row" style="margin-bottom: 22px;">
         <div class = "col">
           <%= form.label :min_amount, "Minimum Transaction amount", class: "label" %>

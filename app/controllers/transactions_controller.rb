@@ -27,11 +27,11 @@ class TransactionsController < ApplicationController
       # substract the balance
       amount = params[:transaction][:amount]
       @account.balance = @account.balance - amount.to_d
-      
-      if @account.save 
+
+      if @account.save
         flash[:success] = "Payment success."
         redirect_to transaction_path(@transaction.id)
-      else # if ever something goes wrong, rollback transaction 
+      else # if ever something goes wrong, rollback transaction
         @transaction.destroy
         flash[:alert] = "Payment failed, try again."
         redirect_to new_transaction_path
@@ -48,7 +48,7 @@ class TransactionsController < ApplicationController
     if transaction_params[:amount].to_d <= 0.0
       flash[:error] = 'Invalid amount'
       redirect_to new_transaction_path
-    end 
+    end
   end
 
   def require_permissions
@@ -68,7 +68,6 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:amount, :account_id, :dealer_account_number, :dealer_name,
-                                        :currency, :reference)
+    params.require(:transaction).permit(:amount, :account_id, :dealer_account_number, :dealer_name, :reference)
   end
 end
