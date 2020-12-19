@@ -2,14 +2,16 @@
   <table class="table table-bordered table-sm table-striped table-hover">
     <thead>
       <tr>
-        <th>No. </th>
-        <th>Currency</th>
-        <th>Name</th>
-        <th>Account number</th>
-        <th>Min amount</th>
-        <th>Max amount</th>
-        <th>Relative frequency</th>
-        <th>Type</th>
+        <th class ="p-3" style="color:#01045d;">No. </th>
+        <th class ="p-3" style="color:#01045d;">Currency</th>
+        <th class ="p-3" style="color:#01045d;">Name</th>
+        <th class ="p-3" style="color:#01045d;">Account number</th>
+        <th class ="p-3" style="color:#01045d;">Min amount</th>
+        <th class ="p-3" style="color:#01045d;">Max amount</th>
+        <th class ="p-3" style="color:#01045d;">Frequency</th>
+        <th class ="p-3" style="color:#01045d;">Type</th>
+        <th class ="p-3" style="color:#01045d;">Actions</th>
+
       </tr>
     </thead>
     <tbody>
@@ -23,8 +25,7 @@
           <td><%= d.max_amount %></td>
           <td><%= d.frequency %></td>
           <td><%= d.is_vendor ? "Vendor" : "Individual" %></td>
-          <td><%= link_to 'Edit', edit_admin_dealer_path(d) %></td>
-          <td><%= link_to 'Delete', admin_dealer_path(d), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit     ', edit_admin_dealer_path(d) %><%= link_to 'Delete', admin_dealer_path(d), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
