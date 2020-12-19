@@ -12,7 +12,7 @@ User.create!([{ # admin user
     lastname: "Waterson",
     email: "tom.waterson@gmail.com",
     password: "SEGproj3ctover",
-    birth_date: Date.new(2001, 11, 28)
+    birth_date: Date.new(2001, 11, 28),
     phone: "+44 07740271205",
     is_female: false,
     postcode: "WC2N 5RJ",
@@ -27,7 +27,7 @@ User.create!([{ # admin user
     lastname: "Budka",
     email: "roland.budka@gmail.com",
     password: "jkrolling2001",
-    birth_date: Date.new(2001, 11, 28)
+    birth_date: Date.new(2001, 11, 28),
     phone: "+44 07740271205",
     is_female: false,
     postcode: "WC2N 5RJ",
