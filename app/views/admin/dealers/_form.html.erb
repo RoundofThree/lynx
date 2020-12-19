@@ -16,55 +16,64 @@
   <% end %>
 
   <!-- form body -->
-  <div class = "card" style= "border-radius: 10px;">
-    <div class = "card" style ="padding: 57px 80px; padding-b ottom: 20px;">
+  <div class = "container p-3">
       <!-- currency and name -->
       <div class = "row" style="margin-bottom: 22px;" >
-        <div class = "col">
-          <%= form.label :currency, class: "label" %>
-          <%= form.text_field :currency, class: "input", style: "line-height: 50px; border-radius: 5px; padding: 0 20px;" %>
-        </div>
-        <div class = "col">
+        <div class = "col-6">
+          <%= form.label :account_Number, "Account Number", class: "label" %>
+          <br>
+          <%= form.text_field :account_number, class: "input", style: "line-height: 20px; border-radius: 5px;" %>
+          </div>
+        <div class = "col-6">
           <%= form.label :name, class: "label" %>
-          <%= form.text_field :name, class: "input", style: "line-height: 50px; border-radius: 5px; padding: 0 20px;" %>
+          <br>
+          <%= form.text_field :name, class: "input", style: "line-height: 20px; border-radius: 5px;" %>
         </div>
-      </div>
+  </div>
 
-      <!-- min & max amounts --> 
+      <!-- min & max amounts -->
       <div class = "row" style="margin-bottom: 22px;">
-        <div class = "col">
+        <div class = "col-6">
           <%= form.label :min_amount, "Minimum Transaction amount", class: "label" %>
-          <%= form.number_field :min_amount, class: "input", style:"line-height: 50px; border-radius: 5px; padding: 0 20px;" %>
+          <br>
+          <%= form.number_field :min_amount, class: "input",  style: "line-height: 20px; border-radius: 5px;" %>
         </div>
-        <div class = "col">
+        <div class = "col-6">
           <%= form.label :max_amount, "Maximum Transaction amount", class: "label" %>
-          <%= form.number_field :max_amount, class: "input", style:"line-height: 50px; border-radius: 5px; padding: 0 20px;" %>
+          <br>
+          <%= form.number_field :max_amount, class: "input", style:  "line-height: 20px; border-radius: 5px;" %>
         </div>
       </div>
 
       <!-- account number & is_vendor -->
       <div class = "row" style="margin-bottom: 22px;">
-        <div class ="col">
-          <%= form.label :account_number, "Account number", class: "label" %>
-          <%= form.text_field :account_number, class: "input", style: "line-height: 50px; border-radius: 5px; padding: 0 20px;" %>
+        <div class ="col-6">
+          <%= form.label :currency, class: "label" %>
+          <br>
+          <%= form.select :currency, Account::CURRENCY_TYPES,style:"border-radius: 5px;" %>
+
         </div>
-        <div class = "col">
+        <div class = "col-6">
           <%= form.label :is_vendor, "This dealer is a vendor (instead of an individual)", class: "label" %>
-          <%= form.check_box :is_vendor, class: "input", style: "line-height: 50px; border-radius: 5px; padding: 0 20px;" %>
+          <br>
+          <%= form.check_box :is_vendor, class: "input" %>
         </div>
       </div>
 
       <!-- relative frequency -->
       <div class = "row" style="margin-bottom: 40px;">
         <div class = "col">
-          <%= form.label :frequency, "Relative frequency (how many times would a normal person deal with this dealer in 100 days)", class: "label" %>
-          <%= form.number_field :frequency, class: "input", style:"line-height: 50px; border-radius: 5px; padding: 0 20px;" %>
+          <%= form.label :frequency, "Relative frequency", class: "label" %>
+          <br>
+          <%= form.number_field :frequency, class: "input", style:"line-height: 20px; border-radius: 5px; padding: 0 20px; margin-bottom:10px;" %>
+          <p>(how many times would a normal person deal with this dealer in 100 days)</p>
+
         </div>
       </div>
+      <div class="actions">
+        <%= form.submit class: "button btn-outline-primary" %>
+      </div>
     </div>
-  </div>
 
-  <div class="actions">
-    <%= form.submit class: "button btn-outline-primary" %>
-  </div>
+
 <% end %>

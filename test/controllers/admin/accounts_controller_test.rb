@@ -18,25 +18,11 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     sign_out :user
   end
 
+  # index tests
   test 'admin user should get accounts list' do
     sign_in users(:admin)
     login_as_admin('abc')
     get admin_accounts_url
-    assert_response :success
-  end
-
-
-  test 'admin user should get edit' do
-    sign_in users(:admin)
-    login_as_admin('abc')
-    get edit_account_url(@account)
-    assert_response :success
-  end
-
-  test 'admin user should get new' do
-    sign_in users(:admin)
-    login_as_admin('abc')
-    get "/admin/accounts/new"
     assert_response :success
   end
 
@@ -51,8 +37,23 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # edit tests
+  test 'admin user should get edit' do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get edit_admin_account_url(@account)
+    assert_response :success
+  end
 
-  # show
+  # new tests 
+  test 'admin user should get new' do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get new_admin_account_url
+    assert_response :success
+  end
+
+  # show tests 
   test 'admin user should get account details by any user' do
     sign_in users(:admin)
     login_as_admin('abc')
@@ -61,7 +62,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # create
+  # create tests 
   test "admin user should be able to create an account " do
     sign_in users(:admin)
     login_as_admin('abc')
@@ -86,7 +87,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # update
+  # update tests 
   test "admin user should be able to update an account " do
     sign_in users(:admin)
     login_as_admin('abc')
@@ -110,7 +111,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
 
   end
 
-  # destroy
+  # destroy tests
   test 'admin user should be able to destroy any account' do
     sign_in users(:admin)
     login_as_admin('abc')

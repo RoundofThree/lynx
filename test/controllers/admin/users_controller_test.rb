@@ -59,7 +59,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
       sign_in users(:admin)
       login_as_admin('abc')
       user = users(:have_one_account)
-      assert_difference('User.count') do
+      assert_difference('User.count', 1) do
         post admin_users_url, params: { user:
           { firstname: user.firstname, lastname: user.lastname,
             phone: user.phone, birth_date: "19991010",
