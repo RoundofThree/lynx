@@ -1,5 +1,5 @@
 <div class="table-responsive">
-  <table class="table table-bordered table-striped table-sm">
+  <table class="table table-bordered table-striped table-sm table-hover">
     <thead>
       <tr>
         <th>No. </th>
@@ -8,6 +8,7 @@
         <th>Last accessed time</th>
          <!-- Ordered by last accessed time by default -->
         <th>Last accessed IP</th>
+        <th>Admin</th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
           <td><%= link_to u.lastname, admin_user_path(u) %></td>
           <td><%= u.last_sign_in_at %></td>
           <td><%= u.last_sign_in_ip %></td>
+          <td><%= u.admin %></td>
           <td><%= link_to 'Edit', edit_admin_user_path(u) %></td>
           <td><%= link_to 'Delete', admin_user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
