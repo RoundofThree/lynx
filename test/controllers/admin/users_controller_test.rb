@@ -32,7 +32,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     login_as_admin("abc") 
     get admin_users_url(format: "xlsx")
     assert_response :success
-  end 
+  end
 
   test 'admin user should get user details by any user' do
     sign_in users(:admin)
