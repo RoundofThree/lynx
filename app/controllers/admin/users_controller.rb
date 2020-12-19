@@ -4,6 +4,10 @@ class Admin::UsersController < Admin::ApplicationController
   def index
     @users = User.search(params[:search])
     sort_users unless @users.empty?
+    respond_to do |format|
+      format.html
+      format.xlsx {render xlsx: 'index', filename: "users.xlsx"}
+    end
   end
 
   # sort users by last_sign_in_at, created_at
