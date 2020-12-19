@@ -19,9 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Authentication
 gem 'devise'
-# Authorization with Ability
-gem 'cancancan'
-# Markdown 
+# Markdown
 gem 'kramdown'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -63,3 +61,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'rails-controller-testing'

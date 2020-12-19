@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "dealers", force: :cascade do |t|
+    t.string "currency"
+    t.string "name"
+    t.string "account_number"
+    t.integer "min_amount"
+    t.integer "max_amount"
+    t.integer "frequency"
+    t.boolean "is_vendor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "styles", force: :cascade do |t|
     t.string "bank_name"
     t.string "font_family"

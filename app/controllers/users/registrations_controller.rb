@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  before_action :configure_account_update_params, only: [:update]
+  # before_action :configure_account_update_params, only: [:update]
 
   # GET /users/sign_up
   def new
@@ -15,19 +15,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /users/edit
-  def edit
-    super
-  end
+  # def edit
+  #  super
+  # end
 
   # PUT /user
-  def update
-    super
-  end
+  # def update
+  #   super
+  # end
 
   # DELETE /user
-  def destroy
-    super
-  end
+  # def destroy
+  #   super
+  # end
 
   # GET /user/cancel
   # Forces the session data which is usually expired after sign
@@ -49,19 +49,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update) do |u|
-      u.permit(:email, :password, :current_password, :phone, :postcode, :address_line_1, :address_line_2, :country)
-    end
-  end
+  # def configure_account_update_params
+  #  devise_parameter_sanitizer.permit(:account_update) do |u|
+  #     u.permit(:email, :password, :current_password, :phone, :postcode, :address_line_1, :address_line_2, :country)
+  #   end
+  # end
 
   # The path used after sign up.
   def after_sign_up_path_for(user)
-    super(user)
+    dashboard_path
   end
 
   # The path used after sign up for inactive accounts.
-  def after_inactive_sign_up_path_for(user)
-    super(user)
-  end
+  # def after_inactive_sign_up_path_for(user)
+  #   super(user)
+  # end
 end

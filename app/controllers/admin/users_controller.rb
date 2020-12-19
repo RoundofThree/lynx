@@ -36,9 +36,8 @@ class Admin::UsersController < Admin::ApplicationController
   # POST /admin/users
   def create
     @user = User.new(user_params)
-
     if @user.save
-      redirect_to [:admin, User.last], notice: 'User was successfully created.'
+      redirect_to admin_user_path(@user), notice: 'User was successfully created.'
     else
       flash[:error] = 'Error in creating user.'
       render :new
@@ -47,13 +46,8 @@ class Admin::UsersController < Admin::ApplicationController
 
   # PATCH/PUT /admin/users/1
   def update
-    if @user == current_user && params[:admin] == true
-      flash[:error] = 'Cannot change admin privileges for current user.'
-      render :edit
-      return
-    end
     if @user.update(user_params)
-      redirect_to  [:admin, User.last], notice: 'User was successfully updated.'
+      redirect_to admin_user_path(@user), notice: 'User was successfully updated.'
     else
       flash[:error] = 'Failed to save changes.'
       render :edit

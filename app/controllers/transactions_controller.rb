@@ -31,11 +31,11 @@ class TransactionsController < ApplicationController
       if @account.save 
         flash[:success] = "Payment success."
         redirect_to transaction_path(@transaction.id)
-      else 
-        @transaction.destroy 
+      else # if ever something goes wrong, rollback transaction 
+        @transaction.destroy
         flash[:alert] = "Payment failed, try again."
         redirect_to new_transaction_path
-      end 
+      end
     else
       flash[:error] = "Payment failed, try again."
       redirect_to new_transaction_path

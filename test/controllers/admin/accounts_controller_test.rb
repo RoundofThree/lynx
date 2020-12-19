@@ -2,7 +2,10 @@ require 'test_helper'
 
 class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
-  # test index
+  setup do
+    @account = accounts(:one)
+  end
+
   test 'not logged in user should render 404' do
     get admin_accounts_url
     assert_response :missing
@@ -15,6 +18,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     sign_out :user
   end
 
+  # index tests
   test 'admin user should get accounts list' do
     sign_in users(:admin)
     login_as_admin('abc')
@@ -22,19 +26,34 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "admin user should be able to search and specify sorting criteria of accounts" do 
+  test "admin user should be able to search and specify sorting criteria of accounts" do
     sign_in users(:admin)
     login_as_admin('abc')
     get admin_accounts_url, params: { sort_by: "last_created_at" }
-    assert_response :success 
+    assert_response :success
     get admin_accounts_url, params: { sort_by: "first_created_at" }
-    assert_response :success 
+    assert_response :success
     get admin_accounts_url, params: { sort_by: "last_updated_at" }
     assert_response :success
-  end 
+  end
 
-  # test show
+  # edit tests
+  test 'admin user should get edit' do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get edit_admin_account_url(@account)
+    assert_response :success
+  end
 
+  # new tests 
+  test 'admin user should get new' do
+    sign_in users(:admin)
+    login_as_admin('abc')
+    get new_admin_account_url
+    assert_response :success
+  end
+
+  # show tests 
   test 'admin user should get account details by any user' do
     sign_in users(:admin)
     login_as_admin('abc')
@@ -43,13 +62,13 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # create
+  # create tests 
   test "admin user should be able to create an account " do
     sign_in users(:admin)
     login_as_admin('abc')
     accountuser = users(:have_one_account)
 
-    account = Account.new(user: accountuser, account_number: "999999", balance:"2313", currency:"GBP",
+    account = Account.new(user: accountuser, account_number: "12345678901234", balance:"2313", currency:"GBP",
     cvv:"132", expiry_date:"20221022")
       assert_difference('Account.count') do
       post admin_accounts_url, params: { account: account.attributes}
@@ -68,30 +87,31 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # update
+  # update tests 
   test "admin user should be able to update an account " do
     sign_in users(:admin)
     login_as_admin('abc')
     accountuser = users(:have_one_account)
     account = accounts(:one)
     patch admin_account_url(account), params: {
-      account:{ user: accountuser, account_number: "999999", balance:"2313",
+      account:{ user: accountuser, account_number: "12345678901234", balance:"2313",
       currency:"GBP",cvv:"132", expiry_date:"20221022"}}
       assert_redirected_to [:admin, Account.last]
   end
 
-  test "update should fail if no required params are filled " do
+  test "update should fail if balance is negative" do
     sign_in users(:admin)
     login_as_admin('abc')
     accountuser = users(:have_one_account)
     account = accounts(:one)
     patch admin_account_url(account), params: {
-      account:{ balance:"2313",
-      currency:"GBP",cvv:"132", expiry_date:"20221022"}}
-      assert_redirected_to [:admin, Account.last]
+      account:{ balance:"-2313",user: accountuser, account_number: "999999",
+      currency:"GBP",cvv:"1321", expiry_date:"20221022"}}
+      assert_response :success
+
   end
 
-  # destroy 
+  # destroy tests
   test 'admin user should be able to destroy any account' do
     sign_in users(:admin)
     login_as_admin('abc')

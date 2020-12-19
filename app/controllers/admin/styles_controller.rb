@@ -64,6 +64,7 @@ class Admin::StylesController < Admin::ApplicationController
                                   :show_payment_page_style,
                                   :show_payment_md,
                                   :show_payment_image,
+                                  :dealer_image,
                                   :home_links_1 => [],
                                   :home_links_2 => [])
   end
