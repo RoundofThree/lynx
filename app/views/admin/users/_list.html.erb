@@ -1,28 +1,29 @@
 <div class="table-responsive">
-  <table class="table table-bordered table-sm">
+  <table class="table table-bordered table-striped table-sm table-hover">
     <thead>
-      <tr>
-        <th>No. </th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Last accessed time</th>
+      <tr >
+        <th class ="p-3" style="color:#01045d;">No. </th>
+        <th class ="p-3"style="color:#01045d;">FIRSTNAME</th>
+        <th class ="p-3"style="color:#01045d;">LASTNAME</th>
+        <th class ="p-3"style="color:#01045d;">LAST LOGIN</th>
          <!-- Ordered by last accessed time by default -->
-        <th>Last accessed IP</th>
+        <th class ="p-3"style="color:#01045d;">LAST ACCESSED IP</th>
+        <th class ="p-3"style="color:#01045d;">ADMIN</th>
+        <th class ="p-3"style="color:#01045d;">ACTIONS</th
       </tr>
     </thead>
-    <tbody>
+    <tbody >
       <% users.each_with_index do |u, i| %>
-        <tr>
+        <tr >
           <th scope="row"><%= i+1 %></th>
-          <td><%= link_to u.firstname, admin_user_path(u) %></td>
+          <td ><%= link_to u.firstname, admin_user_path(u) %></td>
           <td><%= link_to u.lastname, admin_user_path(u) %></td>
           <td><%= u.last_sign_in_at %></td>
           <td><%= u.last_sign_in_ip %></td>
-          <td><%= link_to 'Edit', edit_admin_user_path(u) %></td>
-          <td><%= link_to 'Delete', admin_user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= u.admin %></td>
+          <td ><%= link_to 'Edit', edit_admin_user_path(u) %> <%= link_to 'Delete', admin_user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-

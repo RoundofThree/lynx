@@ -20,7 +20,7 @@ class Admin::DealersController < Admin::ApplicationController
   def create
     @dealer = Dealer.new(dealer_params)
     if @dealer.save
-      redirect_to admin_dealers_url, notice: "Dealer was successfully created."
+      redirect_to admin_dealer_url(@dealer), notice: "Dealer was successfully created."
     else
       flash[:error] = "Error in creating dealer."
       render :new
@@ -30,7 +30,7 @@ class Admin::DealersController < Admin::ApplicationController
   # PATCH/PUT /admin/dealers/1
   def update
     if @dealer.update(dealer_params)
-      redirect_to admin_dealers_url, notice: "Dealer was successfully updated."
+      redirect_to admin_dealer_url(@dealer), notice: "Dealer was successfully updated."
     else
       flash[:error] = "Failed to save changes."
       render :edit
@@ -53,7 +53,7 @@ class Admin::DealersController < Admin::ApplicationController
   # Only allow a list of trusted parameters through.
   def dealer_params
     params.require(:dealer).permit(:currency, :name, :account_number,
-                                   :min_amount, :max_amout, :frequency,
+                                   :min_amount, :max_amount, :frequency,
                                    :is_vendor)
   end
 end
