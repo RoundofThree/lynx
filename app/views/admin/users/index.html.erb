@@ -16,7 +16,7 @@
       </div>
       <button type="button"
         class="btn btn btn-outline-info"><%= link_to "New user", new_admin_user_path, style: "color: inherit; text-decoration: none;" %></button>
-      <button type="button" class="btn btn-sm btn-outline-secondary">Export as XLS</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "Export as XLS", admin_users_path(format: "xlsx"), target: "_blank", style: "color: inherit; text-decoration: none;" %></button>
     </div>
     <!-- List of users -->
     <%= render 'admin/users/list', {users: @users} %>
