@@ -2,19 +2,23 @@
   <%= render partial: "admin/shared/navbar" %>
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-      <h1 class="h2">Admin dashboard</h1>
+      <h1 style="font-weight:bold;">Admin Dashboard</h1>
     </div>
-    <h3>Users <span class="small font-italic" style="font-size: x-small;">(ordered by last accessed time)</span></h3>
-    <div class="table-responsive">
+    <h3 style="color:#01045d;font-weight:bold">Users
+      <span class="small font-italic" style="font-size: small;">(ordered by last accessed time)</span>
+      <span class="small" style="font-size: small;">TOTAL: <%= User.count %>     users</span>
+
+    </h3>
+    <div class=" table-bordered table-striped table-sm table-hover" style="margin-bottom:30px">
       <table class="table table-bordered table-sm">
         <thead>
           <tr>
-            <th>No. </th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Last accessed time</th>
+            <th class ="p-3" style="color:#01045d;">No. </th>
+            <th class ="p-3" style="color:#01045d;">Firstname</th>
+            <th class ="p-3" style="color:#01045d;">Lastname</th>
+            <th class ="p-3" style="color:#01045d;">Last accessed time</th>
              <!-- Ordered by last accessed time by default -->
-            <th>Last accessed IP</th>
+            <th class ="p-3" style="color:#01045d;">Last accessed IP</th>
              <!-- IPv4 -->
           </tr>
         </thead>
@@ -31,16 +35,20 @@
         </tbody>
       </table>
     </div>
-    <h3>Accounts <span class="small font-italic" style="font-size: x-small;">(ordered by last updated time)</span></h3>
-    <div class="table-responsive">
+    <h3 style="color:#01045d;font-weight:bold">Accounts
+       <span class="small font-italic" style="font-size: small;">(ordered by last updated time)</span>
+       <span class="small" style="font-size: small;">TOTAL: <%= Account.count %>  accounts</span>
+
+     </h3>
+    <div class=" table-bordered table-striped table-sm table-hover" style="margin-bottom:30px">
       <table class="table table-bordered table-sm">
         <thead>
           <tr>
-            <th>No. </th>
-            <th>Account number</th>
-            <th>User</th>
-            <th>Balance</th>
-            <th>Updated at</th>
+            <th class ="p-3" style="color:#01045d;">No. </th>
+            <th class ="p-3" style="color:#01045d;">Account number</th>
+            <th class ="p-3" style="color:#01045d;">User</th>
+            <th class ="p-3" style="color:#01045d;">Balance</th>
+            <th class ="p-3" style="color:#01045d;">Updated at</th>
              <!-- Ordering -->
           </tr>
         </thead>
@@ -57,16 +65,19 @@
         </tbody>
       </table>
     </div>
-    <h3>Transactions <span class="small font-italic" style="font-size: x-small;">(ordered by created time)</span></h3>
-    <div class="table-responsive">
+    <h3 style="color:#01045d;font-weight:bold">Transactions
+      <span class="small font-italic" style="font-size: small;">(ordered by created time)</span>
+      <span class="small" style="font-size: small;">   TOTAL: <%= Transaction.count %>  transactions</span>
+    </h3>
+    <div class=" table-bordered table-striped table-sm table-hover" style="margin-bottom:30px">
       <table class="table table-bordered table-sm">
         <thead>
           <tr>
-            <th>No. </th>
-            <th>Account</th>
-            <th>Dealer</th>
-            <th>Amount</th>
-            <th>Date</th>
+            <th class ="p-3" style="color:#01045d;">No. </th>
+            <th class ="p-3" style="color:#01045d;">Account</th>
+            <th class ="p-3" style="color:#01045d;">Dealer</th>
+            <th class ="p-3" style="color:#01045d;">Amount</th>
+            <th class ="p-3" style="color:#01045d;">Date</th>
              <!-- Ordering -->
           </tr>
         </thead>
