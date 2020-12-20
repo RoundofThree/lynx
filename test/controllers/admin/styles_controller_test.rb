@@ -3,7 +3,7 @@ require 'test_helper'
 class Admin::StylesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  # edit 
+  # edit tests
   test 'not logged in user should render 404' do
     get admin_styles_edit_url
     assert_response :missing
@@ -13,7 +13,6 @@ class Admin::StylesControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:have_one_account)
     get admin_styles_edit_url
     assert_response :missing
-    sign_out :user
   end
 
   test 'admin user should get styles edit page' do
@@ -21,10 +20,9 @@ class Admin::StylesControllerTest < ActionDispatch::IntegrationTest
     login_as_admin('abc')
     get admin_styles_edit_url
     assert_response :success
-    sign_out :user 
   end
 
-  # update 
+  # update tests
   test 'admin should be able to change footer links' do 
     sign_in users(:admin)
     login_as_admin('abc')
@@ -37,8 +35,7 @@ class Admin::StylesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to admin_styles_edit_url
     current_style.reload 
     assert_equal ["Hello", "World"], current_style.home_links_1
-    assert_equal ["Kibana", "ElasticSearch"], current_style.home_links_2
-    sign_out :user 
+    assert_equal ["Kibana", "ElasticSearch"], current_style.home_links_2 
   end
 
   test 'update style to have a blank bank name should fail' do 
