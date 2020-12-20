@@ -3,24 +3,24 @@ require 'test_helper'
 class Admin::DealersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  setup do 
+  setup do
     sign_in users(:admin)
     login_as_admin("abc")
-  end 
+  end
 
-  teardown do 
-    sign_out :user  
-  end 
+  teardown do
+    sign_out :user
+  end
 
-  # index tests 
+  # index tests
   test 'not logged in user should render 404' do
-    sign_out :user 
+    sign_out :user
     get admin_dealers_url
     assert_response :missing
   end
 
   test 'not admin user should render 404' do
-    sign_out :user 
+    sign_out :user
     sign_in users(:have_one_account)
     get admin_dealers_url
     assert_response :missing
@@ -31,7 +31,7 @@ class Admin::DealersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # show tests 
+  # show tests
   test "admin user should be able to view information of a dealer"do
     dealer = dealers(:one)
     get admin_dealers_url(dealer)
@@ -44,14 +44,14 @@ class Admin::DealersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # edit tests 
+  # edit tests
   test "admin user should get edit"do
     dealer = dealers(:one)
     get edit_admin_dealer_url(dealer)
     assert_response :success
   end
 
-  # create tests 
+  # create tests
   test "admin user should be able to create a dealer"do
     dealer = Dealer.new(name:"sass", account_number:"12345678901234",
     min_amount:"2",max_amount:"20", frequency:"30", is_vendor:true, currency:"USD")
@@ -78,7 +78,9 @@ class Admin::DealersControllerTest < ActionDispatch::IntegrationTest
       dealer:{ name:"helen", account_number:"19345678901234",
       min_amount:"2",max_amount:"20", frequency:"30", is_vendor:true, currency:"USD"
       }}
-    assert_redirected_to [:admin, Dealer.last]
+      dealer.reload
+      assert_equal dealer.name, "helen"
+      assert_redirected_to admin_dealer_url(dealer)
   end
 
   test "update should fail if account number is not 14 characters "do
@@ -88,10 +90,12 @@ class Admin::DealersControllerTest < ActionDispatch::IntegrationTest
       min_amount:"2",max_amount:"20", frequency:"30", is_vendor:true, currency:"USD"
       }}
       assert_equal 'Failed to save changes.', flash[:error]
+      dealer.reload
+      assert_not_equal dealer.name, "helen"
      assert_template :edit
   end
 
-  # destroy tests 
+  # destroy tests
     test "admin user should be able to destroy any user" do
       dealer = dealers(:one)
       assert_difference('Dealer.count', -1) do
