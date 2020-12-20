@@ -51,7 +51,7 @@ class Admin::AccountsController < Admin::ApplicationController
   def update
     if @account.update(account_params)
       flash[:notice] = 'Account was successfully updated.'
-      redirect_to  [:admin, Account.last]
+      redirect_to  admin_account_path(@account)
     else
       flash.now[:error] = 'Failed to save changes.'
       render :edit
@@ -64,7 +64,6 @@ class Admin::AccountsController < Admin::ApplicationController
     flash[:notice] = 'Account was successfully destroyed.'
     redirect_to admin_accounts_url
   end
-
 
   private 
   

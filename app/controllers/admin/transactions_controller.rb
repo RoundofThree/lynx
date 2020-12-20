@@ -70,7 +70,7 @@ class Admin::TransactionsController < Admin::ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:account_id,:amount, :currency, :dealer_account_number,
+    params.require(:transaction).permit(:account_id, :amount, :dealer_account_number,
                                         :dealer_name, :reference, :created_at)
   end
   

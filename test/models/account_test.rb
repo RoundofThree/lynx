@@ -21,7 +21,7 @@ class AccountTest < ActiveSupport::TestCase
     assert_not account.valid?
   end
 
-  test 'The balance of an account should be trimmed to 2 decimal places' do
+  test 'the balance of an account should be trimmed to 2 decimal places' do
     user = users(:have_two_accounts)
     account = Account.new(user: user, balance: 111.123456, account_number: '12345678901234', cvv: '123',
                           expiry_date: DateTime.new(2022, 1, -1), currency: 'GBP')

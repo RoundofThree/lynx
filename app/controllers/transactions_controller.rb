@@ -9,21 +9,21 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
-    @accounts = Account.all
+    @accounts = current_user.accounts
   end
 
   def create
     @transaction = Transaction.new(transaction_params)
     # find account
     @account = Account.find(params[:transaction][:account_id]) unless params[:transaction][:account_id].blank?
-    if @account.nil?
+    if @account.nil? || @account.user_id != current_user.id
       flash[:error] = 'Select a valid account.'
       redirect_to new_transaction_path
       return
     end
     @transaction.currency = @account.currency
     @transaction.amount = -@transaction.amount
-    if @account.user_id == current_user.id && @transaction.save
+    if @transaction.save
       # substract the balance
       amount = params[:transaction][:amount]
       @account.balance = @account.balance - amount.to_d
