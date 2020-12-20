@@ -24,7 +24,7 @@ class CreateStyles < ActiveRecord::Migration[6.0]
       t.string :sign_up_head_size
       t.string :make_payment_page_style
       t.text :make_payment_md
-      t.string :make_payment_title 
+      t.string :make_payment_title
       t.string :make_payment_subtitle
       t.string :show_payment_page_style
       t.text :show_payment_md

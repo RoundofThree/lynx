@@ -28,15 +28,15 @@ class TransactionsController < ApplicationController
       @account.balance = @account.balance - amount.to_d
 
       if @account.save
-        flash[:success] = "Payment success."
+        flash[:success] = 'Payment success.'
         redirect_to transaction_path(@transaction.id)
       else # if ever something goes wrong, rollback transaction
         @transaction.destroy
-        flash[:alert] = "Payment failed, try again."
+        flash[:alert] = 'Payment failed, try again.'
         redirect_to new_transaction_path
       end
     else
-      flash[:error] = "Payment failed, try again."
+      flash[:error] = 'Payment failed, try again.'
       redirect_to new_transaction_path
     end
   end

@@ -3,7 +3,7 @@ class Transaction < ApplicationRecord
 
   validates :account, presence: true
   validates :amount, presence: true, numericality: { other_than: 0 }
-  validates :currency, presence: true, on: :update 
+  validates :currency, presence: true, on: :update
   validates :dealer_account_number, presence: true, length: { is: 14 } # 14 digits
   validates :dealer_name, presence: true
 
@@ -26,7 +26,7 @@ class Transaction < ApplicationRecord
 
   def set_currency
     self.currency = account.currency
-  end 
+  end
 
   def format_name
     self.dealer_name = dealer_name.upcase

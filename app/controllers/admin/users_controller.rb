@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::ApplicationController
     sort_users unless @users.empty?
     respond_to do |format|
       format.html
-      format.xlsx {render xlsx: 'index', filename: "users.xlsx"}
+      format.xlsx { render xlsx: 'index', filename: 'users.xlsx' }
     end
   end
 
@@ -80,6 +80,5 @@ class Admin::UsersController < Admin::ApplicationController
                                  :phone, :birth_date, :password, :password_confirmation,
                                  :postcode, :address_line_1, :address_line_2, :country,
                                  :admin, :admin_passphrase_digest)
-
   end
 end

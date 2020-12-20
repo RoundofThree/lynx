@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   # dashboard of logged in user
   get 'dashboard', to: 'dashboard#index'
-  
+
   resources :accounts, only: %i[show]
   # transactions can't be edited, updated or destroyed by normal user
   resources :transactions, only: %i[new create show]
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post 'admin/generator/generate_transactions' # transaction generator
 
   # Devise controllers
-  devise_for :users, :skip => [:registrations, :passwords], controllers: {
+  devise_for :users, skip: %i[registrations passwords], controllers: {
     sessions: 'users/sessions'
   }
   as :user do

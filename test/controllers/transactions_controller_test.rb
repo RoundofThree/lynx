@@ -83,7 +83,8 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
     assert_no_difference 'Transaction.count' do
       post transactions_url,
-           params: { transaction: { account: '', dealer_account_number: '12345678901234', dealer_name: 'Nyx', amount: 1.0 } }
+           params: { transaction: { account: '', dealer_account_number: '12345678901234', dealer_name: 'Nyx',
+                                    amount: 1.0 } }
     end
     assert_redirected_to new_transaction_url
   end
@@ -107,7 +108,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Transaction.count' do
       post transactions_url,
            params: { transaction: { account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
-                                    amount: 1000000.0 } }
+                                    amount: 1_000_000.0 } }
     end
     assert_redirected_to new_transaction_url
   end
@@ -130,7 +131,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Transaction.count' do
       post transactions_url,
            params: { transaction: { account: payer_account, dealer_account_number: '1234', dealer_name: 'Nyx',
-                                    amount: 1000000.0 } }
+                                    amount: 1_000_000.0 } }
     end
     assert_redirected_to new_transaction_url
   end

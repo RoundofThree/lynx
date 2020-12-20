@@ -2,20 +2,20 @@ class Admin::StylesController < Admin::ApplicationController
   before_action :set_styles
 
   # GET /admin/styles/edit
-  def edit
-  end
+  def edit; end
 
   # PATCH/PUT /admin/styles
   def update
     if @styles.update(styles_params)
-      redirect_to admin_styles_edit_path, notice: "Style changes successfully applied."
+      redirect_to admin_styles_edit_path, notice: 'Style changes successfully applied.'
     else
-      flash[:error] = "Failed to save changes."
+      flash[:error] = 'Failed to save changes.'
       redirect_to admin_styles_edit_path
     end
   end
 
   private
+
   # Always the first row and the only row
   def set_styles
     @styles = Style.first
@@ -65,8 +65,7 @@ class Admin::StylesController < Admin::ApplicationController
                                   :show_payment_md,
                                   :show_payment_image,
                                   :dealer_image,
-                                  :home_links_1 => [],
-                                  :home_links_2 => [])
+                                  home_links_1: [],
+                                  home_links_2: [])
   end
-
 end

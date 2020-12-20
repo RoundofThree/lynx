@@ -6,7 +6,7 @@ class CreateDealers < ActiveRecord::Migration[6.0]
       t.string :account_number
       t.integer :min_amount
       t.integer :max_amount
-      # how many times would a person deal with 
+      # how many times would a person deal with
       # this dealer during 100 days
       t.integer :frequency
       t.boolean :is_vendor

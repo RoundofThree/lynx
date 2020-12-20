@@ -9,7 +9,8 @@ class Users::PasswordsController < Devise::PasswordsController
   # POST /users/password
   def create
     # super
-    redirect_to new_user_session_url, notice: "You will receive an email with instructions on how to reset your password in a few minutes."
+    redirect_to new_user_session_url,
+                notice: 'You will receive an email with instructions on how to reset your password in a few minutes.'
   end
 
   # GET /users/password/edit?reset_password_token=abcdef
@@ -21,8 +22,6 @@ class Users::PasswordsController < Devise::PasswordsController
   # def update
   #   super
   # end
-
-  protected
 
   # def after_resetting_password_path_for(user)
   #   super(user)

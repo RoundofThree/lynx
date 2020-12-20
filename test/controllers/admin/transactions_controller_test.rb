@@ -5,7 +5,7 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     sign_in users(:admin)
-    login_as_admin("abc")
+    login_as_admin('abc')
   end
 
   teardown do
@@ -13,14 +13,14 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   # searching and sorting tests
-  test "admin user should be able to search and specify sorting criteria of transactions" do
+  test 'admin user should be able to search and specify sorting criteria of transactions' do
     sign_in users(:admin)
     login_as_admin('abc')
-    get admin_transactions_url, params: { sort_by: "last_created_at" }
+    get admin_transactions_url, params: { sort_by: 'last_created_at' }
     assert_response :success
-    get admin_transactions_url, params: { sort_by: "first_created_at" }
+    get admin_transactions_url, params: { sort_by: 'first_created_at' }
     assert_response :success
-    get admin_transactions_url, params: { sort_by: "amount" }
+    get admin_transactions_url, params: { sort_by: 'amount' }
     assert_response :success
   end
 
@@ -56,7 +56,7 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "not admin user should not get transaction details by any user" do
+  test 'not admin user should not get transaction details by any user' do
     sign_out :user
     tx = transactions(:one)
     get admin_transaction_url(tx)
@@ -78,7 +78,7 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   # create tests
-  test "admin user should be able to create a transaction" do
+  test 'admin user should be able to create a transaction' do
     payer_account = accounts(:one)
     transaction = Transaction.new(account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
                                   amount: 1.0)
@@ -88,7 +88,7 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to [:admin, Transaction.last]
   end
 
-  test "not admin user should not be able to create a transaction" do
+  test 'not admin user should not be able to create a transaction' do
     sign_out :user
     payer_account = accounts(:one)
     transaction = Transaction.new(account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
@@ -99,7 +99,7 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :missing
   end
 
-  test "create should fail if some params are not filled" do
+  test 'create should fail if some params are not filled' do
     payer_account = accounts(:one)
     transaction = Transaction.new(account: payer_account, dealer_account_number: '12345678901234',
                                   amount: 1.0)
@@ -110,39 +110,39 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   # update tests
-  test "admin user should be able to update a transaction" do
+  test 'admin user should be able to update a transaction' do
     transaction = transactions(:one)
     payer_account = accounts(:one)
-    patch admin_transaction_url(transaction), params: {transaction:
-       {account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
-         amount: 100.0}}
+    patch admin_transaction_url(transaction), params: { transaction:
+       { account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
+         amount: 100.0 } }
     transaction.reload
     assert_equal transaction.amount, 100.0
     assert_redirected_to admin_transaction_url(transaction)
   end
 
-  test "not admin user should not be able to update a transaction" do
+  test 'not admin user should not be able to update a transaction' do
     sign_out :user
     transaction = transactions(:one)
     payer_account = accounts(:one)
-    patch admin_transaction_url(transaction), params: {transaction:
-       {account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
-         amount: 1.0}}
+    patch admin_transaction_url(transaction), params: { transaction:
+       { account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
+         amount: 1.0 } }
     assert_response :missing
   end
 
-  test "update should fail if dealer_account_number is not 14 characters" do
+  test 'update should fail if dealer_account_number is not 14 characters' do
     transaction = transactions(:one)
     payer_account = accounts(:one)
     assert_no_difference 'Transaction.count' do
-    patch admin_transaction_url(transaction), params: {transaction:
-       {account: payer_account, dealer_account_number: '12345622278901234', dealer_name: 'Nyx', amount: 1000}}
+      patch admin_transaction_url(transaction), params: { transaction:
+         { account: payer_account, dealer_account_number: '12345622278901234', dealer_name: 'Nyx', amount: 1000 } }
     end
     transaction.reload
     assert_not_equal transaction.amount, 1000
   end
 
-  test "admin user should be able to destroy any transaction" do
+  test 'admin user should be able to destroy any transaction' do
     tx = transactions(:one)
     assert_difference('Transaction.count', -1) do
       delete admin_transaction_url(tx)
@@ -150,7 +150,7 @@ class Admin::TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to admin_transactions_url
   end
 
-  test "not admin user should not be able to destroy any transaction" do
+  test 'not admin user should not be able to destroy any transaction' do
     sign_out :user
     tx = transactions(:one)
     assert_no_difference 'Transaction.count' do

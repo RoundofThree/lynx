@@ -56,7 +56,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(user)
+  def after_sign_up_path_for(_user)
     dashboard_path
   end
 

@@ -42,7 +42,7 @@ class Admin::TransactionsController < Admin::ApplicationController
     if @transaction.save
       redirect_to admin_transaction_path(@transaction), notice: 'Transaction was successfully created.'
     else
-      flash.now[:error] = "Error in creating transaction."
+      flash.now[:error] = 'Error in creating transaction.'
       render :new
     end
   end
@@ -52,7 +52,7 @@ class Admin::TransactionsController < Admin::ApplicationController
     if @transaction.update(transaction_params)
       redirect_to admin_transaction_path(@transaction), notice: 'Transaction was successfully updated.'
     else
-      flash.now[:error] = "Error in updating transaction."
+      flash.now[:error] = 'Error in updating transaction.'
       render :edit
     end
   end
@@ -73,5 +73,4 @@ class Admin::TransactionsController < Admin::ApplicationController
     params.require(:transaction).permit(:account_id, :amount, :dealer_account_number,
                                         :dealer_name, :reference, :created_at)
   end
-  
 end
