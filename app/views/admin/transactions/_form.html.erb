@@ -30,13 +30,26 @@
   <div class="form-group row p-3">
     <%= form.label :dealer_account_number, class: "col-sm-4 col-form-label", style:"font-size:18px;" %>
     <div class="col-sm-6">
-      <%= form.text_field :dealer_account_number, autofocus: true, class: "form-control" %>
+      <%= form.text_field :dealer_account_number, class: "form-control" %>
     </div>
   </div>
   <div class="form-group row p-3">
     <%= form.label :dealer_name, class: "col-sm-4 col-form-label" , style:"font-size:18px;"%>
     <div class="col-sm-6">
-      <%= form.text_field :dealer_name, autofocus: true, class: "form-control" %>
+      <%= form.text_field :dealer_name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row p-3">
+    <%= form.label :reference, class: "col-sm-4 col-form-label" , style:"font-size:18px;"%>
+    <div class="col-sm-6">
+      <%= form.text_field :reference, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row p-3">
+    <%= form.label :created_at, class: "col-sm-4 col-form-label" , style:"font-size:18px;"%>
+    <div class="col-sm-6">
+      <%= form.date_select :created_at, {minute_step: 60}, class: "form-control" %>
+      <%= form.time_select :created_at, {ignore_date: true}, {class: "col-md-4"} %>
     </div>
   </div>
 
