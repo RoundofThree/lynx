@@ -27,4 +27,13 @@ three:
   frequency: 1
   is_vendor: true
 
+four:
+  currency: GBP
+  name: Nyx 
+  account_number: "00001000010004"
+  min_amount: 1
+  max_amount: 100
+  frequency: 1
+  is_vendor: false
+
 

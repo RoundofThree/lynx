@@ -21,7 +21,6 @@ class TransactionsController < ApplicationController
       redirect_to new_transaction_path
       return
     end
-    @transaction.currency = @account.currency
     @transaction.amount = -@transaction.amount
     if @transaction.save
       # substract the balance

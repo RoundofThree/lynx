@@ -32,7 +32,7 @@ class Admin::GeneratorControllerTest < ActionDispatch::IntegrationTest
 
   test "generate 10 transactions for one account should increment the transactions count properly" do
     assert_difference("Transaction.count", 10) do
-      post admin_generator_generate_transactions_url, params: { account: accounts(:one).id, how_many: 10, period: "1 month" }
+      post admin_generator_generate_transactions_url, params: { account: accounts(:one).id, how_many: 10, period: "3 months" }
     end
   end
 
@@ -52,7 +52,7 @@ class Admin::GeneratorControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "generate transactions for recent 3 months should create transactions with correct times" do
-    post admin_generator_generate_transactions_url, params: { account: accounts(:one).id, how_many: 10, period: "1 month" }
+    post admin_generator_generate_transactions_url, params: { account: accounts(:one).id, how_many: 10, period: "3 months" }
     new_transactions = Transaction.order("updated_at DESC").limit(10)
     earliest = new_transactions.sort_by(&:created_at).first.created_at
     latest = new_transactions.sort_by(&:created_at).last.created_at
@@ -61,7 +61,7 @@ class Admin::GeneratorControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "generate transactions for recent year should create transactions with correct times" do
-    post admin_generator_generate_transactions_url, params: { account: accounts(:one).id, how_many: 10, period: "1 month" }
+    post admin_generator_generate_transactions_url, params: { account: accounts(:one).id, how_many: 10, period: "1 year" }
     new_transactions = Transaction.order("updated_at DESC").limit(10)
     earliest = new_transactions.sort_by(&:created_at).first.created_at
     latest = new_transactions.sort_by(&:created_at).last.created_at
@@ -70,7 +70,7 @@ class Admin::GeneratorControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "generate transactions for recent 3 years should create transactions with correct times" do
-    post admin_generator_generate_transactions_url, params: { account: accounts(:one).id, how_many: 10, period: "1 month" }
+    post admin_generator_generate_transactions_url, params: { account: accounts(:one).id, how_many: 10, period: "3 years" }
     new_transactions = Transaction.order("updated_at DESC").limit(10)
     earliest = new_transactions.sort_by(&:created_at).first.created_at
     latest = new_transactions.sort_by(&:created_at).last.created_at
