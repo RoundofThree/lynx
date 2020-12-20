@@ -55,7 +55,7 @@ module StyleHelper
 
   def home_main_marketing_text_1
     current_style&.home_main_marketing_text_1.presence || "You can easily manage your
-    financial operations with an Lynx Bank account. Lynx IBAN accounts support up
+    financial operations with a Lynx Bank account. Lynx IBAN accounts support up
     to 25 different currencies. The most affordable rates and fees found anywhere online for banking services. We provide simple, smart, and flexible solutions for our customers. Open your account today!"
   end
 
@@ -72,8 +72,8 @@ module StyleHelper
   end
 
   def home_main_marketing_text_2
-    current_style&.home_main_marketing_text_2.presence || "We are aim to build a delightful experience for customers and make banking easier. You can spend more consciously,
-    save up to your goals easily. A positive and enthusiastic spirit is what we want customer to feel. We will make our customer to feel supported and address their needs."
+    current_style&.home_main_marketing_text_2.presence || "We aim to build a delightful experience for our customers and to make banking easier. You can spend more consciously,
+    and easily save up to your goals. A positive and enthusiastic spirit is what we want our customer to feel. We will make our customer feel supported at any time."
   end
 
   def home_main_marketing_message_3
@@ -89,9 +89,9 @@ module StyleHelper
   end
 
   def home_main_marketing_text_3
-    current_style&.home_main_marketing_text_3.presence || "Lynx Bank is focus
+    current_style&.home_main_marketing_text_3.presence || "Lynx Bank is focused
     on building a secure bank service that brings great experience to our customers.
-    We believe that customer come first – whether face to face or in our app. We are rated No.1 for our digital services in the global banking service quality survey. We act transparently and always do what is right for customer."
+    We believe that customer comes first – whether face to face or in our app. We are rated No.1 for our digital services in the global banking service quality survey. We act transparently and always do what is right for customers."
   end
 
   def home_footer_md
