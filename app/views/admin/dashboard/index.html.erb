@@ -1,100 +1,92 @@
 <div class="row">
   <%= render partial: "admin/shared/navbar" %>
-  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-      <h1 style="font-weight:bold;">Admin Dashboard</h1>
+<div class ="container" style="min-height:900px;background-color: #ecf0f5;">
+    <div class ="row p-2">
+    <h3 style ="padding-left: 25px; margin-top:15px;">Admin Dashboard</h3>
     </div>
-    <h3 style="color:#01045d;font-weight:bold">Users
-      <span class="small font-italic" style="font-size: small;">(ordered by last accessed time)</span>
-      <span class="small" style="font-size: small;">TOTAL: <%= User.count %>     users</span>
+    <div class ="container" style="min-height: 250px;padding: 15px;padding-left: 15px;padding-right: 15px;">
+      <!-- Summary -->
+      <div class ="row" style="margin-right: -15px; margin-left: -15px;">
+        <div class="col-md-3">
+          <div class ="box" style="display: block; min-height: 90px;background: #fff; width: 100%; border-radius: 2px; margin-bottom: 15px;">
+            <span style="text-align: center; background-color:#87bdd8 ;height: 90px;width:90px;text-align:center;font-size: 45px;float: left;
+            line-height: 90px;">
+            <i class="fa fa-user" style="color:#ffffff; font-size:45px;"></i>
+            </span>
+              <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
+                  <h2><%= User.count %></h2>
+                  <p>Total Users</p>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+          <div class ="box" style="display: block; min-height: 90px;background: #fff; width: 100%; border-radius: 2px; margin-bottom: 15px;">
+            <span style="text-align: center; background-color: #b7d7e8;height: 90px;width:90px;text-align:center;font-size: 45px;float: left;
+            line-height: 90px;">
+            <i class="fa fa-credit-card" style="color:#ffffff; font-size:45px;"></i>
+            </span>
+              <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
+              <h2><%= Account.count %></h2>
+              <p>Accounts</p>
 
-    </h3>
-    <div class=" table-bordered table-striped table-sm table-hover" style="margin-bottom:30px">
-      <table class="table table-bordered table-sm">
-        <thead>
-          <tr>
-            <th class ="p-3" style="color:#01045d;">No. </th>
-            <th class ="p-3" style="color:#01045d;">Firstname</th>
-            <th class ="p-3" style="color:#01045d;">Lastname</th>
-            <th class ="p-3" style="color:#01045d;">Last accessed time</th>
-             <!-- Ordered by last accessed time by default -->
-            <th class ="p-3" style="color:#01045d;">Last accessed IP</th>
-             <!-- IPv4 -->
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each_with_index do |u, i| %>
-            <tr>
-              <th scope="row"><%= i+1 %></th>
-              <td><%= link_to u.firstname, admin_user_path(u) %></td>
-              <td><%= link_to u.lastname, admin_user_path(u) %></td>
-              <td><%= u.last_sign_in_at %></td>
-              <td><%= u.last_sign_in_ip %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <h3 style="color:#01045d;font-weight:bold">Accounts
-       <span class="small font-italic" style="font-size: small;">(ordered by last updated time)</span>
-       <span class="small" style="font-size: small;">TOTAL: <%= Account.count %>  accounts</span>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+          <div class ="box" style="display: block; min-height: 90px;background: #fff; width: 100%; border-radius: 2px; margin-bottom: 15px;">
+            <span style="text-align: center; background-color:#87bdd8 ;height: 90px;width:90px;text-align:center;font-size: 45px;float: left;
+            line-height: 90px;">
+            <i class="fa fa-exchange" style="color:#ffffff; font-size:45px;"></i>
+            </span>
+              <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
+              <h2><%= Transaction.count %></h2>
+              <p>Transactions</p>
 
-     </h3>
-    <div class=" table-bordered table-striped table-sm table-hover" style="margin-bottom:30px">
-      <table class="table table-bordered table-sm">
-        <thead>
-          <tr>
-            <th class ="p-3" style="color:#01045d;">No. </th>
-            <th class ="p-3" style="color:#01045d;">Account number</th>
-            <th class ="p-3" style="color:#01045d;">User</th>
-            <th class ="p-3" style="color:#01045d;">Balance</th>
-            <th class ="p-3" style="color:#01045d;">Updated at</th>
-             <!-- Ordering -->
-          </tr>
-        </thead>
-        <tbody>
-          <% @accounts.each_with_index do |a, i| %>
-            <tr>
-              <th scope="row"><%= i+1 %></th>
-              <td><%= link_to a.account_number, admin_account_path(a) %></td>
-              <td><%= "#{a.user.firstname} #{a.user.lastname}" %></td>
-              <td><%= number_to_currency(a.balance, unit: a.currency, format: "%u %n") %></td>
-              <td><%= a.updated_at %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class ="box" style="display: block; min-height: 90px;background: #fff; width: 100%; border-radius: 2px; margin-bottom: 15px;">
+            <span style="text-align: center; background-color:#daebe8 ;height: 90px;width:90px;text-align:center;font-size: 45px;float: left;
+            line-height: 90px;">
+            <i class="fa fa-shopping-cart" style="color:#ffffff; font-size:45px;"></i>
+            </span>
+              <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
+              <h2><%= Dealer.count %></h2>
+              <p>Dealers</p>
+
+              </div>
+            </div>
+        </div>
+        </div>
+        <div class = "container" style="background-color:#ffffff; margin-bottom:20px;margin-top:20px;">
+      <div class ="row p-3">
+        <div class ="col-md-5">
+          <%= bar_chart Account.group(:balance).sum(:id),colors: ["#87bdd8", "#b7d7e8"] %>
+          <p class ="lead" style=" padding-left:90px; margin-top:20px;">Account Balance Summary</p>
+            </div>
+          <div class ="col-md-7">
+            <%= pie_chart Transaction.group(:currency).count ,colors: ["#87bdd8", "#daebe8"]%>
+            <p class ="lead" style=" padding-left:220px; margin-top:20px;">Currency Types</p>
+
+              </div>
+                </div>
+          </div>
+
+          <div class = "container" style="background-color:#ffffff">
+
+          <div class ="row p-3">
+            <div class ="col-md-5">
+              <%= line_chart Dealer.group(:max_amount).count %>
+
+                </div>
+                <div class ="col-md-5">
+                  <%= area_chart Account.group(:balance).maximum(:balance) %>
+
+                </div>
+          </div>
+  </div>
     </div>
-    <h3 style="color:#01045d;font-weight:bold">Transactions
-      <span class="small font-italic" style="font-size: small;">(ordered by created time)</span>
-      <span class="small" style="font-size: small;">   TOTAL: <%= Transaction.count %>  transactions</span>
-    </h3>
-    <div class=" table-bordered table-striped table-sm table-hover" style="margin-bottom:30px">
-      <table class="table table-bordered table-sm">
-        <thead>
-          <tr>
-            <th class ="p-3" style="color:#01045d;">No. </th>
-            <th class ="p-3" style="color:#01045d;">Account</th>
-            <th class ="p-3" style="color:#01045d;">Dealer</th>
-            <th class ="p-3" style="color:#01045d;">Amount</th>
-            <th class ="p-3" style="color:#01045d;">Date</th>
-             <!-- Ordering -->
-          </tr>
-        </thead>
-        <tbody>
-          <% @transactions.each_with_index do |t, i| %>
-            <% account = t.account %>
-            <% user = account.user %>
-            <tr>
-              <th scope="row"><%= i+1 %></th>
-              <td><%= link_to account.account_number, admin_transaction_path(t) %></td>
-              <td><%= "#{user.firstname} #{user.lastname}" %></td>
-              <td><%= number_to_currency(t.amount, unit: t.currency, format: "%u %n") %></td>
-              <td><%= t.created_at %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </main>
+  </div>
 </div>
