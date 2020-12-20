@@ -22,8 +22,8 @@ gem 'devise'
 # Markdown
 gem 'kramdown'
 # Generate XLS spreadsheets 
-gem 'axlsx'
-gem "axlsx_rails"
+gem 'caxlsx'
+gem "caxlsx_rails"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

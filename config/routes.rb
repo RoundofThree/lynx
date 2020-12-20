@@ -24,9 +24,13 @@ Rails.application.routes.draw do
   post 'admin/generator/generate_transactions' # transaction generator
 
   # Devise controllers
-  devise_for :users, controllers: {
-    sessions: 'users/sessions', # login, logout
-    passwords: 'users/passwords', # change password
-    registrations: 'users/registrations' # sign up, delete user, update details
+  devise_for :users, :skip => [:registrations, :passwords], controllers: {
+    sessions: 'users/sessions'
   }
+  as :user do
+    get 'users/sign_up' => 'users/registrations#new', :as => 'new_user_registration'
+    post 'users' => 'users/registrations#create', :as => 'user_registration'
+    get 'users/password/new' => 'users/passwords#new', :as => 'new_user_password'
+    post 'users/password' => 'users/passwords#create', :as => 'user_password'
+  end
 end
