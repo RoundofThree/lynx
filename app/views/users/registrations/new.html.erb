@@ -1,17 +1,16 @@
-<div class = "container">
-  <div class = "row mx-md-n5">
-      <div class="col p-5 ">
-    <!-- TODO: /llogo.png -->
-    <img class="mb-3" src="/llogo.png" width="110" height="110" >
-    <!-- TODO: Change Header size-->
-    <h2 class = "display-4 text-uppercase font-weight-bold" style="color: #01045d;" >Sign Up </h2>
-    <p class = "lead ">Experience the freedom of banking on your own terms.</p>
-    <p class = " mb-auto">Create your account today.</p>
-    <p>Your information will never be shared or sold.</p>
-    <a href="#">Read Our Privacy Policy</a>
+<div class="image-container  set-full-height" style = " display: flex; align-items: center;justify-content: center;
+background-image: url('/bank5.jpg');background-position: center center;background-size: cover;">
+  <div class = "row mx-md-n2">
+      <div class="col p-4">
+    <img class="mb-3" src="<%=login_sigup_logo_image%>" width="110" height="110" >
+    <h2 class = "display-4 text-uppercase font-weight-bold" style="color: #ffffff;font-size:<%= sign_up_head_size + "px"%>" >Sign Up </h2>
+    <p class = "lead " style="color: #ffffff;">Experience the freedom of banking on your own terms.</p>
+    <p class = " mb-auto"style="color: #ffffff;">Create your account today.</p>
+    <p style="color: #ffffff;">Your information will never be shared or sold.</p>
+    <a href="#" style="bold">Read Our Privacy Policy</a>
     <br><br>
 
-    <p class ="lead">Already have an account? </p>
+    <p class ="lead" style="color: #ffffff;">Already have an account? </p>
     <%= link_to "Sign in", new_user_session_path, class: "btn btn-lg btn-primary",:style => "width:150px;
     border-color:	#f90e67; background-color: 	#f90e67;" %>
    </div>
@@ -89,7 +88,7 @@
         border-color: 	#f90e67; background-color:	#f90e67;" %>
       </div>
       </div>
-      <div class ="col-7 p-3">
+      <div class ="col-5 p-3">
         <p class ="text-muted mb-auto">By clicking the "Sign up" button, you are creating
           a Lynx bank account, and you agree to Lynx's
             <a href ="#">Terms of Use </a>and

@@ -1,30 +1,30 @@
 class Admin::AccountsController < Admin::ApplicationController
   before_action :set_account, only: %i[show edit update destroy]
-  # GET /admin/accounts (or .json)
+  # GET /admin/accounts
   def index
-    @accounts = Account.search(params[:search]) # maybe search by name of user?
-    sort_accounts if !@accounts.empty?
+    @accounts = Account.search(params[:search])
+    sort_accounts unless @accounts.empty?
   end
 
-  # sort by created_at, updated_at 
+  # sort by created_at, updated_at
   def sort_accounts
     if params[:sort_by].present?
       criteria = params[:sort_by]
-      if criteria == "last_created_at"
-        @accounts = @accounts.order("created_at desc")
-      elsif criteria == "first_created_at"
-        @accounts = @accounts.order("created_at asc")
-      else 
-        @accounts = @accounts.order("updated_at desc")
-      end 
-    else # default sorting 
-      @accounts = @accounts.order("updated_at desc")
-    end 
-  end 
+      @accounts = if criteria == 'last_created_at'
+                    @accounts.order('created_at desc')
+                  elsif criteria == 'first_created_at'
+                    @accounts.order('created_at asc')
+                  else
+                    @accounts.order('updated_at desc')
+                  end
+    else # default sorting
+      @accounts = @accounts.order('updated_at desc')
+    end
+  end
 
   # GET /admin/accounts/1
   def show
-    @user = @account.user 
+    @user = @account.user
   end
 
   # GET /admin/accounts/new
@@ -33,34 +33,36 @@ class Admin::AccountsController < Admin::ApplicationController
   end
 
   # GET /admin/accounts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /admin/accounts
   def create
     @account = Account.new(account_params)
-      if @account.save
-        redirect_to admin_account_path(@account), notice: 'Account was successfully created.'
-      else
-        flash[:error] = "Error in creating account."
-        render :new
-      end
+    if @account.save
+      flash[:notice] = 'Account was successfully created.'
+      redirect_to admin_account_path(@account)
+    else
+      flash.now[:error] = 'Error in creating account.'
+      render :new
+    end
   end
 
   # PATCH/PUT /admin/accounts/1
   def update
     if @account.update(account_params)
-      redirect_to @account, notice: 'Account was successfully updated.'
+      flash[:notice] = 'Account was successfully updated.'
+      redirect_to admin_account_path(@account)
     else
-      flash[:error] = "Failed to save changes."
-      render :edit 
+      flash.now[:error] = 'Failed to save changes.'
+      render :edit
     end
   end
 
   # DELETE /admin/accounts/1
   def destroy
     @account.destroy
-    redirect_to admin_accounts_url, notice: 'Account was successfully destroyed.'
+    flash[:notice] = 'Account was successfully destroyed.'
+    redirect_to admin_accounts_url
   end
 
   private
@@ -72,6 +74,7 @@ class Admin::AccountsController < Admin::ApplicationController
 
   # Only allow a list of trusted parameters through.
   def account_params
-    params.require(:account).permit(:balance, :account_number, :cvv, :expiry_date, :currency)
+    params.require(:account).permit(:balance, :account_number,
+                                    :cvv, :expiry_date, :currency, :user_id)
   end
 end

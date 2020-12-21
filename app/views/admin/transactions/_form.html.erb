@@ -1,27 +1,65 @@
 <%= form_for [:admin, transaction], class: "col-8" do |form| %>
-<!-- Errors -->
+  <!-- Errors -->
   <% if transaction.errors.any? %>
-    <div class="message is-danger">
-      <div class="message-header">
-        <p><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</p>
-      </div>
-      <div class="message-body">
-        <ul>
-          <% transaction.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
+    <div class="alert alert-danger">
+      <ul>
+        <% transaction.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :amount, class: "label" %>
-    <%= form.number :amount, class: "input" %>
+  <div class="form-group row p-3">
+    <%= form.label :account_Number, class: "col-sm-4 col-form-label", style:"font-size:18px;" %>
+    <div class="col-sm-6">
+      <%= form.collection_select :account_id, Account.all, :id, :account_number,:prompt => true %>
+    </div>
+  </div>
+  <div class="form-group row p-3">
+    <%= form.label :amount, class: "col-sm-4 col-form-label", style:"font-size:18px;" %>
+    <div class="col-sm-6">
+      <%= form.text_field :amount, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row p-3" >
+    <%= form.label :currency, class: "col-sm-4 col-form-label", style:"font-size:18px;" %>
+    <div class="col-sm-6">
+      <%= form.text_field :currency , class: "form-control" ,:readonly => true%>
+    </div>
+  </div>
+  <div class="form-group row p-3">
+    <%= form.label :dealer_account_number, class: "col-sm-4 col-form-label", style:"font-size:18px;" %>
+    <div class="col-sm-6">
+      <%= form.text_field :dealer_account_number, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row p-3">
+    <%= form.label :dealer_name, class: "col-sm-4 col-form-label" , style:"font-size:18px;"%>
+    <div class="col-sm-6">
+      <%= form.text_field :dealer_name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row p-3">
+    <%= form.label :reference, class: "col-sm-4 col-form-label" , style:"font-size:18px;"%>
+    <div class="col-sm-6">
+      <%= form.text_field :reference, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row p-3">
+    <%= form.label :created_at, class: "col-sm-4 col-form-label" , style:"font-size:18px;"%>
+    <div class="col-sm-6">
+      <%= form.date_select :created_at, {minute_step: 60}, class: "form-control" %>
+      <%= form.time_select :created_at, {ignore_date: true}, {class: "col-md-4"} %>
+    </div>
   </div>
 
+  <div class="form-group row p-3">
+    <div class="col-sm-2">
+</div>
   <div class="actions">
-    <%= form.submit class: "button is-success" %>
+    <%= form.submit class: "button is-success" ,style:"border-radius:18px; font-size:18px;
+    width:200px;height:60px;background-color:#01045d; border-color:#01045d;color:#ffffff;font-weight:bold;"%>
   </div>
+</div>
 
 <% end %>

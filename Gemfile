@@ -19,15 +19,18 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Authentication
 gem 'devise'
-# Authorization with Ability
-gem 'cancancan'
+# Markdown
+gem 'kramdown'
+# Generate XLS spreadsheets
+gem 'caxlsx'
+gem 'caxlsx_rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use session hash
 # gem 'activerecord-session_store'
-gem 'rubocop', require: false 
+gem 'rubocop', require: false
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -44,14 +47,14 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', require: false 
+  gem 'spring', require: false
   gem 'spring-watcher-listen', '~> 2.0.0', require: false
 end
 
 group :test do
-  # Adds code coverage report generator 
-  gem 'simplecov', require: false
+  # Adds code coverage report generator
   gem 'minitest-reporters'
+  gem 'simplecov', require: false
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
@@ -60,4 +63,5 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'rails-controller-testing'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

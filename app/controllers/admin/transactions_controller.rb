@@ -1,61 +1,63 @@
 class Admin::TransactionsController < Admin::ApplicationController
   before_action :set_transaction, only: %i[show edit update destroy]
-  # GET /admin/transactions (or .json)
+  # GET /admin/transactions
   def index
     @transactions = Transaction.search(params[:search])
-    sort_transactions if !@transactions.empty?
+    sort_transactions unless @transactions.empty?
   end
 
   # sort by created_at, amount
-  def sort_transactions 
+  def sort_transactions
     if params[:sort_by].present?
       criteria = params[:sort_by]
-      if criteria == "last_created_at"
-        @transactions = @transactions.order("created_at desc")
-      elsif criteria == "first_created_at"
-        @transactions = @transactions.order("created_at asc")
-      else 
-        @transactions = @transactions.order("amount asc")
-      end
-    else # default sorting 
-      @transactions = @transactions.order("amount asc")
-    end   
-  end 
+      @transactions = if criteria == 'last_created_at'
+                        @transactions.order('created_at desc')
+                      elsif criteria == 'first_created_at'
+                        @transactions.order('created_at asc')
+                      else
+                        @transactions.order('amount asc')
+                      end
+    else # default sorting
+      @transactions = @transactions.order('amount asc')
+    end
+  end
 
-  # GET /admin/accounts/1
+  # GET /admin/transactions/1
   def show
     @account = @transaction.account
     @payer = @account.user
   end
 
-  # GET /admin/accounts/new
+  # GET /admin/transactions/new
   def new
     @transaction = Transaction.new
   end
 
-  # GET /admin/accounts/1/edit
+  # GET /admin/transactions/1/edit
   def edit; end
 
-  # POST /admin/accounts
+  # POST /admin/transactions
   def create
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
-      redirect_to @transaction, notice: 'Transaction was successfully created.'
+      redirect_to admin_transaction_path(@transaction), notice: 'Transaction was successfully created.'
     else
-      render :new # flash errors
+      flash.now[:error] = 'Error in creating transaction.'
+      render :new
     end
   end
 
-  # PATCH/PUT /admin/accounts/1
+  # PATCH/PUT /admin/transactions/1
   def update
     if @transaction.update(transaction_params)
-      redirect_to @transaction, notice: 'Transaction was successfully updated.'
+      redirect_to admin_transaction_path(@transaction), notice: 'Transaction was successfully updated.'
     else
-      render :edit # flash errors
+      flash.now[:error] = 'Error in updating transaction.'
+      render :edit
     end
   end
 
-  # DELETE /admin/accounts/1
+  # DELETE /admin/transactions/1
   def destroy
     @transaction.destroy
     redirect_to admin_transactions_url, notice: 'Transaction was successfully destroyed.'
@@ -63,13 +65,12 @@ class Admin::TransactionsController < Admin::ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_transaction
     @transaction = Transaction.find(params[:id])
   end
 
   def transaction_params
-    params.require(:transaction).permit(:amount, :currency, :dealer_account_number, 
+    params.require(:transaction).permit(:account_id, :amount, :dealer_account_number,
                                         :dealer_name, :reference, :created_at)
   end
 end

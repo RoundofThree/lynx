@@ -1,8 +1,23 @@
-<div class="columns is-centered mt-6">
-  <div class="column is-one-third">
-    <%= render partial: "admin/shared/navbar" %>
-    <h1 class="is-size-2 has-text-weight-bold mb-3">New transaction</h1>
-    <%= render 'form', transaction: @transaction %>
+<div class="row">
+  <%= render partial: "admin/shared/navbar" %>
+  <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <h1 class="mb-4 pt-2" style="font-weight:bold;color:#01045d">Create New Transactions</h1>
+      <!-- buttons -->
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-5">
+          <button type="button" class="btn btn btn-dark"><%= link_to "Back", admin_transactions_path, style: "color: inherit; text-decoration: none;" %></button>
+        </div>
+      </div>
+    </div>
+    <div class = "row">
+    <div class="col-7">
+      <%= render 'form', transaction: @transaction %>
+    </div>
+    <div class="col-4">
+        <image src="/bankcard.png" width="450" height="450">
+    </div>
   </div>
 </div>
 

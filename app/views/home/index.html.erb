@@ -1,17 +1,14 @@
 <!-- Main container for bank marketing message and sign in & sign up buttons -->
+<div style="background-color: <%= home_background_color %>">
 <div class="container-flex">
-  <div class="carousel-inner">
-      <!-- TODO: bank1.jpg-->
-      <img class="bd-placeholder-img" src=bank1.jpg width="100%" height="80%">
+  <div class="carousel-inner"  style ="height:700px">
+      <img class="bd-placeholder-img" src="<%= home_main_marketing_image %>" width="100%" height="100%">
       <div class="carousel-caption text-center">
-        <!-- TODO: "Make Money moves."-->
-        <h1 class="display-1">Make Money moves.</h1>
-        <!-- TODO: "Open a Checking or Saving Account today!"-->
-        <h4>Open a Checking or Saving Account today!</h4>
+        <h1 class="display-1"><%= home_main_marketing_title %></h1>
+        <h4><%= home_main_marketing_subtitle %></h4>
         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-light" %>
         <%= link_to "Sign in", new_user_session_path, class: "btn btn-lg btn-light" %>
       </div>
-
   </div>
 </div>
 
@@ -20,95 +17,48 @@
   <hr>
   <div class="row">
     <div class="col-md-7">
-      <!-- TODO: "Build your savings without even trying."-->
-      <h2 style="margin: 40px;">Build your savings without even trying.</h2>
-      <p class="lead" style="margin: 40px;" >Turn on Round-up Rules and start saving up effortlessly. Whenever you make a purchase, Simple will
-        round up what you spend to the next whole dollar amount. When the “change” from those transactions reaches or
-        exceeds $5, Simple transfers it to your Protected Goals Account — so easy you won’t even feel it. It’s like a
-        digital change jar... one that adds up to real money in the bank.</p>
+      <h2 style="margin: 40px;"><%= home_main_marketing_message_1 %></h2>
+      <p class="lead" style="margin: 40px;" ><%= home_main_marketing_text_1 %></p>
     </div>
 
     <div class="col-md-5">
       <svg width="500" height="500">
-        <rect width="100%" height="100%" fill="#eee" />
-        <image xlink:href=Savings.jpg width="500" height="500">
+        <rect width="100%" height="100%" fill="" />
+        <image id="first" xlink:href="<%= home_main_marketing_card_image_1 %>" width="500" height="500">
       </svg>
     </div>
   </div>
   <hr>
   <div class="row">
     <div class="col-md-7 order-md-2">
-      <!-- TODO: "Make plans for what to do,not what’s due."-->
-      <h2 style ="margin: 40px;">Make plans for what to do,not what’s due.</h2>
-      <p class="lead" style ="margin: 40px;">Set up your recurring expenses in our app, and we'll do the work of saving for them each month.
-        When you know your bills are covered, you can focus on the fun parts of having money—like saving for a trip to
-        Japan and buying that new bike.</p>
+      <h2 style ="margin: 40px;"><%= home_main_marketing_message_2 %></h2>
+      <p class="lead" style ="margin: 40px;"><%= home_main_marketing_text_2 %></p>
     </div>
 
     <div class="col-md-5 order-md-1">
       <svg class="img-fluid mx-auto" width="500" height="500">
         <rect width="100%" height="100%" fill="#eee" />
-        <!-- TODO: plan.jpg-->
-        <image width="400" height="500" xlink:href=plan.jpg>
+        <image width="400" height="500" xlink:href="<%= home_main_marketing_card_image_2 %>">
       </svg>
     </div>
   </div>
   <hr>
   <div class="row">
     <div class="col-md-7">
-      <h2 style ="margin: 40px;">Save toward your goals,automatically.</h2>
-      <p class="lead" style ="margin: 40px;"> Goals make it easy to save for the things you want or want to do. There’s no need for
-        spreadsheets or extra apps to budget and track your money. It’s right there inside your Simple checking account,
-        growing bit-by-bit until you’re ready to spend.</p>
+      <h2 style ="margin: 40px;"><%= home_main_marketing_message_3 %></h2>
+      <p class="lead" style ="margin: 40px;"><%= home_main_marketing_text_3 %></p>
     </div>
 
     <div class="col-md-5">
       <svg class="img-fluid mx-auto" width="500" height="500">
         <rect width="100%" height="100%" fill="#eee"/>
-        <!-- TODO: success.jpg-->
-        <image width="400" height="500" xlink:href=success.jpg>
+        <image width="400" height="500" xlink:href="<%= home_main_marketing_card_image_3 %>">
       </svg>
     </div>
   </div>
   <hr>
 </div>
 
-<!-- Footer -->
-<footer >
-  <div class="container text-center text-md-left mt-5">
-    <div class="row mt-3">
-      <div class="col-md-3 col-lg-4 col-xl-3  mb-4">
-        <!-- TODO: Change Company Name -->
-        <h4 class="font-weight-bold" style ="color:#02376D;">Lynx Bank</h4>
-        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;">
-        <br>
-        <!-- TODO: "logo.png" -->
-        <image width="80%" height="40%" src=logo.png>
-      </div>
+<%= render 'shared/footer' %>
 
-      <div class="col-md-4 col-lg-3  mb-5">
-      </div>
-
-      <div class="col-md-3 col-lg-2 col-xl-2 mb-4">
-        <h4 class=" font-weight-bold"style ="color:#02376D;">Products</h4>
-        <hr class=" mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;">
-        <p>Bank account</p>
-        <p>Savings</p>
-        <p>Mortgage</p>
-        <p>Personal Loans</p>
-        <p>Credit Cards</p>
-      </div>
-
-      <div class="col-md-3 mb-md-0 mb-4">
-        <h4 class=" font-weight-bold"style ="color:#02376D;">Support& Security</h4>
-        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;">
-        <p>Help and Support</p>
-        <p>Security and fraud</p>
-        <p>Accessibility</p>
-        <p>Online Terms and Services</p>
-      </div>
-    </div>
-
-  </div>
-
-</footer>
+</div>
