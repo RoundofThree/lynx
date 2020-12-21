@@ -9,12 +9,34 @@
       <span class="small font-italic" style="font-size: x-middle;">you can enter an integer from 30 to 50(unit px)</span>
     </div>
   </div>
-  <div class="form-group row">
+  <div class="form-group row" style="margin-bottom:30px">
     <%= f.label :login_sigup_logo_image, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
       <%= image_tag login_sigup_logo_image, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
       <%= f.file_field :login_sigup_logo_image, class: "form-control-file" %>
       <span class="small font-italic" style="font-size: x-middle;">This image logo will apply both login and signup</span>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :signup_background_image, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= image_tag signup_background_image, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
+      <%= f.file_field :signup_background_image, class: "form-control-file" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :sign_up_text_1, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :sign_up_text_1, value: sign_up_text_1, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :sign_up_text_2, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :sign_up_text_2, value: sign_up_text_2, class: "form-control" %>
     </div>
   </div>
   <%= f.submit class: "btn btn-outline-info" %>
