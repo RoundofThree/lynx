@@ -7,22 +7,21 @@
       <h1 >  Dealers</h1>
       <i class ="fa fa-lg fa-pencil"style ="font-size:25px;padding-top:20px;padding-left:10px;"></i>
       <p style="padding-top:20px;font-size:18px;padding-left:20px;"><%= Dealer.count %> dealers</p>
+
       </div>
-        <div class ="row" >
-          <div class ="col"style="padding-left:0px;">
+      <div class ="row" >
+        <div class ="col"style="padding-left:0px;">
           <button type="button"class="btn btn-info" style="background-color:#01045d; border-color:#01045d; border-radius:10px">
-              <i class="fa fa-user-plus p-1" style="color:#ffffff"></i>
+            <i class="fa fa-user-plus p-1" style="color:#ffffff"></i>
             <%= link_to "Add", new_admin_dealer_path, style: "color: inherit; text-decoration: none;font-weight:bold;" %>
           </button>
-
+        </div>
+        <div class = "col-9">
+          <div class="btn-toolbar row mb-2 mb-md-0" style="width: 80%; position: relative; left: 30px;">
+            <!-- Search/sort functionality -->
           </div>
-          <div class = "col-9">
-      <div class="btn-toolbar row mb-2 mb-md-0" style="width: 80%; position: relative; left: 30px;">
-        <!-- Search/sort functionality -->
-
         </div>
       </div>
-      </div>
-     </div>
+    </div>
     <%= render "admin/dealers/list", {dealers: @dealers} %>
-</div>
+  </div>

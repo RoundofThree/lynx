@@ -1,11 +1,11 @@
 <div class="image-container  set-full-height" style = " display: flex; align-items: center;justify-content: center;
-background-image: url('/bank5.jpg');background-position: center center;background-size: cover;">
+background-image: url('<%= signup_background_image %>');background-position: center center;background-size: cover;">
   <div class = "row mx-md-n2">
       <div class="col p-4">
     <img class="mb-3" src="<%=login_sigup_logo_image%>" width="110" height="110" >
     <h2 class = "display-4 text-uppercase font-weight-bold" style="color: #ffffff;font-size:<%= sign_up_head_size + "px"%>" >Sign Up </h2>
-    <p class = "lead " style="color: #ffffff;">Experience the freedom of banking on your own terms.</p>
-    <p class = " mb-auto"style="color: #ffffff;">Create your account today.</p>
+    <p class = "lead " style="color: #ffffff;"><%=sign_up_text_1%></p>
+    <p class = " mb-auto"style="color: #ffffff;"><%=sign_up_text_2%></p>
     <p style="color: #ffffff;">Your information will never be shared or sold.</p>
     <a href="#" style="bold">Read Our Privacy Policy</a>
     <br><br>
@@ -73,33 +73,28 @@ background-image: url('/bank5.jpg');background-position: center center;backgroun
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Choose Your Password" %>
-      </div>
-      <div class="field p-3">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password" %>
-      </div>
-      </div>
-
-      <div class ="row" id="confirmation">
-        <div class = "col-4 p-3">
-      <div class="actions p-1">
-        <%= f.submit "Sign up", class:'btn btn-primary btn-lg',:style => "width:150px;
+<%= f.password_field :password, autocomplete: "new-password", placeholder: "Choose Your Password" %>
+</div>
+<div class="field p-3">
+  <%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password" %>
+</div>
+</div>
+<div class ="row" id="confirmation">
+  <div class = "col-4 p-3">
+    <div class="actions p-1">
+      <%= f.submit "Sign up", class:'btn btn-primary btn-lg',:style => "width:150px;
         border-color: 	#f90e67; background-color:	#f90e67;" %>
-      </div>
-      </div>
-      <div class ="col-5 p-3">
-        <p class ="text-muted mb-auto">By clicking the "Sign up" button, you are creating
-          a Lynx bank account, and you agree to Lynx's
-            <a href ="#">Terms of Use </a>and
-            <a href ="#">Privacy Policy</a> .</p>
-        </div>
-
-      </div>
-
-
+    </div>
+  </div>
+  <div class ="col-5 p-3">
+    <p class ="text-muted mb-auto">By clicking the "Sign up" button, you are creating
+      a Lynx bank account, and you agree to Lynx's
+      <a href ="#">Terms of Use </a>and
+      <a href ="#">Privacy Policy</a> .</p>
   </div>
 </div>
-
+</div>
+</div>
 </div>
 <% end %>

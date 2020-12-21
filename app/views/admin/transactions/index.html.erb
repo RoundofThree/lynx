@@ -7,13 +7,14 @@
     <i class ="fa fa-lg fa-pencil"style ="font-size:25px;padding-top:20px;padding-left:10px;"></i>
     <p style="padding-top:20px;font-size:18px;padding-left:20px;"><%= Transaction.count %> transactions</p>
     </div>
+
       <div class ="row" style="margin-bottom:10px">
         <div class ="col"style="padding-left:0px;">
-            <button type="button"class="btn btn-info" style="background-color:#01045d; border-color:#01045d; border-radius:10px">
-                <i class="fa fa-user-plus p-1" style="color:#ffffff"></i>
-              <%= link_to "Add", new_admin_transaction_path, style: "color: inherit; text-decoration: none;font-weight:bold;" %>
-            </button>
-            </div>
+          <button type="button"class="btn btn-info" style="background-color:#01045d; border-color:#01045d; border-radius:10px">
+            <i class="fa fa-user-plus p-1" style="color:#ffffff"></i>
+            <%= link_to "Add", new_admin_transaction_path, style: "color: inherit; text-decoration: none;font-weight:bold;" %>
+          </button>
+        </div>
         <div class="btn-toolbar row mb-2 mb-md-0" style="width: 60%; position: relative; left: 30px;">
           <!-- Search/sort functionality -->
           <%= form_with url: admin_transactions_path, method: :get, local: true, class: "row mt-md-0 container-fluid" do |f| %>
@@ -23,11 +24,10 @@
             border-color:#01045d; border-radius:10px;font-weight:bold;color:#01045d;width:100px;
             padding-left:10px;">
               <i class="fa fa-sort p-1" style="color:#01045d;"></i>
-            Filter</button>
+              Filter</button>
           <% end %>
         </div>
-        </div>
+      </div>
     </div>
-
     <%= render "admin/transactions/list", {transactions: @transactions} %>
-</div>
+  </div>
