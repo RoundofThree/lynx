@@ -158,6 +158,24 @@ module StyleHelper
     current_style&.sign_up_head_size.presence || '50'
   end
 
+  def signup_background_image
+    if current_style.signup_background_image.attached?
+      url_for(current_style.signup_background_image)
+    else
+      '/bank5.jpg'
+    end
+  end
+
+  def sign_up_text_1
+    current_style&.sign_up_text_1.presence || "Experience the freedom of banking on your own terms."
+
+  end
+
+  def sign_up_text_2
+    current_style&.sign_up_text_2.presence || "Create your account today."
+
+  end
+
   # make payment page
 
   def make_payment_page_style

@@ -1,11 +1,12 @@
+
 <div class="image-container  set-full-height" style = " display: flex; align-items: center;justify-content: center;
-background-image: url('/bank5.jpg');background-position: center center;background-size: cover;">
+background-image: url('<%= signup_background_image %>');background-position: center center;background-size: cover;">
   <div class = "row mx-md-n2">
       <div class="col p-4">
     <img class="mb-3" src="<%=login_sigup_logo_image%>" width="110" height="110" >
     <h2 class = "display-4 text-uppercase font-weight-bold" style="color: #ffffff;font-size:<%= sign_up_head_size + "px"%>" >Sign Up </h2>
-    <p class = "lead " style="color: #ffffff;">Experience the freedom of banking on your own terms.</p>
-    <p class = " mb-auto"style="color: #ffffff;">Create your account today.</p>
+    <p class = "lead " style="color: #ffffff;"><%=sign_up_text_1%></p>
+    <p class = " mb-auto"style="color: #ffffff;"><%=sign_up_text_2%></p>
     <p style="color: #ffffff;">Your information will never be shared or sold.</p>
     <a href="#" style="bold">Read Our Privacy Policy</a>
     <br><br>
