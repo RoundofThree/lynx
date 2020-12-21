@@ -1,15 +1,14 @@
-<div class = "row">
-  <%= render partial: "admin/shared/navbar" %>
-  <div class="col-3 " style ="max-width: 680px;padding-bottom: 100px;
-padding-top: 20px;">
-    <div class="columns mt-3">
-      <h1 class="mb-3" style="font-size: 35px;color: #525252;margin-bottom: 40px;">Edit <%= @user.firstname %> profile</h1>
-      <hr>
-      <br>
-      <button type="button" class="btn btn-lg btn-outline-primary"><%= link_to "Back", admin_users_path %></button>
-    </div>
-  </div>
-  <div class="col-7 mt-3 p-3">
+
+  <div class="row">
+    <%= render partial: "admin/shared/navbar" %>
+    <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <!-- Header -->
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="mb-4 pt-2" style="font-weight:bold;color:#01045d">Edit <%= @user.firstname %> profile</h1>
+        <hr>
+        <br>
+        <button type="button" class="btn btn-lg btn-dark"><%= link_to "Back", admin_users_path,style: "color: inherit; text-decoration: none;" %></button>
+
+      </div>
     <%= render 'form', user: @user %>
-  </div>
 </div>
