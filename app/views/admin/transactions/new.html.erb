@@ -12,13 +12,12 @@
       </div>
     </div>
     <div class = "row">
-    <div class="col-7">
-      <%= render 'form', transaction: @transaction %>
-    </div>
-    <div class="col-4">
+      <div class="col-7">
+        <%= render 'form', transaction: @transaction %>
+      </div>
+      <div class="col-4">
         <image src="/bankcard.png" width="450" height="450">
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-<%= link_to 'Back to transaction list', admin_transactions_path, class: "button is-danger" %>
+    <%= link_to 'Back to transaction list', admin_transactions_path, class: "button is-danger" %>

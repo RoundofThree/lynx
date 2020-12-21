@@ -1,13 +1,11 @@
-
 <div class = "row">
   <%= render partial: "admin/shared/navbar" %>
   <div class="col-md-9 ml-sm-auto col-lg-10 pt-5 px-4 p-4">
     <div class="column is-one-third">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-
-      <h1 class="mb-4 pt-2" style="color:#01045d">Create New Account</h1>
-      <button type="button" class="btn btn-lg btn-dark"><%= link_to "Back", admin_accounts_path,style: "color: inherit; text-decoration: none;" %></button>
-    </div>
+        <h1 class="mb-4 pt-2" style="color:#01045d">Create New Account</h1>
+        <button type="button" class="btn btn-lg btn-dark"><%= link_to "Back", admin_accounts_path,style: "color: inherit; text-decoration: none;" %></button>
+      </div>
       <%= render 'form', account: @account %>
     </div>
   </div>

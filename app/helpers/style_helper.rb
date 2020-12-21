@@ -167,13 +167,11 @@ module StyleHelper
   end
 
   def sign_up_text_1
-    current_style&.sign_up_text_1.presence || "Experience the freedom of banking on your own terms."
-
+    current_style&.sign_up_text_1.presence || 'Experience the freedom of banking on your own terms.'
   end
 
   def sign_up_text_2
-    current_style&.sign_up_text_2.presence || "Create your account today."
-
+    current_style&.sign_up_text_2.presence || 'Create your account today.'
   end
 
   # make payment page

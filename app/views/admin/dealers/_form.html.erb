@@ -14,64 +14,57 @@
       </div>
     </div>
   <% end %>
-
   <!-- form body -->
-      <!-- currency and name -->
-      <div class = "row" style="margin-bottom: 22px;" >
-        <div class = "col-sm-6">
-          <%= form.label :account_Number, "Account Number", class: "label", style:"font-size:18px;"  %>
-          <br>
-          <%= form.text_field :account_number, class: "input"%>
-          </div>
-        <div class = "col-sm-6">
-          <%= form.label :name, class: "label", style:"font-size:18px;"  %>
-          <br>
-          <%= form.text_field :name, class: "input" %>
-        </div>
+  <!-- currency and name -->
+  <div class = "row" style="margin-bottom: 22px;" >
+    <div class = "col-sm-6">
+      <%= form.label :account_Number, "Account Number", class: "label", style:"font-size:18px;"  %>
+      <br>
+      <%= form.text_field :account_number, class: "input"%>
+    </div>
+    <div class = "col-sm-6">
+      <%= form.label :name, class: "label", style:"font-size:18px;"  %>
+      <br>
+      <%= form.text_field :name, class: "input" %>
+    </div>
   </div>
-
-      <!-- min & max amounts -->
-      <div class = "row" style="margin-bottom: 22px;">
-        <div class = "col-6">
-          <%= form.label :min_amount, "Minimum Transaction amount", class: "label" , style:"font-size:18px;" %>
-          <br>
-          <%= form.number_field :min_amount, class: "input"%>
-        </div>
-        <div class = "col-6">
-          <%= form.label :max_amount, "Maximum Transaction amount", class: "label", style:"font-size:18px;"  %>
-          <br>
-          <%= form.number_field :max_amount, class: "input" %>
-        </div>
-      </div>
-
-      <!-- account number & is_vendor -->
-      <div class = "row" style="margin-bottom: 22px;">
-        <div class ="col-6">
-          <%= form.label :currency, class: "label", style:"font-size:18px;"  %>
-          <br>
-          <%= form.select :currency, Account::CURRENCY_TYPES%>
-
-        </div>
-        <div class = "col-6">
-          <%= form.label :is_vendor, "This dealer is a vendor (instead of an individual)", class: "label" , style:"font-size:18px;" %>
-          <br>
-          <%= form.check_box :is_vendor, class: "input" %>
-        </div>
-      </div>
-
-      <!-- relative frequency -->
-      <div class = "row" style="margin-bottom: 40px;">
-        <div class = "col">
-          <%= form.label :frequency, "Relative frequency", class: "label" , style:"font-size:18px;" %>
-          <br>
-          <%= form.number_field :frequency, class: "input" %>
-          <p>(how many times would a normal person deal with this dealer in 100 days)</p>
-
-        </div>
-      </div>
-      <div class="actions">
-        <%= form.submit class: "button is-success" ,style:"border-radius:18px; font-size:18px;
+  <!-- min & max amounts -->
+  <div class = "row" style="margin-bottom: 22px;">
+    <div class = "col-6">
+      <%= form.label :min_amount, "Minimum Transaction amount", class: "label" , style:"font-size:18px;" %>
+      <br>
+      <%= form.number_field :min_amount, class: "input"%>
+    </div>
+    <div class = "col-6">
+      <%= form.label :max_amount, "Maximum Transaction amount", class: "label", style:"font-size:18px;"  %>
+      <br>
+      <%= form.number_field :max_amount, class: "input" %>
+    </div>
+  </div>
+  <!-- account number & is_vendor -->
+  <div class = "row" style="margin-bottom: 22px;">
+    <div class ="col-6">
+      <%= form.label :currency, class: "label", style:"font-size:18px;"  %>
+      <br>
+      <%= form.select :currency, Account::CURRENCY_TYPES%>
+    </div>
+    <div class = "col-6">
+      <%= form.label :is_vendor, "This dealer is a vendor (instead of an individual)", class: "label" , style:"font-size:18px;" %>
+      <br>
+      <%= form.check_box :is_vendor, class: "input" %>
+    </div>
+  </div>
+  <!-- relative frequency -->
+  <div class = "row" style="margin-bottom: 40px;">
+    <div class = "col">
+      <%= form.label :frequency, "Relative frequency", class: "label" , style:"font-size:18px;" %>
+      <br>
+      <%= form.number_field :frequency, class: "input" %>
+      <p>(how many times would a normal person deal with this dealer in 100 days)</p>
+    </div>
+  </div>
+  <div class="actions">
+    <%= form.submit class: "button is-success" ,style:"border-radius:18px; font-size:18px;
         width:130px;height:40px;background-color:#01045d; border-color:#01045d;color:#ffffff;font-weight:bold;"%>
-      </div>
-
+  </div>
 <% end %>

@@ -10,18 +10,18 @@
           <button type="button" class="btn btn btn-dark"><%= link_to "Back", admin_transactions_path, style: "color: inherit; text-decoration: none;" %></button>
           <button type="button" class="btn btn btn-danger">
             <i class="fa fa-trash " style="color:#ffffff"></i>
-              <%= link_to "Delete", admin_transaction_path(@transaction), method: :delete, data: { confirm: "Are you sure?" }, style: "color: inherit; text-decoration: none;" %>
-            </button>
+            <%= link_to "Delete", admin_transaction_path(@transaction), method: :delete, data: { confirm: "Are you sure?" }, style: "color: inherit; text-decoration: none;" %>
+          </button>
         </div>
       </div>
     </div>
     <!-- Form -->
     <div class = "row">
-    <div class="col-7">
-      <%= render 'form', transaction: @transaction %>
-    </div>
-    <div class="col-4">
+      <div class="col-7">
+        <%= render 'form', transaction: @transaction %>
+      </div>
+      <div class="col-4">
         <image src="/bankcard.png" width="450" height="450">
+        </div>
+      </div>
     </div>
-  </div>
-</div>
