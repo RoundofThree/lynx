@@ -44,6 +44,7 @@
     <%= form.label :created_at, class: "col-sm-4 col-form-label" , style:"font-size:18px;"%>
     <div class="col-sm-6">
       <%= form.date_select :created_at, {minute_step: 60}, class: "form-control" %>
+      <br>
       <%= form.time_select :created_at, {ignore_date: true}, {class: "col-md-4"} %>
     </div>
   </div>
@@ -53,7 +54,7 @@
 </div>
   <div class="actions">
     <%= form.submit class: "button is-success" ,style:"border-radius:18px; font-size:18px;
-    width:200px;height:60px;background-color:#01045d; border-color:#01045d;color:#ffffff;font-weight:bold;"%>
+    width:200px;height:40px;background-color:#01045d; border-color:#01045d;color:#ffffff;font-weight:bold;"%>
   </div>
 </div>
 
