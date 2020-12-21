@@ -1,20 +1,18 @@
-
-  <div class="row" style ="background-color: #ecf0f5;">
-    <%= render partial: "admin/shared/navbar" %>
-    <div class="container" style ="padding: 40px 15px;padding-left:40px;display: flex; align-items: center;justify-content: center;">
-      <div class ="row">
+<div class="row" style ="background-color: #ecf0f5;">
+  <%= render partial: "admin/shared/navbar" %>
+  <div class="container" style ="padding: 40px 15px;padding-left:40px;display: flex; align-items: center;justify-content: center;">
+    <div class ="row">
       <!-- Header -->
-        <div class ="card" style=" width:680px;border: 0;margin-bottom: 30px;margin-top: 30px;border-radius: 6px;">
-          <div class ="card-header" style="background: linear-gradient(60deg,#7b1fa2,#075aaa);margin: 0 15px;
+      <div class ="card" style=" width:680px;border: 0;margin-bottom: 30px;margin-top: 30px;border-radius: 6px;">
+        <div class ="card-header" style="background: linear-gradient(60deg,#7b1fa2,#075aaa);margin: 0 15px;
           margin-top: -20px;z-index: 3;">
-            <h4 class="mb-4 pt-2" style="color:#ffffff">Create New Dealer </h4>
-            </div>
-            <div class ="card-body" style=" padding-left:40px;">
-              <%= link_to "Back", admin_dealers_path %>
-              <%= render 'form', dealer: @dealer %>
-
-          </div>
-  </div>
-    </div>
-      </div>
+          <h4 class="mb-4 pt-2" style="color:#ffffff">Create New Dealer </h4>
         </div>
+        <div class ="card-body" style=" padding-left:40px;">
+          <%= link_to "Back", admin_dealers_path %>
+          <%= render 'form', dealer: @dealer %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -44,11 +44,9 @@
     <%= form.label :user, class: "col-sm-4 col-form-label", style:"font-size:18px;"  %>
     <div class="col-sm-6">
       <%= form.collection_select :user_id, User.all, :id, :firstname,:prompt => true %>
-
     </div>
   </div>
   <div class="actions p-3">
     <%= form.submit class: "btn-lg btn-primary",style:"background-color:#075aaa;"%>
   </div>
-
 <% end %>

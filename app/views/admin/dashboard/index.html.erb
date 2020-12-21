@@ -1,10 +1,9 @@
 <div class="row">
   <%= render partial: "admin/shared/navbar" %>
-<div class ="container" style="min-height:900px;background-color: #F3F4F7;">
+  <div class ="container" style="min-height:900px;background-color: #F3F4F7;">
     <div class ="container">
-    <h1 style ="padding-left: 10px; margin-top:15px;">Admin Dashboard</h1>
-    <h4 class ="lead"style ="padding-left: 10px;margin-top:5px;">Hi,<%= current_user.firstname%>.  </h4>
-
+      <h1 style ="padding-left: 10px; margin-top:15px;">Admin Dashboard</h1>
+      <h4 class ="lead"style ="padding-left: 10px;margin-top:5px;">Hi,<%= current_user.firstname%>.  </h4>
     </div>
     <div class ="container" style="min-height: 250px;padding: 15px;padding-left: 15px;padding-right: 15px;">
       <!-- Summary -->
@@ -13,122 +12,110 @@
           <div class ="box" style="display: block; min-height: 90px;background: #fff; width: 100%; border-radius: 10px; margin-bottom: 15px;">
             <span style="text-align: center; border-radius: 10px;background-color:#489cd4 ;height: 90px;width:90px;text-align:center;font-size: 45px;float: left;
             line-height: 90px;">
-            <a href="/admin/users">
-            <i class="fa fa-user" style="color:#ffffff; font-size:45px;"></i></a>
+              <a href="/admin/users">
+                <i class="fa fa-user" style="color:#ffffff; font-size:45px;"></i></a>
             </span>
-              <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
-                  <h2><%= User.count %></h2>
-                  <p>Total Users</p>
-              </div>
+            <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
+              <h2><%= User.count %></h2>
+              <p>Total Users</p>
             </div>
+          </div>
         </div>
         <div class="col-md-3">
           <div class ="box" style="display: block; min-height: 90px;background: #fff; width: 100%; border-radius: 10px; margin-bottom: 15px;">
             <span style="text-align: center; border-radius: 10px;background-color: #939598;height: 90px;width:90px;text-align:center;font-size: 45px;float: left;
             line-height: 90px;">
-            <a href="/admin/accounts">
-            <i class="fa fa-credit-card" style="color:#ffffff; font-size:45px;"></i></a>
+              <a href="/admin/accounts">
+                <i class="fa fa-credit-card" style="color:#ffffff; font-size:45px;"></i></a>
             </span>
-              <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
+            <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
               <h2><%= Account.count %></h2>
               <p>Accounts</p>
-
-              </div>
             </div>
+          </div>
         </div>
         <div class="col-md-3">
           <div class ="box" style="display: block; min-height: 90px;background: #fff; width: 100%; border-radius: 10px; margin-bottom: 15px;">
             <span style="text-align: center;border-radius: 10px; background-color:#2774a6 ;height: 90px;width:90px;text-align:center;font-size: 45px;float: left;
             line-height: 90px;">
-            <a href="/admin/transactions">
-            <i class="fa fa-exchange" style="color:#ffffff; font-size:45px;"></i></a>
+              <a href="/admin/transactions">
+                <i class="fa fa-exchange" style="color:#ffffff; font-size:45px;"></i></a>
             </span>
-              <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
+            <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
               <h2><%= Transaction.count %></h2>
               <p>Transactions</p>
-
-              </div>
             </div>
+          </div>
         </div>
-
         <div class="col-md-3">
           <div class ="box" style="display: block; min-height: 90px;background: #fff; width: 100%; border-radius: 10px; margin-bottom: 15px;">
             <span style="text-align: center; border-radius: 10px;background-color:#e2203d ;height: 90px;width:90px;text-align:center;font-size: 45px;float: left;
             line-height: 90px;">
-            <a href="/admin/dealers">
-
-            <i class="fa fa-shopping-cart" style="color:#ffffff; font-size:45px;"></i></a>
+              <a href="/admin/dealers">
+                <i class="fa fa-shopping-cart" style="color:#ffffff; font-size:45px;"></i></a>
             </span>
-              <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
+            <div class = "box" style ="padding: 3px 10px;margin-left: 90px;">
               <h2><%= Dealer.count %></h2>
               <p>Dealers</p>
-
-              </div>
             </div>
+          </div>
         </div>
-
-        </div>
-
-        <div class = "container" style=" margin-top:10px;">
-      <div class ="row p-3">
-        <div class ="col-md-5" style= "background-color:#ffffff; border-radius: 25px;box-shadow:5px 10px #ccc; ">
-          <p class ="lead" style=" padding-left:120px; margin-top:20px;">Dealers' Frequency</p>
-          <%= area_chart Dealer.group(:name).maximum(:frequency),colors: ["#199fda","#87bdd8" ] %>
-            </div>
-            <div class ="col-sm-1" ></div>
-
+      </div>
+      <div class = "container" style=" margin-top:10px;">
+        <div class ="row p-3">
+          <div class ="col-md-5" style= "background-color:#ffffff; border-radius: 25px;box-shadow:5px 10px #ccc; ">
+            <p class ="lead" style=" padding-left:120px; margin-top:20px;">Dealers' Frequency</p>
+            <%= area_chart Dealer.group(:name).maximum(:frequency),colors: ["#199fda","#87bdd8" ] %>
+          </div>
+          <div class ="col-sm-1" ></div>
           <div class ="col-md-6" style= "background-color:#ffffff; border-radius: 25px; box-shadow:5px 10px #ccc;">
             <div class ="row p-3" style="display: flex; align-items: center;justify-content: center;" >
               <div class ="col-4">
-            <%= pie_chart Transaction.group(:currency).count ,colors: ["#87bdd8", "#199fda"],donut: true%>
-            </div>
+                <%= pie_chart Transaction.group(:currency).count ,colors: ["#87bdd8", "#199fda"],donut: true%>
+              </div>
               <div class ="col-6">
                 <%= pie_chart Dealer.group(:name).count ,colors: ["#87bdd8", "#0076ba","#199fda","#e2203d"],donut: true%>
-                  </div>
-                  <p class ="lead" style=" padding-left:10px; margin-top:20px;">Statistics</p>
-
-                </div>
               </div>
-                </div>
+              <p class ="lead" style=" padding-left:10px; margin-top:20px;">Statistics</p>
+            </div>
           </div>
-          <br>
-          <div class ="row p-4">
-            <div class ="box" style= "background-color:#ffffff; border-radius: 25px;box-shadow:5px 10px #ccc;
+        </div>
+      </div>
+      <br>
+      <div class ="row p-4">
+        <div class ="box" style= "background-color:#ffffff; border-radius: 25px;box-shadow:5px 10px #ccc;
             display: flex; align-items: center;justify-content: center; width:100%; ">
-
-            <h3 style ="padding-left: 25px; margin-top:15px;">Recent Active Users</h3>
-            <div class="table-responsive">
-              <table class="table table-bordered table-sm">
-                <thead>
+          <h3 style ="padding-left: 25px; margin-top:15px;">Recent Active Users</h3>
+          <div class="table-responsive">
+            <table class="table table-bordered table-sm">
+              <thead>
+                <tr>
+                  <th>No. </th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Email</th>
+                  <th>Last accessed time</th>
+                  <!-- Ordered by last accessed time by default -->
+                  <th>Last accessed IP</th>
+                  <!-- IPv4 -->
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each_with_index do |u, i| %>
                   <tr>
-            <th>No. </th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
-            <th>Last accessed time</th>
-             <!-- Ordered by last accessed time by default -->
-            <th>Last accessed IP</th>
-             <!-- IPv4 -->
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each_with_index do |u, i| %>
-            <tr>
-              <th scope="row"><%= i+1 %></th>
-              <td><%= link_to u.firstname, admin_user_path(u) %></td>
-              <td><%= link_to u.lastname, admin_user_path(u) %></td>
-                <td><%= u.email %></td>
-              <td><%= u.last_sign_in_at %></td>
-              <td><%= u.last_sign_in_ip %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-
-
+                    <th scope="row"><%= i+1 %></th>
+                    <td><%= link_to u.firstname, admin_user_path(u) %></td>
+                    <td><%= link_to u.lastname, admin_user_path(u) %></td>
+                    <td><%= u.email %></td>
+                    <td><%= u.last_sign_in_at %></td>
+                    <td><%= u.last_sign_in_ip %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
-
-                </div>
-          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>

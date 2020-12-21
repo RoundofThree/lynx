@@ -10,117 +10,112 @@
     </div>
   <% end %>
   <!-- form body -->
-      <!-- name fields -->
-      <div class = "row p-2" style="margin-bottom: 10px;" >
-        <div class = "col-5">
-          <%= form.label :Fisrt_Name, class: "label",style:"font-size:18px;"  %>*
-            <br>
-          <%= form.text_field :firstname, class: "input",style:"line-height: 40px;
+  <!-- name fields -->
+  <div class = "row p-2" style="margin-bottom: 10px;" >
+    <div class = "col-5">
+      <%= form.label :Fisrt_Name, class: "label",style:"font-size:18px;"  %>*
+      <br>
+      <%= form.text_field :firstname, class: "input",style:"line-height: 40px;
           border-radius: 5px;padding: 0 20px; width:70%;border: 0;border-bottom: 1px dotted #111111;" %>
-        </div>
-        <div class = "col-5">
-          <%= form.label :Last_name, class: "label",style:"font-size:18px;" %>*
-            <br>
-          <%= form.text_field :lastname, class: "input",style:"line-height: 40px;
+    </div>
+    <div class = "col-5">
+      <%= form.label :Last_name, class: "label",style:"font-size:18px;" %>*
+      <br>
+      <%= form.text_field :lastname, class: "input",style:"line-height: 40px;
             border-radius: 5px;padding: 0 20px; width:70%;border: 0;border-bottom: 1px dotted #111111;"%>
-        </div>
-
-
-        </div>
-      <!-- birthdate & gender fields -->
-      <div class = "row p-2" style="margin-bottom: 10px;">
-        <div class ="col-5">
-          <%= form.label :Gender, class: "label",style:"font-size:18px;" %>*
-          <br>
-          <%= form.select :is_female, User::GENDER_TYPES,style:"border-radius: 5px;" %>
-        </div>
-        <div class ="col-5">
-          <%= form.label :birth_date, class: "label",style:"font-size:18px;" %>*
-          <br>
-          <%= form.date_select :birth_date, start_year: 1800, end_year: Time.now.year %>
-        </div>
-      </div>
-      <!-- phone & email fields -->
-      <div class = "row p-2" style="margin-bottom: 10px;">
-        <div class = "col-5">
-          <%= form.label :phone, class: "label" ,style:"font-size:18px;"  %>*
-          <br>
-          <%= form.text_field :phone, class: "input" ,style:"line-height: 40px;
+    </div>
+  </div>
+  <!-- birthdate & gender fields -->
+  <div class = "row p-2" style="margin-bottom: 10px;">
+    <div class ="col-5">
+      <%= form.label :Gender, class: "label",style:"font-size:18px;" %>*
+      <br>
+      <%= form.select :is_female, User::GENDER_TYPES,style:"border-radius: 5px;" %>
+    </div>
+    <div class ="col-5">
+      <%= form.label :birth_date, class: "label",style:"font-size:18px;" %>*
+      <br>
+      <%= form.date_select :birth_date, start_year: 1800, end_year: Time.now.year %>
+    </div>
+  </div>
+  <!-- phone & email fields -->
+  <div class = "row p-2" style="margin-bottom: 10px;">
+    <div class = "col-5">
+      <%= form.label :phone, class: "label" ,style:"font-size:18px;"  %>*
+      <br>
+      <%= form.text_field :phone, class: "input" ,style:"line-height: 40px;
         border-radius: 5px;padding: 0 20px;width:70%;border: 0;border-bottom: 1px dotted #111111;"%>
-        </div>
-        <div class = "col-5">
-          <%= form.label :email, class: "label" ,style:"font-size:18px;"  %>*
-          <br>
-          <%= form.text_field :email, class: "input",style:"line-height: 40px;
+    </div>
+    <div class = "col-5">
+      <%= form.label :email, class: "label" ,style:"font-size:18px;"  %>*
+      <br>
+      <%= form.text_field :email, class: "input",style:"line-height: 40px;
         border-radius: 5px;padding: 0 20px;width:70%;border: 0;border-bottom: 1px dotted #111111;"%>
-        </div>
-      </div>
-      <!-- password fields -->
-      <div class = "row p-2" style="margin-bottom: 10px;">
-        <div class = "col-5">
-          <%= form.label :password, class: "label" ,style:"font-size:18px;" %>*
-          <br>
-          <%= form.password_field :password,style:"line-height: 40px;
+    </div>
+  </div>
+  <!-- password fields -->
+  <div class = "row p-2" style="margin-bottom: 10px;">
+    <div class = "col-5">
+      <%= form.label :password, class: "label" ,style:"font-size:18px;" %>*
+      <br>
+      <%= form.password_field :password,style:"line-height: 40px;
     border-radius: 5px;padding: 0 20px;width:70%;border: 0;border-bottom: 1px dotted #111111;",disabled: user == current_user %>
-        </div>
-
-        <div class = "col-5">
-          <div class="field">
-            <%= form.label :password_confirmation, class: "label" ,style:"font-size:18px;" %>*
-              <br>
-            <%= form.password_field :password_confirmation,style:"line-height: 40px;
+    </div>
+    <div class = "col-5">
+      <div class="field">
+        <%= form.label :password_confirmation, class: "label" ,style:"font-size:18px;" %>*
+        <br>
+        <%= form.password_field :password_confirmation,style:"line-height: 40px;
     border-radius: 5px;padding: 0 20px;width:70%;border: 0;border-bottom: 1px dotted #111111;" ,disabled: user == current_user%>
-          </div>
-
       </div>
-      </div>
-      <!-- postcode & country fields -->
-      <div class = "row p-2" style="margin-bottom: 10px;">
-        <div class = "col-5">
-          <%= form.label :postcode, class: "label" ,style:"font-size:18px;" %>
-            <br>
-          <%= form.text_field :postcode,style:"line-height: 40px;
+    </div>
+  </div>
+  <!-- postcode & country fields -->
+  <div class = "row p-2" style="margin-bottom: 10px;">
+    <div class = "col-5">
+      <%= form.label :postcode, class: "label" ,style:"font-size:18px;" %>
+      <br>
+      <%= form.text_field :postcode,style:"line-height: 40px;
   border-radius: 5px;padding: 0 20px;width:70%;border: 0;border-bottom: 1px dotted #111111;" %>
-        </div>
-        <div class = "col-5">
-          <div class="field">
-            <%= form.label :country, class: "label",style:"font-size:18px;" %>
-            <br>
-            <%= form.text_field :country,style:"line-height: 40px;
+    </div>
+    <div class = "col-5">
+      <div class="field">
+        <%= form.label :country, class: "label",style:"font-size:18px;" %>
+        <br>
+        <%= form.text_field :country,style:"line-height: 40px;
     border-radius: 5px;padding: 0 20px;width:70%;border: 0;border-bottom: 1px dotted #111111;" %>
-          </div>
-        </div>
       </div>
-      <!-- address info -->
-      <div class = "row p-2" style="margin-bottom: 10px;">
-        <div class = "col-5">
-          <%= form.label :address_line_1, class: "label" ,style:"font-size:18px;" %>
-            <br>
-          <%= form.text_field :address_line_1,style:"line-height: 40px;
+    </div>
+  </div>
+  <!-- address info -->
+  <div class = "row p-2" style="margin-bottom: 10px;">
+    <div class = "col-5">
+      <%= form.label :address_line_1, class: "label" ,style:"font-size:18px;" %>
+      <br>
+      <%= form.text_field :address_line_1,style:"line-height: 40px;
     border-radius: 5px;padding: 0 20px; width:70%;border: 0;border-bottom: 1px dotted #111111;" %>
-        </div>
-        <div class = "col-5">
-          <%= form.label :address_line_2, class: "label" ,style:"font-size:18px;" %>
-            <br>
-          <%= form.text_field :address_line_2,style:"line-height: 40px;
+    </div>
+    <div class = "col-5">
+      <%= form.label :address_line_2, class: "label" ,style:"font-size:18px;" %>
+      <br>
+      <%= form.text_field :address_line_2,style:"line-height: 40px;
       border-radius: 5px;padding: 0 20px;width:70%;border: 0;border-bottom: 1px dotted #111111;" %>
-        </div>
-      </div>
-      <!-- Whether admin or not, cannot change if it's the current user -->
-      <div class = "row p-2" style="margin-bottom: 10px;">
-        <div class = "col-5">
-          <%= form.label :admin %>
-          <%= form.check_box :admin, disabled: user == current_user %>
-        </div>
-        <div class="col-5">
-          <%= form.label :admin_passphrase %>
-            <br>
-          <%= form.password_field :admin_passphrase, style: "line-height: 40px;
+    </div>
+  </div>
+  <!-- Whether admin or not, cannot change if it's the current user -->
+  <div class = "row p-2" style="margin-bottom: 10px;">
+    <div class = "col-5">
+      <%= form.label :admin %>
+      <%= form.check_box :admin, disabled: user == current_user %>
+    </div>
+    <div class="col-5">
+      <%= form.label :admin_passphrase %>
+      <br>
+      <%= form.password_field :admin_passphrase, style: "line-height: 40px;
         border-radius: 5px;padding: 0 20px;width:70%;border: 0;border-bottom: 1px dotted #111111;", disabled: user == current_user %>
-        </div>
-      </div>
-      <div class="actions">
-        <%= form.submit class: "btn-lg btn-primary",style:"background-color:#075aaa;"%>
-      </div>
-
+    </div>
+  </div>
+  <div class="actions">
+    <%= form.submit class: "btn-lg btn-primary",style:"background-color:#075aaa;"%>
+  </div>
 <% end %>
