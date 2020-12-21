@@ -13,7 +13,7 @@ class Admin::SessionsController < Admin::ApplicationController
       flash[:success] = 'Logged in as admin.'
       redirect_to admin_dashboard_path
     else
-      flash.now[:alert] = 'Invalid.'
+      flash.now[:alert] = 'Incorrect Passphrase.'
       render :new
     end
   end
