@@ -140,7 +140,7 @@ module StyleHelper
     if current_style.login_background_image.attached?
       url_for(current_style.login_background_image)
     else
-      '/bank3.jpg'
+      '/bank4.jpg'
     end
   end
 
