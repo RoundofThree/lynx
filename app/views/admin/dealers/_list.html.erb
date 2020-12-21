@@ -3,8 +3,8 @@
     <thead>
       <tr>
         <th class ="p-3" style="color:#01045d;">No. </th>
-        <th class ="p-3" style="color:#01045d;">Currency</th>
         <th class ="p-3" style="color:#01045d;">Name</th>
+        <th class ="p-3" style="color:#01045d;">Currency</th>
         <th class ="p-3" style="color:#01045d;">Account number</th>
         <th class ="p-3" style="color:#01045d;">Min amount</th>
         <th class ="p-3" style="color:#01045d;">Max amount</th>
@@ -18,8 +18,8 @@
       <% dealers.each_with_index do |d, i| %>
         <tr>
           <th scope="row"><%= i+1 %></th>
+          <td><%= link_to d.name, admin_dealer_path(d) %></td>
           <td><%= d.currency %></td>
-          <td><%= d.name %></td>
           <td><%= d.account_number %></td>
           <td><%= d.min_amount %></td>
           <td><%= d.max_amount %></td>
