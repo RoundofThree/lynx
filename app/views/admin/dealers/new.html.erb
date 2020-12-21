@@ -1,12 +1,18 @@
-<div class ="row">
-  <!-- render shared navbar-->
+<div class="row">
   <%= render partial: "admin/shared/navbar" %>
-  <!-- create user form -->
-  <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" style ="max-width: 680px; padding-bottom: 100px; padding-top:20px">
-    <div class="columns">
-      <h1 class="h1" style ="font-size: 35px; color: #525252; margin-bottom: 40px;">Creat new dealer</h1>
-      <%= link_to 'Back to dealers list', admin_dealers_path, class: "button" %>
+  <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <h1 class="mb-4 pt-2" style="color:#01045d">Create New Dealer</h1>
+      <!-- buttons -->
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-5">
+          <button type="button" class="btn btn btn-dark"><%= link_to "Back", admin_transactions_path, style: "color: inherit; text-decoration: none;" %></button>
+        </div>
+      </div>
     </div>
-    <%= render 'form', dealer: @dealer %>  
+    <%= render 'form', dealer: @dealer %>
+
+
   </div>
 </div>
