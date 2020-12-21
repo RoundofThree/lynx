@@ -9,35 +9,34 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
-    @accounts = Account.all
+    @accounts = current_user.accounts
   end
 
   def create
     @transaction = Transaction.new(transaction_params)
     # find account
     @account = Account.find(params[:transaction][:account_id]) unless params[:transaction][:account_id].blank?
-    if @account.nil?
+    if @account.nil? || @account.user_id != current_user.id
       flash[:error] = 'Select a valid account.'
       redirect_to new_transaction_path
       return
     end
-    @transaction.currency = @account.currency
     @transaction.amount = -@transaction.amount
-    if @account.user_id == current_user.id && @transaction.save
+    if @transaction.save
       # substract the balance
       amount = params[:transaction][:amount]
       @account.balance = @account.balance - amount.to_d
-      
-      if @account.save 
-        flash[:success] = "Payment success."
+
+      if @account.save
+        flash[:success] = 'Payment success.'
         redirect_to transaction_path(@transaction.id)
-      else # if ever something goes wrong, rollback transaction 
+      else # if ever something goes wrong, rollback transaction
         @transaction.destroy
-        flash[:alert] = "Payment failed, try again."
+        flash[:alert] = 'Payment failed, try again.'
         redirect_to new_transaction_path
       end
     else
-      flash[:error] = "Payment failed, try again."
+      flash[:error] = 'Payment failed, try again.'
       redirect_to new_transaction_path
     end
   end
@@ -48,7 +47,7 @@ class TransactionsController < ApplicationController
     if transaction_params[:amount].to_d <= 0.0
       flash[:error] = 'Invalid amount'
       redirect_to new_transaction_path
-    end 
+    end
   end
 
   def require_permissions
@@ -68,7 +67,6 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:amount, :account_id, :dealer_account_number, :dealer_name,
-                                        :currency, :reference)
+    params.require(:transaction).permit(:amount, :account_id, :dealer_account_number, :dealer_name, :reference)
   end
 end

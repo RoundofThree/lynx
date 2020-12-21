@@ -2,23 +2,51 @@
 <div class="row">
   <!-- Quick links -->
   <%= render partial: "admin/shared/navbar" %>
-  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+  <div class="col ml-sm-auto col-lg-10 px-4">
     <!-- Header -->
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-      <h1 class="h2">Users</h1>
-      <div class="btn-toolbar row mb-2 mb-md-0" style="width: 60%; position: relative; left: 30px;">
-        <!-- Search/sort functionality -->
-        <%= form_with url: admin_users_path, method: :get, local: true, class: "row mt-md-0 container-fluid" do |f| %>
-          <%= f.text_field :search, value: params[:search], placeholder: "Filter by name...", class: "form-control mr-1 col-xs-6 col-md-4" %>
-          <%= f.select :sort_by, options_for_select([["Last accessed", "last_sign_in_at"], ["Last created", "last_created_at"], ["First created", "first_created_at"]], params[:sort_by]), {}, {class: "form-control col-xs-6 col-md-4" } %>
-          <%= f.submit "Filter and sort", class: "btn btn-outline-success ml-1 col-xs-6 col-md-3" %>
-        <% end %>
+    <div class="col p-3">
+      <div class ="row">
+      <h1 style="font-weight:bold;"> Manage Users</h1>
+      <i class ="fa fa-lg fa-pencil"style ="font-size:25px;padding-top:20px;padding-left:10px;"></i>
+      <p style="padding-top:20px;font-size:18px;padding-left:20px;"><%= User.count %> users</p>
       </div>
-      <button type="button"
-        class="btn btn btn-outline-info"><%= link_to "New user", new_admin_user_path, style: "color: inherit; text-decoration: none;" %></button>
-      <button type="button" class="btn btn-sm btn-outline-secondary">Export as XLS</button>
+        <div class ="row" >
+          <div class ="col"style="padding-left:0px;">
+          <button type="button"class="btn btn-info" style="background-color:#01045d; border-color:#01045d; border-radius:10px">
+              <i class="fa fa-user-plus p-1" style="color:#ffffff"></i>
+            <%= link_to "Add", new_admin_user_path, style: "color: inherit; text-decoration: none;font-weight:bold;" %>
+          </button>
+          <button type="button" class="btn btn-info "style="background-color:#ffffff;
+          border-color:#01045d; border-radius:10px;font-weight:bold;color:#01045d;">
+            <i class="fa fa-download p-1" style="color:#01045d;"></i>
+          <%= link_to "Export as XLS", admin_users_path(format: "xlsx"), style: "color: inherit; text-decoration: none;font-weight:bold;" %></button>
+
+          </div>
+          <div class = "col-9">
+      <div class="btn-toolbar row mb-2 mb-md-0" style="width: 80%; position: relative; left: 30px;">
+        <!-- Search/sort functionality -->
+
+        <%= form_with url: admin_users_path, method: :get, local: true, class: "row mt-md-0 container-fluid" do |f| %>
+          <%= f.text_field :search, value: params[:search], placeholder: "Search", class: "form-control mr-1 col-xs-6 col-md-4",
+          style: "  background: hsl(0 0% 93%);"%>
+          <%= f.select :sort_by, options_for_select([["Last accessed", "last_sign_in_at"], ["Last created", "last_created_at"],
+          ["First created", "first_created_at"]], params[:sort_by]), {}, {class: "form-control col-xs-6 col-md-4", style:"    outline: none;
+
+" } %>
+          <button type="submit" class="btn btn-info "style="background-color:#ffffff;
+          border-color:#01045d; border-radius:10px;font-weight:bold;color:#01045d;width:100px;
+          padding-left:10px;">
+            <i class="fa fa-sort p-1" style="color:#01045d;"></i>
+          Filter</button>
+
+        <% end %>
+        </div>
+      </div>
+
+
+
     </div>
+        </div>
     <!-- List of users -->
     <%= render 'admin/users/list', {users: @users} %>
-  </main>
 </div>

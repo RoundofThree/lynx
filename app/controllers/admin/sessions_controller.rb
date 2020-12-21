@@ -10,10 +10,10 @@ class Admin::SessionsController < Admin::ApplicationController
   def create
     if current_user.authenticate_admin_passphrase(params[:admin_passphrase])
       admin_login
-      flash[:success] = 'Logged in as admin'
+      flash[:success] = 'Logged in as admin.'
       redirect_to admin_dashboard_path
     else
-      flash.now[:alert] = 'Invalid'
+      flash.now[:alert] = 'Invalid.'
       render :new
     end
   end
