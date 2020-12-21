@@ -52,37 +52,5 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
     add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
-
-    # Add admin user
-    User.create! do |u|
-      u.firstname = 'Tom'
-      u.lastname = 'Waterson'
-      u.email = 'tom.waterson@gmail.com'
-      u.password = 'SEGproj3ctover'
-      u.birth_date = Date.new(2001, 11, 28)
-      u.phone = '+44 07740271205'
-      u.is_female = false 
-      u.postcode = 'WC2N 5RJ'
-      u.address_line_1 = '1 Strand'
-      u.address_line_2 = 'London'
-      u.country = 'United Kingdom'
-      u.admin = true
-      u.admin_passphrase_digest = "4824e89b43d8ca05bef6fea622f2920962fc7b57c9faccaa28657d762ecf663c" # 4dminLynx!123 SHA-256
-    end
-
-    # Add normal user
-    User.create! do |u|
-      u.firstname = 'Roland'
-      u.lastname = 'Budka'
-      u.email = 'roland.budka@gmail.com'
-      u.password = 'jkrolling2001'
-      u.birth_date = Date.new(2001, 11, 28)
-      u.phone = '+44 07740271205'
-      u.is_female = false 
-      u.postcode = 'WC2N 5RJ'
-      u.address_line_1 = '1 Strand'
-      u.address_line_2 = 'London'
-      u.country = 'United Kingdom'
-    end
   end
 end

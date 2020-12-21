@@ -34,7 +34,7 @@ class Admin::AccountsController < Admin::ApplicationController
 
   # GET /admin/accounts/1/edit
   def edit; end
-  
+
   # POST /admin/accounts
   def create
     @account = Account.new(account_params)
@@ -51,7 +51,7 @@ class Admin::AccountsController < Admin::ApplicationController
   def update
     if @account.update(account_params)
       flash[:notice] = 'Account was successfully updated.'
-      redirect_to  [:admin, Account.last]
+      redirect_to admin_account_path(@account)
     else
       flash.now[:error] = 'Failed to save changes.'
       render :edit
@@ -65,9 +65,8 @@ class Admin::AccountsController < Admin::ApplicationController
     redirect_to admin_accounts_url
   end
 
+  private
 
-  private 
-  
   # Use callbacks to share common setup or constraints between actions.
   def set_account
     @account = Account.find(params[:id])
@@ -76,7 +75,6 @@ class Admin::AccountsController < Admin::ApplicationController
   # Only allow a list of trusted parameters through.
   def account_params
     params.require(:account).permit(:balance, :account_number,
-      :cvv, :expiry_date, :currency, :user_id)
+                                    :cvv, :expiry_date, :currency, :user_id)
   end
-
 end

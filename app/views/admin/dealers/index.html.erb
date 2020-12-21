@@ -1,18 +1,26 @@
-<div class="row">
+<div class="row" style="min-height:900px;">
   <%= render partial: "admin/shared/navbar" %>
-  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+  <div class="col ml-sm-auto col-lg-10 px-4">
     <!-- Header -->
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-      <h1 class="h2">Dealers</h1>
-      <div class="btn-group mr-2">
-        <button type="button" class="btn btn-sm btn-outline-secondary">
-          <%= link_to "New Dealer", new_admin_dealer_path, style: "color: inherit; text-decoration: none;" %>
-        </button>
-        <button type="button" class="btn btn-sm btn-outline-secondary">
-          Export as XLS
-        </button>
+    <div class="col p-3">
+      <div class ="row">
+      <h1>Dealers</h1>
+      <i class ="fa fa-lg fa-pencil"style ="font-size:25px;padding-top:20px;padding-left:10px;"></i>
+      <p style="padding-top:20px;font-size:18px;padding-left:20px;"><%= Dealer.count %> dealers</p>
+      </div>
+      <div class ="row" >
+        <div class ="col"style="padding-left:0px;">
+          <button type="button"class="btn btn-info" style="background-color:#01045d; border-color:#01045d; border-radius:10px">
+            <i class="fa fa-user-plus p-1" style="color:#ffffff"></i>
+            <%= link_to "Add", new_admin_dealer_path, style: "color: inherit; text-decoration: none;font-weight:bold;" %>
+          </button>
+        </div>
+        <div class = "col-9">
+          <div class="btn-toolbar row mb-2 mb-md-0" style="width: 80%; position: relative; left: 30px;">
+            <!-- Search/sort functionality -->
+          </div>
+        </div>
       </div>
     </div>
     <%= render "admin/dealers/list", {dealers: @dealers} %>
-  </main>
-</div>
+  </div>

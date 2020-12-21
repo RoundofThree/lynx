@@ -1,72 +1,61 @@
-<!-- TODO:"/bank4.jpg" -->
-
 <div class="image-container  set-full-height" style = " display: flex; align-items: center;justify-content: center;
-background-image: url('/bank4.jpg');background-position: center center;background-size: cover;">
-
-<!-- Main container for sign in -->
-<div class = "container p-3" style = "width: 650px;">
-<div class = 'row' >
-  <div class="col-8 p-3"style="margin-left: 16.66666667%;">
-
-    <div class = "container" style = "padding-top: 100px;">
-  <div class ="box p-3" width="120px" style=" border-radius:20px;border: 2px;  background-color: #FFFFFF;">
-
-  <div class="form-signin">
-    <div class="logo-item" style = " display: flex; align-items: center;justify-content: center;">
-      <img class="mt-3" src="<%=login_sigup_logo_image%>" alt="" width="90" height="90">
-    </div>
-
-    <p class =" font-weight-bold mt-3" style ="font-size:35px;text-align: center;color:#01045d;"> SIGN IN </p>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-      <div class ="container p-4">
-        <div class=" row p-3">
-          <span style="font-size: 20px;">
-            <i class="fa fa-envelope  fa-xs"></i>
-          </span>
-          <div class ="col-10">
-            <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email",
+background-image: url('<%= login_background_image %>');background-position: center center;background-size: cover;">
+  <!-- Main container for sign in -->
+  <div class = "container p-3" style = "width: 650px;">
+    <div class = 'row' >
+      <div class="col-8 p-3"style="margin-left: 16.66666667%;">
+        <div class = "container" style = "padding-top: 100px;">
+          <div class ="box p-3" width="120px" style=" border-radius:20px;border: 2px;  background-color: #FFFFFF;">
+            <div class="form-signin">
+              <div class="logo-item" style = " display: flex; align-items: center;justify-content: center;">
+                <img class="mt-3" src="<%=login_sigup_logo_image%>" alt="" width="90" height="90">
+              </div>
+              <p class =" font-weight-bold mt-3" style ="font-size:35px;text-align: center;color:#01045d;"> SIGN IN </p>
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class ="container p-4">
+                  <div class=" row p-3">
+                    <span style="font-size: 20px;">
+                      <i class="fa fa-envelope  fa-xs"></i>
+                    </span>
+                    <div class ="col-10">
+                      <%= f.label :email %>
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email",
             :style=> "border-radius: 25px; width: 100%; ;line-height: 2.0;
              padding: 0 30px 0 40px;height: 30px;" %>
-
-        </div>
-          </div>
-        <div class="row p-3">
-          <span style="font-size: 25px;">
-            <i class="fa fa-lock  fa-xs"></i>
-          </span>
-          <div class ="col-10 ">
-            <%= f.label :password %>
-            <%= f.password_field :password, autocomplete: "current-password",placeholder: "Password",
+                    </div>
+                  </div>
+                  <div class="row p-3">
+                    <span style="font-size: 25px;">
+                      <i class="fa fa-lock  fa-xs"></i>
+                    </span>
+                    <div class ="col-10 ">
+                      <%= f.label :password %>
+                      <%= f.password_field :password, autocomplete: "current-password",placeholder: "Password",
             :style=> "border-radius: 25px; width: 101%; line-height: 2.0;
             padding: 0 30px 0 40px; height: 30px;" %>
-      </div>
-            </div>
-
-            <% if devise_mapping.rememberable? %>
-            <div class ="row p-3">
-            <div class ="col-sm-10 ">
-                  <%= f.check_box :remember_me%>
-              <%= f.label :Remember_Me, :style=>"color: #01045d; font-size: 15px;" %>
-            </div>
-            </div>
-            <% end %>
-
-<div class ="col-sm-11 ">
-    <div class="actions">
-      <br>
-      <%= f.submit "Log in", class:'btn btn-primary btn',:style => "width: 100%;
+                    </div>
+                  </div>
+                  <% if devise_mapping.rememberable? %>
+                    <div class ="row p-3">
+                      <div class ="col-sm-10 ">
+                        <%= f.check_box :remember_me%>
+                        <%= f.label :Remember_Me, :style=>"color: #01045d; font-size: 15px;" %>
+                      </div>
+                    </div>
+                  <% end %>
+                  <div class ="col-sm-11 ">
+                    <div class="actions">
+                      <br>
+                      <%= f.submit "Log in", class:'btn btn-primary btn',:style => "width: 100%;
       border-color: #f90e67; text-align:center;background-color:#f90e67; border-radius:24px;" %>
-    </div>
-    </div>
-    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <div class="p-5">
+              <%= render "users/shared/links" %>
+            </div>
+          </div>
         </div>
-    <% end %>
-
-    <div class="p-5">
-    <%= render "users/shared/links" %>
       </div>
-  </div>
-  </div>
-</div>

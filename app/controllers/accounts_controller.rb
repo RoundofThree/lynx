@@ -6,14 +6,6 @@ class AccountsController < ApplicationController
     @transactions = @account.transactions
   end
 
-  def new; end
-
-  def create; end
-
-  def edit; end
-
-  def update; end
-
   private
 
   def check_ownership
