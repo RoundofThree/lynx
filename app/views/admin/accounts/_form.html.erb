@@ -13,31 +13,31 @@
   <div class="form-group row">
     <%= form.label :account_number, class: "col-sm-4 col-form-label", style:"font-size:18px;"  %>
     <div class="col-sm-6">
-      <%= form.text_field :account_number, autofocus: true, class: "form-control" %>
+      <%= form.text_field :account_number, autofocus: true, class: "form-control" ,style:"border: 0;border-bottom: 1px dotted #111111;" %>
     </div>
   </div>
   <div class="form-group row">
     <%= form.label :balance, class: "col-sm-4 col-form-label", style:"font-size:18px;"  %>
     <div class="col-sm-6">
-      <%= form.number_field :balance, class: "form-control" %>
+      <%= form.number_field :balance, class: "form-control",style:"border: 0;border-bottom: 1px dotted #111111;" %>
     </div>
   </div>
   <div class="form-group row">
     <%= form.label :currency, class: "col-sm-4 col-form-label", style:"font-size:18px;"  %>
     <div class="col-sm-6">
-      <%= form.text_field :currency, class: "form-control" %>
+      <%= form.text_field :currency, class: "form-control",style:"border: 0;border-bottom: 1px dotted #111111;" %>
     </div>
   </div>
   <div class="form-group row">
     <%= form.label :cvv, class: "col-sm-4 col-form-label" , style:"font-size:18px;" %>
     <div class="col-sm-6">
-      <%= form.text_field :cvv, class: "form-control" %>
+      <%= form.text_field :cvv, class: "form-control",style:"border: 0;border-bottom: 1px dotted #111111;" %>
     </div>
   </div>
   <div class="form-group row">
     <%= form.label :expiry_date, class: "col-sm-4 col-form-label", style:"font-size:18px;"  %>
     <div class="col-sm-6">
-      <%= form.date_field :expiry_date, class: "form-control" %>
+      <%= form.date_field :expiry_date, class: "form-control" ,style:"border: 0;border-bottom: 1px dotted #111111;"%>
     </div>
   </div>
   <div class="form-group row">
@@ -47,7 +47,9 @@
     </div>
   </div>
   <div class="actions p-3">
-    <%= form.submit class: "button is-success" ,style:"border-radius:18px; font-size:18px;
-    width:150px;height:40px;background-color:#01045d; border-color:#01045d;color:#ffffff;font-weight:bold;"%>
+    
+    <%= form.submit class: "btn-lg btn-primary",style:"background-color:#075aaa;"%>
+
   </div>
+
 <% end %>

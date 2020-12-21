@@ -1,1 +1,37 @@
-
+<div class="row">
+  <%= render partial: "admin/shared/navbar" %>
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <h1 class="h2">Dealer - <%= @dealer.name %></h1>
+      <!-- buttons -->
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <button type="button" class="btn btn-sm btn-outline-info"><%= link_to "Edit", edit_admin_dealer_path(@dealer), style: "color: inherit; text-decoration: none;" %></button>
+          <button type="button" class="btn btn-sm btn-outline-danger"><%= link_to "Delete", admin_dealer_path(@dealer), method: :delete, data: { confirm: "Are you sure?" }, style: "color: inherit; text-decoration: none;" %></button>
+        </div>
+      </div>
+    </div>
+    <!-- Table -->
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @dealer.attributes.each do |key, value| %>
+              <tr>
+                <td><%= key %></td>
+                <td><%= value %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
