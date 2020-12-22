@@ -5,5 +5,5 @@ class Dealer < ApplicationRecord
   validates :max_amount, presence: true
   validates :max_amount, numericality: { greater_than_or_equal_to: :min_amount }
   validates :frequency, numericality: { less_than_or_equal_to: 300 }
-  validates :is_vendor, presence: true
+  validates_inclusion_of :is_vendor, in: [true, false]
 end
