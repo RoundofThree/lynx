@@ -2,7 +2,7 @@
   <div class="row">
     <%= render partial: "dashboard/navbar" %>
     <main id="account-show" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <h2 style="font-weight:bold; color:blue">My account</h2>
+      <h2 style="font-weight:bold; color:<%= account_head_text_color%>">My account</h2>
       <!-- account info -->
       <div class="card" style="width: 60%; margin-top:1.5rem;">
         <div class="card-header font-weight-bold" style="font-size: 1.5rem;">
@@ -35,13 +35,13 @@
         </div>
         <div class="card-footer">
           <button type="button" class="btn btn-info" style="width: 8rem">
-            Statement
+            <%= account_button_text_1 %>
           </button>
           <button type="button" class="btn btn-secondary" style="width: 12rem; margin-left:50% float: right">
-            Investment plans
+            <%= account_button_text_2 %>
           </button>
           <button type="button" class="btn btn-secondary" style="width: 12rem; margin-left:1rem float: right">
-            Manage overdraft
+            <%= account_button_text_3 %>
           </button>
         </div>
       </div>
