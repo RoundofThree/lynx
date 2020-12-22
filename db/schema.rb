@@ -94,6 +94,10 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
     t.string "show_payment_page_style"
     t.text "show_payment_md"
     t.string "account_table_color"
+    t.string "account_head_text_color"
+    t.string "account_button_text_1"
+    t.string "account_button_text_2"
+    t.string "account_button_text_3"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

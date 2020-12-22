@@ -21,7 +21,7 @@ module StyleHelper
     <a href="/" class="p-2 text-dark">Investments</a>
     <a href="/" class="p-2 text-dark">Loans</a>
     <a href="/" class="p-2 text-dark">Mortgage</a>
-    <a href="/" class="button  w-button">Book a call</a></span>'
+    <a href="/" class="button small w-button">Book a call</a></span>'
   end
 
   # homepage
@@ -243,6 +243,22 @@ module StyleHelper
     else
       ''
     end
+  end
+
+  def account_head_text_color
+    current_style&.account_head_text_color.presence || "#668EB9"
+  end
+
+  def account_button_text_1
+    current_style&.account_button_text_1.presence || "Statement"
+  end
+
+  def account_button_text_2
+    current_style&.account_button_text_2.presence || "Investment Plans"
+  end
+
+  def account_button_text_3
+    current_style&.account_button_text_3.presence || "Manage Overdraft"
   end
 
   # navbar_color

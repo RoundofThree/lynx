@@ -7,5 +7,28 @@
     <div class="col-sm-6">
       <%= f.color_field :account_table_color, value: account_table_color, class: "form-control" %></div>
   </div>
+  <div class="form-group row">
+    <%= f.label :account_head_text_color, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.color_field :account_head_text_color, value: account_head_text_color, class: "form-control" %></div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :account_button_text_1, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :account_button_text_1, value: account_button_text_1, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :account_button_text_2, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :account_button_text_2, value: account_button_text_2, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :account_button_text_3, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :account_button_text_3, value: account_button_text_3, class: "form-control" %>
+    </div>
+  </div>
   <%= f.submit class: "btn btn-outline-info" %>
 <% end %>
