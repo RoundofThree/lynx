@@ -37,7 +37,7 @@ class TransactionTest < ActiveSupport::TestCase
   test 'transaction currency should be the same as the account currency' do
     payer_account = accounts(:one)
     transaction = Transaction.create!(account: payer_account, dealer_account_number: '12345678901234', dealer_name: 'Nyx',
-                                  amount: 1.0)
+                                      amount: 1.0)
     assert_equal transaction.currency, payer_account.currency
   end
 

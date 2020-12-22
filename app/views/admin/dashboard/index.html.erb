@@ -4,10 +4,8 @@
     <div class ="container">
       <h1 style="font-weight:bold;color:#668EB9;margin-top:30px">Dashboard</h1>
       <div class ="row">
-
-      <p style="padding-left:20px">Last Login: <%= (current_user.last_sign_in_at).strftime("%d/%m/%Y, %H:%M:%S")%></p>
+        <p style="padding-left:20px">Last Login: <%= (current_user.last_sign_in_at).strftime("%d/%m/%Y, %H:%M:%S")%></p>
       </div>
-
     </div>
     <div class ="container" style="min-height: 250px;padding: 15px;padding-left: 15px;padding-right: 15px;">
       <!-- Summary -->
@@ -77,54 +75,51 @@
               <div class ="col-6">
                 <%= pie_chart User.group(:firstname).sum(:sign_in_count) ,colors: [ "#0076ba","#199fda","#e2203d"], donut:true%>
                 <p style=" padding-left:30px; margin-top:20px;color:#668EB9;font-weight:bold">User Engagement Count</p>
-                  </div>
-
-                <div class ="col-6">
-
+              </div>
+              <div class ="col-6">
                 <%= pie_chart Account.group(:currency).count,colors: [ "#0076ba","#199fda","#e2203d"], donut:true %>
                 <p style=" padding-left:30px; margin-top:20px;color:#668EB9; font-weight:bold">Account Currency Type</p>
               </div>
-              </div>
-
             </div>
           </div>
         </div>
       </div>
-      <br>
-      <div class ="row p-4">
-        <div class ="box" style= "background-color:#ffffff; border-radius: 25px;
+    </div>
+    <br>
+    <div class ="row p-4">
+      <div class ="box" style= "background-color:#ffffff; border-radius: 25px;
             display: flex; align-items: center;justify-content: center; width:100%; ">
-          <h3 style ="padding-left: 25px; margin-top:5px;color:#668EB9; font-weight:bold">Recent Active Users</h3>
-          <div class="table-responsive">
-            <table class="table table-bordered table-sm">
-              <thead>
+        <h3 style ="padding-left: 25px; margin-top:5px;color:#668EB9; font-weight:bold">Recent Active Users</h3>
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm">
+            <thead>
+              <tr>
+                <th>No. </th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Last accessed time</th>
+                <!-- Ordered by last accessed time by default -->
+                <th>Last accessed IP</th>
+                <!-- IPv4 -->
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each_with_index do |u, i| %>
                 <tr>
-                  <th>No. </th>
-                  <th>Firstname</th>
-                  <th>Lastname</th>
-                  <th>Email</th>
-                  <th>Last accessed time</th>
-                  <!-- Ordered by last accessed time by default -->
-                  <th>Last accessed IP</th>
-                  <!-- IPv4 -->
+                  <th scope="row"><%= i+1 %></th>
+                  <td><%= link_to u.firstname, admin_user_path(u) %></td>
+                  <td><%= link_to u.lastname, admin_user_path(u) %></td>
+                  <td><%= u.email %></td>
+                  <td><%= u.last_sign_in_at %></td>
+                  <td><%= u.last_sign_in_ip %></td>
                 </tr>
-              </thead>
-              <tbody>
-                <% @users.each_with_index do |u, i| %>
-                  <tr>
-                    <th scope="row"><%= i+1 %></th>
-                    <td><%= link_to u.firstname, admin_user_path(u) %></td>
-                    <td><%= link_to u.lastname, admin_user_path(u) %></td>
-                    <td><%= u.email %></td>
-                    <td><%= u.last_sign_in_at %></td>
-                    <td><%= u.last_sign_in_ip %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

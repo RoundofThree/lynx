@@ -1,9 +1,9 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: 'Users') do |sheet|
-sheet.add_row ['id', 'firstname', 'lastname', 'email', 'encrypted password', 'phone', 'birthday', 'is female',
-'postcode', 'address_line_1', 'address_line_2', 'country', 'sign_in_count', 'current_sign_in_at', 'last_sign_in_at', 'current_sign_in_ip', 'last_sign_in_ip', 'created_at', 'updated_at', 'admin']
-@users.each do |u|
-sheet.add_row [u.id, u.firstname, u.lastname, u.email, u.encrypted_password, u.phone, u.birth_date, u.is_female,
-u.postcode, u.address_line_1, u.address_line_2, u.country, u.sign_in_count, u.current_sign_in_at, u.last_sign_in_at, u.current_sign_in_ip, u.last_sign_in_ip, u.created_at, u.updated_at, u.admin]
-end
+  sheet.add_row ['id', 'firstname', 'lastname', 'email', 'encrypted password', 'phone', 'birthday', 'is female',
+                 'postcode', 'address_line_1', 'address_line_2', 'country', 'sign_in_count', 'current_sign_in_at', 'last_sign_in_at', 'current_sign_in_ip', 'last_sign_in_ip', 'created_at', 'updated_at', 'admin']
+  @users.each do |u|
+    sheet.add_row [u.id, u.firstname, u.lastname, u.email, u.encrypted_password, u.phone, u.birth_date, u.is_female,
+                   u.postcode, u.address_line_1, u.address_line_2, u.country, u.sign_in_count, u.current_sign_in_at, u.last_sign_in_at, u.current_sign_in_ip, u.last_sign_in_ip, u.created_at, u.updated_at, u.admin]
+  end
 end

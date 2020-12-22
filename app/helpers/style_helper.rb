@@ -132,11 +132,11 @@ module StyleHelper
   end
 
   def dashboard_main_text_1
-    current_style&.dashboard_main_text_1.presence || "Welcome back"
+    current_style&.dashboard_main_text_1.presence || 'Welcome back'
   end
 
   def dashboard_main_text_2
-    current_style&.dashboard_main_text_2.presence ||"Check your accounts and manage your all activities here"
+    current_style&.dashboard_main_text_2.presence || 'Check your accounts and manage your all activities here'
   end
 
   def dashboard_head_text_color
@@ -175,13 +175,11 @@ module StyleHelper
   end
 
   def sign_up_text_1
-    current_style&.sign_up_text_1.presence || "Experience the freedom of banking on your own terms."
-
+    current_style&.sign_up_text_1.presence || 'Experience the freedom of banking on your own terms.'
   end
 
   def sign_up_text_2
-    current_style&.sign_up_text_2.presence || "Create your account today."
-
+    current_style&.sign_up_text_2.presence || 'Create your account today.'
   end
 
   # make payment page
@@ -246,19 +244,19 @@ module StyleHelper
   end
 
   def account_head_text_color
-    current_style&.account_head_text_color.presence || "#668EB9"
+    current_style&.account_head_text_color.presence || '#668EB9'
   end
 
   def account_button_text_1
-    current_style&.account_button_text_1.presence || "Statement"
+    current_style&.account_button_text_1.presence || 'Statement'
   end
 
   def account_button_text_2
-    current_style&.account_button_text_2.presence || "Investment Plans"
+    current_style&.account_button_text_2.presence || 'Investment Plans'
   end
 
   def account_button_text_3
-    current_style&.account_button_text_3.presence || "Manage Overdraft"
+    current_style&.account_button_text_3.presence || 'Manage Overdraft'
   end
 
   # navbar_color

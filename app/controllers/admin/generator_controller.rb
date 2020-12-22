@@ -35,6 +35,7 @@ class Admin::GeneratorController < Admin::ApplicationController
     target = rand(1..cum_frequency)
     dealers.each do |dealer|
       return dealer if target <= dealer.frequency
+
       target -= dealer.frequency
     end
   end

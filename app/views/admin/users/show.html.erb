@@ -13,134 +13,133 @@
         <p>User ID: #<%= "#{@user.id}" %></p>
       </div>
       <!-- buttons -->
-        <div class = "col-4 p-3">
-      <div class="btn-toolbar mb-2 mb-md-0">
-      <div class="btn-group">
-        <button type="button" class="btn btn-lg btn-dark">
-          <i class="fa fa-edit p-1" style="color:#ffffff"></i>
-          <%= link_to "Edit", edit_admin_user_path(@user), style: "color: inherit;" %>
-        </button>
-        <button type="button" class="btn btn btn-danger">
-          <i class="fa fa-trash " style="color:#ffffff"></i>
-          <%= link_to "Delete", admin_user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, style: "color: inherit; text-decoration: none;" %>
-        </button>
+      <div class = "col-4 p-3">
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group">
+            <button type="button" class="btn btn-lg btn-dark">
+              <i class="fa fa-edit p-1" style="color:#ffffff"></i>
+              <%= link_to "Edit", edit_admin_user_path(@user), style: "color: inherit;" %>
+            </button>
+            <button type="button" class="btn btn btn-danger">
+              <i class="fa fa-trash " style="color:#ffffff"></i>
+              <%= link_to "Delete", admin_user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, style: "color: inherit; text-decoration: none;" %>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class ="row p-4">
+      <div class ="col-6">
+        <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#668EB9">
+          <p class ="lead"style="font-weight:bold;padding-left:30px;padding-top:10px; color:#ffffff;">Personal Information</p>
+        </div>
+        <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff; height:120px;padding-left:30px;">
+          <div class=" row p-3">
+            <span style="font-size: 20px;">
+              <i class="fa fa-birthday-cake  fa-xs"style="padding-top:20px;"></i>
+            </span>
+            <div class ="box p-3">
+              <p style="color:#525252; font-size:18px">BIRTH DATE</p>
+              <p style ="color:#01045d;">  <%= "#{@user.birth_date}" %></p>
+            </div>
+          </div>
+        </div>
+        <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff;height:120px;padding-left:30px;">
+          <div class=" row p-3">
+            <span style="font-size: 20px;">
+              <i class="fa fa-intersex fa-xs"style="padding-top:20px;"></i>
+            </span>
+            <div class ="box p-3">
+              <p style="color:#525252; font-size:18px">IS_FEMALE</p>
+              <p style ="color:#01045d;">  <%= "#{@user.is_female}" %></p>
+            </div>
+          </div>
+        </div>
+        <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff;height:120px;padding-left:30px;">
+          <div class=" row p-3">
+            <span style="font-size: 20px;">
+              <i class="fa fa-phone  fa-xs" style="padding-top:20px;"></i>
+            </span>
+            <div class ="box p-3">
+              <p style="color:#525252; font-size:18px">CONTACT NUMBER</p>
+              <p style ="color:#01045d;">  <%= "#{@user.phone}" %></p>
+            </div>
+          </div>
+        </div>
+        <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff;height:120px;padding-left:30px;">
+          <div class=" row p-3">
+            <span style="font-size: 20px;">
+              <i class="fa fa-envelope  fa-xs" style="padding-top:20px;"></i>
+            </span>
+            <div class ="box p-3">
+              <p style="color:#525252; font-size:18px">EMAIL</p>
+              <p style ="color:#01045d;">  <%= "#{@user.email}" %></p>
+            </div>
+          </div>
+        </div>
+        <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px;background-color:#ffffff; height:120px;padding-left:30px;">
+          <div class=" row p-3">
+            <span style="font-size: 25px;">
+              <i class="fa fa-map-marker" style="padding-top:20px;"></i>
+            </span>
+            <div class ="box p-3">
+              <p style="color:#525252; font-size:18px">ADDRESS INFO</p>
+              <p style ="color:#01045d;">  <%= "#{@user.address_line_1}#{@user.address_line_2}" %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class ="col-6">
+        <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px;background-color:#668EB9">
+          <p class ="lead"style="font-weight:bold;padding-left:30px;padding-top:10px; color:#ffffff;">Professional Information</p>
+        </div>
+        <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px; background-color:#ffffff;height:120px;padding-left:30px;">
+          <div class=" row p-3">
+            <span style="font-size: 20px;">
+              <i class="fa fa-user" style="padding-top:20px;"></i>
+            </span>
+            <div class ="box p-3">
+              <p style="color:#525252; font-size:18px">IS_ADMIN</p>
+              <p style ="color:#01045d;">  <%= "#{@user.admin}" %></p>
+            </div>
+          </div>
+        </div>
+        <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px;background-color:#ffffff; height:140px;padding-left:30px;">
+          <div class=" row p-3">
+            <span style="font-size: 20px;">
+              <i class="fa fa-lock" style="padding-top:20px;"></i>
+            </span>
+            <div class ="box p-3">
+              <p style="color:#525252; font-size:18px">ADMIN PASSPHRASE</p>
+            </div>
+            <p style ="color:#01045d;"> <%= "#{@user.admin_passphrase_digest}" %></p>
+          </div>
+        </div>
+        <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px;background-color:#ffffff; height:140px;padding-left:30px;">
+          <div class=" row p-3">
+            <span style="font-size: 20px;">
+              <i class="fa fa-sign-in" style="padding-top:20px;"></i>
+            </span>
+            <div class ="box p-3">
+              <p style="color:#525252; font-size:18px">LAST LOGIN</p>
+              <p style ="color:#01045d;"><%= @user.last_sign_in_at %></p>
+            </div>
+          </div>
+        </div>
+        <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px; background-color:#ffffff; height:140px;padding-left:30px;">
+          <div class=" row p-3">
+            <span style="font-size: 20px;">
+              <i class="fa fa-address-card" style="padding-top:20px;"></i>
+            </span>
+            <div class ="box p-3">
+              <p style="color:#525252; font-size:18px">LAST ACCESS IP ADDRESS</p>
+              <p style ="color:#01045d;"><%= @user.last_sign_in_ip %></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-   </div>
-   </div>
-
-  <div class ="row p-4">
-    <div class ="col-6">
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#668EB9">
-        <p class ="lead"style="font-weight:bold;padding-left:30px;padding-top:10px; color:#ffffff;">Personal Information</p>
-      </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff; height:120px;padding-left:30px;">
-        <div class=" row p-3">
-          <span style="font-size: 20px;">
-            <i class="fa fa-birthday-cake  fa-xs"style="padding-top:20px;"></i>
-          </span>
-          <div class ="box p-3">
-            <p style="color:#525252; font-size:18px">BIRTH DATE</p>
-            <p style ="color:#01045d;">  <%= "#{@user.birth_date}" %></p>
-          </div>
-        </div>
-      </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff;height:120px;padding-left:30px;">
-        <div class=" row p-3">
-          <span style="font-size: 20px;">
-            <i class="fa fa-intersex fa-xs"style="padding-top:20px;"></i>
-          </span>
-          <div class ="box p-3">
-            <p style="color:#525252; font-size:18px">IS_FEMALE</p>
-            <p style ="color:#01045d;">  <%= "#{@user.is_female}" %></p>
-          </div>
-        </div>
-      </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff;height:120px;padding-left:30px;">
-        <div class=" row p-3">
-          <span style="font-size: 20px;">
-            <i class="fa fa-phone  fa-xs" style="padding-top:20px;"></i>
-          </span>
-          <div class ="box p-3">
-            <p style="color:#525252; font-size:18px">CONTACT NUMBER</p>
-            <p style ="color:#01045d;">  <%= "#{@user.phone}" %></p>
-          </div>
-        </div>
-      </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff;height:120px;padding-left:30px;">
-        <div class=" row p-3">
-          <span style="font-size: 20px;">
-            <i class="fa fa-envelope  fa-xs" style="padding-top:20px;"></i>
-          </span>
-          <div class ="box p-3">
-            <p style="color:#525252; font-size:18px">EMAIL</p>
-            <p style ="color:#01045d;">  <%= "#{@user.email}" %></p>
-          </div>
-        </div>
-      </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px;background-color:#ffffff; height:120px;padding-left:30px;">
-        <div class=" row p-3">
-          <span style="font-size: 25px;">
-            <i class="fa fa-map-marker" style="padding-top:20px;"></i>
-          </span>
-          <div class ="box p-3">
-            <p style="color:#525252; font-size:18px">ADDRESS INFO</p>
-            <p style ="color:#01045d;">  <%= "#{@user.address_line_1}#{@user.address_line_2}" %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class ="col-6">
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px;background-color:#668EB9">
-        <p class ="lead"style="font-weight:bold;padding-left:30px;padding-top:10px; color:#ffffff;">Professional Information</p>
-      </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px; background-color:#ffffff;height:120px;padding-left:30px;">
-        <div class=" row p-3">
-          <span style="font-size: 20px;">
-            <i class="fa fa-user" style="padding-top:20px;"></i>
-          </span>
-          <div class ="box p-3">
-            <p style="color:#525252; font-size:18px">IS_ADMIN</p>
-            <p style ="color:#01045d;">  <%= "#{@user.admin}" %></p>
-          </div>
-        </div>
-      </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px;background-color:#ffffff; height:140px;padding-left:30px;">
-        <div class=" row p-3">
-          <span style="font-size: 20px;">
-            <i class="fa fa-lock" style="padding-top:20px;"></i>
-          </span>
-          <div class ="box p-3">
-            <p style="color:#525252; font-size:18px">ADMIN PASSPHRASE</p>
-          </div>
-          <p style ="color:#01045d;"> <%= "#{@user.admin_passphrase_digest}" %></p>
-        </div>
-      </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px;background-color:#ffffff; height:140px;padding-left:30px;">
-        <div class=" row p-3">
-          <span style="font-size: 20px;">
-            <i class="fa fa-sign-in" style="padding-top:20px;"></i>
-          </span>
-          <div class ="box p-3">
-            <p style="color:#525252; font-size:18px">LAST LOGIN</p>
-            <p style ="color:#01045d;"><%= @user.last_sign_in_at %></p>
-          </div>
-        </div>
-      </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px; background-color:#ffffff; height:140px;padding-left:30px;">
-        <div class=" row p-3">
-          <span style="font-size: 20px;">
-            <i class="fa fa-address-card" style="padding-top:20px;"></i>
-          </span>
-          <div class ="box p-3">
-            <p style="color:#525252; font-size:18px">LAST ACCESS IP ADDRESS</p>
-            <p style ="color:#01045d;"><%= @user.last_sign_in_ip %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </div>
 <!-- Table -->
 </div>
