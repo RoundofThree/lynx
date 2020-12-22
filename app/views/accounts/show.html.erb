@@ -1,44 +1,46 @@
-   <div class="account-show">
-      <div class="row">
-       <div class = "col p-4" style="align-items-center">
-       <h1><p>Account Number <%= @account.account_number %></p>  </h1>
-             <div>
-                 <h4 class="account-info">Account information</h4>
-                 <hr class="divider">
-                 <h4> Current Balance </h4>
-                 <h5 class="balance"><%= @account.balance %> <%= @account.currency %></h5>
-                 <hr class="divider">
-             </div>
-             <div id="transacion-history">
-                 <h4>Transactions</h4>
-                 <table class="transactions">
-                     <colgroup>
-                         <col span="1" style="width: 20%;">
-                         <col span="1" style="width: 50%;">
-                         <col span="1" style="width: 15%;">
-                         <col span="1" style="width: 15%;">
-                     </colgroup>
-                     <tr>
-                         <th>Date</th>
-                         <th>Description</th>
-                         <th>Amount</th>
-                         <th>Detail</th>
-                     </tr>
-                     <% count = 1 %>
-                     <% @transactions.each do |transaction| %>
-                     <% count = count + 1 %>
-                     <tr class="transaction-row" style="background-color:<%= account_table_color count %>">
-                         <td>
-                             <!-- Time format: yyyy-mm-dd hh:mm:ss -->
-                             <!-- Maybe consider removing year-->
-                             <%= transaction.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
-                         <td>Transferred to <%= transaction.dealer_name %></td>
-                         <td><%= transaction.amount %></td>
-                         <td><%= link_to "View", transaction_path(transaction), class: "link"%></td>
-                     </tr>
-                     <% end %>
-                 </table>
-
-             </div>
-         </div>
-   </div>
+   
+<div class="account-show">
+  <div class="row">
+    <div class = "col p-4" style="align-items-center">
+      <h1>
+        <p>Account Number <%= @account.account_number %></p>
+          </h1>
+      <div>
+        <h4 class="account-info">Account information</h4>
+        <hr class="divider">
+        <h4> Current Balance </h4>
+        <h5 class="balance"><%= @account.balance %> <%= @account.currency %></h5>
+        <hr class="divider">
+      </div>
+      <div id="transacion-history">
+        <h4>Transactions</h4>
+        <table class="transactions">
+          <colgroup>
+            <col span="1" style="width: 20%;">
+            <col span="1" style="width: 50%;">
+            <col span="1" style="width: 15%;">
+            <col span="1" style="width: 15%;">
+          </colgroup>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Detail</th>
+          </tr>
+          <% count = 1 %>
+          <% @transactions.each do |transaction| %>
+            <% count = count + 1 %>
+            <tr class="transaction-row" style="background-color:<%= account_table_color count %>">
+              <td>
+                <!-- Time format: yyyy-mm-dd hh:mm:ss -->
+                <!-- Maybe consider removing year-->
+                <%= transaction.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+              <td>Transferred to <%= transaction.dealer_name %></td>
+              <td><%= transaction.amount %></td>
+              <td><%= link_to "View", transaction_path(transaction), class: "link"%></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>

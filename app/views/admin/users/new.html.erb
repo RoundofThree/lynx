@@ -1,15 +1,20 @@
-<div class = "row">
+<div class="row" style ="background-color: #ecf0f5;">
   <%= render partial: "admin/shared/navbar" %>
-  <div class="col-3 " style ="max-width: 680px;padding-bottom: 100px;
-padding-top: 20px;">
-    <div class="columns mt-3">
-      <h1 class="mb-3" style="font-size: 40px;color: #525252;">Create New User</h1>
-      <hr>
-      <br>
-      <button type="button" class="btn btn-lg btn-outline-primary"><%= link_to "Back", admin_users_path %></button>
+  <div class="container" style ="padding: 40px 15px;padding-left:40px;display: flex; align-items: center;justify-content: center;">
+    <div class ="row">
+      <!-- Header -->
+      <div class ="card" style=" width:680px;border: 0;margin-bottom: 30px;margin-top: 30px;border-radius: 6px;">
+        <div class ="card-header" style="background: linear-gradient(60deg,#7b1fa2,#075aaa);margin: 0 15px;
+          margin-top: -20px;z-index: 3;">
+          <h2 class="mb-4 pt-2" style="color:#ffffff">Creat New User</h2>
+        </div>
+        <div class ="card-body" style=" padding-left:40px;">
+          <%= link_to "Back", admin_users_path %>
+          <%= render 'form', user: @user %>
+        </div>
+      </div>
+      <div class ="col-md-4">
+      </div>
     </div>
-  </div>
-  <div class="col-7 mt-3 p-3">
-    <%= render 'form', user: @user %>
   </div>
 </div>

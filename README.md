@@ -8,7 +8,7 @@
 *Steps to access the admin panel*: 
 
 1. Log in using the Administrative user credentials (email/password), doing step 2 without this would result in a 404 page. 
-2. Go to the admin link stated above. 
+2. Go to the admin link stated above. Alternatively, click on the "Admin Area" button at the top-right corner of the navigation bar (this button is only visible when you are logged in as an admin).
 3. Enter the correct admin passphrase (admin area passphrase), and you are ready to go! 
 
 ### User Credentials 
@@ -47,6 +47,7 @@
     6. Rails-controller-testing: use for testing controller tests 
     7. Minitest-reporters: rails testing support  
     8. Caxlsx: generate XLS documents 
+    9. Chartjs: display charts 
 
 5. https://v4.bootcss.com/docs/examples/dashboard/ in app/views/dashboard/_navbar.html.erb. Number of lines of reused code: 64 
 
@@ -65,14 +66,14 @@ rake db:create # create DB
 
 rake db:migrate # migrations
 
-rake routes # see routes
+rake db:seed # IMPORTANT!
 
 rails s  # start the server at localhost:3000
 ```
 
 ## How to run the test suite
 
-Generate code coverage support: 
+Generate code coverage report: 
 ```
 rm -rf coverage/ && DISABLE_SPRING=1 COVERAGE=1 rails test
 ```

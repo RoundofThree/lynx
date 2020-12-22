@@ -1,6 +1,6 @@
 <tr>
   <td><%= account.account_number %></td>
-  <td><%= account.currency + ":" + account.balance.to_s %></td>
+  <td><%= account.currency + " " + account.balance.to_s %></td>
   <td class="user">
     <%= link_to "View details", account_path(account), class: "link" %>
   </td>
