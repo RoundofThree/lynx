@@ -2,14 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-#account-show .account-info {
-  color: rgb(9, 9, 182);
-}
-
-#account-show .balance {
-  color: rgb(7, 7, 177);
-}
-
 #account-show th {
   background-color: #1b1c1db9;
   color: white;
@@ -19,10 +11,6 @@
 
 #account-show tr {
   height: 2rem;
-}
-
-#account-show tr:nth-child(even) {
-  background-color: #41414263;
 }
 
 #account-show .center-aligned {
