@@ -2,54 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.account-show .account-info {
+#account-show .account-info {
   color: rgb(9, 9, 182);
 }
 
-.account-show .balance {
+#account-show .balance {
   color: rgb(7, 7, 177);
 }
 
-.account-show .divider {
-  border-top: 3px solid #bbb;
-}
-
-.account-show .transaction-history {
-  width: 80%;
-}
-
-.account-show table {
-  font-family: arial, sans-serif;
-  width: 100%;
-}
-
-.account-show th {
-  background-color: darkblue;
+#account-show th {
+  background-color: #1b1c1db9;
   color: white;
+  text-align: center; 
+  vertical-align: middle;
 }
 
-.account-show tr {
+#account-show tr {
   height: 2rem;
 }
 
-.account-show tr:nth-child(even) {
-  background-color: #302dd45d;
+#account-show tr:nth-child(even) {
+  background-color: #41414263;
 }
 
-
-.account-show .transaction-container {
-  width: 80%;
-  margin-bottom: 1rem;
-  height: 1px;
-  display: table;
-  border-radius: 25px;
-  background-color: rgba(255, 4, 4, 0.281);
-}
-
-.account-show .transaction-amount {
-  min-width: 30%;
-  text-align: right;
-  display: table-cell;
+#account-show .center-aligned {
+  text-align: center; 
   vertical-align: middle;
-  font-size: 1.5em;
 }
+
+#account-show .left-aligned {
+  text-align: left; 
+  vertical-align: middle;
+}
+
+#account-show .right-aligned {
+  text-align: right; 
+  vertical-align: middle;
+}
+
