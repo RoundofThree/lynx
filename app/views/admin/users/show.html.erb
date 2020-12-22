@@ -1,16 +1,16 @@
 <div class="row">
   <%= render partial: "admin/shared/navbar" %>
-  <div class = "col">
+  <div class = "col" style="background-color: #F3F4F7;">
     <!-- Header -->
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-3 mb-4 border-bottom">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 border-bottom" style="margin-top:20px">
       <div class = "col p-3">
         <div class="logo-item" >
           <img class="" src="/profile.png" width="120" height="120">
         </div>
       </div>
       <div class ="col-8" style="padding-top:20px;">
-        <h1 style="font-weight:bold;"> <%= "#{@user.firstname}" %> <%= "#{@user.lastname}" %></h1>
-        <h4>User ID: #<%= "#{@user.id}" %></h4>
+        <h1 style="font-weight:bold;color:#668EB9"> <%= "#{@user.firstname}" %> <%= "#{@user.lastname}" %></h1>
+        <p>User ID: #<%= "#{@user.id}" %></p>
       </div>
       <!-- buttons -->
         <div class = "col-4 p-3">
@@ -31,10 +31,10 @@
 
   <div class ="row p-4">
     <div class ="col-6">
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#525252">
+      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#668EB9">
         <p class ="lead"style="font-weight:bold;padding-left:30px;padding-top:10px; color:#ffffff;">Personal Information</p>
       </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; height:120px;padding-left:30px;">
+      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff; height:120px;padding-left:30px;">
         <div class=" row p-3">
           <span style="font-size: 20px;">
             <i class="fa fa-birthday-cake  fa-xs"style="padding-top:20px;"></i>
@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; height:120px;padding-left:30px;">
+      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff;height:120px;padding-left:30px;">
         <div class=" row p-3">
           <span style="font-size: 20px;">
             <i class="fa fa-intersex fa-xs"style="padding-top:20px;"></i>
@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; height:120px;padding-left:30px;">
+      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff;height:120px;padding-left:30px;">
         <div class=" row p-3">
           <span style="font-size: 20px;">
             <i class="fa fa-phone  fa-xs" style="padding-top:20px;"></i>
@@ -67,7 +67,7 @@
           </div>
         </div>
       </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; height:120px;padding-left:30px;">
+      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; background-color:#ffffff;height:120px;padding-left:30px;">
         <div class=" row p-3">
           <span style="font-size: 20px;">
             <i class="fa fa-envelope  fa-xs" style="padding-top:20px;"></i>
@@ -78,7 +78,7 @@
           </div>
         </div>
       </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px; height:120px;padding-left:30px;">
+      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:500px;background-color:#ffffff; height:120px;padding-left:30px;">
         <div class=" row p-3">
           <span style="font-size: 25px;">
             <i class="fa fa-map-marker" style="padding-top:20px;"></i>
@@ -91,10 +91,10 @@
       </div>
     </div>
     <div class ="col-6">
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px;background-color:#075aaa;">
+      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px;background-color:#668EB9">
         <p class ="lead"style="font-weight:bold;padding-left:30px;padding-top:10px; color:#ffffff;">Professional Information</p>
       </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px; height:120px;padding-left:30px;">
+      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px; background-color:#ffffff;height:120px;padding-left:30px;">
         <div class=" row p-3">
           <span style="font-size: 20px;">
             <i class="fa fa-user" style="padding-top:20px;"></i>
@@ -105,7 +105,7 @@
           </div>
         </div>
       </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px; height:140px;padding-left:30px;">
+      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px;background-color:#ffffff; height:140px;padding-left:30px;">
         <div class=" row p-3">
           <span style="font-size: 20px;">
             <i class="fa fa-lock" style="padding-top:20px;"></i>
@@ -116,7 +116,7 @@
           <p style ="color:#01045d;"> <%= "#{@user.admin_passphrase_digest}" %></p>
         </div>
       </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px; height:140px;padding-left:30px;">
+      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px;background-color:#ffffff; height:140px;padding-left:30px;">
         <div class=" row p-3">
           <span style="font-size: 20px;">
             <i class="fa fa-sign-in" style="padding-top:20px;"></i>
@@ -127,7 +127,7 @@
           </div>
         </div>
       </div>
-      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px; height:140px;padding-left:30px;">
+      <div class = "row" style=" border: 1px solid rgb(190, 190, 190); width:550px; background-color:#ffffff; height:140px;padding-left:30px;">
         <div class=" row p-3">
           <span style="font-size: 20px;">
             <i class="fa fa-address-card" style="padding-top:20px;"></i>
