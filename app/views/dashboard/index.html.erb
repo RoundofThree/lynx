@@ -6,7 +6,7 @@
         <h1 style="font-weight:bold;color:#668EB9">Home</h1>
       </div>
         <div class ="col-4" style="margin-top:30px; padding-left:60px;">
-        <p>Last Login: <%= (current_user.last_sign_in_at).strftime("%d/%m/%Y, %H:%M:%S")%></p>
+        <p style="color:#0067b6">Last Login: <%= (current_user.last_sign_in_at).strftime("%d/%m/%Y, %H:%M:%S")%></p>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
 
       <div class ="row" style="margin-top:20px;width:100%;">
         <div class ="col-4" style="padding-left:80px;">
-          <p style="font-weight:bold;font-size:16px;">Email:</p>
+          <p style="font-weight:bold;font-size:16px;color:#668EB9;">Email:</p>
       </div>
       <div class ="col-8"style="padding-left:80px;" >
         <p><%= current_user.email%></p>
@@ -48,7 +48,7 @@
       </div>
       <div class ="row" style="margin-top:20px;width:100%;">
         <div class ="col-4" style="padding-left:80px;">
-          <p style="font-weight:bold;font-size:16px;">Phone:</p>
+          <p style="font-weight:bold;font-size:16px;color:#668EB9;">Phone:</p>
       </div>
       <div class ="col-8"style="padding-left:80px;" >
         <p><%= current_user.phone%></p>
@@ -56,7 +56,7 @@
       </div>
       <div class ="row" style="margin-top:20px;width:100%;">
         <div class ="col-4" style="padding-left:80px;">
-          <p style="font-weight:bold;font-size:16px;">Address:</p>
+          <p style="font-weight:bold;font-size:16px;color:#668EB9;">Address:</p>
       </div>
       <div class ="col-8"style="padding-left:80px;" >
         <p><%= current_user.address_line_1%> <%= current_user.address_line_2%></p>
@@ -64,7 +64,7 @@
       </div>
       <div class ="row" style="margin-top:20px;width:100%;">
         <div class ="col-4" style="padding-left:80px;">
-          <p style="font-weight:bold;font-size:16px;">Birth Date:</p>
+          <p style="font-weight:bold;font-size:16px;color:#668EB9;">Birth Date:</p>
       </div>
       <div class ="col-8"style="padding-left:80px;" >
         <p><%= (current_user.birth_date).strftime("%d/%m/%Y")%></p>
@@ -72,7 +72,7 @@
       </div>
       <div class ="row" style="margin-top:20px;width:100%;">
         <div class ="col-4" style="padding-left:80px;">
-          <p style="font-weight:bold;font-size:16px;">Last Login IP:</p>
+          <p style="font-weight:bold;font-size:16px;color:#668EB9;">Last Login IP:</p>
       </div>
       <div class ="col-8"style="padding-left:80px;" >
         <p><%= current_user.last_sign_in_ip%></p>
@@ -83,17 +83,17 @@
         <div class ="col-1"style="padding-right:100px;">
           </div>
       <div class ="col-5" >
-        <div class ="row">
+        <div class ="row"style="width:570px">
             <div class ="col-6">
-              <div class ="card"style=" width:220px;height:160px;display: flex; align-items: center;justify-content: center;border-radius:5px;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
+              <div class ="card"style=" width:230px;height:160px;display: flex; align-items: center;justify-content: center;border-radius:5px;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
                 <h3 style="margin-top:-5px">You have</h3>
                 <p style="font-size:30px;color:#0067b6"><%= @accounts.length%></p>
-                <h3 style="margin-top:-20px"><%="account".pluralize(@accounts.length)%></h3>
+                <h3 style="margin-top:-20px;"><%="account".pluralize(@accounts.length)%></h3>
 
             </div>
           </div>
 
-            <div class ="col-6">
+            <div class ="col-2">
               <div class ="card"style="width:220px;height:160px;display: flex; align-items: center;justify-content: center;border-radius:5px;background-color:#ffffff;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
 
               <h4 style="margin-top:5px;font-weight:bold">Total Balance</h4>
@@ -106,10 +106,10 @@
             </div>
 
           </div>
-          <div class ="row" style="margin-top:40px; padding-left:20px">
+          <div class ="row" style="margin-top:40px; padding-left:20px;width:520px">
             <div class="card" style="width: 550px;border-radius:5px;background-color:#ffffff;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
 
-            <h3 style="padding-left:140px">Account Summary </h3>
+            <h3 style="padding-left:140px; margin-top:10px;color:#668EB9;font-weight:bold">Account Summary </h3>
              <table class ="table table-striped"  summary="Accounts list">
                <tr class ="header">
                  <th>Account number</th>
@@ -120,7 +120,7 @@
              </table>
           </div>
           </div>
-          <div class ="row" style="margin-top:30px; padding-left:20px">
+          <div class ="row" style="margin-top:30px; padding-left:20px;width:520px">
             <div class="list-group" style="width: 550px;">
        <a class="list-group-item list-group-item-action active" style="background-color:<%= dashboard_action_head_color%>; color:<%=dashboard_action_head_font_color%>">
        </a>
