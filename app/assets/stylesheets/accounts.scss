@@ -10,21 +10,8 @@
   color: rgb(7, 7, 177);
 }
 
-#account-show .divider {
-  border-top: 3px solid #bbb;
-}
-
-#account-show .transaction-history {
-  width: 80%;
-}
-
-#account-show table {
-  font-family: arial, sans-serif;
-  width: 100%;
-}
-
 #account-show th {
-  background-color: darkblue;
+  background-color: #1b1c1db9;
   color: white;
   text-align: center; 
   vertical-align: middle;
@@ -35,7 +22,7 @@
 }
 
 #account-show tr:nth-child(even) {
-  background-color: #302dd45d;
+  background-color: #41414263;
 }
 
 #account-show .center-aligned {
@@ -53,19 +40,3 @@
   vertical-align: middle;
 }
 
-#account-show .transaction-container {
-  width: 80%;
-  margin-bottom: 1rem;
-  height: 1px;
-  display: table;
-  border-radius: 25px;
-  background-color: rgba(255, 4, 4, 0.281);
-}
-
-#account-show .transaction-amount {
-  min-width: 30%;
-  text-align: right;
-  display: table-cell;
-  vertical-align: middle;
-  font-size: 1.5em;
-}
