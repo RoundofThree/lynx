@@ -34,16 +34,15 @@
           </div>
         </div>
         <div class="card-footer">
-              <button type="button" class="btn btn-info" style="width: 8rem">
-                Statement
-              </button>
-              
-              <button type="button" class="btn btn-secondary" style="width: 12rem; margin-left:50% float: right">
-                Investment plans
-              </button>
-              <button type="button" class="btn btn-secondary" style="width: 12rem; margin-left:1rem float: right">
-                Manage overdraft
-              </button>
+          <button type="button" class="btn btn-info" style="width: 8rem">
+            Statement
+          </button>
+          <button type="button" class="btn btn-secondary" style="width: 12rem; margin-left:50% float: right">
+            Investment plans
+          </button>
+          <button type="button" class="btn btn-secondary" style="width: 12rem; margin-left:1rem float: right">
+            Manage overdraft
+          </button>
         </div>
       </div>
       <!--transaction history-->
@@ -77,7 +76,7 @@
                   <td class="left-aligned">Received from <%= transaction.dealer_name %></td>
                   <td class="center-aligned"><%= transaction.currency %></td>
                   <td class="center-aligned text-success"><%= transaction.amount %></td>
-                <!-- outbound -->
+                  <!-- outbound -->
                 <% else %>
                   <td class="left-aligned">Transferred to <%= transaction.dealer_name %></td>
                   <td class="center-aligned"><%= transaction.currency %></td>
