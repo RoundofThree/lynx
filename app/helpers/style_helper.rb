@@ -21,7 +21,7 @@ module StyleHelper
     <a href="/" class="p-2 text-dark">Investments</a>
     <a href="/" class="p-2 text-dark">Loans</a>
     <a href="/" class="p-2 text-dark">Mortgage</a>
-    <a href="/" class="button small w-button">Book a call</a></span>'
+    <a href="/" class="button  w-button">Book a call</a></span>'
   end
 
   # homepage
