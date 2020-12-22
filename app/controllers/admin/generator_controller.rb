@@ -22,6 +22,8 @@ class Admin::GeneratorController < Admin::ApplicationController
         )
       end
     end
+    total_count = params[:how_many].to_i * accounts.length
+    redirect_to admin_transactions_path, notice: "Successfully generated #{total_count} transactions."
   end
 
   private
@@ -33,7 +35,6 @@ class Admin::GeneratorController < Admin::ApplicationController
     target = rand(1..cum_frequency)
     dealers.each do |dealer|
       return dealer if target <= dealer.frequency
-
       target -= dealer.frequency
     end
   end

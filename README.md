@@ -8,7 +8,7 @@
 *Steps to access the admin panel*: 
 
 1. Log in using the Administrative user credentials (email/password), doing step 2 without this would result in a 404 page. 
-2. Go to the admin link stated above. 
+2. Go to the admin link stated above. Alternatively, click on the "Admin Area" button at the top-right corner of the navigation bar (this button is only visible when you are logged in as an admin).
 3. Enter the correct admin passphrase (admin area passphrase), and you are ready to go! 
 
 ### User Credentials 

@@ -27,6 +27,7 @@
           <% end %>
         </div>
       </div>
+      <hr class="solid">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <div class ="row">
           <h4 class="h4">Transaction Generator Options</h4>
@@ -39,9 +40,7 @@
               <% period_options = [["Recent month", "1 month"], ["Recent 3 months", "3 months"],
                                ["Recent year", "1 year"], ["Recent 3 years", "3 years"]] %>
               <%= select_tag "period", options_for_select(period_options), class: "form-control col-4" %>
-              <button type="submit"class="btn btn-info col-3" style="background-color:#01045d; border-color:#01045d; border-radius:10px">
-                <%= link_to "Generate", admin_transactions_path, style: "color: inherit; text-decoration: none;font-weight:bold;" %>
-              </button>
+              <button type="submit"class="btn btn-info col-3" style="background-color:#01045d; border-color:#01045d; border-radius:10px">Generate</button>
             <% end %>
           </div>
         </div>
