@@ -8,7 +8,7 @@
       <div class ="row">
         <h1>  Users</h1>
         <i class ="fa fa-lg fa-pencil"style ="font-size:25px;padding-top:20px;padding-left:10px;"></i>
-        <p style="padding-top:20px;font-size:18px;padding-left:20px;"><%= User.count %> users</p>
+        <p style="padding-top:20px;font-size:18px;padding-left:20px;"><%= pluralize(User.count, "user") %></p>
       </div>
       <div class ="row" >
         <div class ="col"style="padding-left:0px;">

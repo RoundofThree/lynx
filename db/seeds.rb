@@ -39,15 +39,39 @@ User.create!([{ # admin user
 # Accounts
 Account.create!(
   [{
-    user_id: 2,
+    user_id: User.first.id,
+    balance: 1000,
+    account_number: '14245160928142',
+    cvv: 123,
+    expiry_date: Date.new(2021, 10, -1),
+    currency: 'GBP'
+  },
+  {
+    user_id: User.first.id,
+    balance: 5000,
+    account_number: '81235025831941',
+    cvv: 123,
+    expiry_date: Date.new(2021, 10, -1),
+    currency: 'USD'
+  },
+  {
+    user_id: User.first.id,
+    balance: 1000,
+    account_number: '92109512431521',
+    cvv: 123,
+    expiry_date: Date.new(2021, 10, -1),
+    currency: 'GBP'
+  },
+  {
+    user_id: User.last.id,
     balance: 1000,
     account_number: '57035847940742',
     cvv: 123,
     expiry_date: Date.new(2021, 10, -1),
     currency: 'GBP'
   },
-   {
-     user_id: 2,
+  {
+     user_id: User.last.id,
      balance: 500,
      account_number: '14696478537063',
      cvv: 123,
@@ -55,7 +79,7 @@ Account.create!(
      currency: 'GBP'
    },
    {
-     user_id: 2,
+     user_id: User.last.id,
      balance: 1_000_000,
      account_number: '73042859175930',
      cvv: 123,

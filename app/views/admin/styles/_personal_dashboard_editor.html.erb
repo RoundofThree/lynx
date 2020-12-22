@@ -16,15 +16,28 @@
   </div>
   <!-- dashboard summary header color -->
   <div class="form-group row">
-    <%= f.label :dashboard_summary_head_color, class: "col-sm-4 col-form-label" %>
+    <%= f.label :dashboard_static_text_color, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= f.color_field :dashboard_summary_head_color, value: dashboard_summary_head_color, class: "form-control" %></div>
+      <%= f.color_field :dashboard_static_text_color, value: dashboard_static_text_color, class: "form-control" %></div>
   </div>
   <!-- dashboard summary header text color -->
   <div class="form-group row">
-    <%= f.label :dashboard_summary_head_font_color, class: "col-sm-4 col-form-label" %>
+    <%= f.label :dashboard_head_text_color, class: "col-sm-4 col-form-label" %>
     <div class="col-sm-6">
-      <%= f.color_field :dashboard_summary_head_font_color, value: dashboard_summary_head_font_color, class: "form-control" %></div>
+      <%= f.color_field :dashboard_head_text_color, value: dashboard_head_text_color, class: "form-control" %></div>
+  </div>
+  <!-- dashboard mian text -->
+  <div class="form-group row">
+    <%= f.label :dashboard_main_text_1, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :dashboard_main_text_1, value: dashboard_main_text_1, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :dashboard_main_text_2, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :dashboard_main_text_2, value: dashboard_main_text_2, class: "form-control" %>
+    </div>
   </div>
   <%= f.submit class: "btn btn-outline-info" %>
 <% end %>
