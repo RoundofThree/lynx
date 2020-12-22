@@ -86,9 +86,9 @@
         <div class ="row">
             <div class ="col-6">
               <div class ="card"style=" width:220px;height:160px;display: flex; align-items: center;justify-content: center;border-radius:5px;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
-                <h3 style="margin-top:20px">Account</h3>
-                <h3 style="font-weight:bold">Number</h3>
-                <p style="font-size:22px;color:#0067b6"><%= current_user.accounts.first.account_number%></p>
+                <h3 style="margin-top:-5px">You have</h3>
+                <p style="font-size:30px;color:#0067b6"><%= @accounts.length%></p>
+                <h3 style="margin-top:-20px"><%="account".pluralize(@accounts.length)%></h3>
 
             </div>
           </div>
@@ -96,9 +96,11 @@
             <div class ="col-6">
               <div class ="card"style="width:220px;height:160px;display: flex; align-items: center;justify-content: center;border-radius:5px;background-color:#ffffff;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
 
-              <h3 style="margin-top:20px">Balance</h3>
-              <h3 style="font-weight:bold">Amount</h3>
-              <p style="font-size:22px;color:#0067b6"><%= current_user.accounts.first.transactions.first.amount%></p>
+              <h4 style="margin-top:20px;font-weight:bold">Balance Amount</h4>
+              <p style="font-size:20px;color:#0067b6"><%="€ " + total_balance_EUR.to_s%></p>
+              <p style="font-size:20px;color:#0067b6"><%="£ " + total_balance_GBP.to_s%></p>
+              <p style="font-size:20px;color:#0067b6"><%="$ " + total_balance_USD.to_s %></p>
+
 
             </div>
             </div>
@@ -107,7 +109,7 @@
           <div class ="row" style="margin-top:40px; padding-left:20px">
             <div class="card" style="width: 550px;border-radius:5px;background-color:#ffffff;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
 
-            <h3 style="padding-left:140px">Account Info </h3>
+            <h3 style="padding-left:140px">Account Summary </h3>
              <table class ="table table-striped"  summary="Accounts list">
                <tr class ="header">
                  <th>AccountID</th>
