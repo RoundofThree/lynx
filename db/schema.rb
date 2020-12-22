@@ -13,10 +13,11 @@
 ActiveRecord::Schema.define(version: 2020_12_12_103241) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "accounts", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
     t.decimal "balance", precision: 20, scale: 2
     t.string "account_number"
     t.string "cvv"
@@ -48,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "dealers", force: :cascade do |t|
+  create_table "dealers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "currency"
     t.string "name"
     t.string "account_number"
@@ -95,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.decimal "amount", precision: 20, scale: 2, null: false
     t.string "currency", null: false
     t.string "dealer_account_number", null: false
@@ -103,11 +104,11 @@ ActiveRecord::Schema.define(version: 2020_12_12_103241) do
     t.string "reference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "account_id"
+    t.uuid "account_id"
     t.index ["account_id"], name: "index_transactions_on_account_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "firstname", default: "", null: false
     t.string "lastname", default: "", null: false
     t.string "email", default: "", null: false
