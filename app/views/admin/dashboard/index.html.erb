@@ -2,8 +2,13 @@
   <%= render partial: "admin/shared/navbar" %>
   <div class ="container" style="min-height:900px;background-color: #F3F4F7;">
     <div class ="container">
-      <h1 style ="padding-left: 10px; margin-top:15px;">Admin Dashboard</h1>
-      <h4 class ="lead"style ="padding-left: 10px;margin-top:5px;">Hi,<%= current_user.firstname%>.  </h4>
+      <h1 style="font-weight:bold;color:#668EB9;margin-top:20px">Dashboard</h1>
+      <div class ="row">
+
+      <p style="padding-left:20px">Last Login: <%= (current_user.last_sign_in_at).strftime("%d/%m/%Y, %H:%M:%S")%></p>
+      </div>
+
+
     </div>
     <div class ="container" style="min-height: 250px;padding: 15px;padding-left: 15px;padding-right: 15px;">
       <!-- Summary -->
@@ -62,21 +67,28 @@
         </div>
       </div>
       <div class = "container" style=" margin-top:10px;">
-        <div class ="row p-3">
+        <div class ="row ">
           <div class ="col-md-5" style= "background-color:#ffffff; border-radius: 25px;box-shadow:5px 10px #ccc; ">
-            <p class ="lead" style=" padding-left:120px; margin-top:20px;">Dealers' Frequency</p>
+            <p style=" padding-left:120px; margin-top:20px;color:#668EB9; font-weight:bold">Dealer Frequency Chart</p>
             <%= area_chart Dealer.group(:name).maximum(:frequency),colors: ["#199fda","#87bdd8" ] %>
           </div>
           <div class ="col-sm-1" ></div>
           <div class ="col-md-6" style= "background-color:#ffffff; border-radius: 25px; box-shadow:5px 10px #ccc;">
             <div class ="row p-3" style="display: flex; align-items: center;justify-content: center;" >
-              <div class ="col-4">
-                <%= pie_chart Transaction.group(:currency).count ,colors: ["#87bdd8", "#199fda"],donut: true%>
-              </div>
               <div class ="col-6">
-                <%= pie_chart Dealer.group(:name).count ,colors: ["#87bdd8", "#0076ba","#199fda","#e2203d"],donut: true%>
+                <%= pie_chart User.group(:firstname).sum(:sign_in_count) ,colors: [ "#0076ba","#199fda","#e2203d"], donut:true%>
+                <p style=" padding-left:30px; margin-top:20px;color:#668EB9;font-weight:bold">User Engagement Count</p>
+                  </div>
+
+                <div class ="col-6">
+
+                <%= pie_chart Account.group(:currency).count,colors: [ "#0076ba","#199fda","#e2203d"], donut:true %>
+                <p style=" padding-left:30px; margin-top:20px;color:#668EB9; font-weight:bold">Account Currency Type</p>
+
+  </div>
+
               </div>
-              <p class ="lead" style=" padding-left:10px; margin-top:20px;">Statistics</p>
+
             </div>
           </div>
         </div>
@@ -85,7 +97,7 @@
       <div class ="row p-4">
         <div class ="box" style= "background-color:#ffffff; border-radius: 25px;box-shadow:5px 10px #ccc;
             display: flex; align-items: center;justify-content: center; width:100%; ">
-          <h3 style ="padding-left: 25px; margin-top:15px;">Recent Active Users</h3>
+          <h3 style ="padding-left: 25px; margin-top:5px;color:#668EB9; font-weight:bold">Recent Active Users</h3>
           <div class="table-responsive">
             <table class="table table-bordered table-sm">
               <thead>
