@@ -28,7 +28,7 @@
   <div class ="row " style="margin-top:50px; margin-bottom:30px;width:100%;">
 
     <div class ="col-5">
-    <div class="card" style="width: 550px;border-radius:5px;background-color:#ffffff;height:550px;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
+    <div class="card" style="width: 550px;border-color:#ffffff;border-radius:5px;background-color:#ffffff;height:550px;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
       <div class ="row p-3" style="margin-top:20px">
         <div class ="col-3" style="padding-left:50px;">
           <image width=110px height=110px src="profile.png"></image>
@@ -86,16 +86,16 @@
       <div class ="col-5" >
         <div class ="row"style="width:570px">
             <div class ="col-6">
-              <div class ="card"style=" width:230px;height:160px;display: flex; align-items: center;justify-content: center;border-radius:5px;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
-                <h3 style="margin-top:-5px">You have</h3>
+              <div class ="card"style=" border-color:#ffffff;width:230px;height:160px;display: flex; align-items: center;justify-content: center;border-radius:5px;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
+                <h4 style="margin-top:-5px">You have</h4>
                 <p style="font-size:30px;color:<%=dashboard_static_text_color%>"><%= @accounts.length%></p>
-                <h3 style="margin-top:-20px"><%="account".pluralize(@accounts.length)%></h3>
+                <h4 style="margin-top:-20px"><%="account".pluralize(@accounts.length)%></h4>
 
             </div>
           </div>
 
             <div class ="col-2">
-              <div class ="card"style="width:220px;height:160px;display: flex; align-items: center;justify-content: center;border-radius:5px;background-color:#ffffff;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
+              <div class ="card"style="width:220px;border-color:#ffffff;height:160px;display: flex; align-items: center;justify-content: center;border-radius:5px;background-color:#ffffff;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
 
               <h4 style="margin-top:5px;font-weight:bold">Total Balance</h4>
               <p style="font-size:20px;color:<%=dashboard_static_text_color%>; margin: 0px;"><%="€ " + total_balance_EUR.to_s%></p>
@@ -108,9 +108,9 @@
 
           </div>
           <div class ="row" style="margin-top:40px; padding-left:20px;width:520px">
-            <div class="card" style="width: 550px;border-radius:5px;background-color:#ffffff;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
+            <div class="card" style="width: 550px;border-color:#ffffff;border-radius:5px;background-color:#ffffff;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
 
-            <h3 style="padding-left:140px; margin-top:10px;color:#668EB9;font-weight:bold">Account Summary </h3>
+            <p style="padding-left:160px; margin-top:10px;color:#668EB9;font-weight:bold;font-size:22px;">Account Summary </p>
              <table class ="table table-striped"  summary="Accounts list">
                <tr class ="header">
                  <th>Account number</th>
@@ -123,8 +123,8 @@
           </div>
           <div class ="row" style="margin-top:30px; padding-left:20px;width:520px">
             <div class="list-group" style="width: 550px;">
-       <a class="list-group-item list-group-item-action active" style="background-color:<%= dashboard_action_head_color%>; color:<%=dashboard_action_head_font_color%>;font-size:20px">
-         Action
+       <a class="list-group-item list-group-item-action active" style="padding-left:200px; margin-top:10px;background-color:<%= dashboard_action_head_color%>; color:<%=dashboard_action_head_font_color%>;font-size:22px">
+         Action List
        </a>
        <a>
          <%= link_to new_transaction_path, class: "list-group-item list-group-item-action" do %>
