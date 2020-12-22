@@ -2,12 +2,17 @@
   <h4>Login</h4>
 </div>
 <%= form_for styles, url: admin_styles_path, method: :put, html: {class: "col-8", style: "margin: 15px;"} do |f| %>
-  <div class="form-group row">
+  <div class="form-group row" >
     <%= f.label :login_sigup_logo_image, class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="margin-bottom:30px">
       <%= image_tag login_sigup_logo_image, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
       <%= f.file_field :login_sigup_logo_image, class: "form-control-file" %>
       <span class="small font-italic" style="font-size: x-middle;">This image logo will apply both login and signup</span>
+    </div>
+    <%= f.label :login_background_image, class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-6">
+      <%= image_tag login_background_image, style: "height: 160px; width: auto; margin-bottom: 5px;" %>
+      <%= f.file_field :login_background_image, class: "form-control-file" %>
     </div>
   </div>
   <%= f.submit class: "btn btn-outline-info" %>

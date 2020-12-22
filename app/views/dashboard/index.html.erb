@@ -1,54 +1,142 @@
+<div class="row" style="height:1000px;">
+  <%= render partial: "dashboard/navbar" %>
+  <main class="col-md-9 ms-sm-auto col-lg-10" style="background-color: #F3F4F7;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034),0 100px 80px rgba(0,0,0,0.12);">
+    <div class ="row p-2 " style="margin-top:20px;">
+      <div class ="col-8">
+        <h1 style="font-weight:bold;color:#668EB9">Home</h1>
+      </div>
+        <div class ="col-4" style="margin-top:30px; padding-left:60px;">
+        <p>Last Login: <%= (current_user.last_sign_in_at).strftime("%d/%m/%Y, %H:%M:%S")%></p>
+      </div>
+    </div>
 
-  <div class="row">
-    <%= render partial: "dashboard/navbar" %>
+    <div class ="row " style="margin-top:0px; margin-bottom:20px;padding-left:20px; padding-right:20px;width:100%;">
+      <div class ="container" style="background: linear-gradient(60deg,#0067b6,#9dc8e4);border-radius:10px;height:200px;" >
+        <div class ="row">
+        <div class ="col-7">
+        <h3 class ="p-2" style ="color:#ffffff;margin-top:50px;">Welcome back, <%= current_user.lastname%></h3>
+        <p class ="p-2" style ="color:#ffffff;">Check your accounts and manage your all activities here</p>
+        </div>
+        <div class ="col-5" style="">
+          <image width="100%" height="84%" src="city2.png"></image>
+        </div>
+        </div>
+      </div>
+      </div>
 
+  <div class ="row " style="margin-top:50px; margin-bottom:30px;width:100%;">
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <h2 style="color:blue">Personal Summary</h2>
-      <hr align=left width=400 SIZE=1>
-        <div class="card mb" style="width: 35rem;">
-            <div class="card-header" style="background-color:<%= dashboard_summary_head_color%>; color:<%=dashboard_summary_head_font_color%>">
-              Personal Summary for <span style="font-weight:bold"><%= current_user.lastname + " " + current_user.firstname %></span>
+    <div class ="col-5">
+    <div class="card" style="width: 550px;border-radius:5px;background-color:#ffffff;height:550px;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
+      <div class ="row p-3" style="margin-top:20px">
+        <div class ="col-3" style="padding-left:50px;">
+          <image width=110px height=110px src="profile.png"></image>
+      </div>
+      <div class ="col-6" style="padding-left:60px; margin-top:10px">
+        <h3><%= current_user.firstname%></h3>
+        <h3 style="font-weight:bold;"><%= current_user.lastname%></h3>
+        </div>
+      </div>
+
+      <div class ="row" style="margin-top:20px;width:100%;">
+        <div class ="col-4" style="padding-left:80px;">
+          <p style="font-weight:bold;font-size:16px;">Email:</p>
+      </div>
+      <div class ="col-8"style="padding-left:80px;" >
+        <p><%= current_user.email%></p>
+        </div>
+      </div>
+      <div class ="row" style="margin-top:20px;width:100%;">
+        <div class ="col-4" style="padding-left:80px;">
+          <p style="font-weight:bold;font-size:16px;">Phone:</p>
+      </div>
+      <div class ="col-8"style="padding-left:80px;" >
+        <p><%= current_user.phone%></p>
+        </div>
+      </div>
+      <div class ="row" style="margin-top:20px;width:100%;">
+        <div class ="col-4" style="padding-left:80px;">
+          <p style="font-weight:bold;font-size:16px;">Address:</p>
+      </div>
+      <div class ="col-8"style="padding-left:80px;" >
+        <p><%= current_user.address_line_1%> <%= current_user.address_line_2%></p>
+        </div>
+      </div>
+      <div class ="row" style="margin-top:20px;width:100%;">
+        <div class ="col-4" style="padding-left:80px;">
+          <p style="font-weight:bold;font-size:16px;">Birth Date:</p>
+      </div>
+      <div class ="col-8"style="padding-left:80px;" >
+        <p><%= (current_user.birth_date).strftime("%d/%m/%Y")%></p>
+        </div>
+      </div>
+      <div class ="row" style="margin-top:20px;width:100%;">
+        <div class ="col-4" style="padding-left:80px;">
+          <p style="font-weight:bold;font-size:16px;">Last Login IP:</p>
+      </div>
+      <div class ="col-8"style="padding-left:80px;" >
+        <p><%= current_user.last_sign_in_ip%></p>
+        </div>
+      </div>
+      </div>
+        </div>
+        <div class ="col-1"style="padding-right:100px;">
+          </div>
+      <div class ="col-5" >
+        <div class ="row">
+            <div class ="col-6">
+              <div class ="card"style=" width:220px;height:160px;display: flex; align-items: center;justify-content: center;border-radius:5px;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
+                <h3 style="margin-top:-5px">You have</h3>
+                <p style="font-size:30px;color:#0067b6"><%= @accounts.length%></p>
+                <h3 style="margin-top:-20px"><%="account".pluralize(@accounts.length)%></h3>
+
             </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><span> EMAIL: </span>  <span style="float:right;font-weight:bold"><%= current_user.email %></span></li>
-            <li class="list-group-item"><span> PHONE: </span><span style="float:right;font-weight:bold"><%= current_user.phone %></span></li>
-            <li class="list-group-item"><span> BIRTH DATE: </span><span style="float:right;font-weight:bold"><%= (current_user.birth_date).strftime("%d/%m/%Y") %></span></li>
-            <li class="list-group-item"><span> ACCOUNT NUMBER: </span><span style="float:right;font-weight:bold"><%= @accounts.length %></span></li>
-            <li class="list-group-item"><span> TOTAL BALANCE: </span><span style="float:right;font-weight:bold"><%="€ " + total_balance_EUR.to_s + " + £ " + total_balance_GBP.to_s + " + $ " + total_balance_USD.to_s %></span></li>
-          </ul>
-        </div>
-
-        <div class="list-group" style="width: 25rem; position:absolute; right:50px; top: 70px;">
-          <a class="list-group-item list-group-item-action active" style="background-color:<%= dashboard_action_head_color%>; color:<%=dashboard_action_head_font_color%>">
-            <span style="font-size:20px">Action List</span>
-          </a>
-          <a>
-            <%= link_to new_transaction_path, class: "list-group-item list-group-item-action" do %>
-            <span style="font-size:20px">Make a Transfer</span>
-            <%end%>
-          </a>
-          <a class="list-group-item list-group-item-action"><span style="font-size:20px">Invest</span></a>
-          <a class="list-group-item list-group-item-action"><span style="font-size:20px">Help</span></a>
-          <a class="list-group-item list-group-item-action"><span style="font-size:20px">Contact us</span></a>
-
-        </div>
-
-        <div style=" margin-top:50px">
-          <h3 style="color: dark">Account List </h3>
-              <table class ="table table-striped"  summary="Accounts list">
-                <tr class ="header">
-                  <th>AccountID</th>
-                  <th>Balance</th>
-                  <th>Action</th>
-                </tr>
-                  <%= render partial: "user_list", collection: @accounts, as: :account %>
-              </table>
           </div>
 
+            <div class ="col-6">
+              <div class ="card"style="width:220px;height:160px;display: flex; align-items: center;justify-content: center;border-radius:5px;background-color:#ffffff;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
+
+              <h4 style="margin-top:5px;font-weight:bold">Total Balance</h4>
+              <p style="font-size:20px;color:#0067b6; margin: 0px;"><%="€ " + total_balance_EUR.to_s%></p>
+              <p style="font-size:20px;color:#0067b6; margin: 0px;"><%="£ " + total_balance_GBP.to_s%></p>
+              <p style="font-size:20px;color:#0067b6; margin: 0px;"><%="$ " + total_balance_USD.to_s %></p>
 
 
+            </div>
+            </div>
 
+          </div>
+          <div class ="row" style="margin-top:40px; padding-left:20px">
+            <div class="card" style="width: 550px;border-radius:5px;background-color:#ffffff;box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034)">
 
+            <h3 style="padding-left:140px">Account Summary </h3>
+             <table class ="table table-striped"  summary="Accounts list">
+               <tr class ="header">
+                 <th>Account number</th>
+                 <th>Balance</th>
+                 <th>Action</th>
+               </tr>
+                 <%= render partial: "user_list", collection: @accounts, as: :account %>
+             </table>
+          </div>
+          </div>
+          <div class ="row" style="margin-top:30px; padding-left:20px">
+            <div class="list-group" style="width: 550px;">
+       <a class="list-group-item list-group-item-action active" style="background-color:<%= dashboard_action_head_color%>; color:<%=dashboard_action_head_font_color%>">
+       </a>
+       <a>
+         <%= link_to new_transaction_path, class: "list-group-item list-group-item-action" do %>
+         <span style="font-size:20px">Make a Transfer</span>
+         <%end%>
+       </a>
+       <a class="list-group-item list-group-item-action"><span style="font-size:20px">Invest</span></a>
+       <a class="list-group-item list-group-item-action"><span style="font-size:20px">Help</span></a>
+       <a class="list-group-item list-group-item-action"><span style="font-size:20px">Contact Us</span></a>
+
+     </div>
+
+          </div>
+          </div>
+    </div>
+    </div>
     </main>
-  </div>

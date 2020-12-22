@@ -1,10 +1,18 @@
-<div class="row">
+<div class="row" style ="background-color: #ecf0f5;">
   <%= render partial: "admin/shared/navbar" %>
-  <div class="column is-one-third p-3">
-    <%= link_to 'Back to transaction list', admin_transactions_path, class: "button is-danger" %>
-    <h1 class="is-size-2 has-text-weight-bold mb-3 p-3">New transaction</h1>
-    <%= render 'form', transaction: @transaction %>
+  <div class="container" style ="padding: 40px 15px;padding-left:40px;display: flex; align-items: center;justify-content: center;">
+    <div class ="row">
+      <!-- Header -->
+      <div class ="card" style=" width:680px;border: 0;margin-bottom: 30px;margin-top: 30px;border-radius: 6px;">
+        <div class ="card-header" style="background: linear-gradient(60deg,#7b1fa2,#075aaa);margin: 0 15px;
+          margin-top: -20px;z-index: 3;">
+          <h4 class="mb-4 pt-2" style="color:#ffffff">Create New Transaction</h4>
+        </div>
+        <div class ="card-body" style=" padding-left:40px;">
+          <%= link_to "Back", admin_transactions_path %>
+          <%= render 'form', transaction: @transaction %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<%= link_to 'Back to transaction list', admin_transactions_path, class: "button is-danger" %>

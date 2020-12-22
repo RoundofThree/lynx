@@ -2,20 +2,20 @@ class Admin::StylesController < Admin::ApplicationController
   before_action :set_styles
 
   # GET /admin/styles/edit
-  def edit
-  end
+  def edit; end
 
   # PATCH/PUT /admin/styles
   def update
     if @styles.update(styles_params)
-      redirect_to admin_styles_edit_path, notice: "Style changes successfully applied."
+      redirect_to admin_styles_edit_path, notice: 'Style changes successfully applied.'
     else
-      flash[:error] = "Failed to save changes."
+      flash[:error] = 'Failed to save changes.'
       redirect_to admin_styles_edit_path
     end
   end
 
   private
+
   # Always the first row and the only row
   def set_styles
     @styles = Style.first
@@ -51,11 +51,14 @@ class Admin::StylesController < Admin::ApplicationController
                                   :dashboard_action_head_font_color,
                                   :dashboard_summary_head_color,
                                   :dashboard_summary_head_font_color,
-                                  :login_background_image,
                                   :login_sigup_logo_image,
+                                  :login_background_image,
+                                  :signup_background_image,
                                   :account_table_color,
                                   :account_table_color,
                                   :sign_up_head_size,
+                                  :sign_up_text_1,
+                                  :sign_up_text_2,
                                   :make_payment_page_style,
                                   :make_payment_md,
                                   :make_payment_title,
@@ -65,8 +68,7 @@ class Admin::StylesController < Admin::ApplicationController
                                   :show_payment_md,
                                   :show_payment_image,
                                   :dealer_image,
-                                  :home_links_1 => [],
-                                  :home_links_2 => [])
+                                  home_links_1: [],
+                                  home_links_2: [])
   end
-
 end

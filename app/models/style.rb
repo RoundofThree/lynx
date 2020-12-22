@@ -1,5 +1,5 @@
 class Style < ApplicationRecord
-  validates :bank_name, presence: true, length: {in: 1...20}
+  validates :bank_name, presence: true, length: { in: 1...20 }
   has_one_attached :header_logo
   has_one_attached :home_main_marketing_image
   has_one_attached :home_main_marketing_card_image_1
@@ -10,6 +10,7 @@ class Style < ApplicationRecord
   has_one_attached :make_payment_image
   has_one_attached :show_payment_image
   has_one_attached :dealer_image
+  has_one_attached :signup_background_image
 
   serialize :home_links_1, Array
   serialize :home_links_2, Array
@@ -20,9 +21,6 @@ class Style < ApplicationRecord
   private
 
   def single_row
-    if self.class.any?
-      errors.add(:base, "Only one style row can exist")
-    end
+    errors.add(:base, 'Only one style row can exist') if self.class.any?
   end
-
 end

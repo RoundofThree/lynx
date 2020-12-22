@@ -1,15 +1,16 @@
 <div class="table-responsive">
-  <table class="table table-bordered table-sm">
+  <table class="table table-bordered table-sm table-striped table-hover" >
     <thead>
       <tr>
-        <th>No. </th>
-        <th>Account</th>
-        <th>Account owner</th>
-        <th>Dealer account</th>
-        <th>Dealer</th>
-        <th>Amount</th>
-        <th>Date</th>
-         <!-- Ordering -->
+        <th class ="p-3" style="color:#01045d;">No. </th>
+        <th class ="p-3" style="color:#01045d;">Account</th>
+        <th class ="p-3" style="color:#01045d;">Account owner</th>
+        <th class ="p-3" style="color:#01045d;">Dealer account</th>
+        <th class ="p-3" style="color:#01045d;">Dealer</th>
+        <th class ="p-3" style="color:#01045d;">Amount</th>
+        <th class ="p-3" style="color:#01045d;">Date</th>
+        <th class ="p-3" style="color:#01045d;">Actions</th>
+        <!-- Ordering -->
       </tr>
     </thead>
     <tbody>
@@ -24,8 +25,7 @@
           <td><%= t.dealer_name %></td>
           <td class="<%= t.amount > 0 ? 'text-success' : 'text-danger' %>"><%= number_to_currency(t.amount, unit: t.currency, format: "%u %n") %></td>
           <td><%= t.created_at %></td>
-          <td><%= link_to 'Edit', edit_admin_transaction_path(t) %></td>
-          <td><%= link_to 'Delete', admin_transaction_path(t), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <td><%= link_to 'Edit         ', edit_admin_transaction_path(t) %><%= link_to '         Delete', admin_transaction_path(t), method: :delete, data: { confirm: 'Are you sure?' } %>
           </td>
         </tr>
       <% end %>
