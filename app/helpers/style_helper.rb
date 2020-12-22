@@ -127,12 +127,20 @@ module StyleHelper
     current_style&.dashboard_action_head_font_color.presence || '#ffffff'
   end
 
-  def dashboard_summary_head_color
-    current_style&.dashboard_summary_head_color.presence || '#f4f4f4'
+  def dashboard_static_text_color
+    current_style&.dashboard_static_text_color.presence || '#0067b6'
   end
 
-  def dashboard_summary_head_font_color
-    current_style&.dashboard_summary_head_font_color.presence || '#000000'
+  def dashboard_main_text_1
+    current_style&.dashboard_main_text_1.presence || "Welcome back"
+  end
+
+  def dashboard_main_text_2
+    current_style&.dashboard_main_text_2.presence ||"Check your accounts and manage your all activities here"
+  end
+
+  def dashboard_head_text_color
+    current_style&.dashboard_head_text_color.presence || '#668EB9'
   end
 
   # login
@@ -167,11 +175,13 @@ module StyleHelper
   end
 
   def sign_up_text_1
-    current_style&.sign_up_text_1.presence || 'Experience the freedom of banking on your own terms.'
+    current_style&.sign_up_text_1.presence || "Experience the freedom of banking on your own terms."
+
   end
 
   def sign_up_text_2
-    current_style&.sign_up_text_2.presence || 'Create your account today.'
+    current_style&.sign_up_text_2.presence || "Create your account today."
+
   end
 
   # make payment page
